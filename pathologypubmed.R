@@ -76,34 +76,72 @@ ggplot(data = articles_per_year, aes(x = Year, y = n, group = Country,
 
 
 # Articles per journals per country
+ISSNTR <- table(ISSN(fetchTurkey)) %>% 
+    as_tibble() %>% 
+    rename(Turkey = n, Journal = Var1)
 
-JournalsTR <- cbind.data.frame(YearPubmed(fetchTurkey), ISSN(fetchTurkey)) %>% 
-    rename( Year = "YearPubmed(fetchTurkey)", ISSN = "ISSN(fetchTurkey)")
+ISSNDE <- table(ISSN(fetchGermany)) %>% 
+    as_tibble() %>% 
+    rename(Germany = n, Journal = Var1)
 
-JournalsDE <- cbind.data.frame(YearPubmed(fetchGermany), ISSN(fetchGermany)) %>% 
-    rename( Year = "YearPubmed(fetchGermany)", ISSN = "ISSN(fetchGermany)")
+ISSNJP <- table(ISSN(fetchJapan)) %>% 
+    as_tibble() %>% 
+    rename(Japan = n, Journal = Var1)
 
-JournalsJP <- cbind.data.frame(YearPubmed(fetchJapan), ISSN(fetchJapan)) %>% 
-    rename( Year = "YearPubmed(fetchJapan)", ISSN = "ISSN(fetchJapan)")
+articles_per_journal <- list(
+    ISSNTR,
+    ISSNDE,
+    ISSNJP
+) %>%
+    reduce(left_join, by = "Journal", .id = "id") %>% 
+    gather(Country, n, 2:4)
+
+#  Graph 2
+ggplot(data = articles_per_journal, aes(x = Journal, y = n, group = Country,
+                                     colour = Country, shape = Country,
+                                     levels = Country
+)) +
+    geom_point() +
+    labs(x = "Journals with decreasing impact factor", y = "Number of Articles") +
+    ggtitle("Pathology Articles Per Journal") + 
+    theme(plot.title = element_text(hjust = 0.5),
+          axis.text.x=element_blank())
 
 
-# articles_per_journal <- list(
-#     JournalsTR,
-#     JournalsDE,
-#     JournalsJP
-# ) %>%
-#     reduce(left_join, by = "ISSN", .id = "id") %>% 
-#     gather(Country, n, 2:4)
+
+
+# JournalsTR <- cbind.data.frame(YearPubmed(fetchTurkey), ISSN(fetchTurkey)) %>% 
+#     rename( Year = "YearPubmed(fetchTurkey)", ISSN = "ISSN(fetchTurkey)") %>% 
+#     mutate(Country = "Turkey")
 # 
-# # Graph 2
+# JournalsDE <- cbind.data.frame(YearPubmed(fetchGermany), ISSN(fetchGermany)) %>% 
+#     rename( Year = "YearPubmed(fetchGermany)", ISSN = "ISSN(fetchGermany)") %>% 
+#     mutate(Country = "Germany")
+# 
+# JournalsJP <- cbind.data.frame(YearPubmed(fetchJapan), ISSN(fetchJapan)) %>% 
+#     rename( Year = "YearPubmed(fetchJapan)", ISSN = "ISSN(fetchJapan)") %>% 
+#     mutate(Country = "Japan")
+# 
+# 
+# articles_per_journal <- union(JournalsTR, JournalsDE) %>% 
+#     union(JournalsJP) %>% 
+#     group_by(Country, ISSN) %>% 
+#     summarise(count=n()) %>% 
+#     ungroup()
+# 
+# articles_per_journal$ISSN <- factor(articles_per_journal$ISSN)
+# 
+# 
+# # # Graph 2
 # articles_per_journal %>% 
-#     filter(n>10 & n<100) %>% 
-# ggplot(aes(x = ISSN, y = n, group = Country, colour = Country, shape = Country)) +
-#     geom_point() +
-#     labs(x = "ISSN", y = "Number of Articles") +
-#     ggtitle("Pathology Articles Per Journal") +
-#     theme(plot.title = element_text(hjust = 0.5))
-
-
-
-
+#  ggplot(aes(x = ISSN, y = count, group = Country, colour = Country, shape = Country)) +
+#  geom_point()
+# 
+# 
+# #     labs(x = "ISSN", y = "Number of Articles") +
+# #     ggtitle("Pathology Articles Per Journal") +
+# #     theme(plot.title = element_text(hjust = 0.5))
+# 
+# 
+# 
+# 
