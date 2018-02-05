@@ -4,6 +4,7 @@
 library(tidyverse)
 library(RISmed)
 library(ggplot2)
+library(purrr)
 
 # PubMed Query For Pathology Journals AND Countries
 
@@ -27,33 +28,49 @@ searchformulaDE <- paste("'",ISSNList,"'", " AND ", "Germany[Affiliation]")
 searchformulaJP <- paste("'",ISSNList,"'", " AND ", "Japan[Affiliation]")
 
 # Search PubMed
-TurkeyArticles <- EUtilsSummary(searchformulaTR, type = 'esearch', db = 'pubmed', mindate = 2007, maxdate = 2017, retmax=10000)
+TurkeyArticles <- EUtilsSummary(searchformulaTR, type = 'esearch', db = 'pubmed', mindate = 2007, maxdate = 2017, retmax = 10000)
 fetchTurkey <- EUtilsGet(TurkeyArticles)
 
-GermanyArticles <- EUtilsSummary(searchformulaDE, type = 'esearch', db = 'pubmed', mindate = 2007, maxdate = 2017, retmax=10000)
+GermanyArticles <- EUtilsSummary(searchformulaDE, type = 'esearch', db = 'pubmed', mindate = 2007, maxdate = 2017, retmax = 10000)
 fetchGermany <- EUtilsGet(GermanyArticles)
 
-JapanArticles <- EUtilsSummary(searchformulaJP, type = 'esearch', db = 'pubmed', mindate = 2007, maxdate = 2017, retmax=10000)
+JapanArticles <- EUtilsSummary(searchformulaJP, type = 'esearch', db = 'pubmed', mindate = 2007, maxdate = 2017, retmax = 10000)
 fetchJapan <- EUtilsGet(JapanArticles)
 
 # Articles per countries per year
-tableTR <- table(YearReceived(fetchTurkey))
-tableDE <- table(YearReceived(fetchGermany))
-tableJP <- table(YearReceived(fetchJapan))
+tableTR <- table(YearReceived(fetchTurkey)) %>% 
+    as_tibble() %>% 
+    rename(Turkey = n)
 
-articles_per_year <- bind_rows(tableTR, tableDE, tableJP)
+tableDE <- table(YearReceived(fetchGermany)) %>% 
+    as_tibble() %>% 
+    rename(Germany = n)
+
+tableJP <- table(YearReceived(fetchJapan)) %>% 
+    as_tibble() %>% 
+    rename(Japan = n)
+
+articles_per_year <- list(
+    tableTR,
+    tableDE,
+    tableJP
+    ) %>%
+    reduce(left_join, by = "Var1", .id = "id") %>% 
+    gather(Country, n, 2:4) %>% 
+    rename(Year = Var1)
+
+## Graph 1 
+
+ggplot(data = articles_per_year, aes(x = Year, y = n, group = Country, colour = Country, shape = Country)) +
+    geom_line() +
+    geom_point() +
+    labs(x = "Year", y = "Number of Articles") +
+    ggtitle("Pathology Articles Per Year") +
+    theme(plot.title = element_text(hjust = 0.5))
+
+## 
 
 
-
-
-class(articles_per_year)
-
-rownames_to_column(articles_per_year, var = "rowname")
-
-%>% 
-    as_tibble()
-
-colnames(articles_per_year) <- c("TR","DE","JP")
 
 
 
