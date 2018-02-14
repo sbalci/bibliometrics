@@ -127,6 +127,13 @@ Version: 1.1.0
 Hash: c233690edd9fa17a63f7c8d83c1ca153
 Requires: crayon
 
+Package: devtools
+Source: CRAN
+Version: 1.13.4
+Hash: 80a77b22f641002c7ce0343baeaee300
+Requires: digest, git2r, httr, jsonlite, memoise, rstudioapi, whisker,
+    withr
+
 Package: dichromat
 Source: CRAN
 Version: 2.0-0
@@ -163,6 +170,11 @@ Hash: 46e5cb78836848aa44655e577433f54b
 Requires: MASS, digest, gtable, lazyeval, plyr, reshape2, scales,
     tibble
 
+Package: git2r
+Source: CRAN
+Version: 0.21.0
+Hash: 64747922e287be74e8e8b46c107fd3ef
+
 Package: glue
 Source: CRAN
 Version: 1.2.0
@@ -195,6 +207,12 @@ Source: CRAN
 Version: 0.3.6
 Hash: f6fa1ff1db422a2c5227be30cab6c273
 Requires: Rcpp, digest
+
+Package: httpuv
+Source: CRAN
+Version: 1.3.5
+Hash: e84ff210704225e98da111beaa238472
+Requires: Rcpp
 
 Package: httr
 Source: CRAN
@@ -239,6 +257,12 @@ Source: CRAN
 Version: 0.8
 Hash: 045d7c594d503b41f1c28946d076c8aa
 Requires: mime
+
+Package: memoise
+Source: CRAN
+Version: 1.1.0
+Hash: 410fcd334bc626db100237cc1370f2e9
+Requires: digest
 
 Package: mime
 Source: CRAN
@@ -311,6 +335,11 @@ Version: 0.2.4
 Hash: a80b244ccd3fdb33a0ff2be3c50dd648
 Requires: magrittr, rlang, tibble
 
+Package: rJava
+Source: CRAN
+Version: 0.9-9
+Hash: ebf54080d6f36f3814cce27e5325d4e3
+
 Package: readr
 Source: CRAN
 Version: 1.1.1
@@ -363,6 +392,15 @@ Source: CRAN
 Version: 0.7
 Hash: e2ebaff8160aff3e6b32e6e78a693c2d
 
+Package: runr
+Source: github
+Version: 0.0.8
+Hash: 989ec1eb175225f6ee9dbf69d9765710
+GithubRepo: runr
+GithubUsername: yihui
+GithubRef: master
+GithubSha1: 3df595503ed02f7e9a86263ac62f9b1fdf874ac9
+
 Package: rvest
 Source: CRAN
 Version: 0.3.2
@@ -381,6 +419,24 @@ Source: CRAN
 Version: 0.3-1
 Hash: 367275e3dcdd208339e131c7a41bec56
 Requires: stringr
+
+Package: shiny
+Source: CRAN
+Version: 1.0.5
+Hash: 4d47532a807122bfd6bc3818310f9d2e
+Requires: R6, digest, htmltools, httpuv, jsonlite, mime, sourcetools,
+    xtable
+
+Package: shinythemes
+Source: CRAN
+Version: 1.1.1
+Hash: d15f59eaa7a9a0668cea3af7f477820c
+Requires: shiny
+
+Package: sourcetools
+Source: CRAN
+Version: 0.1.6
+Hash: 226d56d7469587da40b0f96180e711b4
 
 Package: stringi
 Source: CRAN
@@ -447,11 +503,28 @@ Source: CRAN
 Version: 2.1.1
 Hash: a86856ae0b4a7c3daf9a3ef0097a403b
 
+Package: xlsx
+Source: CRAN
+Version: 0.5.7
+Hash: 6acda2cf5190bf93d0b24c5a40b564cf
+Requires: rJava, xlsxjars
+
+Package: xlsxjars
+Source: CRAN
+Version: 0.6.1
+Hash: 3902149dad80bcb14fcd88d8c7fd7f3b
+Requires: rJava
+
 Package: xml2
 Source: CRAN
 Version: 1.2.0
 Hash: 94e9b541116e27d80a23d436f81eda80
 Requires: Rcpp
+
+Package: xtable
+Source: CRAN
+Version: 1.8-2
+Hash: 7293235cfcc14cdff1ce7fd1a0212031
 
 Package: yaml
 Source: CRAN
