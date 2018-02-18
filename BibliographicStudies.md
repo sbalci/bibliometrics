@@ -11,7 +11,7 @@ output:
     toc_float: yes
 ---
 
-This document is updated on `r Sys.Date()`
+This document is updated on 2018-02-18
 
 # Reproducible Bibliometric Analysis of Pathology Articles
 ### PubMed Indexed Peer Reviewed Articles in Pathology Journals: A country based comparison
@@ -103,11 +103,7 @@ articles_per_year$Country <- factor(articles_per_year$Country,
                                        levels =c("Japan", "Germany", "Turkey"))
 
 ## Graph 1 
-```{r Graph 1, eval=FALSE, fig.align="center", fig.height=5, fig.width=5, include=FALSE}
 
-
-
-```
 
 
 ggplot(data = articles_per_year, aes(x = Year, y = n, group = Country,
@@ -221,9 +217,7 @@ sort-uniq-count-rank | \
 head -n 10
 ```
 
-```{bash eval=FALSE, include=FALSE}
-ls
-```
+
 
 https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=“science”[journal]+AND+breast+cancer+AND+2008[pdat]
 
@@ -235,13 +229,7 @@ https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=11748933,
 https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=11748933,11700088&retmode=xml&rettype=abstract
 
 
-```{bash eval=FALSE, include=FALSE}
-esearch -db pubmed -query "(diabetes AND pregnancy) AND (\"2015/01/01\"[PDAT] : \"2017/12/31\"[PDAT])" | \
-efetch -format xml | \
-xtract -pattern Author -sep " " -element LastName,Initials | \
-sort-uniq-count-rank | \
-head -n 10
-```
+
 
 
 This series of commands searches PubMed for the string “(diabetes AND pregnancy) AND (”2015/01/01“[PDAT] : ”2017/12/31“[PDAT])”, retrieves the full XML records for each of the search results, extracts the last name and initials of every author on every record, sorts the authors by frequency of occurrence in the results set, and presents the top ten most frequently-occurring authors, along with the number of times that author appeared.
@@ -496,19 +484,7 @@ To install EDirect, open your Unix terminal and execute the following commands. 
 
 
 
-```{bash eval=FALSE, include=FALSE}
-cd ~
-/bin/bash
-perl -MNet::FTP -e \
-    '$ftp = new Net::FTP("ftp.ncbi.nlm.nih.gov", Passive => 1);
-    $ftp->login; $ftp->binary;
-    $ftp->get("/entrez/entrezdirect/edirect.tar.gz");'
-gunzip -c edirect.tar.gz | tar xf -
-rm edirect.tar.gz
-builtin exit
-export PATH=$PATH:$HOME/edirect >& /dev/null || setenv PATH "${PATH}:$HOME/edirect"
-./edirect/setup.sh
-```
+
 
 
 ```
@@ -544,21 +520,7 @@ You can confirm EDirect is installed correctly by using the testing script below
 To confirm that EDirect is installed and working properly, you can run your first EDirect script! Just type (or copy and paste) the following code into your terminal window, and press Enter.
 
 
-```{bash eval=FALSE, include=FALSE}
-echo "***********************" > installconfirm
-echo "esearch version:" >> installconfirm
-esearch -version >> installconfirm
-echo "xtract version:" >> installconfirm
-xtract -version >> installconfirm
-echo "EDirect install status:" >> installconfirm
-esearch -db pubmed -query "Babalobi OO[au] AND 2008[pdat]" | \
-efetch -format xml | \
-xtract -pattern Author -if Affiliation -contains Medicine \
--element Initials >> installconfirm
-echo "***********************" >> installconfirm
-cat installconfirm
-rm installconfirm
-```
+
 
 
 
