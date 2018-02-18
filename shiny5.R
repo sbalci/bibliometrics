@@ -7,7 +7,9 @@ library(RISmed)
 ui <- fluidPage(
     theme = shinytheme("superhero"),
     #Title
-    titlePanel("Pathology Articles From Japan"),
+    titlePanel("Pathology Articles From Turkey"),
+
+# I would like to hear your feedback: https://goo.gl/forms/YjGZ5DHgtPlR1RnB3
     
     sidebarLayout(
         #Input() Functions
@@ -50,8 +52,8 @@ server <- function(input, output) {
     
     getarticles <- eventReactive(input$dataButton, {
         searchformula <- switch(input$JGroup,
-                                'Modern Pathology' = '"Mod Pathol"[Journal] AND Japan[Affiliation]',
-                                'AJSP' = '"Am J Surg Pathol"[Journal] AND Japan[Affiliation]')
+                                'Modern Pathology' = '"Mod Pathol"[Journal] AND Turkey[Affiliation]',
+                                'AJSP' = '"Am J Surg Pathol"[Journal] AND Turkey[Affiliation]')
        
         #swith ile read.txt ile search string getirilebilir mi? dosya www altına kaydedilebilir
         
