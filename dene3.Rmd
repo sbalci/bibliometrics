@@ -36,7 +36,8 @@ print $test
 
 
 ```{r, engine='perl'}
-esearch -db pubmed -query "fentanyl+abuse"
+
+
 ```
 
 
