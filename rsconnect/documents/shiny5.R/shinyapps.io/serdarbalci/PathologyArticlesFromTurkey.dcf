@@ -5,9 +5,9 @@ account: serdarbalci
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 283564
-bundleId: 1227413
+bundleId: 1228982
 url: https://serdarbalci.shinyapps.io/PathologyArticlesFromTurkey/
-when: 1518866223.27605
+when: 1518988758.84869
 asMultiple: FALSE
 asStatic: FALSE
-ignoredFiles: .RData|.Rprofile|AboutMe.html|AboutMe.md|BibliographicStudies.html|BibliographicStudies.Rmd|dene.html|dene.Rmd|dene2.R|dene3.nb.html|dene3.Rmd|Ekran Resmi 2018-02-05 20.55.48.png|Ekran Resmi 2018-02-05 20.56.01.png|Ekran Resmi 2018-02-05 20.58.17.png|Ekran Resmi 2018-02-05 20.58.46.png|Ekran Resmi 2018-02-05 20.59.27.png|Ekran Resmi 2018-02-05 21.00.14.png|Ekran Resmi 2018-02-05 21.00.39.png|Ekran Resmi 2018-02-05 21.01.31.png|Ekran Resmi 2018-02-05 22.01.30.png|Ekran Resmi 2018-02-05 22.09.52.png|framed.sty|JournalHomeGrid.csv|PathologyArticlesPerJournal.jpeg|PathologyArticlesPerYear.jpeg|pathologypubmed.R|Presentation.pptx|README.html|README.md|shiny-cheatsheet.pdf|shiny.pdf|shiny11.R|system() call from RStudio does not find path; same command from commandline R works fine – RStudio Support.pdf|Untitled.R|Untitled.sh|Untitled2.R|Untitled3.R|css/mycss.css|data/.DS_Store|data/articles_per_journal_2.xlsx|data/movies.Rdata|images/.DS_Store|images/sunstar.gif|images/sunstar.png|images/system function works when I use R from terminal but not from RStudio.png|pdf/serdar-balci-md-pathologist.pdf|Presentations/Data Incubator Proposal.pptx|Presentations/PresentationTrial.html|Presentations/PresentationTrial.Rmd|Presentations/Untitledrevealjs.html|Presentations/Untitledrevealjs.Rmd|Videos/.DS_Store|Videos/sunstar.mp4|pathologyarticles|PubMed
+ignoredFiles: .RData|.Rprofile|BibliographicStudies.html|BibliographicStudies.md|BibliographicStudies.Rmd|PathologyArticlesPerJournal.jpeg|PathologyArticlesPerYear.jpeg|README.html|README.md|css/mycss.css|data/.DS_Store|data/articles_per_journal_2.xlsx|data/movies.Rdata|docs/BibliographicStudies.html|images/.DS_Store|images/sunstar.gif|images/sunstar.png|images/system function works when I use R from terminal but not from RStudio.png|pdf/serdar-balci-md-pathologist.pdf|Videos/.DS_Store|Videos/sunstar.mp4|pathologyarticles|preperationFiles|Presentations|PubMed

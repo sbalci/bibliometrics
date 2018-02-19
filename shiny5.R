@@ -34,7 +34,7 @@ ui <- fluidPage(
         #Output() Functions
         mainPanel(
             Sys.time(),
-            ("tarihli Japonya Adresli Patoloji Makaleleri"),
+            ("tarihli Türkiye Adresli Patoloji Makaleleri"),
             hr(),
             textOutput("NumberOfArticles"),
             hr(),
