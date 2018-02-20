@@ -21,30 +21,30 @@ It is a very common bibliometric study type to retrospectively analyse the numbe
 
 These studies require too much effort, since the data is generally behind paywalls and restrictions.
 
-I have previously contributed to a research to identify the Articles from Turkey Published in Pathology Journals Indexed in International Indexes; which is published here: http://www.turkjpath.org/summary_en.php3?id=1423 DOI: 10.5146/tjpath.2010.01006
+I have previously contributed to a research to identify the Articles from Turkey Published in Pathology Journals Indexed in International Indexes; which is published here: [Turk Patoloji Derg. 2010, 26(2):107-113 doi: 10.5146/tjpath.2010.01006](http://www.turkjpath.org/summary_en.php3?id=1423) 
 
-This study required manually investigating many excel files, which was time consuming and redoing and updating the data and results also require a similar amount of effort.
+This study had required manually investigating many excel files, which was time consuming and redoing and updating the data and results also require a similar amount of effort.
 
 In order to automatize these type of analysis in a reproducable fashion, 
 I will be using
 <!-- list of analysis tools -->
-R Markdown
+[R Markdown](https://rmarkdown.rstudio.com/)
 ,
-R Notebook
+[R Notebook](https://rmarkdown.rstudio.com/r_notebooks.html)
 ,
-Shiny
+[Shiny](https://shiny.rstudio.com/)
 and
-Terminal
+[Terminal](https://en.0wikipedia.org/wiki/Terminal_(macOS))
 for coding. 
 I also plan to use other bibliographic tools like
-VOSviewer.
+[VOSviewer](http://www.vosviewer.com/).
 
 Data will be retrieved from 
-PubMed, 
-E-direct,
-WoS
+[PubMed](https://www.ncbi.nlm.nih.gov/pubmed), 
+[E-direct](https://dataguide.nlm.nih.gov/edirect/overview.html),
+[WoS](www.webofknowledge.com/)
 and
-Google Scholar.
+[Google Scholar](https://scholar.google.com).
 
 
 
@@ -72,13 +72,6 @@ Here, we are going to compare 3 countries (German, Japan and Turkey), in terms o
 
 **Methods:**
 
-Pathology Journal ISSN List was retrieved from "InCites Clarivate", and Journal Data Filtered as follows: JCR Year: 2016 Selected Editions: SCIE,SSCI Selected Categories: 'PATHOLOGY' Selected Category Scheme: WoS
-
-Data will be retrieved from PubMed via RISmed package.
-PubMed collection from National Library of Medicine (https://www.ncbi.nlm.nih.gov/pubmed/), has the most comprehensive information about peer reviewed articles in medicine.
-The API (https://dataguide.nlm.nih.gov/), and R packages are available for getting and fetching data from the server.
-
-
 
 ```r
 # load required packages
@@ -86,6 +79,7 @@ library(tidyverse)
 library(RISmed)
 ```
 
+Pathology Journal ISSN List was retrieved from [In Cites Clarivate](https://jcr.incites.thomsonreuters.com/), and Journal Data Filtered as follows: `JCR Year: 2016 Selected Editions: SCIE,SSCI Selected Categories: 'PATHOLOGY' Selected Category Scheme: WoS`
 
 
 ```r
@@ -100,30 +94,23 @@ ISSNList <- JournalHomeGrid <- read_csv("data/JournalHomeGrid.csv",
 ISSNList <- gsub(" OR $","" ,ISSNList) # to remove last OR
 ```
 
+Data is retrieved from PubMed via RISmed package.
+PubMed collection from National Library of Medicine (https://www.ncbi.nlm.nih.gov/pubmed/), has the most comprehensive information about peer reviewed articles in medicine.
+The API (https://dataguide.nlm.nih.gov/), and R packages are available for getting and fetching data from the server.
+
+The search formula for PubMed is generated as "ISSN List AND Country[Affiliation]" like done in [advanced search of PubMed](https://www.ncbi.nlm.nih.gov/pubmed/advanced).
 
 
-**Result:**
-
-
-
-
-
-**Comment:**
-
-
-
-
-
-
-
-    
-
+```r
 # Generate Search Formula For Pathology Journals AND Countries
 searchformulaTR <- paste("'",ISSNList,"'", " AND ", "Turkey[Affiliation]")
 searchformulaDE <- paste("'",ISSNList,"'", " AND ", "Germany[Affiliation]")
 searchformulaJP <- paste("'",ISSNList,"'", " AND ", "Japan[Affiliation]")
+```
 
-# Search PubMed
+
+```r
+# Search PubMed, Get and Fetch
 TurkeyArticles <- EUtilsSummary(searchformulaTR, type = 'esearch', db = 'pubmed', mindate = 2007, maxdate = 2017, retmax = 10000)
 fetchTurkey <- EUtilsGet(TurkeyArticles)
 
@@ -132,7 +119,12 @@ fetchGermany <- EUtilsGet(GermanyArticles)
 
 JapanArticles <- EUtilsSummary(searchformulaJP, type = 'esearch', db = 'pubmed', mindate = 2007, maxdate = 2017, retmax = 10000)
 fetchJapan <- EUtilsGet(JapanArticles)
+```
 
+From the fetched data the year of articles are grouped and counted by country.
+
+
+```r
 # Articles per countries per year
 tableTR <- table(YearPubmed(fetchTurkey)) %>% 
     as_tibble() %>% 
@@ -146,31 +138,78 @@ tableJP <- table(YearPubmed(fetchJapan)) %>%
     as_tibble() %>% 
     rename(Japan = n, Year = Var1)
 
-articles_per_year <- list(
+# Join Tables
+articles_per_year_table <- list(
     tableTR,
     tableDE,
     tableJP
     ) %>%
-    reduce(left_join, by = "Year", .id = "id") %>% 
+    reduce(left_join, by = "Year", .id = "id")
+```
+
+
+
+```r
+# Prepare table for output
+articles_per_year <- articles_per_year_table %>% 
     gather(Country, n, 2:4)
 
 articles_per_year$Country <- factor(articles_per_year$Country,
                                        levels =c("Japan", "Germany", "Turkey"))
-
-## Graph 1 
-
+```
 
 
-ggplot(data = articles_per_year, aes(x = Year, y = n, group = Country,
-                                     colour = Country, shape = Country,
-                                     levels = Country
-                                     )) +
-    geom_line() +
-    geom_point() +
-    labs(x = "Year", y = "Number of Articles") +
-    ggtitle("Pathology Articles Per Year") +
-    theme(plot.title = element_text(hjust = 0.5), 
-          text = element_text(size = 10))
+**Result:**
+
+In the below table we see the number of articles per country in the last decade.
+
+
+Table: Table of Articles per year, per country
+
+Year    Turkey   Germany   Japan
+-----  -------  --------  ------
+2007        75       398     693
+2008        89       314     620
+2009        89       364     636
+2010       100       347     661
+2011       108       386     731
+2012        77       386     666
+2013        79       413     758
+2014        93       464     733
+2015       139       463     751
+2016       140       417     683
+2017       106       422     658
+
+
+And the figure below shows this data in aline graph. 
+
+<img src="BibliographicStudies_files/figure-html/Graph of Table of Articles per year per country-1.png" style="display: block; margin: auto;" />
+
+
+**Comment:**
+We see that Japan has much more articles than German and Turkey.
+Turkey has a small increase in number of articles.
+
+**Future Work:**
+* Indentify why Japan has too much articles.
+* Compare Japan with other countries.
+* Compare Turkey with neighbours, EU, OECD & Middle East countries.
+* Analyse multinational studies.
+* Analyse adding journal impact as a factor. 
+
+---
+
+
+
+
+    
+
+
+
+
+
+
+
 
 
 
