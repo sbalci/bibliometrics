@@ -1,1 +1,1 @@
-"esearch -version"
+esearch -version
