@@ -33,7 +33,7 @@
 # clear: clears your screen
 
 clear
-
+esearch -version
 # ----------------------------------------------------------------------
 # 
 # esearch 
@@ -58,7 +58,7 @@ esearch -db pubmed -query "seasonal affective disorder"
 # 
 # COMMAND STRING:
 #     
-#     esearch -db pubmed -query "seasonal affective disorder" -log
+     esearch -db pubmed -query "seasonal affective disorder" -log
 # 
 # Details display at end of XML snippit 
 # 
@@ -74,7 +74,12 @@ esearch -db pubmed -query "seasonal affective disorder"
 # 
 # COMMAND STRING:
 #     
-#     esearch -db pubmed -query "malaria AND jama[journal]"
+     esearch -db pubmed -query "malaria AND jama[journal]"
+     
+     
+     esearch -db pubmed -query "malaria AND jama[journal]" -log
+     
+     
 # 
 # ----------------------------------------------------------------------
 #     
@@ -108,7 +113,7 @@ esearch -db pubmed -query "seasonal affective disorder"
 # 
 # COMMAND STRING:
 # 
-# esearch -db pubmed -query "cancer AND \"science\"[journal]"
+ esearch -db pubmed -query "cancer AND \"science\"[journal]"
 # 
 # 
 # ----------------------------------------------------------------------
@@ -118,12 +123,27 @@ esearch -db pubmed -query "seasonal affective disorder"
 #     Hint: use the [lang] field tag
 # 
 # (ANSWERS TO ALL EXERCISES ARE AT THE BOTTOM OF THIS HANDOUT.)
-# 
+
+esearch -db pubmed -query "diabetes AND Spanish[lang]"
+
+esearch -db pubmed -query "diabetes AND Spanish[lang]" -log
+
+esearch -db pubmed -query "diabetes AND Turkish[lang]"
+
+ 
 # ----------------------------------------------------------------------
 #     
 #     EXERCISE 2: esearch
 # How many articles were written by BH Smith between 2012 and 2017, inclusive?
-#     
+
+esearch -db pubmed -query "BH Smith[Author]" -datetype PDAT -mindate 2012 -maxdate 2017
+
+esearch -db pubmed -query "bh smith[Author]" -datetype PDAT -mindate 2012 -maxdate 2017
+
+esearch -db pubmed -query "Balci Serdar[Author]"
+
+esearch -db pubmed -query "Balci Serdar[Author]" -log
+     
 #     (ANSWERS TO ALL EXERCISES ARE AT THE BOTTOM OF THIS HANDOUT.)
 # 
 # ----------------------------------------------------------------------
@@ -138,7 +158,14 @@ esearch -db pubmed -query "seasonal affective disorder"
 # 
 # COMMAND STRING:
 #     
-#     efetch -db pubmed -id 25359968 -format abstract
+     efetch -db pubmed -id 25359968 -format abstract
+
+     efetch -db pubmed -id 25359968 -format medline
+
+     efetch -db pubmed -id 25359968 -format xml
+
+     efetch -db pubmed -id 25359968 -format uid
+
 # 
 # ----------------------------------------------------------------------
 #     
@@ -165,7 +192,10 @@ esearch -db pubmed -query "seasonal affective disorder"
 # 
 # COMMAND STRING:
 #     
-#     efetch -db pubmed -id 24102982,21171099,17150207 -format abstract
+     efetch -db pubmed -id 24102982,21171099,17150207 -format abstract
+
+     efetch -db pubmed -id 26024162 -format abstract
+
 # 
 # efetch -db pubmed -id 26024162 -format abstract
 # 
@@ -175,7 +205,13 @@ esearch -db pubmed -query "seasonal affective disorder"
 # Who is the first author listed on the PubMed record 26287646?
 #     
 #     (ANSWERS TO ALL EXERCISES ARE AT THE BOTTOM OF THIS HANDOUT.)
-# 
+
+
+efetch -db pubmed -id 26287646 -format abstract
+
+
+
+ 
 # ----------------------------------------------------------------------
 #     
 #     Creating a data pipeline
@@ -184,7 +220,8 @@ esearch -db pubmed -query "seasonal affective disorder"
 # 
 # COMMAND STRING:
 #     
-#     esearch -db pubmed -query "asthenopia[mh] AND nursing[sh]" | efetch -format uid
+     esearch -db pubmed -query "asthenopia[mh] AND nursing[sh]" | efetch -format uid
+
 # 
 # ----------------------------------------------------------------------
 #     
@@ -194,7 +231,12 @@ esearch -db pubmed -query "seasonal affective disorder"
 # Hint: Remember -format uid
 # 
 # (ANSWERS TO ALL EXERCISES ARE AT THE BOTTOM OF THIS HANDOUT.)
-# 
+
+esearch -db pubmed -query "BH Smith[Author]" -datetype PDAT \
+-mindate 2012 -maxdate 2017 | efetch -format uid
+
+esearch -db pubmed -query "BH Smith[Author]" -datetype PDAT -mindate 2012 -maxdate 2017 | efetch -format uid
+
 # -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 #     HOMEWORK FOR PART ONE
 # -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-

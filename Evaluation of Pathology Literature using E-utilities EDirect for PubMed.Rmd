@@ -170,6 +170,19 @@ readLines("myquery.txt")
 ```
 
 
+```{r}
+myTerm <- rstudioapi::terminalCreate(show = FALSE)
+rstudioapi::terminalSend(myTerm, "esearch -db pubmed -query '(diabetes AND pregnancy) AND (\"2017/01/01\"[PDAT] : \"2017/12/31\"[PDAT])' | efetch -format xml | xtract -pattern Grant -element Agency | sort-uniq-count-rank | head -n 10 > myquery.txt \n")
+Sys.sleep(1)
+repeat{
+    Sys.sleep(0.1)
+    if(rstudioapi::terminalBusy(myTerm) == FALSE){
+        print("Code Executed")
+        break
+    }
+}
+```
+
 
 This series of commands searches PubMed for the string `“(diabetes AND pregnancy) AND (”2015/01/01“[PDAT] : ”2017/12/31“[PDAT])”`, retrieves the full XML records for each of the search results, extracts the last name and initials of every author on every record, sorts the authors by frequency of occurrence in the results set, and presents the top ten most frequently-occurring authors, along with the number of times that author appeared.
 Discussion:
