@@ -18,6 +18,9 @@ subtitle: Codes and Pages are Copied & Modified from "E-utilities & EDirect for 
   lectures
 ---
 
+NLMTrainers@nih.gov
+
+
 ```{r necessary packages, include=FALSE}
 library(rstudioapi)
 library(tidyverse)
@@ -435,66 +438,204 @@ Version 3 solved many of the problems, but is still not perfect. It does not han
 https://dataguide.nlm.nih.gov/classes/edirect-for-pubmed/samplecode1.html
 
 
-**esearch**
-Conduct a simple search of PubMed for articles on seasonal affective disorder
+#### esearch
+
+**Conduct a simple search of PubMed for articles on seasonal affective disorder**
 
     esearch -db pubmed -query "seasonal affective disorder"
 
 
-```{r}
-myTerm <- rstudioapi::terminalCreate()
-EdirectCall <- "esearch -db pubmed -query 'balci serdar' > myquery.txt \n"
-rstudioapi::terminalSend(myTerm, EdirectCall)
-readLines("myquery.txt")
-rstudioapi::terminalKill(myTerm)
+```{r part1-1.txt}
+myTerm <- rstudioapi::terminalCreate(show = FALSE)
+rstudioapi::terminalSend(myTerm, "esearch -db pubmed -query \"seasonal affective disorder\" > part1-1.txt \n")
+Sys.sleep(1)
+repeat{
+    Sys.sleep(0.1)
+    if(rstudioapi::terminalBusy(myTerm) == FALSE){
+        print("Code Executed")
+        break
+    }
+}
+
+
+readLines("part1-1.txt")
+
 ```
 
 
 
-This line of code uses the esearch command to search PubMed (-db pubmed) for our search query (-query "seasonal affective disorder").
+This line of code uses the esearch command to search PubMed (`-db pubmed`) for our search query `(-query "seasonal affective disorder")`.
 
 If you want to see the query translation for your search (like you would see in the Search Details box with the web version of PubMed), you can add an additional argument to your command:
 
     esearch -db pubmed -query "seasonal affective disorder" -log
 
 By adding the -log argument to esearch, the command will also output the E-utilities URL and query translation for your search.
-Conduct a simple search of PubMed for articles on malaria in the journal JAMA
+
+
+```{r part1-2}
+myTerm <- rstudioapi::terminalCreate(show = FALSE)
+rstudioapi::terminalSend(myTerm, "esearch -db pubmed -query 'seasonal affective disorder' -log &> part1-2.txt \n ")
+Sys.sleep(1)
+repeat{
+    Sys.sleep(0.1)
+    if(rstudioapi::terminalBusy(myTerm) == FALSE){
+        print("Code Executed")
+        break
+    }
+}
+
+rstudioapi::terminalKill(myTerm)
+readLines("part1-2.txt")
+
+# Problem in saving with >
+
+```
+
+
+
+**Conduct a simple search of PubMed for articles on malaria in the journal JAMA**
 
     esearch -db pubmed -query "malaria AND jama[journal]"
 
-This line of code uses the esearch command to search PubMed (-db pubmed) for our search query (-query "malaria AND jama[journal]"). Note that the search query can include Boolean operators (AND) and search field tags ([journal]) to help focus our search, just as we can in the web version of PubMed.
-Restrict search results by publication date
+This line of code uses the esearch command to search PubMed `(-db pubmed)` for our search query `(-query "malaria AND jama[journal]")`. Note that the search query can include Boolean operators (AND) and search field tags ([journal]) to help focus our search, just as we can in the web version of PubMed.
+
+```{r part1-3}
+myTerm <- rstudioapi::terminalCreate(show = FALSE)
+rstudioapi::terminalSend(myTerm, "esearch -db pubmed -query \"malaria AND jama[journal]\" &> part1-3.txt \n")
+Sys.sleep(1)
+repeat{
+    Sys.sleep(0.1)
+    if(rstudioapi::terminalBusy(myTerm) == FALSE){
+        print("Code Executed")
+        break
+    }
+}
+readLines("part1-3.txt")
+```
+
+
+
+
+**Restrict search results by publication date**
 
     esearch -db pubmed -query "malaria AND jama[journal]" \
     -datetype PDAT -mindate 2015 -maxdate 2017
 
 The first line of code is the same as our previous example, though the `“\”` character at the end of the line allows us to continue our command on the next line, for easier-to-read formatting.
 
-The second line limits the search results by publication date (-datetype PDAT), including only articles published between 2015 and 2017 (-mindate 2015 -maxdate 2017).
-Conduct a PubMed search with a search string that includes quotation marks
+The second line limits the search results by publication date `-datetype PDAT`, including only articles published between 2015 and 2017 `-mindate 2015 -maxdate 2017`.
+
+
+**`“\”` does not work as a second line in `rstudioapi::` functions**
+
+```{r part1-4}
+myTerm <- rstudioapi::terminalCreate(show = FALSE)
+rstudioapi::terminalSend(myTerm, "esearch -db pubmed -query \"malaria AND jama[journal]\" -datetype PDAT -mindate 2015 -maxdate 2017 &> part1-4.txt \n")
+Sys.sleep(1)
+repeat{
+    Sys.sleep(0.1)
+    if(rstudioapi::terminalBusy(myTerm) == FALSE){
+        print("Code Executed")
+        break
+    }
+}
+readLines("part1-4.txt")
+```
+
+
+
+**Conduct a PubMed search with a search string that includes quotation marks**
 
     esearch -db pubmed -query "cancer AND \"science\"[journal]"
 
-This line of code uses the esearch command to search PubMed (-db pubmed) for our search query (-query "cancer AND \"science\"[journal]"). We need to “escape” the double quotation marks (“) in our search query by putting a ”\" before them. This tells EDirect to interpret the quotation marks as just another character, and not a special character that marks the end of the -query argument. Otherwise, EDirect would interpret the double quotation marks before the first date as marking the end of the search query, and the rest of the query would not be searched.
-efetch
-Retrieve a single PubMed record in text abstract format
+This line of code uses the esearch command to search PubMed `-db pubmed` for our search query `-query "cancer AND \"science\"[journal]"`. We need to “escape” the double quotation marks `“` in our search query by putting a `\` before them. This tells EDirect to interpret the quotation marks as just another character, and not a special character that marks the end of the `-query` argument. Otherwise, EDirect would interpret the double quotation marks before the first date as marking the end of the search query, and the rest of the query would not be searched.
+
+```{r part1-5}
+myTerm <- rstudioapi::terminalCreate(show = FALSE)
+rstudioapi::terminalSend(myTerm, "esearch -db pubmed -query 'cancer AND \"science\"[journal]' &> part1-5.txt \n")
+Sys.sleep(1)
+repeat{
+    Sys.sleep(0.1)
+    if(rstudioapi::terminalBusy(myTerm) == FALSE){
+        print("Code Executed")
+        break
+    }
+}
+readLines("part1-5.txt")
+```
+
+
+
+
+
+#### efetch
+
+**Retrieve a single PubMed record in text abstract format**
 
     efetch -db pubmed -id 25359968 -format abstract
 
-This line of code uses the efetch command to retrieve a record from PubMed (-db pubmed). We specify that we will retrieve the record for PMID 25359968 (-id 25359968) and that we want the results in the text abstract format (-format abstract).
+This line of code uses the efetch command to retrieve a record from PubMed `-db pubmed`. We specify that we will retrieve the record for PMID 25359968 `-id 25359968` and that we want the results in the text abstract format `-format abstract`.
+
+
+```{r part1-6}
+myTerm <- rstudioapi::terminalCreate(show = FALSE)
+rstudioapi::terminalSend(myTerm, "efetch -db pubmed -id 25359968 -format abstract -log > part1-6.txt \n")
+Sys.sleep(1)
+repeat{
+    Sys.sleep(0.1)
+    if(rstudioapi::terminalBusy(myTerm) == FALSE){
+        print("Code Executed")
+        break
+    }
+}
+readLines("part1-6.txt")
+```
+
+    efetch -db pubmed -id 25359968 -format medline
+    
+    efetch -db pubmed -id 25359968 -format xml
+    
+    efetch -db pubmed -id 25359968 -format uid
+
 Retrieve multiple PubMed records in text abstract format
 
     efetch -db pubmed -id 24102982,21171099,17150207 -format abstract
 
 This line of code uses the efetch command to retrieve records from PubMed (-db pubmed). We specify that we will retrieve the records for PMID 24102982,21171099,17150207 (-id 24102982,21171099,17150207) and that we want the results in the text abstract format (-format abstract).
-Creating a data pipeline
-Conduct a PubMed search and retrieve the results as a list of PMIDs
+
+
+**Creating a data pipeline**
+
+**Conduct a PubMed search and retrieve the results as a list of PMIDs**
+
+```{r part1-pipe}
+myTerm <- rstudioapi::terminalCreate(show = FALSE)
+rstudioapi::terminalSend(myTerm, " esearch -db pubmed -query \"asthenopia[mh] AND nursing[sh]\" | efetch -format uid &> part1-pipe.txt \n")
+Sys.sleep(1)
+repeat{
+    Sys.sleep(0.1)
+    if(rstudioapi::terminalBusy(myTerm) == FALSE){
+        print("Code Executed")
+        break
+    }
+}
+readLines("part1-pipe.txt")
+```
+
+
+
+
 
     esearch -db pubmed -query "asthenopia[mh] AND nursing[sh]" | efetch -format uid
 
 This line of code uses the esearch command to search PubMed (-db pubmed) for our search query (-query "asthenopia[mh] AND nursing[sh]"), and then pipes the resulting PMIDs into an efetch command (| efetch), which retrieves the PubMed records, but outputs only the PMIDs (-format uid). For more information about piping data from one EDirect command to another, please review the page on Making data pipelines with the History server in our EDirect overview.
-In-class exercise solutions
-Exercise 1: esearch
+
+
+**In-class exercise solutions**
+
+
+**Exercise 1: esearch**
 
 How many Spanish-language articles about diabetes are in PubMed?
 
@@ -502,20 +643,59 @@ How many Spanish-language articles about diabetes are in PubMed?
 
     esearch -db pubmed -query "diabetes AND spanish[lang]"
 
-This line of code uses the esearch command to search PubMed (-db pubmed) for our search query (-query "diabetes AND spanish[lang]"). Note that the search query can include Boolean operators (AND) and search field tags ([lang]) to help focus our search, just as we can in the web version of PubMed.
-Exercise 2: esearch
+
+```{r part1-e1}
+myTerm <- rstudioapi::terminalCreate(show = FALSE)
+rstudioapi::terminalSend(myTerm, "esearch -db pubmed -query \"diabetes AND spanish[lang]\" &> part1-e1.txt \n")
+Sys.sleep(1)
+repeat{
+    Sys.sleep(0.1)
+    if(rstudioapi::terminalBusy(myTerm) == FALSE){
+        print("Code Executed")
+        break
+    }
+}
+readLines("part1-e1.txt")
+```
+
+
+
+This line of code uses the esearch command to search PubMed `-db pubmed` for our search query `-query "diabetes AND spanish[lang]"`. Note that the search query can include Boolean operators `AND` and search field tags `[lang]` to help focus our search, just as we can in the web version of PubMed.
+
+**Exercise 2: esearch**
 
 How many articles were written by BH Smith between 2012 and 2017, inclusive?
-Solutions:
+
+**Solutions:**
 
     esearch -db pubmed -query "smith bh[author]" -datetype PDAT -mindate 2012 -maxdate 2017
+
+
+```{r part1-e2}
+myTerm <- rstudioapi::terminalCreate(show = FALSE)
+rstudioapi::terminalSend(myTerm, "esearch -db pubmed -query \"smith bh[author]\" -datetype PDAT -mindate 2012 -maxdate 2017 &> part1-e2.txt \n")
+Sys.sleep(1)
+repeat{
+    Sys.sleep(0.1)
+    if(rstudioapi::terminalBusy(myTerm) == FALSE){
+        print("Code Executed")
+        break
+    }
+}
+readLines("part1-e2.txt")
+```
+
+
+
 
 There are multiple possible solutions to this exercise. This solution uses the esearch command to search PubMed (-db pubmed) for our search query (-query "smith bh[author]"). Note that the search query can include search field tags ([author]) to help focus our search, just as we can in the web version of PubMed. The esearch command also limits the search results by publication date (-datetype PDAT), including only articles published between 2012 and 2017 (-mindate 2012 -maxdate 2017).
 
     esearch -db pubmed -query "smith bh[author] AND (2012/01/01[pdat] : 2017/12/31[pdat])"
 
 The second solution is largely the same as the first. Rather than use the -datetype, -mindate, and -maxdate arguments to limit the search by publication date, this solution incorporates the date restriction into the search string itself (-query "smith bh[author] AND (2012/01/01[pdat] : 2017/12/31[pdat])"), just as you would include a date restriction in a search string in the web version of PubMed.
-Exercise 3: efetch
+
+
+**Exercise 3: efetch**
 
 Who is the first author listed on the PubMed record 26287646?
 
@@ -527,7 +707,8 @@ This line of code uses the efetch command to retrieve a record from PubMed (-db 
 Exercise 4: Combining Commands
 
 How do we get a list of PMIDs for all of the articles written by BH Smith between 2012 and 2017?
-Solutions:
+
+**Solutions:**
 
     esearch -db pubmed -query "smith bh[author]" -datetype PDAT -mindate 2012 -maxdate 2017 | \
     efetch -format uid
@@ -539,11 +720,14 @@ The efetch command in the second line accepts the PMIDs piped from the previous 
     esearch -db pubmed -query "smith bh[author] AND (2012/01/01[pdat] : 2017/12/31[pdat]" | \
     efetch -format uid
 
+
 Similarly, this solution begins the same as the second solution for Exercise 2, and then pipes the results of the esearch into the efetch, which retrieves the PubMed records, but outputs only the PMIDs (-format uid).
 
 For more information about piping data from one EDirect command to another, please review the page on Making data pipelines with the History server in our EDirect overview.
-Homework solutions
-Question 1
+
+**Homework solutions**
+
+**Question 1**
 
 Using EDirect, write a command to find out how many citations are in PubMed for articles about using melatonin to treat sleep disorders.
 

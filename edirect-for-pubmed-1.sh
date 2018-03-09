@@ -245,12 +245,24 @@ esearch -db pubmed -query "BH Smith[Author]" -datetype PDAT -mindate 2012 -maxda
 #     Question 1:
 #     
 #     Using EDirect, write a command to find out how many citations are in PubMed for articles about using melatonin to treat sleep disorders.
-# 
+
+esearch -db pubmed -query "melatonin AND sleep disorders"
+
+esearch -db pubmed -query "melatonin sleep disorder" 
+
 # -----------------------------------------------------------------------
 #     Question 2:
 #     
 #     How many of the PubMed citations identified in question 2 were added to PubMed (i.e. created) between January 1, 2015 and July 1, 2017?
-#     
+
+esearch -db pubmed -query "melatonin AND sleep disorders" -datetype PDAT -mindate 2015/01/01 -maxdate 2017/07/01
+
+esearch -db pubmed -query "melatonin sleep disorder" -datetype CRDT -mindate 2015/01/01 -maxdate 2017/07/01
+
+esearch -db pubmed -query "melatonin sleep disorder"  AND (2015/01/01[crdt] : 2017/07/01[crdt])"
+
+
+     
 #     -----------------------------------------------------------------------
 #     Question 3:
 #     
@@ -260,17 +272,32 @@ esearch -db pubmed -query "BH Smith[Author]" -datetype PDAT -mindate 2012 -maxda
 # 27027883
 # 22468771
 # 20121990
-# 
+
+efetch -db pubmed -id 27240713,27027883,22468771,20121990 -format abstract
+
+efetch -db pubmed -id 27240713,27027883,22468771,20121990 -format abstract
+
 # -----------------------------------------------------------------------
 #     Question 4:
 #     
 #     Modify your answer to Question 3 to retrieve the full XML of all four records.	
-# 
+
+efetch -db pubmed -id 27240713,27027883,22468771,20121990 -format xml
+
+efetch -db pubmed -id 27240713,27027883,22468771,20121990 -format xml
+
+
 # -----------------------------------------------------------------------
 #     Question 5:
 #     
 #     Write a series of commands that retrieves a list of PMIDs for all citations for papers written by the author with the ORCID 0000-0002-1141-6306.
-# 
+
+esearch -db pubmed -query "0000-0002-1141-6306" | efetch -db pubmed -format uid
+
+esearch -db pubmed -query "0000-0002-1141-6306[auid]" | \
+efetch -format uid
+
+ 
 # -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 #     EXERCISE SOLUTIONS:
 #     -----------------------------------------------------------------------
