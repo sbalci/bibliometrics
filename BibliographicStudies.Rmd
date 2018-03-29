@@ -78,13 +78,20 @@ This document will be continiously updated and the last update was on `r Sys.Dat
 
 To see the analysis comparing number of pathology articles from Turkey, German and Japan see this analysis: [Country Based Comparison](https://sbalci.github.io/pubmed/CountryBasedComparison.html)
 
+## Articles Per Journals Per Country
 
-
+In this analysis we aimed to compare number articles per journals per country. We tried to identify if articles from a country is published in certain journals: [Articles Per Journals Per Country](https://sbalci.github.io/pubmed/ArticlesPerJournalsPerCountry.html)
 
 
 
 ---
 
+# Sources Used For Analysis
+
+Here are the sources used in these analysis: [Sources Used For Analysis](https://sbalci.github.io/pubmed/Sources.html)
+
+
+---
 
 # Feedback
 

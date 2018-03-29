@@ -66,6 +66,55 @@ This document will be continiously updated and the last update was on `r Sys.Dat
 
 ---
 
+https://dtd.nlm.nih.gov/ncbi/pubmed/out/doc/2018/
+
+
+MEDLINE®PubMed® XML Element Descriptions and their Attributes
+https://www.nlm.nih.gov/bsd/licensee/elements_descriptions.html
+
+Comment Correction Type
+https://www.ncbi.nlm.nih.gov/books/NBK3827/#pubmedhelp.Comment_Correction_Type
+
+EDirect Documentation
+https://dataguide.nlm.nih.gov/edirect/documentation.html
+
+Entrez Direct: E-utilities on the UNIX Command Line
+https://www.ncbi.nlm.nih.gov/books/NBK179288/
+
+The 9 E-utilities and Associated Parameters
+https://dataguide.nlm.nih.gov/eutilities/utilities.html
+
+E-utilities and the History server
+https://dataguide.nlm.nih.gov/eutilities/history.html
+
+EDirect Documentation
+https://dataguide.nlm.nih.gov/edirect/documentation.html
+
+NCBI NOW, Lecture 3, Introduction to the Linux Shell
+https://www.youtube.com/watch?v=XgaE4VIaJqI
+
+MEDLINE®/PubMed® XML Data Elements
+https://www.nlm.nih.gov/bsd/licensee/data_elements_doc.html
+
+pubmed_180101.dtd Documentation
+https://dtd.nlm.nih.gov/ncbi/pubmed/out/doc/2018/
+
+Using EDirect to create a local copy of PubMed
+https://dataguide.nlm.nih.gov/edirect/archive.html
+
+EDirectCookbook
+https://ncbi-hackathons.github.io/EDirectCookbook/
+
+Entrez Direct: E-utilities on the UNIX Command Line
+https://www.ncbi.nlm.nih.gov/books/NBK179288/
+
+EDirect Overview
+https://dataguide.nlm.nih.gov/edirect/overview.html
+
+Installing EDirect
+https://dataguide.nlm.nih.gov/edirect/install.html
+
+
 
 
 
