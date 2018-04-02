@@ -55,17 +55,6 @@ and
 [Google Scholar](https://scholar.google.com).
 
 
-
----
-
-If you want to see the code used in the analysis please click the code button on the right upper corner or throughout the page. 
-
-I would like to hear your feedback: https://goo.gl/forms/YjGZ5DHgtPlR1RnB3
-
-This document will be continiously updated and the last update was on `r Sys.Date()`.
-
----
-
 https://dtd.nlm.nih.gov/ncbi/pubmed/out/doc/2018/
 
 
@@ -116,10 +105,11 @@ https://dataguide.nlm.nih.gov/edirect/install.html
 
 
 
-
-
 ---
 
+If you want to see the code used in the analysis please click the code button on the right upper corner or throughout the page. 
+
+---
 
 # Feedback
 

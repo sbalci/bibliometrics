@@ -11,6 +11,7 @@ output:
     number_sections: yes
     theme: cerulean
     toc: yes
+    toc_depth: 5
     toc_float: yes
   html_document: 
     code_folding: hide
@@ -32,28 +33,6 @@ These studies require too much effort, since the data is generally behind paywal
 I have previously contributed to a research to identify the Articles from Turkey Published in Pathology Journals Indexed in International Indexes; which is published here: [Turk Patoloji Derg. 2010, 26(2):107-113 doi: 10.5146/tjpath.2010.01006](http://www.turkjpath.org/summary_en.php3?id=1423) 
 
 This study had required manual investigation of many excel files, which was time consuming; also redoing and updating the data and results require a similar amount of effort.
-
-In order to automatize these type of analysis in a reproducable fashion, 
-I will be using
-<!-- list of analysis tools -->
-[R Markdown](https://rmarkdown.rstudio.com/)
-,
-[R Notebook](https://rmarkdown.rstudio.com/r_notebooks.html)
-,
-[Shiny](https://shiny.rstudio.com/)
-and
-[Terminal](https://en.0wikipedia.org/wiki/Terminal_(macOS))
-for coding. 
-I also plan to use other bibliographic tools like
-[VOSviewer](http://www.vosviewer.com/).
-
-Data will be retrieved from 
-[PubMed](https://www.ncbi.nlm.nih.gov/pubmed), 
-[E-direct](https://dataguide.nlm.nih.gov/edirect/overview.html),
-[WoS](www.webofknowledge.com/)
-and
-[Google Scholar](https://scholar.google.com).
-
 
 
 ---

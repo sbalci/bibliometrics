@@ -23,13 +23,7 @@ output:
     highlight: kate
 ---
 
-
-If you want to see the code used in the analysis please click the code button on the right upper corner or throughout the page. 
-
-I would like to hear your feedback: https://goo.gl/forms/YjGZ5DHgtPlR1RnB3
-
-This document will be continiously updated and the last update was on `r Sys.Date()`.
-
+If you want to see the code used in the analysis please click the code button on the right upper corner or throughout the page.
 
 ---
 
@@ -39,11 +33,13 @@ This document will be continiously updated and the last update was on `r Sys.Dat
 knitr::opts_chunk$set(message=FALSE, warning=FALSE, tidy = TRUE)
 ```
 
-
-
+## Articles per journals per country
 
 **Aim:**
 
+In the [previous analysis](https://sbalci.github.io/pubmed/CountryBasedComparison.html) we have observed that Japanese researchers have much more articles than German and Turkish researchers.
+
+Here we will look at the distribution of articles per journals per country. 
 
 
 **Methods:**
@@ -81,7 +77,7 @@ searchformulaDE <- paste("'",ISSNList,"'", " AND ", "Germany[Affiliation]")
 searchformulaJP <- paste("'",ISSNList,"'", " AND ", "Japan[Affiliation]")
 ```
 
-
+Articles from Japan, German and Turkey are retrieved limiting the search with pathology journals, affiliation and last 10 years.
 
 ```{r Search PubMed, Get and Fetch}
 # Search PubMed, Get and Fetch
@@ -95,7 +91,7 @@ JapanArticles <- EUtilsSummary(searchformulaJP, type = 'esearch', db = 'pubmed',
 fetchJapan <- EUtilsGet(JapanArticles)
 ```
 
-
+The retrieved information was compiled in a table.
 
 ```{r}
 
@@ -126,12 +122,9 @@ articles_per_journal$Country <- factor(articles_per_journal$Country,
 
 
 
-
-
 **Result:**
 
-
-Graph 2
+In this graph x-axis is the list of journals with decreasing impact factor, and y-axis is the number of articles published in that journal. The colors and shapes are showing the country of affiliation. We see that in one journal articles from Japan is more than 800.  
 
 ```{r}
 ggplot(data = articles_per_journal, aes(x = Journal, y = n, group = Country,
@@ -150,16 +143,20 @@ ggplot(data = articles_per_journal, aes(x = Journal, y = n, group = Country,
 
 **Comment:**
 
+It is seen that one of the journals [ISSN: 1440-1827](https://onlinelibrary.wiley.com/page/journal/14401827/homepage/productinformation.html) has more than 800 articles from Japan. This journal is also from Japan. Here we wonder if there is an editorial preference for articles from their home country. 
+
+We sometimes observe this situation if there is a conference in that country, and the conference abstracts are indexed. 
+
+This may also be a clue that if a country has a journal listed in indexes, than it is more easy for the researchers in that country to publish their results.
 
 
 **Future Work:**
 
+Whether this observation is a unique situation, or there is a tendency in the journals to publish article from their country of origin, merits further investigation. 
 
 
 
 ---
-
-
 
 
 # Feedback
