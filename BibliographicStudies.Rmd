@@ -49,17 +49,21 @@ This document will be continiously updated and the last update was on `r Sys.Dat
 
 
 
-
-
 # Analysis
 
 ## Country Based Comparison
 
 To see the analysis comparing number of pathology articles from Turkey, German and Japan see this analysis: [Country Based Comparison](https://sbalci.github.io/pubmed/CountryBasedComparison.html)
 
-## Articles Per Journals Per Country
+## Articles per Journals per Country
 
 In this analysis we aimed to compare number articles per journals per country. We tried to identify if articles from a country is published in certain journals: [Articles Per Journals Per Country](https://sbalci.github.io/pubmed/ArticlesPerJournalsPerCountry.html)
+
+## Most Common MeSH Terms and Keywords used in Pathology Articles from Turkey
+
+In this analysis we aimed to identify the common research topics Turkish pathologists are interested. We extracted most common MeSH terms and keywords from PubMed articles using [EDirect](https://dataguide.nlm.nih.gov/edirect/overview.html):
+[MeSH Terms Pathology Articles From Turkey](https://sbalci.github.io/pubmed/MeSH_Terms_Pathology_Articles_From_Turkey.html)
+
 
 
 
