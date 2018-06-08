@@ -61,7 +61,7 @@ In this analysis we aimed to compare number articles per journals per country. W
 
 ## Most Common MeSH Terms and Keywords used in Pathology Articles from Turkey
 
-In this analysis we aimed to identify the common research topics Turkish pathologists are interested. We extracted most common MeSH terms and keywords from PubMed articles using [EDirect](https://dataguide.nlm.nih.gov/edirect/overview.html):
+In this analysis we aimed to identify the common research topics Turkish pathologists are interested. We extracted most common MeSH terms and keywords from PubMed articles using EDirect:
 [MeSH Terms Pathology Articles From Turkey](https://sbalci.github.io/pubmed/MeSH_Terms_Pathology_Articles_From_Turkey.html)
 
 
