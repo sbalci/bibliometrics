@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<title>Analysis</title>
+
+<script type="text/javascript">
+window.onload = function() {
+  var imgs = document.getElementsByTagName('img'), i, img;
+  for (i = 0; i < imgs.length; i++) {
+    img = imgs[i];
+    // center an image if it is the only element of its parent
+    if (img.parentElement.childElementCount === 1)
+      img.parentElement.style.textAlign = 'center';
+  }
+};
+</script>
+
+
+
+
+
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: white;
+   font-size: 13px;
+}
+
+body {
+  max-width: 800px;
+  margin: auto;
+  padding: 1em;
+  line-height: 20px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 {
+   font-size:2.2em;
+}
+
+h2 {
+   font-size:1.8em;
+}
+
+h3 {
+   font-size:1.4em;
+}
+
+h4 {
+   font-size:1.0em;
+}
+
+h5 {
+   font-size:0.9em;
+}
+
+h6 {
+   font-size:0.8em;
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre, img {
+  max-width: 100%;
+}
+pre {
+  overflow-x: auto;
+}
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code {
+  font-size: 92%;
+  border: 1px solid #ccc;
+}
+
+code[class] {
+  background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * {
+      background: transparent !important;
+      color: black !important;
+      filter:none !important;
+      -ms-filter: none !important;
+   }
+
+   body {
+      font-size:12pt;
+      max-width:100%;
+   }
+
+   a, a:visited {
+      text-decoration: underline;
+   }
+
+   hr {
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote {
+      padding-right: 1em;
+      page-break-inside: avoid;
+   }
+
+   tr, img {
+      page-break-inside: avoid;
+   }
+
+   img {
+      max-width: 100% !important;
+   }
+
+   @page :left {
+      margin: 15mm 20mm 15mm 10mm;
+   }
+
+   @page :right {
+      margin: 15mm 10mm 15mm 20mm;
+   }
+
+   p, h2, h3 {
+      orphans: 3; widows: 3;
+   }
+
+   h2, h3 {
+      page-break-after: avoid;
+   }
+}
+</style>
+
+
+
+</head>
+
+<body>
+<h1>Analysis</h1>
+
+<pre><code class="r setup, include=FALSE">knitr::opts_chunk$set(message=FALSE, warning=FALSE, tidy = TRUE)
+</code></pre>
+
+<h2>PubMed Indexed Peer Reviewed Articles in Pathology Journals: A country based comparison</h2>
+
+<p><strong>Aim:</strong></p>
+
+<p>Here, we are going to compare 3 countries (German, Japan and Turkey), in terms of number of articles in pathology journals during the last decade.</p>
+
+<p><strong>Methods:</strong></p>
+
+<p>If you want to see the code used in the analysis please click the code button on the right upper corner or throughout the page.</p>
+
+<pre><code class="r load required packages"># load required packages
+library(tidyverse)
+library(RISmed)
+</code></pre>
+
+<p>Pathology Journal ISSN List was retrieved from <a href="https://jcr.incites.thomsonreuters.com/">In Cites Clarivate</a>, and Journal Data Filtered as follows: <code>JCR Year: 2016 Selected Editions: SCIE,SSCI Selected Categories: &#39;PATHOLOGY&#39; Selected Category Scheme: WoS</code></p>
+
+<pre><code class="r Get ISSN List from data downloaded from WoS"># Get ISSN List from data downloaded from WoS
+ISSNList &lt;- JournalHomeGrid &lt;- read_csv(&quot;data/JournalHomeGrid.csv&quot;, 
+                                        skip = 1) %&gt;% 
+    select(ISSN) %&gt;% 
+    filter(!is.na(ISSN)) %&gt;% 
+    t() %&gt;% 
+    paste(&quot;OR &quot;, collapse = &quot;&quot;) # add OR between ISSN List
+
+ISSNList &lt;- gsub(&quot; OR $&quot;,&quot;&quot; ,ISSNList) # to remove last OR
+</code></pre>
+
+<p>Data is retrieved from PubMed via RISmed package.
+PubMed collection from National Library of Medicine (<a href="https://www.ncbi.nlm.nih.gov/pubmed/">https://www.ncbi.nlm.nih.gov/pubmed/</a>), has the most comprehensive information about peer reviewed articles in medicine.
+The API (<a href="https://dataguide.nlm.nih.gov/">https://dataguide.nlm.nih.gov/</a>), and R packages are available for getting and fetching data from the server.</p>
+
+<p>The search formula for PubMed is generated as &ldquo;ISSN List AND Country[Affiliation]&rdquo; like done in <a href="https://www.ncbi.nlm.nih.gov/pubmed/advanced">advanced search of PubMed</a>.</p>
+
+<pre><code class="r Generate Search Formula For Pathology Journals AND Countries"># Generate Search Formula For Pathology Journals AND Countries
+searchformulaTR &lt;- paste(&quot;&#39;&quot;,ISSNList,&quot;&#39;&quot;, &quot; AND &quot;, &quot;Turkey[Affiliation]&quot;)
+searchformulaDE &lt;- paste(&quot;&#39;&quot;,ISSNList,&quot;&#39;&quot;, &quot; AND &quot;, &quot;Germany[Affiliation]&quot;)
+searchformulaJP &lt;- paste(&quot;&#39;&quot;,ISSNList,&quot;&#39;&quot;, &quot; AND &quot;, &quot;Japan[Affiliation]&quot;)
+</code></pre>
+
+<pre><code class="r Search PubMed, Get and Fetch"># Search PubMed, Get and Fetch
+TurkeyArticles &lt;- EUtilsSummary(searchformulaTR, type = &#39;esearch&#39;, db = &#39;pubmed&#39;, mindate = 2007, maxdate = 2017, retmax = 10000)
+fetchTurkey &lt;- EUtilsGet(TurkeyArticles)
+
+GermanyArticles &lt;- EUtilsSummary(searchformulaDE, type = &#39;esearch&#39;, db = &#39;pubmed&#39;, mindate = 2007, maxdate = 2017, retmax = 10000)
+fetchGermany &lt;- EUtilsGet(GermanyArticles)
+
+JapanArticles &lt;- EUtilsSummary(searchformulaJP, type = &#39;esearch&#39;, db = &#39;pubmed&#39;, mindate = 2007, maxdate = 2017, retmax = 10000)
+fetchJapan &lt;- EUtilsGet(JapanArticles)
+</code></pre>
+
+<p>From the fetched data the year of articles are grouped and counted by country.</p>
+
+<pre><code class="r Articles per countries per year"># Articles per countries per year
+tableTR &lt;- table(YearPubmed(fetchTurkey)) %&gt;% 
+    as_tibble() %&gt;% 
+    rename(Turkey = n, Year = Var1)
+
+tableDE &lt;- table(YearPubmed(fetchGermany)) %&gt;% 
+    as_tibble() %&gt;% 
+    rename(Germany = n, Year = Var1)
+
+tableJP &lt;- table(YearPubmed(fetchJapan)) %&gt;% 
+    as_tibble() %&gt;% 
+    rename(Japan = n, Year = Var1)
+
+# Join Tables
+articles_per_year_table &lt;- list(
+    tableTR,
+    tableDE,
+    tableJP
+    ) %&gt;%
+    reduce(left_join, by = &quot;Year&quot;, .id = &quot;id&quot;)
+
+</code></pre>
+
+<pre><code class="r Prepare table for output"># Prepare table for output
+articles_per_year &lt;- articles_per_year_table %&gt;% 
+    gather(Country, n, 2:4)
+
+articles_per_year$Country &lt;- factor(articles_per_year$Country,
+                                       levels =c(&quot;Japan&quot;, &quot;Germany&quot;, &quot;Turkey&quot;))
+</code></pre>
+
+<p><strong>Result:</strong></p>
+
+<p>In the below table we see the number of articles per country in the last decade.</p>
+
+<pre><code class="r Print the Table of Articles per year per country, echo=FALSE"># Print the Table of Articles per year, per country
+knitr::kable(articles_per_year_table, caption = &quot;Table of Articles per year, per country&quot;)
+</code></pre>
+
+<p>And the figure below shows this data in a line graph. </p>
+
+<pre><code class="r Graph of Table of Articles per year per country, echo=FALSE, fig.align=&quot;center&quot;">ggplot(data = articles_per_year, aes(x = Year, y = n, group = Country,
+                                     colour = Country, shape = Country,
+                                     levels = Country
+                                     )) +
+    geom_line() +
+    geom_point() +
+    labs(x = &quot;Year&quot;, y = &quot;Number of Articles&quot;) +
+    ggtitle(&quot;Pathology Articles Per Year&quot;) +
+    theme(plot.title = element_text(hjust = 0.4), 
+          text = element_text(size = 9))
+</code></pre>
+
+<p><strong>Comment:</strong></p>
+
+<p>We see that Japan has much more articles than German and Turkey.
+Turkey has a small increase in number of articles.</p>
+
+<p><strong>Future Work:</strong></p>
+
+<ul>
+<li>Indentify why Japan has too much articles.</li>
+<li>Compare Japan with other countries.</li>
+<li>Compare Turkey with neighbours, EU, OECD &amp; Middle East countries.</li>
+<li>Analyse multinational studies.</li>
+<li>Analyse adding journal impact as a factor. </li>
+</ul>
+
+<hr/>
+
+<h1>Feedback</h1>
+
+<p><a href="https://github.com/sbalci">Serdar Balcı, MD, Pathologist</a> would like to hear your feedback: <a href="https://goo.gl/forms/YjGZ5DHgtPlR1RnB3">https://goo.gl/forms/YjGZ5DHgtPlR1RnB3</a></p>
+
+<p>This document will be continiously updated and the last update was on <code>r Sys.Date()</code>.</p>
+
+<hr/>
+
+<h1>Back to Main Menu</h1>
+
+<p><a href="https://sbalci.github.io/pubmed/BibliographicStudies.html">Main Page for Bibliographic Analysis</a></p>
+
+</body>
+
+</html>
