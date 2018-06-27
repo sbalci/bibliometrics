@@ -24,7 +24,7 @@ rmarkdown::render(input = "SchedulePubMedAnalysis2.Rmd", output_format = "html_n
 gitTerm <- rstudioapi::terminalCreate()
 rstudioapi::terminalSend(
     gitTerm,
-    "git add . \n"
+    "git add . \n git commit --message 'trial' \n git push origin master \n"
 )
 Sys.sleep(1)
 repeat {
@@ -34,20 +34,6 @@ repeat {
         break
     }
 }
-
-rstudioapi::terminalSend(
-    gitTerm,
-    "git commit --message 'trial' \n"
-)
-Sys.sleep(1)
-repeat {
-    Sys.sleep(0.1)
-    if (rstudioapi::terminalBusy(myTerm) == FALSE) {
-        print("Code Executed")
-        break
-    }
-}
-
 
 
 
