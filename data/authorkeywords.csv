@@ -81,6 +81,7 @@
 2	Bethesda classification
 2	Bethesda system for reporting thyroid cytopathology
 2	Biochemistry
+2	Biomarkers
 2	Bone
 2	BRAF
 2	BRAF V600E
@@ -136,7 +137,6 @@
 2	neonate
 2	Neuroendocrine tumor
 2	neuropathology
-2	NIFTP
 2	Paleopathology
 2	Pancreatic cancer
 2	Parathyroid adenoma
@@ -216,6 +216,7 @@
 1	ampullary pregnancy
 1	Amyloid A
 1	Anaplastic lymphoma kinase
+1	Androgen Receptor
 1	Anhydramnios
 1	anti-IgE
 1	anti-mitochondrial antibodies
@@ -230,6 +231,7 @@
 1	AP-1
 1	APE-Asp148Glu
 1	apoptosis inhibitor protein
+1	AR
 1	Arachidonic acid
 1	Archeozoology
 1	ARES
@@ -253,6 +255,7 @@
 1	Autoverification
 1	bactericidy
 1	Balkan endemic nephropathy
+1	basal cell carcinoma
 1	Basigin
 1	Behçet's disease
 1	BEN
@@ -266,7 +269,6 @@
 1	Biliary hamartoma
 1	Bilirubin
 1	Biomarker
-1	Biomarkers
 1	biostimulation
 1	Bladder
 1	Bladder cancer
@@ -329,6 +331,7 @@
 1	catalase
 1	Caveolin 1
 1	CD 90
+1	CD10
 1	CD147
 1	CD34
 1	CD44/CD24
@@ -363,6 +366,7 @@
 1	Chronic suppurative otitis media
 1	Churg-Strauss syndrome
 1	CIP2A
+1	CK20
 1	Classical variant of papillary thyroid carcinoma
 1	Claudin-1
 1	Claudin-4
@@ -515,7 +519,7 @@
 1	Facebook
 1	facial BCC
 1	false positivity
-1	False-positive
+1	false-positive
 1	Fascin
 1	fetal autopsy
 1	fetal growth restriction
@@ -547,7 +551,7 @@
 1	follicular neoplasia
 1	follicular neoplasm/suspicious for follicular neoplasm
 1	Follicular variant of papillary thyroid carcinoma
-1	Follicular-pattern lesions
+1	follicular-pattern lesions
 1	follicular-patterned lesions
 1	Folliculotropic mycosis fungoides
 1	follow-up
@@ -693,6 +697,8 @@
 1	INI1/SMARCB1
 1	injury
 1	Insecticide
+1	INSM1
+1	insulinoma-associated protein 1
 1	integrin αv
 1	Intercellular bridge proteins
 1	interferon
@@ -881,6 +887,7 @@
 1	nephropathy
 1	nerve growth factor
 1	nesidioblastosis
+1	nestin
 1	Neural networks (computer)
 1	neuraminidase
 1	Neuroblastoma
@@ -899,6 +906,7 @@
 1	NGFR
 1	nicotinamide adenine dinucleotide phosphate
 1	nicotinamide adenine dinucleotide phosphate, reduced form
+1	NIFTP
 1	Nigella sativa
 1	Nitrite toxicity
 1	Nitrotyrosine
@@ -915,6 +923,7 @@
 1	nonaspiration
 1	nonbiliary acute pancreatitis
 1	Nondiagnostic
+1	noninvasive follicular thyroid neoplasm with papillary-like nuclear features
 1	noninvasive follicular thyroid neoplasm with papillary-like nuclear features (NIFTP)
 1	nontuberculous mycobacteria
 1	Notch signalling pathway
@@ -1213,11 +1222,13 @@
 1	Synovitis
 1	synthetic lethality
 1	synuclein gamma
+1	T-cell death-associated gene 51
 1	tailgut cyst
 1	talcum powder
 1	tall cell variant
 1	target therapy
 1	taxane
+1	TDAG51
 1	TdT
 1	telecytology
 1	Telomerase
@@ -1278,7 +1289,9 @@
 1	Treg cells
 1	trichilemmal cyst
 1	trichloroacetic acid
+1	trichoblastoma
 1	Triple negative breast cancer
+1	Triple Negative Breast Cancers
 1	trisomy 13
 1	trophoblastic infiltration
 1	Troponin T level
