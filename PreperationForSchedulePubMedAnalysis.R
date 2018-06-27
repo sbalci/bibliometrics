@@ -20,22 +20,62 @@ rmarkdown::render(input = "SchedulePubMedAnalysis2.Rmd", output_format = "html_n
                    , quiet = TRUE
 )
 
-install.packages("git2r")
 
-repo <- repository()
+gitTerm <- rstudioapi::terminalCreate()
+rstudioapi::terminalSend(
+    gitTerm,
+    "git add . \n"
+)
+Sys.sleep(1)
+repeat {
+    Sys.sleep(0.1)
+    if (rstudioapi::terminalBusy(myTerm) == FALSE) {
+        print("Code Executed")
+        break
+    }
+}
 
-workdir(repo)
+rstudioapi::terminalSend(
+    gitTerm,
+    "git commit --message 'trial' \n"
+)
+Sys.sleep(1)
+repeat {
+    Sys.sleep(0.1)
+    if (rstudioapi::terminalBusy(myTerm) == FALSE) {
+        print("Code Executed")
+        break
+    }
+}
 
-commits(repo)[[1]]
-head(repo)
-is_head(head(repo))
-is_local(head(repo))
-tags(repo)
-config(repo)
-
-CommitMessage <- paste("updated on ", Sys.time(), sep = "")
 
 
 
-commit(repo, CommitMessage)
 
+
+
+
+# install.packages("git2r")
+# 
+# CommitMessage <- paste("updated on ", Sys.time(), sep = "")
+# 
+# path <- "/Users/serdarbalciold/RepTemplates/pubmed/docs"
+# 
+# init(path = path)
+# 
+# commit(repo = repo, message = CommitMessage, all = TRUE)
+# 
+# 
+# 
+# 
+# 
+# repo <- repository()
+# 
+# workdir(repo)
+# 
+# commits(repo)[[1]]
+# head(repo)
+# is_head(head(repo))
+# is_local(head(repo))
+# tags(repo)
+# config(repo)
