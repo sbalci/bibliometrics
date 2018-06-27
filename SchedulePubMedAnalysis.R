@@ -1,13 +1,10 @@
-#  setwd("/Users/serdarbalciold/preperationFiles/ScheduleRScript/")
+library(rmarkdown)
 
-library(knitr)
-library(markdown)
+rmarkdown::render(input = "SchedulePubMedAnalysis.Rmd", output_format = "html_notebook", output_file = "docs/SchedulePubMedAnalysis.html"
+                   , quiet = TRUE
+                  )
 
-knit("SchedulePubMedAnalysis.Rmd")
-markdownToHTML("SchedulePubMedAnalysis.md", "docs/SchedulePubMedAnalysis.html")
+rmarkdown::render(input = "SchedulePubMedAnalysis2.Rmd", output_format = "html_notebook", output_file = "docs/SchedulePubMedAnalysis2.html"
+                   , quiet = TRUE
+)
 
-
-
-# setwd("~")
-
-# file.choose()
