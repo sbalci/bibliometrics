@@ -67,11 +67,6 @@ This document will be continiously updated and the last update was on 2018-03-28
 ---
 
 
-
-
----
-
-
 # Feedback
 
 [Serdar Balcı, MD, Pathologist](https://github.com/sbalci) would like to hear your feedback: https://goo.gl/forms/YjGZ5DHgtPlR1RnB3

@@ -19,6 +19,3 @@
 # 
 # devtools::install_github("bnosac/cronR")
 # install.packages('scholar')
-# 
-# 
-# 

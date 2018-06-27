@@ -46,9 +46,6 @@ This document will be continiously updated and the last update was on `r Sys.Dat
 ---
 
 
-
-
-
 # Analysis
 
 ## Country Based Comparison
@@ -65,14 +62,11 @@ In this analysis we aimed to identify the common research topics Turkish patholo
 [MeSH Terms Pathology Articles From Turkey](https://sbalci.github.io/pubmed/MeSH_Terms_Pathology_Articles_From_Turkey.html)
 
 
-
-
 ---
 
 # Sources Used For Analysis
 
 Here are the sources used in these analysis: [Sources Used For Analysis](https://sbalci.github.io/pubmed/Sources.html)
-
 
 ---
 

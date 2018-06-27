@@ -47,7 +47,9 @@ library(tidyverse)
 library(RISmed)
 ```
 
+
 Pathology Journal ISSN List was retrieved from [In Cites Clarivate](https://jcr.incites.thomsonreuters.com/), and Journal Data Filtered as follows: `JCR Year: 2016 Selected Editions: SCIE,SSCI Selected Categories: 'PATHOLOGY' Selected Category Scheme: WoS`
+
 
 ```{r Get ISSN List from data downloaded from WoS}
 # Get ISSN List from data downloaded from WoS
@@ -164,9 +166,6 @@ Turkey has a small increase in number of articles.
 * Analyse adding journal impact as a factor. 
 
 ---
-
-
-
 
 # Feedback
 

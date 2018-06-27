@@ -27,7 +27,9 @@ output:
 
 It is a very common bibliometric study type to retrospectively analyse the number of peer reviewed articles written from a country to view the amount of contribution made in a specific scientific discipline.
 
+
 These studies require too much effort, since the data is generally behind paywalls and restrictions.
+
 
 I have previously contributed to a research to identify the Articles from Turkey Published in Pathology Journals Indexed in International Indexes; which is published here: [Turk Patoloji Derg. 2010, 26(2):107-113 doi: 10.5146/tjpath.2010.01006](http://www.turkjpath.org/summary_en.php3?id=1423) 
 

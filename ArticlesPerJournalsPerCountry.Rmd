@@ -140,7 +140,6 @@ ggplot(data = articles_per_journal, aes(x = Journal, y = n, group = Country,
 ```
 
 
-
 **Comment:**
 
 It is seen that one of the journals [ISSN: 1440-1827](https://onlinelibrary.wiley.com/page/journal/14401827/homepage/productinformation.html) has more than 800 articles from Japan. This journal is also from Japan. Here we wonder if there is an editorial preference for articles from their home country. 

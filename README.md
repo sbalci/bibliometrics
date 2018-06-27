@@ -18,6 +18,7 @@ In order to automatize this analysis, I have used PubMed data from National Libr
 
 Pathology Journal ISSN List data was retrieved from "in cites Clarivate", and Journal Data Filtered as follows: JCR Year: 2016 Selected Editions: SCIE,SSCI Selected Categories: 'PATHOLOGY' Selected Category Scheme: WoS
 
+
 Using these data I would like to make reproducible reports and shiny apps, not only on pathology field but also in other areas of medicine. This will be very useful to compare disciplines and different nations.
 
 ---

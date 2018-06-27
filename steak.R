@@ -51,6 +51,8 @@ Module 3 - Lesson: Building a Document Template, part 2
 
 ## Background
 
+
+
 In May 2014, Walt Hickey at
 [538.com](http://fivethirtyeight.com/) published an
 article entitled

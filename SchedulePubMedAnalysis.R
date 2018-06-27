@@ -14,16 +14,6 @@ CommitMessage <- paste("updated on ", Sys.time(), sep = "")
 gitCommand <- paste("git add . \n git commit --message '", CommitMessage, "' \n git push origin master \n", sep = "")
 
 gitTerm <- rstudioapi::terminalCreate()
-rstudioapi::terminalSend(
-    gitTerm, gitCommand
-)
-Sys.sleep(1)
-repeat {
-    Sys.sleep(0.1)
-    if (rstudioapi::terminalBusy(gitTerm) == FALSE) {
-        print("Code Executed")
-        break
-    }
-}
+rstudioapi::terminalSend(gitTerm, gitCommand)
 
 

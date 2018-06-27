@@ -113,6 +113,7 @@ articles_per_year_table <- list(
 ```
 
 
+
 ```{r Prepare table for output}
 # Prepare table for output
 articles_per_year <- articles_per_year_table %>% 
@@ -133,7 +134,8 @@ knitr::kable(articles_per_year_table, caption = "Table of Articles per year, per
 ```
 
 
-And the figure below shows this data in a line graph. 
+And the figure below shows this data in a line graph.
+
 
 ```{r Graph of Table of Articles per year per country, echo=FALSE, fig.align="center"}
 ggplot(data = articles_per_year, aes(x = Year, y = n, group = Country,
@@ -164,8 +166,6 @@ Turkey has a small increase in number of articles.
 * Analyse adding journal impact as a factor. 
 
 ---
-
-
 
 
 # Feedback
