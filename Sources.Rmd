@@ -104,7 +104,6 @@ Installing EDirect
 https://dataguide.nlm.nih.gov/edirect/install.html
 
 
-
 ---
 
 If you want to see the code used in the analysis please click the code button on the right upper corner or throughout the page. 

@@ -12,8 +12,6 @@ ggplot(sdat,
     ggtitle(paste0("Steak Preparation Preference by Gender for ","Mountain"," Region"))
 
 
-
-
 *Be sure to only copy and paste the sections as they are discussed on screen.* 
     
     Module 3 - Lesson: Building a Document Template, part 1

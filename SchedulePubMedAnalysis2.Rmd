@@ -164,6 +164,8 @@ head(n = 20)
 
 # Results
 
+
+
 _**Most common 20 author supplied keywords are given below.**_
 
 ```{r results = 'asis'}

@@ -5,6 +5,8 @@ output: html_notebook
 
 
 
+
+
 ```{r echo = FALSE, results = 'asis'}
 library(knitr)
 kable(mtcars[1:5, ], caption = "A knitr kable.")

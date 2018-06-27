@@ -24,6 +24,4 @@ Using these data I would like to make reproducible reports and shiny apps, not o
 
 For updated analysis see: https://sbalci.github.io/pubmed/BibliographicStudies.html
 
-For Shiny App see: https://serdarbalci.shinyapps.io/PathologyArticlesFromTurkey/
-
 I would like to hear your feedback: https://goo.gl/forms/YjGZ5DHgtPlR1RnB3
