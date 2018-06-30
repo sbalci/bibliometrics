@@ -3,15 +3,15 @@ library(pander)
 library(rstudioapi)
 
 
-rmarkdown::render(input = "SchedulePubMedAnalysis.Rmd", output_format = "html_notebook", output_file = "docs/SchedulePubMedAnalysis.html"
-                   , quiet = TRUE
-                  )
-
-Sys.sleep(time = 2)
-
-# rmarkdown::render(input = "SchedulePubMedAnalysis2.Rmd", output_format = "html_notebook", output_file = "docs/SchedulePubMedAnalysis2.html"
+# rmarkdown::render(input = "SchedulePubMedAnalysis.Rmd", output_format = "html_notebook", output_file = "docs/SchedulePubMedAnalysis.html"
 #                    , quiet = TRUE
-# )
+#                   )
+
+# Sys.sleep(time = 2)
+
+rmarkdown::render(input = "SchedulePubMedAnalysis2.Rmd", output_format = "html_notebook", output_file = "docs/SchedulePubMedAnalysis.html"
+                   , quiet = TRUE
+)
 
 Sys.sleep(time = 2)
 
