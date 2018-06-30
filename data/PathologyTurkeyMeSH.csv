@@ -1,6 +1,6 @@
-119	Biomarkers, Tumor
+120	Biomarkers, Tumor
 86	Adenocarcinoma
-74	Breast Neoplasms
+75	Breast Neoplasms
 65	Thyroid Neoplasms
 55	Carcinoma
 41	Skin Neoplasms
@@ -11,13 +11,13 @@
 35	Kidney Neoplasms
 35	Lung Neoplasms
 34	Urinary Bladder Neoplasms
+32	Stomach Neoplasms
 31	Carcinoma, Squamous Cell
-31	Stomach Neoplasms
 30	Apoptosis
 26	Biopsy, Fine-Needle
 26	Brain Neoplasms
 26	Endometrial Neoplasms
-25	Ovarian Neoplasms
+26	Ovarian Neoplasms
 24	Ki-67 Antigen
 24	Oxidative Stress
 24	Prostatic Neoplasms
@@ -28,15 +28,15 @@
 21	Immunohistochemistry
 20	Colorectal Neoplasms
 20	Pancreatic Neoplasms
+20	Receptor, ErbB-2
 20	Soft Tissue Neoplasms
 20	Thyroid Nodule
 19	Adenoma
 19	Lung
 19	Lymph Nodes
-19	Receptor, ErbB-2
+19	Neoplasms, Multiple Primary
 19	Uterine Neoplasms
 19	Vascular Endothelial Growth Factor A
-18	Neoplasms, Multiple Primary
 17	Neoplasm Recurrence, Local
 17	Proto-Oncogene Proteins c-bcl-2
 17	Uterine Cervical Neoplasms
@@ -58,6 +58,7 @@
 13	Testis
 12	Cyclooxygenase 2
 12	Liver Neoplasms
+12	Placenta
 12	Suicide
 11	Cadherins
 11	Carcinoma, Basal Cell
@@ -79,7 +80,6 @@
 10	Mast Cells
 10	Melatonin
 10	Papillomavirus Infections
-10	Placenta
 9	Adenocarcinoma, Mucinous
 9	Antigens, CD
 9	Antineoplastic Agents
@@ -136,6 +136,7 @@
 7	Lymphoma, Non-Hodgkin
 7	Nucleolus Organizer Region
 7	Polyps
+7	Pregnancy Complications, Neoplastic
 7	Prostate
 7	Receptor, Epidermal Growth Factor
 7	Reperfusion Injury
@@ -178,7 +179,6 @@
 6	Papanicolaou Test
 6	Pathology, Surgical
 6	Pleural Neoplasms
-6	Pregnancy Complications, Neoplastic
 6	Proliferating Cell Nuclear Antigen
 6	Proto-Oncogene Proteins c-kit
 6	Translocation, Genetic
@@ -195,6 +195,7 @@
 5	Breast Diseases
 5	Carcinoma, Lobular
 5	Carcinoma, Papillary, Follicular
+5	Carcinoma, Signet Ring Cell
 5	Carrier Proteins
 5	Cattle Diseases
 5	CD24 Antigen
@@ -228,6 +229,7 @@
 5	Pathology
 5	Peste-des-Petits-Ruminants
 5	Plant Extracts
+5	Pre-Eclampsia
 5	Prenatal Exposure Delayed Effects
 5	Protective Agents
 5	Sex Characteristics
@@ -245,10 +247,10 @@
 4	Adipose Tissue
 4	Analgesics, Non-Narcotic
 4	Antigens, Neoplasm
+4	Autoantibodies
 4	Autopsy
 4	Brain Diseases
 4	Candidiasis
-4	Carcinoma, Signet Ring Cell
 4	Celiac Disease
 4	Cell Phone
 4	Central Nervous System Neoplasms
@@ -313,7 +315,6 @@
 4	Polymorphism, Restriction Fragment Length
 4	Postmortem Changes
 4	Postoperative Complications
-4	Pre-Eclampsia
 4	Prenatal Diagnosis
 4	Promoter Regions, Genetic
 4	Prostatic Intraepithelial Neoplasia
@@ -354,7 +355,6 @@
 3	Arthritis, Rheumatoid
 3	Asthma
 3	Atherosclerosis
-3	Autoantibodies
 3	Autophagy
 3	Basigin
 3	Bile Duct Neoplasms
@@ -491,6 +491,7 @@
 3	Uterine Cervical Diseases
 3	Water Supply
 2	Abdominal Neoplasms
+2	Abortion, Spontaneous
 2	Accidental Falls
 2	Accidents, Home
 2	Acetates
@@ -624,6 +625,7 @@
 2	Gram-Negative Bacterial Infections
 2	Granular Cell Tumor
 2	Granuloma Annulare
+2	GTP-Binding Proteins
 2	Hair Follicle
 2	Heart Atria
 2	Heart Ventricles
@@ -650,6 +652,7 @@
 2	Image Interpretation, Computer-Assisted
 2	Imidazoles
 2	Immunoglobulin M
+2	In Situ Hybridization
 2	Incidental Findings
 2	Inclusion Bodies
 2	INDEL Mutation
@@ -845,7 +848,7 @@
 1	3-Hydroxysteroid Dehydrogenases
 1	Abdominal Injuries
 1	Aborted Fetus
-1	Abortion, Spontaneous
+1	Abortion, Habitual
 1	Abscess
 1	Academies and Institutes
 1	Acantholysis
@@ -863,6 +866,7 @@
 1	Acute Kidney Injury
 1	Acute Lung Injury
 1	Acute-Phase Proteins
+1	ADAMTS1 Protein
 1	ADAMTS13 Protein
 1	Adaptor Proteins, Signal Transducing
 1	Adaptor Proteins, Vesicular Transport
@@ -1421,7 +1425,6 @@
 1	Growth Hormone-Releasing Hormone
 1	Growth Plate
 1	Growth Substances
-1	GTP-Binding Proteins
 1	GTPase-Activating Proteins
 1	Guanidines
 1	Guidelines as Topic
@@ -1529,7 +1532,6 @@
 1	Immunoglobulin Isotypes
 1	Immunophenotyping
 1	Immunotherapy
-1	In Situ Hybridization
 1	In Situ Hybridization, Fluorescence
 1	Indomethacin
 1	Infant, Newborn, Diseases
@@ -1637,6 +1639,7 @@
 1	Lumbar Vertebrae
 1	Lung Injury
 1	Lupus Erythematosus, Systemic
+1	Luteoma
 1	Lymphangioleiomyomatosis
 1	Lymphangioma
 1	Lymphangioma, Cystic
@@ -1674,6 +1677,7 @@
 1	Melanoma, Amelanotic
 1	Melanoma-Specific Antigens
 1	Membrane Glycoproteins
+1	Membrane Transport Proteins
 1	Meningoencephalitis
 1	Menstrual Cycle
 1	Mental Disorders
@@ -1919,6 +1923,7 @@
 1	Pregnancy Complications, Hematologic
 1	Pregnancy Complications, Infectious
 1	Pregnancy Proteins
+1	Pregnancy Trimester, First
 1	Pregnancy, Abdominal
 1	Pregnancy, Tubal
 1	Pregnancy, Twin
@@ -2146,6 +2151,7 @@
 1	Transcriptome
 1	Transforming Growth Factor alpha
 1	Transforming Growth Factor beta3
+1	Transglutaminases
 1	Transplant Recipients
 1	Trastuzumab
 1	Trauma Severity Indices

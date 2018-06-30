@@ -18,6 +18,7 @@
 5	fine needle aspiration cytology
 5	Rat
 5	Squamous cell carcinoma
+5	Survival
 5	TERT
 4	Adenocarcinoma
 4	atypia of undetermined significance
@@ -30,7 +31,6 @@
 4	Liver
 4	Pathology
 4	Pregnancy
-4	Survival
 4	Ultrastructure
 4	Urothelial carcinoma
 3	asthma
@@ -316,6 +316,7 @@
 1	Cancer stem cells
 1	Candida
 1	Carbon tetrachloride
+1	carbonic anhydrase IX (CA-IX)
 1	Carcinoma of unknown primary
 1	cardiac damage
 1	Cardiac lymphoma
@@ -587,6 +588,7 @@
 1	GIST
 1	Gleason pattern
 1	Gleason pattern 4
+1	glioblastoma
 1	Glomus tumor
 1	glucocorticoids
 1	glutathione peroxidase 1
@@ -1059,6 +1061,7 @@
 1	Primary central nervous system lymphoma
 1	Primary hyperparathyroidism
 1	primitive neuroectodermal tumor
+1	prognostic factor
 1	prognostic marker
 1	prolidase
 1	Propolis
@@ -1312,6 +1315,7 @@
 1	Ultrasound
 1	ultraviolet radiation
 1	umbilical cord
+1	up-regulation
 1	Upper tract urothelial carcinoma
 1	Urinary tract
 1	urine cytology
