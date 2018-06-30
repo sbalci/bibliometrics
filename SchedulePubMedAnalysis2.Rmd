@@ -2,7 +2,7 @@
 title: "Bibliographic Studies"
 subtitle: "MeSH Terms and Author Key Words In Pathology Articles From Turkey"
 author: "Serdar Balcı, MD, Pathologist"
-date: '`r format(Sys.Date())`'
+date: '`r format(Sys.time())`'
 output: 
   html_notebook: 
     code_folding: none
@@ -200,7 +200,7 @@ We may conclude that adenocarcinomas, breast and thyroid tumors, and immunohisto
 
 [Serdar Balcı, MD, Pathologist](https://github.com/sbalci) would like to hear your feedback: https://goo.gl/forms/YjGZ5DHgtPlR1RnB3
 
-This document will be continiously updated and the last update was on `r Sys.Date()`.
+This document will be continiously updated and the last update was on `r Sys.time()`.
 
 ---
 

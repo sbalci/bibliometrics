@@ -1,4 +1,5 @@
 library(rmarkdown)
+library(pander)
 
 rmarkdown::render(input = "SchedulePubMedAnalysis.Rmd", output_format = "html_notebook", output_file = "docs/SchedulePubMedAnalysis.html"
                    , quiet = TRUE
