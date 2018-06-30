@@ -4,3 +4,9 @@ Hata: pandoc version 1.12.3 or higher is required and was not found (see the hel
 Calistirma durduruldu
 Hata: pandoc version 1.12.3 or higher is required and was not found (see the help page ?rmarkdown::pandoc_available).
 Calistirma durduruldu
+Hata: pandoc version 1.12.3 or higher is required and was not found (see the help page ?rmarkdown::pandoc_available).
+Calistirma durduruldu
+Error in -title : birli operatöre geçersiz argüman
+Çalıştırma durduruldu
+Error in -title : birli operat"ore gecersiz arg"uman
+Calistirma durduruldu
