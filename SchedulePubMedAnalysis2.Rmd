@@ -27,6 +27,10 @@ output:
 knitr::opts_chunk$set(message=FALSE, warning=FALSE, tidy = TRUE, error = TRUE)
 ```
 
+```{r}
+library(rmarkdown)
+```
+
 
 # Background
 

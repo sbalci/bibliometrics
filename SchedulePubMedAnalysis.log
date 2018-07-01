@@ -1,0 +1,9 @@
+Hata: pandoc version 1.12.3 or higher is required and was not found (see the help page ?rmarkdown::pandoc_available).
+Calistirma durduruldu
+Error in tools::file_path_as_absolute(input) : 
+  file 'SchedulePubMedAnalysis2.Rmd' does not exist
+Calls: <Anonymous> -> setwd -> dirname -> <Anonymous>
+Ek olarak: Warning message:
+In normalizePath(path, winslash = winslash, mustWork = mustWork) :
+  path[1]="SchedulePubMedAnalysis2.Rmd": No such file or directory
+Calistirma durduruldu
