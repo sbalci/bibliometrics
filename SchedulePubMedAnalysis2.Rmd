@@ -153,12 +153,15 @@ library(readr)
 authorkeywords <- read_table2("/Users/serdarbalciold/RepTemplates/pubmed/data/authorkeywords.csv", col_names = c("frequency", "author key word"), cols(
   frequency = col_integer(),
   `author key word` = col_character()
-))
+), guess_max = 100)
 
 authorkeywords <- authorkeywords %>% 
     head(n=20)
 
-PathologyTurkeyMeSH <- read_table2("/Users/serdarbalciold/RepTemplates/pubmed/data/PathologyTurkeyMeSH.csv", col_names = c("frequency", "MeSH term"))
+PathologyTurkeyMeSH <- read_table2("/Users/serdarbalciold/RepTemplates/pubmed/data/PathologyTurkeyMeSH.csv", col_names = c("frequency", "MeSH term"), cols(
+  frequency = col_integer(),
+  `MeSH term` = col_character()
+), guess_max = 100)
 
 PathologyTurkeyMeSH <-PathologyTurkeyMeSH %>% 
     head(n = 20)
