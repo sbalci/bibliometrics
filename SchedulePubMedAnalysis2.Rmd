@@ -150,15 +150,15 @@ The retrieved information was compiled in a table.
 ```{r message=FALSE, warning=FALSE}
 library(readr)
 
-authorkeywords <- read_table2("/Users/serdarbalciold/RepTemplates/pubmed/data/authorkeywords.csv",
-col_names = c("frequency", "author key word")) %>%
-select('author key word', 'frequency') %>%
-head(n = 20)
+authorkeywords <- read_table2("/Users/serdarbalciold/RepTemplates/pubmed/data/authorkeywords.csv", col_names = c("frequency", "author key word"))
 
-PathologyTurkeyMeSH <- read_table2("/Users/serdarbalciold/RepTemplates/pubmed/data/PathologyTurkeyMeSH.csv",
-col_names = c("frequency", "MeSH term")) %>%
-select('MeSH term', 'frequency') %>%
-head(n = 20)
+authorkeywords <- authorkeywords %>% 
+    head(n=20)
+
+PathologyTurkeyMeSH <- read_table2("/Users/serdarbalciold/RepTemplates/pubmed/data/PathologyTurkeyMeSH.csv", col_names = c("frequency", "MeSH term"))
+
+PathologyTurkeyMeSH <-PathologyTurkeyMeSH %>% 
+    head(n = 20)
 ```
 
 # Results
@@ -166,14 +166,17 @@ head(n = 20)
 _**Most common 20 author supplied keywords are given below.**_
 
 ```{r results = 'asis'}
-pander::pander(authorkeywords, justify = "left", caption = "Most common 20 author supplied keywords")
+print(authorkeywords)
+# pander::pander(authorkeywords, justify = "left", caption = "Most common 20 author supplied keywords")
 ```
 
 _**Most common 20 MeSH terms are given below**_
 
 ```{r results = 'asis'}
 
-pander::pander(PathologyTurkeyMeSH, justify = "left", caption = "Most common 20 MeSH terms")
+# pander::pander(PathologyTurkeyMeSH, justify = "left", caption = "Most common 20 MeSH terms")
+
+print(PathologyTurkeyMeSH)
 
 ```
 

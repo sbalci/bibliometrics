@@ -2900,7 +2900,7 @@ div.tocify {
 
 <h1 class="title toc-ignore">Bibliographic Studies</h1>
 <h4 class="author"><em>Serdar Balci, MD, Pathologist</em></h4>
-<h4 class="date"><em>2018-07-01 11:59:54</em></h4>
+<h4 class="date"><em>2018-07-01 12:09:06</em></h4>
 
 </div>
 
@@ -2937,38 +2937,17 @@ div.tocify {
 <p>Packages used for analysis are given. <code>Tidyverse</code> is used for data manipulation, and <a href="https://github.com/rstudio/rstudio/issues/2193">rstudioapi</a> to run e-utilities commands from RStudio.</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxudXNlUGFja2FnZSA8LSBmdW5jdGlvbihwKVxue1xuaWYgKCFpcy5lbGVtZW50KHAsIGluc3RhbGxlZC5wYWNrYWdlcygpWywgMV0pKVxuaW5zdGFsbC5wYWNrYWdlcyhwLCBkZXAgPSBUUlVFKVxucmVxdWlyZShwLCBjaGFyYWN0ZXIub25seSA9IFRSVUUpXG59XG51c2VQYWNrYWdlKFwidGlkeXZlcnNlXCIpXG5gYGAifQ== -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxudXNlUGFja2FnZSA8LSBmdW5jdGlvbihwKVxue1xuaWYgKCFpcy5lbGVtZW50KHAsIGluc3RhbGxlZC5wYWNrYWdlcygpWywgMV0pKVxuaW5zdGFsbC5wYWNrYWdlcyhwLCBkZXAgPSBUUlVFKVxucmVxdWlyZShwLCBjaGFyYWN0ZXIub25seSA9IFRSVUUpXG59XG51c2VQYWNrYWdlKFwidGlkeXZlcnNlXCIpXG51c2VQYWNrYWdlKFwicnN0dWRpb2FwaVwiKVxudXNlUGFja2FnZShcInBhbmRlclwiKVxuYGBgIn0= -->
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">usePackage &lt;-<span class="st"> </span><span class="cf">function</span>(p)</a>
 <a class="sourceLine" id="cb3-2" data-line-number="2">{</a>
 <a class="sourceLine" id="cb3-3" data-line-number="3"><span class="cf">if</span> (<span class="op">!</span><span class="kw">is.element</span>(p, <span class="kw">installed.packages</span>()[, <span class="dv">1</span>]))</a>
 <a class="sourceLine" id="cb3-4" data-line-number="4"><span class="kw">install.packages</span>(p, <span class="dt">dep =</span> <span class="ot">TRUE</span>)</a>
 <a class="sourceLine" id="cb3-5" data-line-number="5"><span class="kw">require</span>(p, <span class="dt">character.only =</span> <span class="ot">TRUE</span>)</a>
 <a class="sourceLine" id="cb3-6" data-line-number="6">}</a>
-<a class="sourceLine" id="cb3-7" data-line-number="7"><span class="kw">usePackage</span>(<span class="st">&quot;tidyverse&quot;</span>)</a></code></pre></div>
+<a class="sourceLine" id="cb3-7" data-line-number="7"><span class="kw">usePackage</span>(<span class="st">&quot;tidyverse&quot;</span>)</a>
+<a class="sourceLine" id="cb3-8" data-line-number="8"><span class="kw">usePackage</span>(<span class="st">&quot;rstudioapi&quot;</span>)</a>
+<a class="sourceLine" id="cb3-9" data-line-number="9"><span class="kw">usePackage</span>(<span class="st">&quot;pander&quot;</span>)</a></code></pre></div>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiTG9hZGluZyByZXF1aXJlZCBwYWNrYWdlOiB0aWR5dmVyc2Vcblx1MDAxYlszN23ilIDilIAgXHUwMDFiWzFtQXR0YWNoaW5nIHBhY2thZ2VzXHUwMDFiWzIybSDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIAgdGlkeXZlcnNlIDEuMi4xIOKUgOKUgFx1MDAxYlszOW1cblx1MDAxYlszN21cdTAwMWJbMzJt4pyUXHUwMDFiWzM3bSBcdTAwMWJbMzRtZ2dwbG90Mlx1MDAxYlszN20gMi4yLjEgICAgIFx1MDAxYlszMm3inJRcdTAwMWJbMzdtIFx1MDAxYlszNG1wdXJyciAgXHUwMDFiWzM3bSAwLjIuNVxuXHUwMDFiWzMybeKclFx1MDAxYlszN20gXHUwMDFiWzM0bXRpYmJsZSBcdTAwMWJbMzdtIDEuNC4yICAgICBcdTAwMWJbMzJt4pyUXHUwMDFiWzM3bSBcdTAwMWJbMzRtZHBseXIgIFx1MDAxYlszN20gMC43LjVcblx1MDAxYlszMm3inJRcdTAwMWJbMzdtIFx1MDAxYlszNG10aWR5ciAgXHUwMDFiWzM3bSAwLjguMSAgICAgXHUwMDFiWzMybeKclFx1MDAxYlszN20gXHUwMDFiWzM0bXN0cmluZ3JcdTAwMWJbMzdtIDEuMy4xXG5cdTAwMWJbMzJt4pyUXHUwMDFiWzM3bSBcdTAwMWJbMzRtcmVhZHIgIFx1MDAxYlszN20gMS4xLjEgICAgIFx1MDAxYlszMm3inJRcdTAwMWJbMzdtIFx1MDAxYlszNG1mb3JjYXRzXHUwMDFiWzM3bSAwLjMuMFx1MDAxYlszOW1cblx1MDAxYlszN23ilIDilIAgXHUwMDFiWzFtQ29uZmxpY3RzXHUwMDFiWzIybSDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIAgdGlkeXZlcnNlX2NvbmZsaWN0cygpIOKUgOKUgFxuXHUwMDFiWzMxbeKcllx1MDAxYlszN20gXHUwMDFiWzM0bWRwbHlyXHUwMDFiWzM3bTo6XHUwMDFiWzMybWZpbHRlcigpXHUwMDFiWzM3bSBtYXNrcyBcdTAwMWJbMzRtc3RhdHNcdTAwMWJbMzdtOjpmaWx0ZXIoKVxuXHUwMDFiWzMxbeKcllx1MDAxYlszN20gXHUwMDFiWzM0bWRwbHlyXHUwMDFiWzM3bTo6XHUwMDFiWzMybWxhZygpXHUwMDFiWzM3bSAgICBtYXNrcyBcdTAwMWJbMzRtc3RhdHNcdTAwMWJbMzdtOjpsYWcoKVx1MDAxYlszOW1cbiJ9 -->
-<pre><code>Loading required package: tidyverse
-[37m── [1mAttaching packages[22m ──────────────────────────────────────────────── tidyverse 1.2.1 ──[39m
-[37m[32m✔[37m [34mggplot2[37m 2.2.1     [32m✔[37m [34mpurrr  [37m 0.2.5
-[32m✔[37m [34mtibble [37m 1.4.2     [32m✔[37m [34mdplyr  [37m 0.7.5
-[32m✔[37m [34mtidyr  [37m 0.8.1     [32m✔[37m [34mstringr[37m 1.3.1
-[32m✔[37m [34mreadr  [37m 1.1.1     [32m✔[37m [34mforcats[37m 0.3.0[39m
-[37m── [1mConflicts[22m ─────────────────────────────────────────────────── tidyverse_conflicts() ──
-[31m✖[37m [34mdplyr[37m::[32mfilter()[37m masks [34mstats[37m::filter()
-[31m✖[37m [34mdplyr[37m::[32mlag()[37m    masks [34mstats[37m::lag()[39m</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxudXNlUGFja2FnZShcInJzdHVkaW9hcGlcIilcbmBgYCJ9 -->
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw">usePackage</span>(<span class="st">&quot;rstudioapi&quot;</span>)</a></code></pre></div>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiTG9hZGluZyByZXF1aXJlZCBwYWNrYWdlOiByc3R1ZGlvYXBpXG4ifQ== -->
-<pre><code>Loading required package: rstudioapi</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxudXNlUGFja2FnZShcInBhbmRlclwiKVxuYGBgIn0= -->
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="kw">usePackage</span>(<span class="st">&quot;pander&quot;</span>)</a></code></pre></div>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiTG9hZGluZyByZXF1aXJlZCBwYWNrYWdlOiBwYW5kZXJcbiJ9 -->
-<pre><code>Loading required package: pander</code></pre>
-<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p>Pathology Journal ISSN List was retrieved from <a href="https://jcr.incites.thomsonreuters.com/">In Cites Clarivate</a>, and Journal Data Filtered as follows:</p>
@@ -2976,14 +2955,14 @@ div.tocify {
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyAjIEdldCBJU1NOIExpc3QgZnJvbSBkYXRhIGRvd25sb2FkZWQgZnJvbSBXb1NcbiMgSVNTTkxpc3QgPC0gSm91cm5hbEhvbWVHcmlkIDwtIHJlYWRfY3N2KFwiL1VzZXJzL3NlcmRhcmJhbGNpb2xkL1JlcFRlbXBsYXRlcy9wdWJtZWQvZGF0YS9Kb3VybmFsSG9tZUdyaWQuY3N2XCIsIHNraXAgPSAxKSAlPiVcbiMgc2VsZWN0KElTU04pICU+JVxuIyBmaWx0ZXIoIWlzLm5hKElTU04pKSAlPiVcbiMgdCgpICU+JVxuIyBwYXN0ZShcIk9SIFwiLCBjb2xsYXBzZSA9IFwiXCIpICMgYWRkIE9SIGJldHdlZW4gSVNTTiBMaXN0XG4jIFxuIyBJU1NOTGlzdCA8LSBnc3ViKFwiIE9SICRcIiwgXCJcIiAsIElTU05MaXN0KSAjIHRvIHJlbW92ZSBsYXN0IE9SXG5gYGAifQ== -->
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="co"># # Get ISSN List from data downloaded from WoS</span></a>
-<a class="sourceLine" id="cb9-2" data-line-number="2"><span class="co"># ISSNList &lt;- JournalHomeGrid &lt;- read_csv(&quot;/Users/serdarbalciold/RepTemplates/pubmed/data/JournalHomeGrid.csv&quot;, skip = 1) %&gt;%</span></a>
-<a class="sourceLine" id="cb9-3" data-line-number="3"><span class="co"># select(ISSN) %&gt;%</span></a>
-<a class="sourceLine" id="cb9-4" data-line-number="4"><span class="co"># filter(!is.na(ISSN)) %&gt;%</span></a>
-<a class="sourceLine" id="cb9-5" data-line-number="5"><span class="co"># t() %&gt;%</span></a>
-<a class="sourceLine" id="cb9-6" data-line-number="6"><span class="co"># paste(&quot;OR &quot;, collapse = &quot;&quot;) # add OR between ISSN List</span></a>
-<a class="sourceLine" id="cb9-7" data-line-number="7"><span class="co"># </span></a>
-<a class="sourceLine" id="cb9-8" data-line-number="8"><span class="co"># ISSNList &lt;- gsub(&quot; OR $&quot;, &quot;&quot; , ISSNList) # to remove last OR</span></a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="co"># # Get ISSN List from data downloaded from WoS</span></a>
+<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="co"># ISSNList &lt;- JournalHomeGrid &lt;- read_csv(&quot;/Users/serdarbalciold/RepTemplates/pubmed/data/JournalHomeGrid.csv&quot;, skip = 1) %&gt;%</span></a>
+<a class="sourceLine" id="cb4-3" data-line-number="3"><span class="co"># select(ISSN) %&gt;%</span></a>
+<a class="sourceLine" id="cb4-4" data-line-number="4"><span class="co"># filter(!is.na(ISSN)) %&gt;%</span></a>
+<a class="sourceLine" id="cb4-5" data-line-number="5"><span class="co"># t() %&gt;%</span></a>
+<a class="sourceLine" id="cb4-6" data-line-number="6"><span class="co"># paste(&quot;OR &quot;, collapse = &quot;&quot;) # add OR between ISSN List</span></a>
+<a class="sourceLine" id="cb4-7" data-line-number="7"><span class="co"># </span></a>
+<a class="sourceLine" id="cb4-8" data-line-number="8"><span class="co"># ISSNList &lt;- gsub(&quot; OR $&quot;, &quot;&quot; , ISSNList) # to remove last OR</span></a></code></pre></div>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
@@ -2991,11 +2970,11 @@ div.tocify {
 <p>The search formula for PubMed is generated as “ISSN List AND Country[Affiliation]” as described in <a href="https://www.ncbi.nlm.nih.gov/pubmed/advanced">advanced search of PubMed</a>.</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBHZW5lcmF0ZSBTZWFyY2ggRm9ybXVsYSBGb3IgUGF0aG9sb2d5IEpvdXJuYWxzIEFORCBDb3VudHJpZXNcbnNlYXJjaGZvcm11bGEgPC1cbnBhc3RlKFwiJ1wiLCBJU1NOTGlzdCwgXCInXCIsIFwiIEFORCBcIiwgXCJUdXJrZXlbQWZmaWxpYXRpb25dXCIpXG53cml0ZShzZWFyY2hmb3JtdWxhLCBcIi9Vc2Vycy9zZXJkYXJiYWxjaW9sZC9SZXBUZW1wbGF0ZXMvcHVibWVkL2RhdGEvc2VhcmNoZm9ybXVsYS50eHRcIilcbmBgYCJ9 -->
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="co"># Generate Search Formula For Pathology Journals AND Countries</span></a>
-<a class="sourceLine" id="cb10-2" data-line-number="2">searchformula &lt;-</a>
-<a class="sourceLine" id="cb10-3" data-line-number="3"><span class="kw">paste</span>(<span class="st">&quot;'&quot;</span>, ISSNList, <span class="st">&quot;'&quot;</span>, <span class="st">&quot; AND &quot;</span>, <span class="st">&quot;Turkey[Affiliation]&quot;</span>)</a>
-<a class="sourceLine" id="cb10-4" data-line-number="4"><span class="kw">write</span>(searchformula, <span class="st">&quot;/Users/serdarbalciold/RepTemplates/pubmed/data/searchformula.txt&quot;</span>)</a></code></pre></div>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyAjIEdlbmVyYXRlIFNlYXJjaCBGb3JtdWxhIEZvciBQYXRob2xvZ3kgSm91cm5hbHMgQU5EIENvdW50cmllc1xuIyBzZWFyY2hmb3JtdWxhIDwtXG4jIHBhc3RlKFwiJ1wiLCBJU1NOTGlzdCwgXCInXCIsIFwiIEFORCBcIiwgXCJUdXJrZXlbQWZmaWxpYXRpb25dXCIpXG4jIHdyaXRlKHNlYXJjaGZvcm11bGEsIFwiL1VzZXJzL3NlcmRhcmJhbGNpb2xkL1JlcFRlbXBsYXRlcy9wdWJtZWQvZGF0YS9zZWFyY2hmb3JtdWxhLnR4dFwiKVxuYGBgIn0= -->
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="co"># # Generate Search Formula For Pathology Journals AND Countries</span></a>
+<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="co"># searchformula &lt;-</span></a>
+<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="co"># paste(&quot;'&quot;, ISSNList, &quot;'&quot;, &quot; AND &quot;, &quot;Turkey[Affiliation]&quot;)</span></a>
+<a class="sourceLine" id="cb5-4" data-line-number="4"><span class="co"># write(searchformula, &quot;/Users/serdarbalciold/RepTemplates/pubmed/data/searchformula.txt&quot;)</span></a></code></pre></div>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
@@ -3003,19 +2982,19 @@ div.tocify {
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBteVRlcm0gPC0gcnN0dWRpb2FwaTo6dGVybWluYWxDcmVhdGUoc2hvdyA9IEZBTFNFKVxuIyByc3R1ZGlvYXBpOjp0ZXJtaW5hbFNlbmQoXG4jICAgICBteVRlcm0sXG4jICAgICBcImVzZWFyY2ggLWRiIHB1Ym1lZCAtcXVlcnkgXFxcIiQoY2F0IC9Vc2Vycy9zZXJkYXJiYWxjaW9sZC9SZXBUZW1wbGF0ZXMvcHVibWVkL2RhdGEvc2VhcmNoZm9ybXVsYS50eHQpXFxcIiAtZGF0ZXR5cGUgUERBVCAtbWluZGF0ZSAxOTAwIC1tYXhkYXRlIDMwMDAgfCBlZmV0Y2ggLWZvcm1hdCB4bWwgPiAvVXNlcnMvc2VyZGFyYmFsY2lvbGQvUmVwVGVtcGxhdGVzL3B1Ym1lZC9kYXRhL1BhdGhvbG9neVR1cmtleS54bWwgXFxuXCJcbiMgKVxuIyBTeXMuc2xlZXAoMSlcbiMgcmVwZWF0IHtcbiMgICAgIFN5cy5zbGVlcCgwLjEpXG4jICAgICBpZiAocnN0dWRpb2FwaTo6dGVybWluYWxCdXN5KG15VGVybSkgPT0gRkFMU0UpIHtcbiMgICAgICAgICBwcmludChcIkNvZGUgRXhlY3V0ZWRcIilcbiMgICAgICAgICBicmVha1xuIyAgICAgfVxuIyB9XG5gYGAifQ== -->
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1"><span class="co"># myTerm &lt;- rstudioapi::terminalCreate(show = FALSE)</span></a>
-<a class="sourceLine" id="cb11-2" data-line-number="2"><span class="co"># rstudioapi::terminalSend(</span></a>
-<a class="sourceLine" id="cb11-3" data-line-number="3"><span class="co">#     myTerm,</span></a>
-<a class="sourceLine" id="cb11-4" data-line-number="4"><span class="co">#     &quot;esearch -db pubmed -query \&quot;$(cat /Users/serdarbalciold/RepTemplates/pubmed/data/searchformula.txt)\&quot; -datetype PDAT -mindate 1900 -maxdate 3000 | efetch -format xml &gt; /Users/serdarbalciold/RepTemplates/pubmed/data/PathologyTurkey.xml \n&quot;</span></a>
-<a class="sourceLine" id="cb11-5" data-line-number="5"><span class="co"># )</span></a>
-<a class="sourceLine" id="cb11-6" data-line-number="6"><span class="co"># Sys.sleep(1)</span></a>
-<a class="sourceLine" id="cb11-7" data-line-number="7"><span class="co"># repeat {</span></a>
-<a class="sourceLine" id="cb11-8" data-line-number="8"><span class="co">#     Sys.sleep(0.1)</span></a>
-<a class="sourceLine" id="cb11-9" data-line-number="9"><span class="co">#     if (rstudioapi::terminalBusy(myTerm) == FALSE) {</span></a>
-<a class="sourceLine" id="cb11-10" data-line-number="10"><span class="co">#         print(&quot;Code Executed&quot;)</span></a>
-<a class="sourceLine" id="cb11-11" data-line-number="11"><span class="co">#         break</span></a>
-<a class="sourceLine" id="cb11-12" data-line-number="12"><span class="co">#     }</span></a>
-<a class="sourceLine" id="cb11-13" data-line-number="13"><span class="co"># }</span></a></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="co"># myTerm &lt;- rstudioapi::terminalCreate(show = FALSE)</span></a>
+<a class="sourceLine" id="cb6-2" data-line-number="2"><span class="co"># rstudioapi::terminalSend(</span></a>
+<a class="sourceLine" id="cb6-3" data-line-number="3"><span class="co">#     myTerm,</span></a>
+<a class="sourceLine" id="cb6-4" data-line-number="4"><span class="co">#     &quot;esearch -db pubmed -query \&quot;$(cat /Users/serdarbalciold/RepTemplates/pubmed/data/searchformula.txt)\&quot; -datetype PDAT -mindate 1900 -maxdate 3000 | efetch -format xml &gt; /Users/serdarbalciold/RepTemplates/pubmed/data/PathologyTurkey.xml \n&quot;</span></a>
+<a class="sourceLine" id="cb6-5" data-line-number="5"><span class="co"># )</span></a>
+<a class="sourceLine" id="cb6-6" data-line-number="6"><span class="co"># Sys.sleep(1)</span></a>
+<a class="sourceLine" id="cb6-7" data-line-number="7"><span class="co"># repeat {</span></a>
+<a class="sourceLine" id="cb6-8" data-line-number="8"><span class="co">#     Sys.sleep(0.1)</span></a>
+<a class="sourceLine" id="cb6-9" data-line-number="9"><span class="co">#     if (rstudioapi::terminalBusy(myTerm) == FALSE) {</span></a>
+<a class="sourceLine" id="cb6-10" data-line-number="10"><span class="co">#         print(&quot;Code Executed&quot;)</span></a>
+<a class="sourceLine" id="cb6-11" data-line-number="11"><span class="co">#         break</span></a>
+<a class="sourceLine" id="cb6-12" data-line-number="12"><span class="co">#     }</span></a>
+<a class="sourceLine" id="cb6-13" data-line-number="13"><span class="co"># }</span></a></code></pre></div>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
@@ -3023,19 +3002,19 @@ div.tocify {
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubXlUZXJtIDwtIHJzdHVkaW9hcGk6OnRlcm1pbmFsQ3JlYXRlKHNob3cgPSBGQUxTRSlcbnJzdHVkaW9hcGk6OnRlcm1pbmFsU2VuZChcbm15VGVybSxcblwieHRyYWN0IC1pbnB1dCAvVXNlcnMvc2VyZGFyYmFsY2lvbGQvUmVwVGVtcGxhdGVzL3B1Ym1lZC9kYXRhL1BhdGhvbG9neVR1cmtleS54bWwgLXBhdHRlcm4gTWVzaEhlYWRpbmcgLWlmIERlc2NyaXB0b3JOYW1lQE1ham9yVG9waWNZTiAtZXF1YWxzIFkgLW9yIFF1YWxpZmllck5hbWVATWFqb3JUb3BpY1lOIC1lcXVhbHMgWSAtZWxlbWVudCBEZXNjcmlwdG9yTmFtZXwgZ3JlcCAtdnhmIC9Vc2Vycy9zZXJkYXJiYWxjaW9sZC9SZXBUZW1wbGF0ZXMvcHVibWVkL2RhdGEvY2hlY2t0YWdzLnR4dCB8IHNvcnQtdW5pcS1jb3VudC1yYW5rID4gL1VzZXJzL3NlcmRhcmJhbGNpb2xkL1JlcFRlbXBsYXRlcy9wdWJtZWQvZGF0YS9QYXRob2xvZ3lUdXJrZXlNZVNILmNzdiBcXG5cIlxuKVxuU3lzLnNsZWVwKDEpXG5yZXBlYXQge1xuU3lzLnNsZWVwKDAuMSlcbmlmIChyc3R1ZGlvYXBpOjp0ZXJtaW5hbEJ1c3kobXlUZXJtKSA9PSBGQUxTRSkge1xucHJpbnQoXCJDb2RlIEV4ZWN1dGVkXCIpXG5icmVha1xufVxufVxuYGBgIn0= -->
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1">myTerm &lt;-<span class="st"> </span>rstudioapi<span class="op">::</span><span class="kw">terminalCreate</span>(<span class="dt">show =</span> <span class="ot">FALSE</span>)</a>
-<a class="sourceLine" id="cb12-2" data-line-number="2">rstudioapi<span class="op">::</span><span class="kw">terminalSend</span>(</a>
-<a class="sourceLine" id="cb12-3" data-line-number="3">myTerm,</a>
-<a class="sourceLine" id="cb12-4" data-line-number="4"><span class="st">&quot;xtract -input /Users/serdarbalciold/RepTemplates/pubmed/data/PathologyTurkey.xml -pattern MeshHeading -if DescriptorName@MajorTopicYN -equals Y -or QualifierName@MajorTopicYN -equals Y -element DescriptorName| grep -vxf /Users/serdarbalciold/RepTemplates/pubmed/data/checktags.txt | sort-uniq-count-rank &gt; /Users/serdarbalciold/RepTemplates/pubmed/data/PathologyTurkeyMeSH.csv </span><span class="ch">\n</span><span class="st">&quot;</span></a>
-<a class="sourceLine" id="cb12-5" data-line-number="5">)</a>
-<a class="sourceLine" id="cb12-6" data-line-number="6"><span class="kw">Sys.sleep</span>(<span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb12-7" data-line-number="7"><span class="cf">repeat</span> {</a>
-<a class="sourceLine" id="cb12-8" data-line-number="8"><span class="kw">Sys.sleep</span>(<span class="fl">0.1</span>)</a>
-<a class="sourceLine" id="cb12-9" data-line-number="9"><span class="cf">if</span> (rstudioapi<span class="op">::</span><span class="kw">terminalBusy</span>(myTerm) <span class="op">==</span><span class="st"> </span><span class="ot">FALSE</span>) {</a>
-<a class="sourceLine" id="cb12-10" data-line-number="10"><span class="kw">print</span>(<span class="st">&quot;Code Executed&quot;</span>)</a>
-<a class="sourceLine" id="cb12-11" data-line-number="11"><span class="cf">break</span></a>
-<a class="sourceLine" id="cb12-12" data-line-number="12">}</a>
-<a class="sourceLine" id="cb12-13" data-line-number="13">}</a></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1">myTerm &lt;-<span class="st"> </span>rstudioapi<span class="op">::</span><span class="kw">terminalCreate</span>(<span class="dt">show =</span> <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb7-2" data-line-number="2">rstudioapi<span class="op">::</span><span class="kw">terminalSend</span>(</a>
+<a class="sourceLine" id="cb7-3" data-line-number="3">myTerm,</a>
+<a class="sourceLine" id="cb7-4" data-line-number="4"><span class="st">&quot;xtract -input /Users/serdarbalciold/RepTemplates/pubmed/data/PathologyTurkey.xml -pattern MeshHeading -if DescriptorName@MajorTopicYN -equals Y -or QualifierName@MajorTopicYN -equals Y -element DescriptorName| grep -vxf /Users/serdarbalciold/RepTemplates/pubmed/data/checktags.txt | sort-uniq-count-rank &gt; /Users/serdarbalciold/RepTemplates/pubmed/data/PathologyTurkeyMeSH.csv </span><span class="ch">\n</span><span class="st">&quot;</span></a>
+<a class="sourceLine" id="cb7-5" data-line-number="5">)</a>
+<a class="sourceLine" id="cb7-6" data-line-number="6"><span class="kw">Sys.sleep</span>(<span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb7-7" data-line-number="7"><span class="cf">repeat</span> {</a>
+<a class="sourceLine" id="cb7-8" data-line-number="8"><span class="kw">Sys.sleep</span>(<span class="fl">0.1</span>)</a>
+<a class="sourceLine" id="cb7-9" data-line-number="9"><span class="cf">if</span> (rstudioapi<span class="op">::</span><span class="kw">terminalBusy</span>(myTerm) <span class="op">==</span><span class="st"> </span><span class="ot">FALSE</span>) {</a>
+<a class="sourceLine" id="cb7-10" data-line-number="10"><span class="kw">print</span>(<span class="st">&quot;Code Executed&quot;</span>)</a>
+<a class="sourceLine" id="cb7-11" data-line-number="11"><span class="cf">break</span></a>
+<a class="sourceLine" id="cb7-12" data-line-number="12">}</a>
+<a class="sourceLine" id="cb7-13" data-line-number="13">}</a></code></pre></div>
 <!-- rnb-source-end -->
 <!-- rnb-output-begin eyJkYXRhIjoiWzFdIFwiQ29kZSBFeGVjdXRlZFwiXG4ifQ== -->
 <pre><code>[1] &quot;Code Executed&quot;</code></pre>
@@ -3046,19 +3025,19 @@ div.tocify {
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubXlUZXJtIDwtIHJzdHVkaW9hcGk6OnRlcm1pbmFsQ3JlYXRlKHNob3cgPSBGQUxTRSlcbnJzdHVkaW9hcGk6OnRlcm1pbmFsU2VuZChcbm15VGVybSxcblwieHRyYWN0IC1pbnB1dCAvVXNlcnMvc2VyZGFyYmFsY2lvbGQvUmVwVGVtcGxhdGVzL3B1Ym1lZC9kYXRhL1BhdGhvbG9neVR1cmtleS54bWwgLXBhdHRlcm4gS2V5d29yZCAtZWxlbWVudCBLZXl3b3JkIHwgc29ydC11bmlxLWNvdW50LXJhbmsgPiAvVXNlcnMvc2VyZGFyYmFsY2lvbGQvUmVwVGVtcGxhdGVzL3B1Ym1lZC9kYXRhL2F1dGhvcmtleXdvcmRzLmNzdiBcXG5cIlxuKVxuU3lzLnNsZWVwKDEpXG5yZXBlYXQge1xuU3lzLnNsZWVwKDAuMSlcbmlmIChyc3R1ZGlvYXBpOjp0ZXJtaW5hbEJ1c3kobXlUZXJtKSA9PSBGQUxTRSkge1xucHJpbnQoXCJDb2RlIEV4ZWN1dGVkXCIpXG5icmVha1xufVxufVxuYGBgIn0= -->
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1">myTerm &lt;-<span class="st"> </span>rstudioapi<span class="op">::</span><span class="kw">terminalCreate</span>(<span class="dt">show =</span> <span class="ot">FALSE</span>)</a>
-<a class="sourceLine" id="cb14-2" data-line-number="2">rstudioapi<span class="op">::</span><span class="kw">terminalSend</span>(</a>
-<a class="sourceLine" id="cb14-3" data-line-number="3">myTerm,</a>
-<a class="sourceLine" id="cb14-4" data-line-number="4"><span class="st">&quot;xtract -input /Users/serdarbalciold/RepTemplates/pubmed/data/PathologyTurkey.xml -pattern Keyword -element Keyword | sort-uniq-count-rank &gt; /Users/serdarbalciold/RepTemplates/pubmed/data/authorkeywords.csv </span><span class="ch">\n</span><span class="st">&quot;</span></a>
-<a class="sourceLine" id="cb14-5" data-line-number="5">)</a>
-<a class="sourceLine" id="cb14-6" data-line-number="6"><span class="kw">Sys.sleep</span>(<span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb14-7" data-line-number="7"><span class="cf">repeat</span> {</a>
-<a class="sourceLine" id="cb14-8" data-line-number="8"><span class="kw">Sys.sleep</span>(<span class="fl">0.1</span>)</a>
-<a class="sourceLine" id="cb14-9" data-line-number="9"><span class="cf">if</span> (rstudioapi<span class="op">::</span><span class="kw">terminalBusy</span>(myTerm) <span class="op">==</span><span class="st"> </span><span class="ot">FALSE</span>) {</a>
-<a class="sourceLine" id="cb14-10" data-line-number="10"><span class="kw">print</span>(<span class="st">&quot;Code Executed&quot;</span>)</a>
-<a class="sourceLine" id="cb14-11" data-line-number="11"><span class="cf">break</span></a>
-<a class="sourceLine" id="cb14-12" data-line-number="12">}</a>
-<a class="sourceLine" id="cb14-13" data-line-number="13">}</a></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1">myTerm &lt;-<span class="st"> </span>rstudioapi<span class="op">::</span><span class="kw">terminalCreate</span>(<span class="dt">show =</span> <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb9-2" data-line-number="2">rstudioapi<span class="op">::</span><span class="kw">terminalSend</span>(</a>
+<a class="sourceLine" id="cb9-3" data-line-number="3">myTerm,</a>
+<a class="sourceLine" id="cb9-4" data-line-number="4"><span class="st">&quot;xtract -input /Users/serdarbalciold/RepTemplates/pubmed/data/PathologyTurkey.xml -pattern Keyword -element Keyword | sort-uniq-count-rank &gt; /Users/serdarbalciold/RepTemplates/pubmed/data/authorkeywords.csv </span><span class="ch">\n</span><span class="st">&quot;</span></a>
+<a class="sourceLine" id="cb9-5" data-line-number="5">)</a>
+<a class="sourceLine" id="cb9-6" data-line-number="6"><span class="kw">Sys.sleep</span>(<span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb9-7" data-line-number="7"><span class="cf">repeat</span> {</a>
+<a class="sourceLine" id="cb9-8" data-line-number="8"><span class="kw">Sys.sleep</span>(<span class="fl">0.1</span>)</a>
+<a class="sourceLine" id="cb9-9" data-line-number="9"><span class="cf">if</span> (rstudioapi<span class="op">::</span><span class="kw">terminalBusy</span>(myTerm) <span class="op">==</span><span class="st"> </span><span class="ot">FALSE</span>) {</a>
+<a class="sourceLine" id="cb9-10" data-line-number="10"><span class="kw">print</span>(<span class="st">&quot;Code Executed&quot;</span>)</a>
+<a class="sourceLine" id="cb9-11" data-line-number="11"><span class="cf">break</span></a>
+<a class="sourceLine" id="cb9-12" data-line-number="12">}</a>
+<a class="sourceLine" id="cb9-13" data-line-number="13">}</a></code></pre></div>
 <!-- rnb-source-end -->
 <p>[1] “Code Executed”</p>
 <!-- rnb-chunk-end -->
@@ -3066,17 +3045,13 @@ div.tocify {
 <p>The retrieved information was compiled in a table.</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShyZWFkcilcbmF1dGhvcmtleXdvcmRzIDwtIHJlYWRfdGFibGUyKFwiL1VzZXJzL3NlcmRhcmJhbGNpb2xkL1JlcFRlbXBsYXRlcy9wdWJtZWQvZGF0YS9hdXRob3JrZXl3b3Jkcy5jc3ZcIixcbmNvbF9uYW1lcyA9IGMoXCJmcmVxdWVuY3lcIiwgXCJhdXRob3Iga2V5IHdvcmRcIikpICU+JVxuc2VsZWN0KCdhdXRob3Iga2V5IHdvcmQnLCAnZnJlcXVlbmN5JykgJT4lXG5oZWFkKG4gPSAyMClcblBhdGhvbG9neVR1cmtleU1lU0ggPC0gcmVhZF90YWJsZTIoXCIvVXNlcnMvc2VyZGFyYmFsY2lvbGQvUmVwVGVtcGxhdGVzL3B1Ym1lZC9kYXRhL1BhdGhvbG9neVR1cmtleU1lU0guY3N2XCIsXG5jb2xfbmFtZXMgPSBjKFwiZnJlcXVlbmN5XCIsIFwiTWVTSCB0ZXJtXCIpKSAlPiVcbnNlbGVjdCgnTWVTSCB0ZXJtJywgJ2ZyZXF1ZW5jeScpICU+JVxuaGVhZChuID0gMjApXG5gYGAifQ== -->
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1"><span class="kw">library</span>(readr)</a>
-<a class="sourceLine" id="cb15-2" data-line-number="2">authorkeywords &lt;-<span class="st"> </span><span class="kw">read_table2</span>(<span class="st">&quot;/Users/serdarbalciold/RepTemplates/pubmed/data/authorkeywords.csv&quot;</span>,</a>
-<a class="sourceLine" id="cb15-3" data-line-number="3"><span class="dt">col_names =</span> <span class="kw">c</span>(<span class="st">&quot;frequency&quot;</span>, <span class="st">&quot;author key word&quot;</span>)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb15-4" data-line-number="4"><span class="kw">select</span>(<span class="st">'author key word'</span>, <span class="st">'frequency'</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb15-5" data-line-number="5"><span class="kw">head</span>(<span class="dt">n =</span> <span class="dv">20</span>)</a>
-<a class="sourceLine" id="cb15-6" data-line-number="6">PathologyTurkeyMeSH &lt;-<span class="st"> </span><span class="kw">read_table2</span>(<span class="st">&quot;/Users/serdarbalciold/RepTemplates/pubmed/data/PathologyTurkeyMeSH.csv&quot;</span>,</a>
-<a class="sourceLine" id="cb15-7" data-line-number="7"><span class="dt">col_names =</span> <span class="kw">c</span>(<span class="st">&quot;frequency&quot;</span>, <span class="st">&quot;MeSH term&quot;</span>)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb15-8" data-line-number="8"><span class="kw">select</span>(<span class="st">'MeSH term'</span>, <span class="st">'frequency'</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb15-9" data-line-number="9"><span class="kw">head</span>(<span class="dt">n =</span> <span class="dv">20</span>)</a></code></pre></div>
-<!-- rnb-source-end -->
+<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInRibF9kZiIsInRibCIsImRhdGEuZnJhbWUiXSwibmNvbCI6MiwibnJvdyI6MjB9LCJyZGYiOiJINHNJQUFBQUFBQUFBMzFTUzA3RE1CQTFTVVBhQ0NnUzNjTUYyZ1dJQS9CWmdBQlJGWkRZRG9tYldDUjJzQjNhN2pnd1o2Qk1VZzh0a2NEU3M4Y3o0emMvVHk2Zmo2UG5pREhtTVQvQTNVZXg0K0cyeFRxc1Y1OXp4dnlEeG9HeFhjUUFjWWpZUit3aGRqWlFQK2c2YlArRG9JWDlobmNWY0hCZEZKVlVtVEJXeFJrdjhOUUxaK3VOdFVxbE1zS1E0cXhVcGQxUWJKOXJEc2E2Mjk1VnpWS0N6VlN1MGgrVys3bEl3SXAzN2hUZGk0WDk1VENHVXVRNS9NUU5IN09GVmlLaElEY2lrWnlNMFIyM0dCTFdTWFR2S292OFNycDdjUCsrNXZMTDB4UHl3M0x3b2FVOCtrKzUxV0NVVkttR01xTVh3Zm5GN2ZEWVhUcFRJY25mbndCVjJuMTRxNkJRbFdtTkw0aHpNTWExbUpRUlZnK2pxWWFDdDkwbDZzamRvM1pNTlgrcnVJd3BvVDVVMkZGOTlNb1hSek9sa3haSlQ2dlppSWpxTCtOOTRMWmNMai94K0dvNWh6Zy83QlM2ZXZVdkMxdXBidW1Xb2wvSm1qb1p4bGtsWDRlbmRUbU5lYlgra25lZFBOaVF2VlVxL3RLRkNHbThYS2JySmdjNXZQQ2Nzc1dpREtSa0MyZWdwWkFwZlRjc3ZLbDdWR29oYVRRUmFzM0lLZ3ZFRXNVcUowM1RFZmIxRGVvNHoyaUpBd0FBIn0= -->
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["frequency"],"name":[1],"type":["int"],"align":["right"]},{"label":["author key word"],"name":[2],"type":["chr"],"align":["left"]}],"data":[{"1":"31","2":"Immunohistochemistry"},{"1":"16","2":"Prognosis"},{"1":"14","2":"Apoptosis"},{"1":"12","2":"Breast"},{"1":"12","2":"Histopathology"},{"1":"12","2":"Oxidative"},{"1":"9","2":"Cytology"},{"1":"8","2":"Papillary"},{"1":"8","2":"Thyroid"},{"1":"6","2":"Kidney"},{"1":"6","2":"Metastasis"},{"1":"6","2":"Mutation"},{"1":"6","2":"Ovary"},{"1":"6","2":"p53"},{"1":"6","2":"Prostate"},{"1":"6","2":"Ultrasonography"},{"1":"5","2":"BCL-2"},{"1":"5","2":"fine"},{"1":"5","2":"Rat"},{"1":"5","2":"Squamous"}],"options":{"columns":{"min":{},"max":[10],"total":[2]},"rows":{"min":[10],"max":[10],"total":[20]},"pages":{}}}
+  </script>
+</div>
+<!-- rnb-frame-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 </div>
@@ -3085,207 +3060,35 @@ div.tocify {
 <p><em><strong>Most common 20 author supplied keywords are given below.</strong></em></p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucGFuZGVyOjpwYW5kZXIoYXV0aG9ya2V5d29yZHMsIGp1c3RpZnkgPSBcImxlZnRcIiwgY2FwdGlvbiA9IFwiTW9zdCBjb21tb24gMjAgYXV0aG9yIHN1cHBsaWVkIGtleXdvcmRzXCIpXG5gYGAifQ== -->
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" data-line-number="1">pander<span class="op">::</span><span class="kw">pander</span>(authorkeywords, <span class="dt">justify =</span> <span class="st">&quot;left&quot;</span>, <span class="dt">caption =</span> <span class="st">&quot;Most common 20 author supplied keywords&quot;</span>)</a></code></pre></div>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucHJpbnQoYXV0aG9ya2V5d29yZHMpXG5gYGAifQ== -->
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="kw">print</span>(authorkeywords)</a></code></pre></div>
 <!-- rnb-source-end -->
-<table style="width:49%;">
-<caption>Most common 20 author supplied keywords</caption>
-<colgroup>
-<col width="31%"></col>
-<col width="16%"></col>
-</colgroup>
-<thead>
-<tr class="header">
-<th align="left">author key word</th>
-<th align="left">frequency</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">Immunohistochemistry</td>
-<td align="left">31</td>
-</tr>
-<tr class="even">
-<td align="left">Prognosis</td>
-<td align="left">16</td>
-</tr>
-<tr class="odd">
-<td align="left">Apoptosis</td>
-<td align="left">14</td>
-</tr>
-<tr class="even">
-<td align="left">Breast</td>
-<td align="left">12</td>
-</tr>
-<tr class="odd">
-<td align="left">Histopathology</td>
-<td align="left">12</td>
-</tr>
-<tr class="even">
-<td align="left">Oxidative</td>
-<td align="left">12</td>
-</tr>
-<tr class="odd">
-<td align="left">Cytology</td>
-<td align="left">9</td>
-</tr>
-<tr class="even">
-<td align="left">Papillary</td>
-<td align="left">8</td>
-</tr>
-<tr class="odd">
-<td align="left">Thyroid</td>
-<td align="left">8</td>
-</tr>
-<tr class="even">
-<td align="left">Kidney</td>
-<td align="left">6</td>
-</tr>
-<tr class="odd">
-<td align="left">Metastasis</td>
-<td align="left">6</td>
-</tr>
-<tr class="even">
-<td align="left">Mutation</td>
-<td align="left">6</td>
-</tr>
-<tr class="odd">
-<td align="left">Ovary</td>
-<td align="left">6</td>
-</tr>
-<tr class="even">
-<td align="left">p53</td>
-<td align="left">6</td>
-</tr>
-<tr class="odd">
-<td align="left">Prostate</td>
-<td align="left">6</td>
-</tr>
-<tr class="even">
-<td align="left">Ultrasonography</td>
-<td align="left">6</td>
-</tr>
-<tr class="odd">
-<td align="left">BCL-2</td>
-<td align="left">5</td>
-</tr>
-<tr class="even">
-<td align="left">fine</td>
-<td align="left">5</td>
-</tr>
-<tr class="odd">
-<td align="left">Rat</td>
-<td align="left">5</td>
-</tr>
-<tr class="even">
-<td align="left">Squamous</td>
-<td align="left">5</td>
-</tr>
-</tbody>
-</table>
+<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInRibF9kZiIsInRibCIsImRhdGEuZnJhbWUiXSwibmNvbCI6MiwibnJvdyI6MjB9LCJyZGYiOiJINHNJQUFBQUFBQUFBMzFTMjA0Q01SQ3R1eXlYallBSnZPc1B3SVBHRHhCODBLalJlRWw0clV0aEc3dnQwZ3V3YjM2dzN5QU9hMGRnSDJ3eTdmVDBkR1pPcDgvWGsvTjRFaE5DQWhKR01JZmcxZ0tZamtpTnRMYnJtcEN3VnhJSU9RSHIrNFArYlpZNXFWSnVyRXBTbHNHcUMzL1dldEpxTHBYaEJvR3JYT1YyRDZpUE5LUEcrbDNuWmhzbHB6WlZRczMvb2p5dStaUmF2bVFlYUk0TGUwQjRvamtYZ3Y3bGJieW1oVlo4aWtudStGUXlQSXdmbUlXVWRGZEU4OEZaaUsrazMwZVB5MTJzTUwrOFFCN0lnWXNXNitpK0NhdXBVVkxOTmMxVHZCR054dmVEYzcrcHpiaEVmdmhNVVduelplRm9wcHdCdjEyK0ppR24vbVU3WU1kN1Z2SzkxZit4Nk5BTzJoY2xnaHJqRXlBWXc2dlM0VXpUakZYcEVqQ2tCeWlYT21pTVB2dGd4ZGxLYVh6ZDFreXpoV015S1NwQldscXRoaGhvS3pMNGhHbXoyWHpCOGwwaE4rQmZRQWVBR3ZTOG52MVNqM1FGNkRxNURUMGRKS21USDRPTHluR3RiQzlJTExIZjBmWitmODhQZnNzSU4vNStIYjhNay9OZDR5SkIzNW5BU2pVelRsajhQQjFRV1lvYzVwcEw3RzhNcUJsYVpTbGVpeE1sRUNubGsrOGZIdlFUekhZREFBQT0ifQ== -->
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["author key word"],"name":[1],"type":["chr"],"align":["left"]},{"label":["frequency"],"name":[2],"type":["int"],"align":["right"]}],"data":[{"1":"Immunohistochemistry","2":"31"},{"1":"Prognosis","2":"16"},{"1":"Apoptosis","2":"14"},{"1":"Breast","2":"12"},{"1":"Histopathology","2":"12"},{"1":"Oxidative","2":"12"},{"1":"Cytology","2":"9"},{"1":"Papillary","2":"8"},{"1":"Thyroid","2":"8"},{"1":"Kidney","2":"6"},{"1":"Metastasis","2":"6"},{"1":"Mutation","2":"6"},{"1":"Ovary","2":"6"},{"1":"p53","2":"6"},{"1":"Prostate","2":"6"},{"1":"Ultrasonography","2":"6"},{"1":"BCL-2","2":"5"},{"1":"fine","2":"5"},{"1":"Rat","2":"5"},{"1":"Squamous","2":"5"}],"options":{"columns":{"min":{},"max":[10],"total":[2]},"rows":{"min":[10],"max":[10],"total":[20]},"pages":{}}}
+  </script>
+</div>
+<!-- rnb-frame-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBwYW5kZXI6OnBhbmRlcihhdXRob3JrZXl3b3JkcywganVzdGlmeSA9IFwibGVmdFwiLCBjYXB0aW9uID0gXCJNb3N0IGNvbW1vbiAyMCBhdXRob3Igc3VwcGxpZWQga2V5d29yZHNcIilcbmBgYCJ9 -->
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1"><span class="co"># pander::pander(authorkeywords, justify = &quot;left&quot;, caption = &quot;Most common 20 author supplied keywords&quot;)</span></a></code></pre></div>
+<!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p><em><strong>Most common 20 MeSH terms are given below</strong></em></p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucGFuZGVyOjpwYW5kZXIoUGF0aG9sb2d5VHVya2V5TWVTSCwganVzdGlmeSA9IFwibGVmdFwiLCBjYXB0aW9uID0gXCJNb3N0IGNvbW1vbiAyMCBNZVNIIHRlcm1zXCIpXG5gYGAifQ== -->
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" data-line-number="1">pander<span class="op">::</span><span class="kw">pander</span>(PathologyTurkeyMeSH, <span class="dt">justify =</span> <span class="st">&quot;left&quot;</span>, <span class="dt">caption =</span> <span class="st">&quot;Most common 20 MeSH terms&quot;</span>)</a></code></pre></div>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBwYW5kZXI6OnBhbmRlcihQYXRob2xvZ3lUdXJrZXlNZVNILCBqdXN0aWZ5ID0gXCJsZWZ0XCIsIGNhcHRpb24gPSBcIk1vc3QgY29tbW9uIDIwIE1lU0ggdGVybXNcIilcbnByaW50KFBhdGhvbG9neVR1cmtleU1lU0gpXG5gYGAifQ== -->
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1"><span class="co"># pander::pander(PathologyTurkeyMeSH, justify = &quot;left&quot;, caption = &quot;Most common 20 MeSH terms&quot;)</span></a>
+<a class="sourceLine" id="cb12-2" data-line-number="2"><span class="kw">print</span>(PathologyTurkeyMeSH)</a></code></pre></div>
 <!-- rnb-source-end -->
-<table style="width:40%;">
-<caption>Most common 20 MeSH terms</caption>
-<colgroup>
-<col width="23%"></col>
-<col width="16%"></col>
-</colgroup>
-<thead>
-<tr class="header">
-<th align="left">MeSH term</th>
-<th align="left">frequency</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">Biomarkers,</td>
-<td align="left">120</td>
-</tr>
-<tr class="even">
-<td align="left">Adenocarcinoma</td>
-<td align="left">86</td>
-</tr>
-<tr class="odd">
-<td align="left">Breast</td>
-<td align="left">75</td>
-</tr>
-<tr class="even">
-<td align="left">Thyroid</td>
-<td align="left">65</td>
-</tr>
-<tr class="odd">
-<td align="left">Carcinoma</td>
-<td align="left">55</td>
-</tr>
-<tr class="even">
-<td align="left">Skin</td>
-<td align="left">41</td>
-</tr>
-<tr class="odd">
-<td align="left">Liver</td>
-<td align="left">39</td>
-</tr>
-<tr class="even">
-<td align="left">Antioxidants</td>
-<td align="left">38</td>
-</tr>
-<tr class="odd">
-<td align="left">Tumor</td>
-<td align="left">38</td>
-</tr>
-<tr class="even">
-<td align="left">Carcinoma,</td>
-<td align="left">35</td>
-</tr>
-<tr class="odd">
-<td align="left">Kidney</td>
-<td align="left">35</td>
-</tr>
-<tr class="even">
-<td align="left">Lung</td>
-<td align="left">35</td>
-</tr>
-<tr class="odd">
-<td align="left">Urinary</td>
-<td align="left">34</td>
-</tr>
-<tr class="even">
-<td align="left">Stomach</td>
-<td align="left">32</td>
-</tr>
-<tr class="odd">
-<td align="left">Carcinoma,</td>
-<td align="left">31</td>
-</tr>
-<tr class="even">
-<td align="left">Apoptosis</td>
-<td align="left">30</td>
-</tr>
-<tr class="odd">
-<td align="left">Biopsy,</td>
-<td align="left">26</td>
-</tr>
-<tr class="even">
-<td align="left">Brain</td>
-<td align="left">26</td>
-</tr>
-<tr class="odd">
-<td align="left">Endometrial</td>
-<td align="left">26</td>
-</tr>
-<tr class="even">
-<td align="left">Ovarian</td>
-<td align="left">26</td>
-</tr>
-</tbody>
-</table>
+<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInRibF9kZiIsInRibCIsImRhdGEuZnJhbWUiXSwibmNvbCI6MiwibnJvdyI6MjB9LCJyZGYiOiJINHNJQUFBQUFBQUFBM1ZTMzB2RE1CQ08zUy9XT1JYMHlRY2RDb3JnQnZyaTg2YUNzSW5ncHZnYTI4eUZ0WmVacE5POStRZjdOMnhldTF6UmdvVXZ1WHozNVhxWHU4ZWJsMHYveFdlTWVheFV3YldFWnRuRFpZT1ZXVDNkUHhrcjdXWUN4bllRZTg3UjZFa1ZjejBWMnB3N2Fxc2JDbEFCMTRFRTlEbTIydE9DRyt0T3RkRmtvWlVNM2JGK1hWQ1hoMU1KenE0TTVGeG9kOWpzZ3BYcVU0WWNyQ0hCS0lrVkNmdzhGT1ZUN2NzUXhJSWlEeEo0b3l5ZXRBU3V5VlViV3J3V1RQNk5WTy9PMU13cUkrblBOYXgrWmhia3IvUTB6OU51M0VLb1ltRzE1QkhKSCtZY2o0Qm1NM3REeHZCZDJUT2lqK2dpcmhCbmlGUEVpY1B4THh3aFdvaER4QUZpL3kvK05LMFNSTndZMXpBaS9aQmIzaGxySG91aUhKQWp1VWNsMzR2aFhjc0tIUk14MXVJOUVSQXNDdGZyV24xMEtFUmFudmVGeTJxMStzWnRXUkRYOEIybEFwUjY2VlJWQzBsdTZBS3huVUFhT213SGt3U203WXVDdTh6VG5tQnhHYmYrbXM3ZSsyVjc2elJLSzNlL1NpTWk0RTJDb0llSStLdkllNmFGU2FKODFyYXd5cXpJemd4bmg4YlpSOVowckxKNXEvMUFSY1JrNWJQbEQzTEF1T0ZtQXdBQSJ9 -->
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["MeSH term"],"name":[1],"type":["chr"],"align":["left"]},{"label":["frequency"],"name":[2],"type":["int"],"align":["right"]}],"data":[{"1":"Biomarkers,","2":"120"},{"1":"Adenocarcinoma","2":"86"},{"1":"Breast","2":"75"},{"1":"Thyroid","2":"65"},{"1":"Carcinoma","2":"55"},{"1":"Skin","2":"41"},{"1":"Liver","2":"39"},{"1":"Antioxidants","2":"38"},{"1":"Tumor","2":"38"},{"1":"Carcinoma,","2":"35"},{"1":"Kidney","2":"35"},{"1":"Lung","2":"35"},{"1":"Urinary","2":"34"},{"1":"Stomach","2":"32"},{"1":"Carcinoma,","2":"31"},{"1":"Apoptosis","2":"30"},{"1":"Biopsy,","2":"26"},{"1":"Brain","2":"26"},{"1":"Endometrial","2":"26"},{"1":"Ovarian","2":"26"}],"options":{"columns":{"min":{},"max":[10],"total":[2]},"rows":{"min":[10],"max":[10],"total":[20]},"pages":{}}}
+  </script>
+</div>
+<!-- rnb-frame-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 </div>
@@ -3298,7 +3101,7 @@ div.tocify {
 <div id="feedback" class="section level1">
 <h1><span class="header-section-number">6</span> Feedback</h1>
 <p><a href="https://github.com/sbalci">Serdar Balcı, MD, Pathologist</a> would like to hear your feedback: <a href="https://goo.gl/forms/YjGZ5DHgtPlR1RnB3" class="uri">https://goo.gl/forms/YjGZ5DHgtPlR1RnB3</a></p>
-<p>This document will be continiously updated and the last update was on 2018-07-01 11:59:54.</p>
+<p>This document will be continiously updated and the last update was on 2018-07-01 12:09:07.</p>
 <hr />
 </div>
 <div id="back-to-main-menu" class="section level1">
@@ -3307,7 +3110,7 @@ div.tocify {
 <!-- rnb-text-end -->
 </div>
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiQmlibGlvZ3JhcGhpYyBTdHVkaWVzIgphdXRob3I6ICJTZXJkYXIgQmFsY2ksIE1ELCBQYXRob2xvZ2lzdCIKZGF0ZTogJ2ByIGZvcm1hdChTeXMudGltZSgpKWAnCm91dHB1dDogCiAgaHRtbF9ub3RlYm9vazogCiAgICBjb2RlX2ZvbGRpbmc6IG5vbmUKICAgIGZpZ19jYXB0aW9uOiB5ZXMKICAgIGhpZ2hsaWdodDoga2F0ZQogICAgbnVtYmVyX3NlY3Rpb25zOiB5ZXMKICAgIHRoZW1lOiBjZXJ1bGVhbgogICAgdG9jOiB5ZXMKICAgIHRvY19mbG9hdDogeWVzCi0tLQoKKioiTWVTSCBUZXJtcyBhbmQgQXV0aG9yIEtleSBXb3JkcyBJbiBQYXRob2xvZ3kgQXJ0aWNsZXMgRnJvbSBUdXJrZXkiKioKCgoKYGBge3J9CmtuaXRyOjpvcHRzX2NodW5rJHNldChtZXNzYWdlID0gRkFMU0UsIHdhcm5pbmc9RkFMU0UsIHRpZHkgPSBUUlVFLCBlcnJvciA9IFRSVUUpCmBgYAoKYGBge3J9CmxpYnJhcnkocm1hcmtkb3duKQpgYGAKCgojIEJhY2tncm91bmQKClB1Yk1lZCBjb2xsZWN0aW9uIGZyb20gW05hdGlvbmFsIExpYnJhcnkgb2YgTWVkaWNpbmVdKGh0dHBzOi8vd3d3Lm5jYmkubmxtLm5paC5nb3YvcHVibWVkLyksIGhhcyB0aGUgbW9zdCBjb21wcmVoZW5zaXZlIGluZm9ybWF0aW9uIGFib3V0IHBlZXIgcmV2aWV3ZWQgYXJ0aWNsZXMgaW4gbWVkaWNpbmUuCgpbTWVTSCBUZXJtc10oaHR0cHM6Ly93d3cubmxtLm5paC5nb3YvcHVicy9mYWN0c2hlZXRzL21lc2guaHRtbCkgaXMgYSBjb250cm9sbGVkIHZvY2FidWxhcnkgdGhhdCBpcyB1c2VkIHRvIGxhYmVsIFB1Yk1lZCBhcnRpY2xlcyBhY2NvcmRpbmcgdG8gdGhlaXIgY29udGVudC4gSXQgaXMgZG9uZSBieSBleHBlcnRzIGluIE5hdGlvbmFsIExpYnJhcnkgb2YgTWVkaWNpbmUuIEtleXdvcmRzIGFyZSBsYWJsZXMgdGhhdCBhcmUgZ2l2ZW4gYnkgYXV0aG9ycyBvZiB0aGUgYXJ0aWNsZS4gQm90aCBhcmUgaW5jbHVkZWQgaW4gYSBQdWJNZWQgcmVjb3JkIG9mIGFuIGFydGljbGUuCgpbRURpcmVjdF0oaHR0cHM6Ly9kYXRhZ3VpZGUubmxtLm5paC5nb3YvZWRpcmVjdC9pbnN0YWxsLmh0bWwpIGlzIGEgdmFsdWFibGUgdG9vbCB0byBpZGVudGlmeSB2YXJpb3VzIGZlYXR1cmVzIG9mIHB1Ymxpc2hlZCBhcnRpY2xlcyB0aGF0IGFyZSBpbmRleGVkIGluIFB1Yk1lZC4KCiMgQWltCgpJbiB0aGlzIGFuYWx5c2lzIHdlIGFpbWVkIHRvIGlkZW50aWZ5IHRoZSBtb3N0IGNvbW1vbiB0b3BpY3MgaW52ZXN0aWdhdGVkIGluIFR1cmtleSBhbmQgcHVibGlzaGVkIGluIHBhdGhvbG9neSBqb3VybmFscy4gVGhpcyBtYXkgcmV2ZWFsIHRoZSBjb21tb24gcmVzZWFyY2ggdG9waWNzIFR1cmtpc2ggcGF0aG9sb2dpc3RzIGFyZSBpbnRlcmVzdGVkLiBXZSBleHRyYWN0ZWQgbW9zdCBjb21tb24gTWVTSCB0ZXJtcyBhbmQga2V5d29yZHMgZnJvbSBQdWJNZWQgYXJ0aWNsZXMgdXNpbmcgW0VEaXJlY3RdKGh0dHBzOi8vZGF0YWd1aWRlLm5sbS5uaWguZ292L2VkaXJlY3Qvb3ZlcnZpZXcuaHRtbCk6CltNZVNIIFRlcm1zIFBhdGhvbG9neSBBcnRpY2xlcyBGcm9tIFR1cmtleV0oaHR0cHM6Ly9zYmFsY2kuZ2l0aHViLmlvL3B1Ym1lZC9NZVNIX1Rlcm1zX1BhdGhvbG9neV9BcnRpY2xlc19Gcm9tX1R1cmtleS5odG1sKQoKCiMgTWF0ZXJpYWxzIGFuZCBNZXRob2RzCgoqKk1ldGhvZHM6KioKClBhY2thZ2VzIHVzZWQgZm9yIGFuYWx5c2lzIGFyZSBnaXZlbi4gYFRpZHl2ZXJzZWAgaXMgdXNlZCBmb3IgZGF0YSBtYW5pcHVsYXRpb24sIGFuZCBbcnN0dWRpb2FwaV0oaHR0cHM6Ly9naXRodWIuY29tL3JzdHVkaW8vcnN0dWRpby9pc3N1ZXMvMjE5MykgdG8gcnVuIGUtdXRpbGl0aWVzIGNvbW1hbmRzIGZyb20gUlN0dWRpby4KCgpgYGB7ciBsb2FkIC1pZiBub3QgcHJlc2VudCBpbnN0YWxsLSByZXF1aXJlZCBwYWNrYWdlc30KdXNlUGFja2FnZSA8LSBmdW5jdGlvbihwKQp7CmlmICghaXMuZWxlbWVudChwLCBpbnN0YWxsZWQucGFja2FnZXMoKVssIDFdKSkKaW5zdGFsbC5wYWNrYWdlcyhwLCBkZXAgPSBUUlVFKQpyZXF1aXJlKHAsIGNoYXJhY3Rlci5vbmx5ID0gVFJVRSkKfQoKdXNlUGFja2FnZSgidGlkeXZlcnNlIikKdXNlUGFja2FnZSgicnN0dWRpb2FwaSIpCnVzZVBhY2thZ2UoInBhbmRlciIpCmBgYAoKClBhdGhvbG9neSBKb3VybmFsIElTU04gTGlzdCB3YXMgcmV0cmlldmVkIGZyb20gW0luIENpdGVzIENsYXJpdmF0ZV0oaHR0cHM6Ly9qY3IuaW5jaXRlcy50aG9tc29ucmV1dGVycy5jb20vKSwgYW5kIEpvdXJuYWwgRGF0YSBGaWx0ZXJlZCBhcyBmb2xsb3dzOiAKCmBKQ1IgWWVhcjogMjAxNiBTZWxlY3RlZCBFZGl0aW9uczogU0NJRSxTU0NJIFNlbGVjdGVkIENhdGVnb3JpZXM6ICdQQVRIT0xPR1knIFNlbGVjdGVkIENhdGVnb3J5IFNjaGVtZTogV29TYAoKCmBgYHtyIEdldCBJU1NOIExpc3QgZnJvbSBkYXRhIGRvd25sb2FkZWQgZnJvbSBXb1N9CiMgIyBHZXQgSVNTTiBMaXN0IGZyb20gZGF0YSBkb3dubG9hZGVkIGZyb20gV29TCiMgSVNTTkxpc3QgPC0gSm91cm5hbEhvbWVHcmlkIDwtIHJlYWRfY3N2KCIvVXNlcnMvc2VyZGFyYmFsY2lvbGQvUmVwVGVtcGxhdGVzL3B1Ym1lZC9kYXRhL0pvdXJuYWxIb21lR3JpZC5jc3YiLCBza2lwID0gMSkgJT4lCiMgc2VsZWN0KElTU04pICU+JQojIGZpbHRlcighaXMubmEoSVNTTikpICU+JQojIHQoKSAlPiUKIyBwYXN0ZSgiT1IgIiwgY29sbGFwc2UgPSAiIikgIyBhZGQgT1IgYmV0d2VlbiBJU1NOIExpc3QKIyAKIyBJU1NOTGlzdCA8LSBnc3ViKCIgT1IgJCIsICIiICwgSVNTTkxpc3QpICMgdG8gcmVtb3ZlIGxhc3QgT1IKYGBgCgoKRGF0YSBpcyByZXRyaWV2ZWQgZnJvbSBQdWJNZWQgdmlhIFtlLVV0aWxpdGllc10oaHR0cHM6Ly9kYXRhZ3VpZGUubmxtLm5paC5nb3YvKS4KClRoZSBzZWFyY2ggZm9ybXVsYSBmb3IgUHViTWVkIGlzIGdlbmVyYXRlZCBhcyAiSVNTTiBMaXN0IEFORCBDb3VudHJ5W0FmZmlsaWF0aW9uXSIgYXMgZGVzY3JpYmVkIGluIFthZHZhbmNlZCBzZWFyY2ggb2YgUHViTWVkXShodHRwczovL3d3dy5uY2JpLm5sbS5uaWguZ292L3B1Ym1lZC9hZHZhbmNlZCkuCgpgYGB7ciBHZW5lcmF0ZSBTZWFyY2ggRm9ybXVsYSBGb3IgUGF0aG9sb2d5IEpvdXJuYWxzIEFORCBDb3VudHJpZXN9CiMgIyBHZW5lcmF0ZSBTZWFyY2ggRm9ybXVsYSBGb3IgUGF0aG9sb2d5IEpvdXJuYWxzIEFORCBDb3VudHJpZXMKIyBzZWFyY2hmb3JtdWxhIDwtCiMgcGFzdGUoIiciLCBJU1NOTGlzdCwgIiciLCAiIEFORCAiLCAiVHVya2V5W0FmZmlsaWF0aW9uXSIpCiMgd3JpdGUoc2VhcmNoZm9ybXVsYSwgIi9Vc2Vycy9zZXJkYXJiYWxjaW9sZC9SZXBUZW1wbGF0ZXMvcHVibWVkL2RhdGEvc2VhcmNoZm9ybXVsYS50eHQiKQpgYGAKCkFydGljbGVzIGFyZSBkb3dubG9hZGVkIGFzIGB4bWxgLgoKYGBge3IgU2VhcmNoIFB1Yk1lZCwgd3JpdGUgZGF0YSBhcyB4bWx9CiMgbXlUZXJtIDwtIHJzdHVkaW9hcGk6OnRlcm1pbmFsQ3JlYXRlKHNob3cgPSBGQUxTRSkKIyByc3R1ZGlvYXBpOjp0ZXJtaW5hbFNlbmQoCiMgICAgIG15VGVybSwKIyAgICAgImVzZWFyY2ggLWRiIHB1Ym1lZCAtcXVlcnkgXCIkKGNhdCAvVXNlcnMvc2VyZGFyYmFsY2lvbGQvUmVwVGVtcGxhdGVzL3B1Ym1lZC9kYXRhL3NlYXJjaGZvcm11bGEudHh0KVwiIC1kYXRldHlwZSBQREFUIC1taW5kYXRlIDE5MDAgLW1heGRhdGUgMzAwMCB8IGVmZXRjaCAtZm9ybWF0IHhtbCA+IC9Vc2Vycy9zZXJkYXJiYWxjaW9sZC9SZXBUZW1wbGF0ZXMvcHVibWVkL2RhdGEvUGF0aG9sb2d5VHVya2V5LnhtbCBcbiIKIyApCiMgU3lzLnNsZWVwKDEpCiMgcmVwZWF0IHsKIyAgICAgU3lzLnNsZWVwKDAuMSkKIyAgICAgaWYgKHJzdHVkaW9hcGk6OnRlcm1pbmFsQnVzeShteVRlcm0pID09IEZBTFNFKSB7CiMgICAgICAgICBwcmludCgiQ29kZSBFeGVjdXRlZCIpCiMgICAgICAgICBicmVhawojICAgICB9CiMgfQpgYGAKCgpNZVNIIHRlcm1zIGFyZSBleHRyYWN0ZWQgZnJvbSB4bWwuIFtDb21tb24gdGVybXNdKGh0dHBzOi8vd3d3Lm5sbS5uaWguZ292L2JzZC9pbmRleGluZy90cmFpbmluZy9DSEtfMDEwLmh0bWwpIGFyZSBleGNsdWRlZCBhbmQgW21ham9yIHRvcGljc10oaHR0cHM6Ly93d3cubmxtLm5paC5nb3YvYnNkL2Rpc3RlZC9tZXNodHV0b3JpYWwvcHJpbmNpcGxlc29mbWVkbGluZXN1YmplY3RpbmRleGluZy9tYWpvcnRvcGljcy8pIGFyZSBzZWxlY3RlZC4KCmBgYHtyIGV4dHJhY3QgbWFqb3IgTWVTSCB0b3BpY3MgLWV4Y2x1ZGluZyBjb21tb24gdGFncy0gZnJvbSB4bWwsIG1lc3NhZ2U9RkFMU0UsIHdhcm5pbmc9RkFMU0V9Cm15VGVybSA8LSByc3R1ZGlvYXBpOjp0ZXJtaW5hbENyZWF0ZShzaG93ID0gRkFMU0UpCnJzdHVkaW9hcGk6OnRlcm1pbmFsU2VuZCgKbXlUZXJtLAoieHRyYWN0IC1pbnB1dCAvVXNlcnMvc2VyZGFyYmFsY2lvbGQvUmVwVGVtcGxhdGVzL3B1Ym1lZC9kYXRhL1BhdGhvbG9neVR1cmtleS54bWwgLXBhdHRlcm4gTWVzaEhlYWRpbmcgLWlmIERlc2NyaXB0b3JOYW1lQE1ham9yVG9waWNZTiAtZXF1YWxzIFkgLW9yIFF1YWxpZmllck5hbWVATWFqb3JUb3BpY1lOIC1lcXVhbHMgWSAtZWxlbWVudCBEZXNjcmlwdG9yTmFtZXwgZ3JlcCAtdnhmIC9Vc2Vycy9zZXJkYXJiYWxjaW9sZC9SZXBUZW1wbGF0ZXMvcHVibWVkL2RhdGEvY2hlY2t0YWdzLnR4dCB8IHNvcnQtdW5pcS1jb3VudC1yYW5rID4gL1VzZXJzL3NlcmRhcmJhbGNpb2xkL1JlcFRlbXBsYXRlcy9wdWJtZWQvZGF0YS9QYXRob2xvZ3lUdXJrZXlNZVNILmNzdiBcbiIKKQpTeXMuc2xlZXAoMSkKcmVwZWF0IHsKU3lzLnNsZWVwKDAuMSkKaWYgKHJzdHVkaW9hcGk6OnRlcm1pbmFsQnVzeShteVRlcm0pID09IEZBTFNFKSB7CnByaW50KCJDb2RlIEV4ZWN1dGVkIikKYnJlYWsKfQp9CmBgYAoKS2V5d29yZHMgYXJlIGV4dHJhY3RlZCBmcm9tIGB4bWxgLgoKYGBge3IgZXh0cmFjdCBhdXRob3Iga2V5d29yZHMgZnJvbSB4bWwsIG1lc3NhZ2U9RkFMU0UsIHdhcm5pbmc9RkFMU0UsIHJlc3VsdHM9J2FzaXMnfQpteVRlcm0gPC0gcnN0dWRpb2FwaTo6dGVybWluYWxDcmVhdGUoc2hvdyA9IEZBTFNFKQpyc3R1ZGlvYXBpOjp0ZXJtaW5hbFNlbmQoCm15VGVybSwKInh0cmFjdCAtaW5wdXQgL1VzZXJzL3NlcmRhcmJhbGNpb2xkL1JlcFRlbXBsYXRlcy9wdWJtZWQvZGF0YS9QYXRob2xvZ3lUdXJrZXkueG1sIC1wYXR0ZXJuIEtleXdvcmQgLWVsZW1lbnQgS2V5d29yZCB8IHNvcnQtdW5pcS1jb3VudC1yYW5rID4gL1VzZXJzL3NlcmRhcmJhbGNpb2xkL1JlcFRlbXBsYXRlcy9wdWJtZWQvZGF0YS9hdXRob3JrZXl3b3Jkcy5jc3YgXG4iCikKU3lzLnNsZWVwKDEpCnJlcGVhdCB7ClN5cy5zbGVlcCgwLjEpCmlmIChyc3R1ZGlvYXBpOjp0ZXJtaW5hbEJ1c3kobXlUZXJtKSA9PSBGQUxTRSkgewpwcmludCgiQ29kZSBFeGVjdXRlZCIpCmJyZWFrCn0KfQpgYGAKCgpUaGUgcmV0cmlldmVkIGluZm9ybWF0aW9uIHdhcyBjb21waWxlZCBpbiBhIHRhYmxlLgoKYGBge3IgbWVzc2FnZT1GQUxTRSwgd2FybmluZz1GQUxTRX0KbGlicmFyeShyZWFkcikKCmF1dGhvcmtleXdvcmRzIDwtIHJlYWRfdGFibGUyKCIvVXNlcnMvc2VyZGFyYmFsY2lvbGQvUmVwVGVtcGxhdGVzL3B1Ym1lZC9kYXRhL2F1dGhvcmtleXdvcmRzLmNzdiIsCmNvbF9uYW1lcyA9IGMoImZyZXF1ZW5jeSIsICJhdXRob3Iga2V5IHdvcmQiKSkgJT4lCnNlbGVjdCgnYXV0aG9yIGtleSB3b3JkJywgJ2ZyZXF1ZW5jeScpICU+JQpoZWFkKG4gPSAyMCkKClBhdGhvbG9neVR1cmtleU1lU0ggPC0gcmVhZF90YWJsZTIoIi9Vc2Vycy9zZXJkYXJiYWxjaW9sZC9SZXBUZW1wbGF0ZXMvcHVibWVkL2RhdGEvUGF0aG9sb2d5VHVya2V5TWVTSC5jc3YiLApjb2xfbmFtZXMgPSBjKCJmcmVxdWVuY3kiLCAiTWVTSCB0ZXJtIikpICU+JQpzZWxlY3QoJ01lU0ggdGVybScsICdmcmVxdWVuY3knKSAlPiUKaGVhZChuID0gMjApCmBgYAoKIyBSZXN1bHRzCgpfKipNb3N0IGNvbW1vbiAyMCBhdXRob3Igc3VwcGxpZWQga2V5d29yZHMgYXJlIGdpdmVuIGJlbG93LioqXwoKYGBge3IgcmVzdWx0cyA9ICdhc2lzJ30KcGFuZGVyOjpwYW5kZXIoYXV0aG9ya2V5d29yZHMsIGp1c3RpZnkgPSAibGVmdCIsIGNhcHRpb24gPSAiTW9zdCBjb21tb24gMjAgYXV0aG9yIHN1cHBsaWVkIGtleXdvcmRzIikKYGBgCgpfKipNb3N0IGNvbW1vbiAyMCBNZVNIIHRlcm1zIGFyZSBnaXZlbiBiZWxvdyoqXwoKYGBge3IgcmVzdWx0cyA9ICdhc2lzJ30KCnBhbmRlcjo6cGFuZGVyKFBhdGhvbG9neVR1cmtleU1lU0gsIGp1c3RpZnkgPSAibGVmdCIsIGNhcHRpb24gPSAiTW9zdCBjb21tb24gMjAgTWVTSCB0ZXJtcyIpCgpgYGAKCgoKIyBDb21tZW50cwoKKipDb21tZW50OioqCldlIG1heSBjb25jbHVkZSB0aGF0IGFkZW5vY2FyY2lub21hcywgYnJlYXN0IGFuZCB0aHlyb2lkIHR1bW9ycywgYW5kIGltbXVub2hpc3RvY2hlbWlzdHJ5IGFyZSB0aGUgbW9zdCBjb21tb24gcmVzZWFyY2ggdG9waWNzLiBMdW5nLCBraWRuZXkgYW5kIG92YXJ5IGFyZSBhbHNvIGNvbW1vbiByZXNlYXJjaCB0b3BpY3MuCgoKKipGdXR1cmUgV29yazoqKgoqIFRoZSBjaGFuZ2VzIGluIGZyZXF1ZW5jaWVzIG9mIHRvcGljcyB0aHJvdWdob3V0IHRpbWUKKiBUaGUgZGlzdHJpYnV0aW9uIG9mIHRvcGljcyBhbW9uZyBpbnN0aXR1dGlvbnMKCgoKCi0tLQoKCiMgRmVlZGJhY2sKCltTZXJkYXIgQmFsY8SxLCBNRCwgUGF0aG9sb2dpc3RdKGh0dHBzOi8vZ2l0aHViLmNvbS9zYmFsY2kpIHdvdWxkIGxpa2UgdG8gaGVhciB5b3VyIGZlZWRiYWNrOiBodHRwczovL2dvby5nbC9mb3Jtcy9ZakdaNURIZ3RQbFIxUm5CMwoKVGhpcyBkb2N1bWVudCB3aWxsIGJlIGNvbnRpbmlvdXNseSB1cGRhdGVkIGFuZCB0aGUgbGFzdCB1cGRhdGUgd2FzIG9uIGByIFN5cy50aW1lKClgLgoKLS0tCgojIEJhY2sgdG8gTWFpbiBNZW51CgpbTWFpbiBQYWdlIGZvciBCaWJsaW9ncmFwaGljIEFuYWx5c2lzXShodHRwczovL3NiYWxjaS5naXRodWIuaW8vcHVibWVkL0JpYmxpb2dyYXBoaWNTdHVkaWVzLmh0bWwp</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiQmlibGlvZ3JhcGhpYyBTdHVkaWVzIgphdXRob3I6ICJTZXJkYXIgQmFsY2ksIE1ELCBQYXRob2xvZ2lzdCIKZGF0ZTogJ2ByIGZvcm1hdChTeXMudGltZSgpKWAnCm91dHB1dDogCiAgaHRtbF9ub3RlYm9vazogCiAgICBjb2RlX2ZvbGRpbmc6IG5vbmUKICAgIGZpZ19jYXB0aW9uOiB5ZXMKICAgIGhpZ2hsaWdodDoga2F0ZQogICAgbnVtYmVyX3NlY3Rpb25zOiB5ZXMKICAgIHRoZW1lOiBjZXJ1bGVhbgogICAgdG9jOiB5ZXMKICAgIHRvY19mbG9hdDogeWVzCi0tLQoKKioiTWVTSCBUZXJtcyBhbmQgQXV0aG9yIEtleSBXb3JkcyBJbiBQYXRob2xvZ3kgQXJ0aWNsZXMgRnJvbSBUdXJrZXkiKioKCgoKYGBge3J9CmtuaXRyOjpvcHRzX2NodW5rJHNldChtZXNzYWdlID0gRkFMU0UsIHdhcm5pbmc9RkFMU0UsIHRpZHkgPSBUUlVFLCBlcnJvciA9IFRSVUUpCmBgYAoKYGBge3J9CmxpYnJhcnkocm1hcmtkb3duKQpgYGAKCgojIEJhY2tncm91bmQKClB1Yk1lZCBjb2xsZWN0aW9uIGZyb20gW05hdGlvbmFsIExpYnJhcnkgb2YgTWVkaWNpbmVdKGh0dHBzOi8vd3d3Lm5jYmkubmxtLm5paC5nb3YvcHVibWVkLyksIGhhcyB0aGUgbW9zdCBjb21wcmVoZW5zaXZlIGluZm9ybWF0aW9uIGFib3V0IHBlZXIgcmV2aWV3ZWQgYXJ0aWNsZXMgaW4gbWVkaWNpbmUuCgpbTWVTSCBUZXJtc10oaHR0cHM6Ly93d3cubmxtLm5paC5nb3YvcHVicy9mYWN0c2hlZXRzL21lc2guaHRtbCkgaXMgYSBjb250cm9sbGVkIHZvY2FidWxhcnkgdGhhdCBpcyB1c2VkIHRvIGxhYmVsIFB1Yk1lZCBhcnRpY2xlcyBhY2NvcmRpbmcgdG8gdGhlaXIgY29udGVudC4gSXQgaXMgZG9uZSBieSBleHBlcnRzIGluIE5hdGlvbmFsIExpYnJhcnkgb2YgTWVkaWNpbmUuIEtleXdvcmRzIGFyZSBsYWJsZXMgdGhhdCBhcmUgZ2l2ZW4gYnkgYXV0aG9ycyBvZiB0aGUgYXJ0aWNsZS4gQm90aCBhcmUgaW5jbHVkZWQgaW4gYSBQdWJNZWQgcmVjb3JkIG9mIGFuIGFydGljbGUuCgpbRURpcmVjdF0oaHR0cHM6Ly9kYXRhZ3VpZGUubmxtLm5paC5nb3YvZWRpcmVjdC9pbnN0YWxsLmh0bWwpIGlzIGEgdmFsdWFibGUgdG9vbCB0byBpZGVudGlmeSB2YXJpb3VzIGZlYXR1cmVzIG9mIHB1Ymxpc2hlZCBhcnRpY2xlcyB0aGF0IGFyZSBpbmRleGVkIGluIFB1Yk1lZC4KCiMgQWltCgpJbiB0aGlzIGFuYWx5c2lzIHdlIGFpbWVkIHRvIGlkZW50aWZ5IHRoZSBtb3N0IGNvbW1vbiB0b3BpY3MgaW52ZXN0aWdhdGVkIGluIFR1cmtleSBhbmQgcHVibGlzaGVkIGluIHBhdGhvbG9neSBqb3VybmFscy4gVGhpcyBtYXkgcmV2ZWFsIHRoZSBjb21tb24gcmVzZWFyY2ggdG9waWNzIFR1cmtpc2ggcGF0aG9sb2dpc3RzIGFyZSBpbnRlcmVzdGVkLiBXZSBleHRyYWN0ZWQgbW9zdCBjb21tb24gTWVTSCB0ZXJtcyBhbmQga2V5d29yZHMgZnJvbSBQdWJNZWQgYXJ0aWNsZXMgdXNpbmcgW0VEaXJlY3RdKGh0dHBzOi8vZGF0YWd1aWRlLm5sbS5uaWguZ292L2VkaXJlY3Qvb3ZlcnZpZXcuaHRtbCk6CltNZVNIIFRlcm1zIFBhdGhvbG9neSBBcnRpY2xlcyBGcm9tIFR1cmtleV0oaHR0cHM6Ly9zYmFsY2kuZ2l0aHViLmlvL3B1Ym1lZC9NZVNIX1Rlcm1zX1BhdGhvbG9neV9BcnRpY2xlc19Gcm9tX1R1cmtleS5odG1sKQoKCiMgTWF0ZXJpYWxzIGFuZCBNZXRob2RzCgoqKk1ldGhvZHM6KioKClBhY2thZ2VzIHVzZWQgZm9yIGFuYWx5c2lzIGFyZSBnaXZlbi4gYFRpZHl2ZXJzZWAgaXMgdXNlZCBmb3IgZGF0YSBtYW5pcHVsYXRpb24sIGFuZCBbcnN0dWRpb2FwaV0oaHR0cHM6Ly9naXRodWIuY29tL3JzdHVkaW8vcnN0dWRpby9pc3N1ZXMvMjE5MykgdG8gcnVuIGUtdXRpbGl0aWVzIGNvbW1hbmRzIGZyb20gUlN0dWRpby4KCgpgYGB7ciBsb2FkIC1pZiBub3QgcHJlc2VudCBpbnN0YWxsLSByZXF1aXJlZCBwYWNrYWdlc30KdXNlUGFja2FnZSA8LSBmdW5jdGlvbihwKQp7CmlmICghaXMuZWxlbWVudChwLCBpbnN0YWxsZWQucGFja2FnZXMoKVssIDFdKSkKaW5zdGFsbC5wYWNrYWdlcyhwLCBkZXAgPSBUUlVFKQpyZXF1aXJlKHAsIGNoYXJhY3Rlci5vbmx5ID0gVFJVRSkKfQoKdXNlUGFja2FnZSgidGlkeXZlcnNlIikKdXNlUGFja2FnZSgicnN0dWRpb2FwaSIpCnVzZVBhY2thZ2UoInBhbmRlciIpCmBgYAoKClBhdGhvbG9neSBKb3VybmFsIElTU04gTGlzdCB3YXMgcmV0cmlldmVkIGZyb20gW0luIENpdGVzIENsYXJpdmF0ZV0oaHR0cHM6Ly9qY3IuaW5jaXRlcy50aG9tc29ucmV1dGVycy5jb20vKSwgYW5kIEpvdXJuYWwgRGF0YSBGaWx0ZXJlZCBhcyBmb2xsb3dzOiAKCmBKQ1IgWWVhcjogMjAxNiBTZWxlY3RlZCBFZGl0aW9uczogU0NJRSxTU0NJIFNlbGVjdGVkIENhdGVnb3JpZXM6ICdQQVRIT0xPR1knIFNlbGVjdGVkIENhdGVnb3J5IFNjaGVtZTogV29TYAoKCmBgYHtyIEdldCBJU1NOIExpc3QgZnJvbSBkYXRhIGRvd25sb2FkZWQgZnJvbSBXb1N9CiMgIyBHZXQgSVNTTiBMaXN0IGZyb20gZGF0YSBkb3dubG9hZGVkIGZyb20gV29TCiMgSVNTTkxpc3QgPC0gSm91cm5hbEhvbWVHcmlkIDwtIHJlYWRfY3N2KCIvVXNlcnMvc2VyZGFyYmFsY2lvbGQvUmVwVGVtcGxhdGVzL3B1Ym1lZC9kYXRhL0pvdXJuYWxIb21lR3JpZC5jc3YiLCBza2lwID0gMSkgJT4lCiMgc2VsZWN0KElTU04pICU+JQojIGZpbHRlcighaXMubmEoSVNTTikpICU+JQojIHQoKSAlPiUKIyBwYXN0ZSgiT1IgIiwgY29sbGFwc2UgPSAiIikgIyBhZGQgT1IgYmV0d2VlbiBJU1NOIExpc3QKIyAKIyBJU1NOTGlzdCA8LSBnc3ViKCIgT1IgJCIsICIiICwgSVNTTkxpc3QpICMgdG8gcmVtb3ZlIGxhc3QgT1IKYGBgCgoKRGF0YSBpcyByZXRyaWV2ZWQgZnJvbSBQdWJNZWQgdmlhIFtlLVV0aWxpdGllc10oaHR0cHM6Ly9kYXRhZ3VpZGUubmxtLm5paC5nb3YvKS4KClRoZSBzZWFyY2ggZm9ybXVsYSBmb3IgUHViTWVkIGlzIGdlbmVyYXRlZCBhcyAiSVNTTiBMaXN0IEFORCBDb3VudHJ5W0FmZmlsaWF0aW9uXSIgYXMgZGVzY3JpYmVkIGluIFthZHZhbmNlZCBzZWFyY2ggb2YgUHViTWVkXShodHRwczovL3d3dy5uY2JpLm5sbS5uaWguZ292L3B1Ym1lZC9hZHZhbmNlZCkuCgpgYGB7ciBHZW5lcmF0ZSBTZWFyY2ggRm9ybXVsYSBGb3IgUGF0aG9sb2d5IEpvdXJuYWxzIEFORCBDb3VudHJpZXN9CiMgIyBHZW5lcmF0ZSBTZWFyY2ggRm9ybXVsYSBGb3IgUGF0aG9sb2d5IEpvdXJuYWxzIEFORCBDb3VudHJpZXMKIyBzZWFyY2hmb3JtdWxhIDwtCiMgcGFzdGUoIiciLCBJU1NOTGlzdCwgIiciLCAiIEFORCAiLCAiVHVya2V5W0FmZmlsaWF0aW9uXSIpCiMgd3JpdGUoc2VhcmNoZm9ybXVsYSwgIi9Vc2Vycy9zZXJkYXJiYWxjaW9sZC9SZXBUZW1wbGF0ZXMvcHVibWVkL2RhdGEvc2VhcmNoZm9ybXVsYS50eHQiKQpgYGAKCkFydGljbGVzIGFyZSBkb3dubG9hZGVkIGFzIGB4bWxgLgoKYGBge3IgU2VhcmNoIFB1Yk1lZCwgd3JpdGUgZGF0YSBhcyB4bWx9CiMgbXlUZXJtIDwtIHJzdHVkaW9hcGk6OnRlcm1pbmFsQ3JlYXRlKHNob3cgPSBGQUxTRSkKIyByc3R1ZGlvYXBpOjp0ZXJtaW5hbFNlbmQoCiMgICAgIG15VGVybSwKIyAgICAgImVzZWFyY2ggLWRiIHB1Ym1lZCAtcXVlcnkgXCIkKGNhdCAvVXNlcnMvc2VyZGFyYmFsY2lvbGQvUmVwVGVtcGxhdGVzL3B1Ym1lZC9kYXRhL3NlYXJjaGZvcm11bGEudHh0KVwiIC1kYXRldHlwZSBQREFUIC1taW5kYXRlIDE5MDAgLW1heGRhdGUgMzAwMCB8IGVmZXRjaCAtZm9ybWF0IHhtbCA+IC9Vc2Vycy9zZXJkYXJiYWxjaW9sZC9SZXBUZW1wbGF0ZXMvcHVibWVkL2RhdGEvUGF0aG9sb2d5VHVya2V5LnhtbCBcbiIKIyApCiMgU3lzLnNsZWVwKDEpCiMgcmVwZWF0IHsKIyAgICAgU3lzLnNsZWVwKDAuMSkKIyAgICAgaWYgKHJzdHVkaW9hcGk6OnRlcm1pbmFsQnVzeShteVRlcm0pID09IEZBTFNFKSB7CiMgICAgICAgICBwcmludCgiQ29kZSBFeGVjdXRlZCIpCiMgICAgICAgICBicmVhawojICAgICB9CiMgfQpgYGAKCgpNZVNIIHRlcm1zIGFyZSBleHRyYWN0ZWQgZnJvbSB4bWwuIFtDb21tb24gdGVybXNdKGh0dHBzOi8vd3d3Lm5sbS5uaWguZ292L2JzZC9pbmRleGluZy90cmFpbmluZy9DSEtfMDEwLmh0bWwpIGFyZSBleGNsdWRlZCBhbmQgW21ham9yIHRvcGljc10oaHR0cHM6Ly93d3cubmxtLm5paC5nb3YvYnNkL2Rpc3RlZC9tZXNodHV0b3JpYWwvcHJpbmNpcGxlc29mbWVkbGluZXN1YmplY3RpbmRleGluZy9tYWpvcnRvcGljcy8pIGFyZSBzZWxlY3RlZC4KCmBgYHtyIGV4dHJhY3QgbWFqb3IgTWVTSCB0b3BpY3MgLWV4Y2x1ZGluZyBjb21tb24gdGFncy0gZnJvbSB4bWwsIG1lc3NhZ2U9RkFMU0UsIHdhcm5pbmc9RkFMU0V9Cm15VGVybSA8LSByc3R1ZGlvYXBpOjp0ZXJtaW5hbENyZWF0ZShzaG93ID0gRkFMU0UpCnJzdHVkaW9hcGk6OnRlcm1pbmFsU2VuZCgKbXlUZXJtLAoieHRyYWN0IC1pbnB1dCAvVXNlcnMvc2VyZGFyYmFsY2lvbGQvUmVwVGVtcGxhdGVzL3B1Ym1lZC9kYXRhL1BhdGhvbG9neVR1cmtleS54bWwgLXBhdHRlcm4gTWVzaEhlYWRpbmcgLWlmIERlc2NyaXB0b3JOYW1lQE1ham9yVG9waWNZTiAtZXF1YWxzIFkgLW9yIFF1YWxpZmllck5hbWVATWFqb3JUb3BpY1lOIC1lcXVhbHMgWSAtZWxlbWVudCBEZXNjcmlwdG9yTmFtZXwgZ3JlcCAtdnhmIC9Vc2Vycy9zZXJkYXJiYWxjaW9sZC9SZXBUZW1wbGF0ZXMvcHVibWVkL2RhdGEvY2hlY2t0YWdzLnR4dCB8IHNvcnQtdW5pcS1jb3VudC1yYW5rID4gL1VzZXJzL3NlcmRhcmJhbGNpb2xkL1JlcFRlbXBsYXRlcy9wdWJtZWQvZGF0YS9QYXRob2xvZ3lUdXJrZXlNZVNILmNzdiBcbiIKKQpTeXMuc2xlZXAoMSkKcmVwZWF0IHsKU3lzLnNsZWVwKDAuMSkKaWYgKHJzdHVkaW9hcGk6OnRlcm1pbmFsQnVzeShteVRlcm0pID09IEZBTFNFKSB7CnByaW50KCJDb2RlIEV4ZWN1dGVkIikKYnJlYWsKfQp9CmBgYAoKS2V5d29yZHMgYXJlIGV4dHJhY3RlZCBmcm9tIGB4bWxgLgoKYGBge3IgZXh0cmFjdCBhdXRob3Iga2V5d29yZHMgZnJvbSB4bWwsIG1lc3NhZ2U9RkFMU0UsIHdhcm5pbmc9RkFMU0UsIHJlc3VsdHM9J2FzaXMnfQpteVRlcm0gPC0gcnN0dWRpb2FwaTo6dGVybWluYWxDcmVhdGUoc2hvdyA9IEZBTFNFKQpyc3R1ZGlvYXBpOjp0ZXJtaW5hbFNlbmQoCm15VGVybSwKInh0cmFjdCAtaW5wdXQgL1VzZXJzL3NlcmRhcmJhbGNpb2xkL1JlcFRlbXBsYXRlcy9wdWJtZWQvZGF0YS9QYXRob2xvZ3lUdXJrZXkueG1sIC1wYXR0ZXJuIEtleXdvcmQgLWVsZW1lbnQgS2V5d29yZCB8IHNvcnQtdW5pcS1jb3VudC1yYW5rID4gL1VzZXJzL3NlcmRhcmJhbGNpb2xkL1JlcFRlbXBsYXRlcy9wdWJtZWQvZGF0YS9hdXRob3JrZXl3b3Jkcy5jc3YgXG4iCikKU3lzLnNsZWVwKDEpCnJlcGVhdCB7ClN5cy5zbGVlcCgwLjEpCmlmIChyc3R1ZGlvYXBpOjp0ZXJtaW5hbEJ1c3kobXlUZXJtKSA9PSBGQUxTRSkgewpwcmludCgiQ29kZSBFeGVjdXRlZCIpCmJyZWFrCn0KfQpgYGAKCgpUaGUgcmV0cmlldmVkIGluZm9ybWF0aW9uIHdhcyBjb21waWxlZCBpbiBhIHRhYmxlLgoKYGBge3IgbWVzc2FnZT1GQUxTRSwgd2FybmluZz1GQUxTRX0KbGlicmFyeShyZWFkcikKCmF1dGhvcmtleXdvcmRzIDwtIHJlYWRfdGFibGUyKCIvVXNlcnMvc2VyZGFyYmFsY2lvbGQvUmVwVGVtcGxhdGVzL3B1Ym1lZC9kYXRhL2F1dGhvcmtleXdvcmRzLmNzdiIsIGNvbF9uYW1lcyA9IGMoImZyZXF1ZW5jeSIsICJhdXRob3Iga2V5IHdvcmQiKSkKCmF1dGhvcmtleXdvcmRzIDwtIGF1dGhvcmtleXdvcmRzICU+JSAKICAgIGhlYWQobj0yMCkKClBhdGhvbG9neVR1cmtleU1lU0ggPC0gcmVhZF90YWJsZTIoIi9Vc2Vycy9zZXJkYXJiYWxjaW9sZC9SZXBUZW1wbGF0ZXMvcHVibWVkL2RhdGEvUGF0aG9sb2d5VHVya2V5TWVTSC5jc3YiLCBjb2xfbmFtZXMgPSBjKCJmcmVxdWVuY3kiLCAiTWVTSCB0ZXJtIikpCgpQYXRob2xvZ3lUdXJrZXlNZVNIIDwtUGF0aG9sb2d5VHVya2V5TWVTSCAlPiUgCiAgICBoZWFkKG4gPSAyMCkKYGBgCgojIFJlc3VsdHMKCl8qKk1vc3QgY29tbW9uIDIwIGF1dGhvciBzdXBwbGllZCBrZXl3b3JkcyBhcmUgZ2l2ZW4gYmVsb3cuKipfCgpgYGB7ciByZXN1bHRzID0gJ2FzaXMnfQpwcmludChhdXRob3JrZXl3b3JkcykKIyBwYW5kZXI6OnBhbmRlcihhdXRob3JrZXl3b3JkcywganVzdGlmeSA9ICJsZWZ0IiwgY2FwdGlvbiA9ICJNb3N0IGNvbW1vbiAyMCBhdXRob3Igc3VwcGxpZWQga2V5d29yZHMiKQpgYGAKCl8qKk1vc3QgY29tbW9uIDIwIE1lU0ggdGVybXMgYXJlIGdpdmVuIGJlbG93KipfCgpgYGB7ciByZXN1bHRzID0gJ2FzaXMnfQoKIyBwYW5kZXI6OnBhbmRlcihQYXRob2xvZ3lUdXJrZXlNZVNILCBqdXN0aWZ5ID0gImxlZnQiLCBjYXB0aW9uID0gIk1vc3QgY29tbW9uIDIwIE1lU0ggdGVybXMiKQoKcHJpbnQoUGF0aG9sb2d5VHVya2V5TWVTSCkKCmBgYAoKCgojIENvbW1lbnRzCgoqKkNvbW1lbnQ6KioKV2UgbWF5IGNvbmNsdWRlIHRoYXQgYWRlbm9jYXJjaW5vbWFzLCBicmVhc3QgYW5kIHRoeXJvaWQgdHVtb3JzLCBhbmQgaW1tdW5vaGlzdG9jaGVtaXN0cnkgYXJlIHRoZSBtb3N0IGNvbW1vbiByZXNlYXJjaCB0b3BpY3MuIEx1bmcsIGtpZG5leSBhbmQgb3ZhcnkgYXJlIGFsc28gY29tbW9uIHJlc2VhcmNoIHRvcGljcy4KCgoqKkZ1dHVyZSBXb3JrOioqCiogVGhlIGNoYW5nZXMgaW4gZnJlcXVlbmNpZXMgb2YgdG9waWNzIHRocm91Z2hvdXQgdGltZQoqIFRoZSBkaXN0cmlidXRpb24gb2YgdG9waWNzIGFtb25nIGluc3RpdHV0aW9ucwoKCgoKLS0tCgoKIyBGZWVkYmFjawoKW1NlcmRhciBCYWxjxLEsIE1ELCBQYXRob2xvZ2lzdF0oaHR0cHM6Ly9naXRodWIuY29tL3NiYWxjaSkgd291bGQgbGlrZSB0byBoZWFyIHlvdXIgZmVlZGJhY2s6IGh0dHBzOi8vZ29vLmdsL2Zvcm1zL1lqR1o1REhndFBsUjFSbkIzCgpUaGlzIGRvY3VtZW50IHdpbGwgYmUgY29udGluaW91c2x5IHVwZGF0ZWQgYW5kIHRoZSBsYXN0IHVwZGF0ZSB3YXMgb24gYHIgU3lzLnRpbWUoKWAuCgotLS0KCiMgQmFjayB0byBNYWluIE1lbnUKCltNYWluIFBhZ2UgZm9yIEJpYmxpb2dyYXBoaWMgQW5hbHlzaXNdKGh0dHBzOi8vc2JhbGNpLmdpdGh1Yi5pby9wdWJtZWQvQmlibGlvZ3JhcGhpY1N0dWRpZXMuaHRtbCk=</div>
 
 
 </div>
