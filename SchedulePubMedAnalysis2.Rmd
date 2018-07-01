@@ -150,7 +150,10 @@ The retrieved information was compiled in a table.
 ```{r message=FALSE, warning=FALSE}
 library(readr)
 
-authorkeywords <- read_table2("/Users/serdarbalciold/RepTemplates/pubmed/data/authorkeywords.csv", col_names = c("frequency", "author key word"))
+authorkeywords <- read_table2("/Users/serdarbalciold/RepTemplates/pubmed/data/authorkeywords.csv", col_names = c("frequency", "author key word"), cols(
+  frequency = col_integer(),
+  `author key word` = col_character()
+))
 
 authorkeywords <- authorkeywords %>% 
     head(n=20)
