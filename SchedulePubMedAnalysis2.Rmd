@@ -111,37 +111,37 @@ Articles are downloaded as `xml`.
 MeSH terms are extracted from xml. [Common terms](https://www.nlm.nih.gov/bsd/indexing/training/CHK_010.html) are excluded and [major topics](https://www.nlm.nih.gov/bsd/disted/meshtutorial/principlesofmedlinesubjectindexing/majortopics/) are selected.
 
 ```{r extract major MeSH topics -excluding common tags- from xml, message=FALSE, warning=FALSE}
-myTerm <- rstudioapi::terminalCreate(show = FALSE)
-rstudioapi::terminalSend(
-myTerm,
-"xtract -input /Users/serdarbalciold/RepTemplates/pubmed/data/PathologyTurkey.xml -pattern MeshHeading -if DescriptorName@MajorTopicYN -equals Y -or QualifierName@MajorTopicYN -equals Y -element DescriptorName| grep -vxf /Users/serdarbalciold/RepTemplates/pubmed/data/checktags.txt | sort-uniq-count-rank > /Users/serdarbalciold/RepTemplates/pubmed/data/PathologyTurkeyMeSH.csv \n"
-)
-Sys.sleep(1)
-repeat {
-Sys.sleep(0.1)
-if (rstudioapi::terminalBusy(myTerm) == FALSE) {
-print("Code Executed")
-break
-}
-}
+# myTerm <- rstudioapi::terminalCreate(show = FALSE)
+# rstudioapi::terminalSend(
+# myTerm,
+# "xtract -input /Users/serdarbalciold/RepTemplates/pubmed/data/PathologyTurkey.xml -pattern MeshHeading -if DescriptorName@MajorTopicYN -equals Y -or QualifierName@MajorTopicYN -equals Y -element DescriptorName| grep -vxf /Users/serdarbalciold/RepTemplates/pubmed/data/checktags.txt | sort-uniq-count-rank > /Users/serdarbalciold/RepTemplates/pubmed/data/PathologyTurkeyMeSH.csv \n"
+# )
+# Sys.sleep(1)
+# repeat {
+# Sys.sleep(0.1)
+# if (rstudioapi::terminalBusy(myTerm) == FALSE) {
+# print("Code Executed")
+# break
+# }
+# }
 ```
 
 Keywords are extracted from `xml`.
 
 ```{r extract author keywords from xml, message=FALSE, warning=FALSE, results='asis'}
-myTerm <- rstudioapi::terminalCreate(show = FALSE)
-rstudioapi::terminalSend(
-myTerm,
-"xtract -input /Users/serdarbalciold/RepTemplates/pubmed/data/PathologyTurkey.xml -pattern Keyword -element Keyword | sort-uniq-count-rank > /Users/serdarbalciold/RepTemplates/pubmed/data/authorkeywords.csv \n"
-)
-Sys.sleep(1)
-repeat {
-Sys.sleep(0.1)
-if (rstudioapi::terminalBusy(myTerm) == FALSE) {
-print("Code Executed")
-break
-}
-}
+# myTerm <- rstudioapi::terminalCreate(show = FALSE)
+# rstudioapi::terminalSend(
+# myTerm,
+# "xtract -input /Users/serdarbalciold/RepTemplates/pubmed/data/PathologyTurkey.xml -pattern Keyword -element Keyword | sort-uniq-count-rank > /Users/serdarbalciold/RepTemplates/pubmed/data/authorkeywords.csv \n"
+# )
+# Sys.sleep(1)
+# repeat {
+# Sys.sleep(0.1)
+# if (rstudioapi::terminalBusy(myTerm) == FALSE) {
+# print("Code Executed")
+# break
+# }
+# }
 ```
 
 

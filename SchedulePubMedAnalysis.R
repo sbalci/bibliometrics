@@ -1,6 +1,6 @@
-library(rmarkdown)
-library(pander)
-library(rstudioapi)
+require(rmarkdown)
+# require(pander)
+require(rstudioapi)
 #
 # rmarkdown::render(input = "SchedulePubMedAnalysis.Rmd", output_format = "html_notebook", output_file = "docs/SchedulePubMedAnalysis.html"
 #                    , quiet = TRUE
