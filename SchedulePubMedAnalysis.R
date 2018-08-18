@@ -14,13 +14,14 @@ Sys.setenv(RSTUDIO_PANDOC="/Applications/RStudio.app/Contents/MacOS/pandoc"); rm
 Sys.sleep(time = 2)
 #
 CommitMessage <- paste("updated on ", Sys.time(), sep = "")
-gitCommand <- paste("cd /Users/serdarbalciold/RepTemplates/pubmed/ \n git add . \n git commit --message '", CommitMessage, "' \n git push origin master \n", sep = "")
+gitCommand <- paste("cd ~/RepTemplates/pubmed/ \n git add . \n git commit --message '", CommitMessage, "' \n git push origin master \n", sep = "")
 #
-Sys.sleep(time = 2)
+system(command = gitCommand, intern = TRUE)
+# Sys.sleep(time = 2)
 #
-gitTerm <- rstudioapi::terminalCreate(show = FALSE)
+# gitTerm <- rstudioapi::terminalCreate(show = FALSE)
 #
-Sys.sleep(time = 2)
+# Sys.sleep(time = 2)
 #
-rstudioapi::terminalSend(gitTerm, gitCommand)
+# rstudioapi::terminalSend(gitTerm, gitCommand)
 #

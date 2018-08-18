@@ -1,0 +1,387 @@
+---
+title: "Bibliographic Studies"
+subtitle: "Journals Published Articles From Turkey"
+author: "Serdar Balcı, MD, Pathologist"
+date: '`r format(Sys.Date())`'
+output: 
+  html_notebook: 
+    code_folding: hide
+    fig_caption: yes
+    highlight: kate
+    theme: cerulean
+    toc_float: yes
+  html_document: 
+    code_folding: hide
+    df_print: kable
+    fig_caption: yes
+    highlight: kate
+    keep_md: yes
+    theme: cerulean
+    toc_float: yes
+---
+
+```{r global_options, include=FALSE}
+knitr::opts_chunk$set(fig.width = 12, fig.height = 8, fig.path = 'figure/', echo = FALSE, warning = FALSE, message = FALSE, error = FALSE, eval = TRUE, tidy = TRUE, comment = NA)
+```
+
+```{r library, include=FALSE}
+library(tidyverse)
+```
+
+
+<!-- # Sponsored by -->
+
+<!-- [![](images/modelistatistik_logo-3-300x73.png)](https://www.modelistatistik.com/) -->
+
+
+# Journals Published Articles From Turkey {.tabset .tabset-fade .tabset-pills}
+
+If you want to see the code used in the analysis please click the code button on the right upper corner or throughout the page.  
+Select from the tabs below.
+
+
+## Aim 
+
+**Aim:**
+
+Here we will look at the Journals in which articles from Turkey are published. 
+
+
+
+## Data retriveal from PubMed 
+
+Articles are downloaded as `xml`.
+
+```{r Search PubMed write 2018 data as xml, eval=FALSE, include=FALSE}
+myTerm <- rstudioapi::terminalCreate(show = FALSE)
+rstudioapi::terminalSend(
+    myTerm,
+    "esearch -db pubmed -query \"Turkey[Affiliation]\" -datetype PDAT -mindate 2018 -maxdate 3000 | efetch -format xml > data/Turkey_2018.xml \n"
+)
+Sys.sleep(1)
+repeat {
+    Sys.sleep(0.1)
+    if (rstudioapi::terminalBusy(myTerm) == FALSE) {
+        print("Code Executed")
+        break
+    }
+}
+```
+
+```{r Search PubMed write all data as xml, eval=FALSE, include=FALSE}
+myTerm <- rstudioapi::terminalCreate(show = FALSE)
+rstudioapi::terminalSend(
+    myTerm,
+    "esearch -db pubmed -query \"Turkey[Affiliation]\" -datetype PDAT -mindate 1800 -maxdate 3000 | efetch -format xml > data/Turkey_all.xml \n"
+)
+Sys.sleep(1)
+repeat {
+    Sys.sleep(0.1)
+    if (rstudioapi::terminalBusy(myTerm) == FALSE) {
+        print("Code Executed")
+        break
+    }
+}
+```
+
+
+
+
+
+```{r Search PubMed get 2018 data on the fly, eval=FALSE, include=FALSE}
+myTerm <- rstudioapi::terminalCreate(show = FALSE)
+rstudioapi::terminalSend(
+    myTerm,
+    "esearch -db pubmed -query \"Turkey[Affiliation]\" -datetype PDAT -mindate 2018 -maxdate 3000 | efetch -format xml | xtract  -pattern PubmedArticle -element MedlineCitation/PMID PubDate/Year Journal/ISSN ISOAbbreviation> data/onthefly_Turkey_2018.csv \n"
+)
+Sys.sleep(1)
+repeat {
+    Sys.sleep(0.1)
+    if (rstudioapi::terminalBusy(myTerm) == FALSE) {
+        print("Code Executed")
+        break
+    }
+}
+```
+
+
+```{r Search PubMed get all data on the fly, eval=FALSE, include=FALSE}
+myTerm <- rstudioapi::terminalCreate(show = FALSE)
+rstudioapi::terminalSend(
+    myTerm,
+    "esearch -db pubmed -query \"Turkey[Affiliation]\" -datetype PDAT -mindate 1800 -maxdate 3000 | efetch -format xml | xtract  -pattern PubmedArticle -element MedlineCitation/PMID PubDate/Year Journal/ISSN ISOAbbreviation> data/onthefly_Turkey_all.csv \n"
+)
+Sys.sleep(1)
+repeat {
+    Sys.sleep(0.1)
+    if (rstudioapi::terminalBusy(myTerm) == FALSE) {
+        print("Code Executed")
+        break
+    }
+}
+```
+
+
+
+Journal Names are extracted from xml.
+
+```{r extract journal names from xml, eval=FALSE, message=FALSE, warning=FALSE, include=FALSE}
+myTerm <- rstudioapi::terminalCreate(show = FALSE)
+rstudioapi::terminalSend(
+myTerm,
+"xtract -input data/Turkey_2018.xml -pattern PubmedArticle -element MedlineCitation/PMID PubDate/Year Journal/ISSN ISOAbbreviation > data/Turkey2018.csv \n"
+)
+Sys.sleep(1)
+repeat {
+Sys.sleep(0.1)
+if (rstudioapi::terminalBusy(myTerm) == FALSE) {
+print("Code Executed")
+break
+}
+}
+```
+
+
+```{r extract journal names from all data xml, message=FALSE, warning=FALSE}
+myTerm <- rstudioapi::terminalCreate(show = FALSE)
+rstudioapi::terminalSend(
+myTerm,
+"xtract -input data/Turkey_all.xml -pattern PubmedArticle -element MedlineCitation/PMID PubDate/Year Journal/ISSN ISOAbbreviation > data/TurkeyAll.csv \n"
+)
+Sys.sleep(1)
+repeat {
+Sys.sleep(0.1)
+if (rstudioapi::terminalBusy(myTerm) == FALSE) {
+print("Code Executed")
+break
+}
+}
+```
+
+
+
+
+----
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+The retrieved information was compiled in a table.
+
+```{r message=FALSE, warning=FALSE}
+library(readr)
+
+authorkeywords <- read_table2("data/authorkeywords.csv",
+col_names = c("frequency", "author key word")) %>%
+select('author key word', 'frequency') %>%
+head(n = 20)
+
+PathologyTurkeyMeSH <- read_table2("data/PathologyTurkeyMeSH.csv",
+col_names = c("frequency", "MeSH term")) %>%
+select('MeSH term', 'frequency') %>%
+head(n = 20)
+```
+
+
+
+_**Most common 20 author supplied keywords are given below.**_
+
+```{r results = 'asis'}
+pander::pander(authorkeywords, justify = "left", caption = "Most common 20 author supplied keywords")
+```
+
+
+## Properties of Journals
+
+
+
+[nlmcatalog_result_journals_pmc.xml](https://www.ncbi.nlm.nih.gov/portal/utils/file_backend.cgi?Db=nlmcatalog&HistoryId=NCID_1_69755278_130.14.18.97_5555_1534585934_3590606783_0MetA0_S_HStore&QueryKey=2&Sort=PubDate&Filter=all&CompleteResultCount=2559&Mode=file&View=xml&p$l=Email&portalSnapshot=%2Fprojects%2Fentrez%2Fpubmed%2FPubMedGroup@1.136&BaseUrl=&PortName=live&RootTag=NLMCatalogRecordSet&DocType=NLMCatalogRecordSet%20PUBLIC%20%22-%2F%2FNLM%2F%2FDTD%20NLMCatalogRecordSet,%201st%20June%202017%2F%2FEN%22%20%22https://www.nlm.nih.gov/databases/dtd/nlmcatalogrecordset_170601.dtd%22&FileName=&ContentType=xml)
+
+
+[nlmcatalog_result_currentlyindexed.xml](https://www.ncbi.nlm.nih.gov/portal/utils/file_backend.cgi?Db=nlmcatalog&HistoryId=NCID_1_69755278_130.14.18.97_5555_1534585934_3590606783_0MetA0_S_HStore&QueryKey=1&Sort=PubDate&Filter=all&CompleteResultCount=5242&Mode=file&View=xml&p$l=Email&portalSnapshot=%2Fprojects%2Fentrez%2Fpubmed%2FPubMedGroup@1.136&BaseUrl=&PortName=live&RootTag=NLMCatalogRecordSet&DocType=NLMCatalogRecordSet%20PUBLIC%20%22-%2F%2FNLM%2F%2FDTD%20NLMCatalogRecordSet,%201st%20June%202017%2F%2FEN%22%20%22https://www.nlm.nih.gov/databases/dtd/nlmcatalogrecordset_170601.dtd%22&FileName=&ContentType=xml)
+
+
+[scimagojr2017.csv](https://www.scimagojr.com/journalrank.php?out=xls)
+
+[scimagojr2017-wos.csv](https://www.scimagojr.com/journalrank.php?wos=true&out=xls)
+
+
+![](images/scidata.png)
+
+
+
+
+## Analysis
+
+## Results
+
+
+## Discussion
+
+
+
+## Old
+
+
+
+Articles per journals per country
+
+
+
+
+**Methods:**
+
+```{r load required packages}
+# load required packages
+library(tidyverse)
+library(RISmed)
+```
+
+Pathology Journal ISSN List was retrieved from [In Cites Clarivate](https://jcr.incites.thomsonreuters.com/), and Journal Data Filtered as follows: `JCR Year: 2016 Selected Editions: SCIE,SSCI Selected Categories: 'PATHOLOGY' Selected Category Scheme: WoS`
+
+```{r Get ISSN List from data downloaded from WoS}
+# Get ISSN List from data downloaded from WoS
+ISSNList <- JournalHomeGrid <- read_csv("data/JournalHomeGrid.csv", 
+                                        skip = 1) %>% 
+    select(ISSN) %>% 
+    filter(!is.na(ISSN)) %>% 
+    t() %>% 
+    paste("OR ", collapse = "") # add OR between ISSN List
+
+ISSNList <- gsub(" OR $","" ,ISSNList) # to remove last OR
+```
+
+Data is retrieved from PubMed via RISmed package.
+PubMed collection from National Library of Medicine (https://www.ncbi.nlm.nih.gov/pubmed/), has the most comprehensive information about peer reviewed articles in medicine.
+The API (https://dataguide.nlm.nih.gov/), and R packages are available for getting and fetching data from the server.
+
+The search formula for PubMed is generated as "ISSN List AND Country[Affiliation]" like done in [advanced search of PubMed](https://www.ncbi.nlm.nih.gov/pubmed/advanced).
+
+```{r Generate Search Formula For Pathology Journals AND Countries}
+# Generate Search Formula For Pathology Journals AND Countries
+searchformulaTR <- paste("'",ISSNList,"'", " AND ", "Turkey[Affiliation]")
+searchformulaDE <- paste("'",ISSNList,"'", " AND ", "Germany[Affiliation]")
+searchformulaJP <- paste("'",ISSNList,"'", " AND ", "Japan[Affiliation]")
+```
+
+Articles from Japan, German and Turkey are retrieved limiting the search with pathology journals, affiliation and last 10 years.
+
+```{r Search PubMed, Get and Fetch}
+# Search PubMed, Get and Fetch
+TurkeyArticles <- EUtilsSummary(searchformulaTR, type = 'esearch', db = 'pubmed', mindate = 2007, maxdate = 2017, retmax = 10000)
+fetchTurkey <- EUtilsGet(TurkeyArticles)
+
+GermanyArticles <- EUtilsSummary(searchformulaDE, type = 'esearch', db = 'pubmed', mindate = 2007, maxdate = 2017, retmax = 10000)
+fetchGermany <- EUtilsGet(GermanyArticles)
+
+JapanArticles <- EUtilsSummary(searchformulaJP, type = 'esearch', db = 'pubmed', mindate = 2007, maxdate = 2017, retmax = 10000)
+fetchJapan <- EUtilsGet(JapanArticles)
+```
+
+The retrieved information was compiled in a table.
+
+```{r}
+
+ISSNTR <- table(ISSN(fetchTurkey)) %>% 
+    as_tibble() %>% 
+    rename(Turkey = n, Journal = Var1)
+
+ISSNDE <- table(ISSN(fetchGermany)) %>% 
+    as_tibble() %>% 
+    rename(Germany = n, Journal = Var1)
+
+ISSNJP <- table(ISSN(fetchJapan)) %>% 
+    as_tibble() %>% 
+    rename(Japan = n, Journal = Var1)
+
+articles_per_journal <- list(
+    ISSNTR,
+    ISSNDE,
+    ISSNJP
+) %>%
+    reduce(left_join, by = "Journal", .id = "id") %>% 
+    gather(Country, n, 2:4)
+
+articles_per_journal$Country <- factor(articles_per_journal$Country,
+                                       levels =c("Japan", "Germany", "Turkey"))
+
+```
+
+
+
+**Result:**
+
+In this graph x-axis is the list of journals with decreasing impact factor, and y-axis is the number of articles published in that journal. The colors and shapes are showing the country of affiliation. We see that in one journal articles from Japan is more than 800.  
+
+```{r}
+ggplot(data = articles_per_journal, aes(x = Journal, y = n, group = Country,
+                                     colour = Country, shape = Country,
+                                     levels = Country
+)) +
+    geom_point() +
+    labs(x = "Journals with decreasing impact factor", y = "Number of Articles") +
+    ggtitle("Pathology Articles Per Journal") + 
+    theme(plot.title = element_text(hjust = 0.5),
+          axis.text.x=element_blank())
+
+```
+
+
+**Comment:**
+
+It is seen that one of the journals [ISSN: 1440-1827](https://onlinelibrary.wiley.com/page/journal/14401827/homepage/productinformation.html) has more than 800 articles from Japan. This journal is also from Japan. Here we wonder if there is an editorial preference for articles from their home country. 
+
+We sometimes observe this situation if there is a conference in that country, and the conference abstracts are indexed. 
+
+This may also be a clue that if a country has a journal listed in indexes, than it is more easy for the researchers in that country to publish their results.
+
+
+**Future Work:**
+
+Whether this observation is a unique situation, or there is a tendency in the journals to publish article from their country of origin, merits further investigation. 
+
+
+
+---
+
+
+## Feedback
+
+[Serdar Balcı, MD, Pathologist](https://github.com/sbalci) would like to hear your feedback: https://goo.gl/forms/YjGZ5DHgtPlR1RnB3
+
+This document will be continiously updated and the last update was on `r Sys.Date()`.
+
+---
+
+## Back to Main Menu
+
+[Main Page for Bibliographic Analysis](https://sbalci.github.io/pubmed/BibliographicStudies.html)
