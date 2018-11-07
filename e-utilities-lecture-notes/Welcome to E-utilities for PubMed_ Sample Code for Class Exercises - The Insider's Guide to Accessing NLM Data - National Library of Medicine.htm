@@ -1,0 +1,388 @@
+<!DOCTYPE html>  
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <title>&quot;Welcome to E-utilities for PubMed&quot; Sample Code for Class Exercises - The Insider's Guide to Accessing NLM Data - National Library of Medicine</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="DC.Title" content = "&quot;Welcome to E-utilities for PubMed&quot; Sample Code for Class Exercises"/>
+    <meta name="DC.Publisher" content="U.S. National Library of Medicine" />
+    <meta name="DC.Subject.Keyword" content="E-utilities API, PubMed API, Entrez Programming Utilities, NLM Data, PubMed Data">
+    <meta name="DC.Rights" content="Public Domain" />
+    <meta name="DC.Language" content="eng" />
+    <meta name="generator" content="JBake">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge;IE=9;IE=8;"/>
+
+    <!-- Le styles -->
+    <link href="../../css/nlm-dropdown.css" rel="stylesheet" type="text/css">
+    <link href="../../css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="../../css/asciidoctor.css" rel="stylesheet" type="text/css">
+    <link href="../../css/prettify.css" rel="stylesheet" type="text/css">
+    <link href="../../css/uts-docs.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/styles/default.min.css" type="text/css">
+    <link rel="stylesheet" href="https://www.nlm.nih.gov/core/nlm-autocomplete/1.0/nlm-autocomplete.css" type="text/css">
+    <link rel="stylesheet" href="https://www.nlm.nih.gov/core/jquery-ui/1.8/jquery-ui.css" type="text/css">
+    <link href="//cdn.datatables.net/1.10.3/css/jquery.dataTables.css" rel="stylesheet" />
+    <link href="//cdn.datatables.net/responsive/1.0.2/css/dataTables.responsive.css" rel="stylesheet" />
+
+
+    <script src="//code.jquery.com/jquery-1.11.3.min.js" type="text/javascript"></script>
+    <script src="//code.jquery.com/ui/1.11.3/jquery-ui.min.js" type="text/javascript"></script>
+    <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
+    <script src="../../js/master.js" type="text/javascript"></script>
+    <script src="../../js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="../../js/prettify.js" type="text/javascript"></script>
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/highlight.min.js" type="text/javascript"></script>-->
+    <script type="text/javascript" src="//cdn.datatables.net/1.10.3/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="//cdn.datatables.net/responsive/1.0.2/js/dataTables.responsive.min.js"></script>
+
+
+    
+    
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+    <script src="../../js/html5shiv.min.js" type="text/javascript"></script>
+    <![endif]-->
+    <link rel="shortcut icon" href="../../favicon.ico">
+    
+    <script type = "text/javascript" language = "javascript">
+      var $ = jQuery.noConflict();
+      
+      $(document).ready(function() {
+        
+       $("th").attr("scope","col");
+       
+        $("input#search.search-input").click(function(){
+          $(this).attr("value","");
+          
+        });
+        
+        $("input#search.search-input").blur(function(){
+          $(this).attr("value","Search");
+          
+        });
+       //Make external URLs open in new tab 
+	  $('.content-pane a[href^="http://"]').attr("target","_blank");
+      $('.content-pane a[href^="https://"]').attr("target","_blank");
+	  
+	 
+	 // Opening accordion based on URL
+        var url = document.location.toString();
+
+        if ( url.match('#') ) {
+            $('#'+url.split('#')[1]+'>.panel-collapse').addClass('in');
+            //append campaign parameters to Welcome Registration URL.
+            if ( url.match('\\?') && url.match('#welcome') ) {
+                var source = url.slice(url.indexOf("utm_source")+11,url.indexOf("&",url.indexOf("utm_source")+11));
+                $('#'+url.split('#')[1]+' .btn-reg').attr('href',function(){
+                    return this.href + '&SourceId=' + source.replace(/-/g, '');
+                });
+            }
+        }
+
+     //Adjust relative references
+    if ( url.match('dataguide_docs/') ){
+        $('a[href^="/"]').attr('href',function(){
+            return 'https://www.nlm.nih.gov/dataguide_docs' + this.href.slice(23);
+            });
+        $('img[src^="/"]').attr('src',function(){
+            return 'https://www.nlm.nih.gov/dataguide_docs' + this.src.slice(23);
+            });
+        $('div.responsiveVidBox>script').text(function () {
+            return $(this).text().replace(/(\/.*\.srt)/,"/dataguide_docs$1");
+            });
+
+    }
+
+
+        });
+      
+
+    </script>
+    <script type="text/javascript" src="https://assets.nlm.nih.gov/jwplayer/8/jwplayer.js"></script>
+   <script type="text/javascript">jwplayer.key="eNFaXCjyURVoCCGiHp7HTQ3hDhE/AfL0g8VE1fRbL84=";</script>
+	<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-84367246-1', 'auto');
+  ga('send', 'pageview');
+  </script>
+  <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-MT6MLL');</script>
+<!-- End Google Tag Manager -->
+  
+
+
+  </head>
+  <!--<body onload="prettyPrint();hljs.initHighlighting();">-->
+  
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MT6MLL"
+height="0" width="0" style="display:none;visibility:hidden" title="googletagmanager"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+  
+  <div id="wrapper-fluid">
+     <div class="container-fluid">
+
+      <!--header to hold banner + top navigation area -->
+      <!-- responsive design header using bootstrap css framework -->
+<div class = "row header">
+  <div class="container-fluid">
+     <div class = "row">
+        <div class = "col-md-6 col-sm-6 col-xs-12">
+            <a href = "https://www.nlm.nih.gov"><img class= "nlm-logo img-responsive" alt="National Library of Medicine" style="margin-right:1em;" src="../../nlm-logo.png"></a>
+        </div>
+        <div class = "col-md-6 col-sm-6 col-xs-12" id = "search-form">
+         <form method="get" action="//vsearch.nlm.nih.gov/vivisimo/cgi-bin/query-meta" target="_self" name="searchForm" id="searchForm">
+         <label for="search" class="hidden">Search</label>
+         <input type="text" name="query" value="Search" class="search-input" id="search"/>
+         <input type="hidden" name="v:project" value="nlm-main-website" />
+         </form>
+       </div>
+       <div class = "col-md-6 col-sm-8 col-xs-12">
+           
+       </div>
+    </div>
+  </div>
+</div>
+<div class = "row nlm-dropdown-menu">
+  <div class = "container-fluid">
+      <div id = "nav">
+         <ul class = "topnav">
+         <li></li>
+         </ul>
+      </div>
+  </div>
+</div>
+
+		<div id="main-body">
+
+<div class = "row uts-nav">
+   <div class="col-md-8 col-sm-8 col-xs-12">
+	<a href="/">
+	<img class="img-responsive pull-left" style="padding-top:.2em; margin-right:1em;" alt="UTS Logo" src="/images/bulbktrans.png">
+    <p class = "orange uts-title"><a href= "/" >The Insider's Guide to Accessing NLM Data</a></p>
+   </div>
+   <div class="col-md-4 col-sm-4 col-xs-12">
+    <p class = "umls-menu pull-right">
+ 
+     <a class="btn btn-default" href = "/contact/index.html">Contact Us</a>
+    </p>
+    </div>
+</div>
+
+
+<!--Navbar Menu-->
+<div class = "row">
+  <div class = "container-fluid navbar navbar-default" role = "navigation">
+   <div class="btn-group navbar-btn visible-*" role="group">
+   
+   <!--Overview Category Dropdown-->
+   <div class="btn-group" role="group">
+        <button type="button" class="btn btn-md dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Insider's Guide Overview<span class = "caret"></span></button>    
+         <ul class = "dropdown-menu" role = "menu">
+                                                       <li><a href = "../../eutilities/what_is_eutilities.html">What is E-utilities?</a></li>                                                                                                                                                                                                                                       <li><a href = "../../eutilities/when_to_use_eutilities.html">When should you use E-utilities?</a></li>                                                                                                   <li><a href = "../../eutilities/how_eutilities_works.html">How does E-utilities work?</a></li>                                                                                                                                                                                                                          </ul>
+      </div><!--//btn-group for Overview category-->
+                                                                                                                                                                        <a class = "btn btn-md" role = "button" href = "../../classes.html">Classes</a>                                                      <div class="btn-group" role="group">
+        <button type="button" class="btn btn-md dropdown-toggle" data-toggle="dropdown" aria-expanded="false">E-utilities Documentation<span class = "caret"></span></button>    
+         <ul class = "dropdown-menu" role = "menu">
+                                                                                                              <li><a href = "../../eutilities/utilities.html">The 9 E-utilities and Associated Parameters</a></li>                                                                                                                                                                                                                            <li><a href = "../../eutilities/history.html">E-utilities and the History server</a></li>                                                                                                                                                                                                                                                                                 </ul>
+      </div><!--//btn-group-->
+      <div class="btn-group" role="group">
+        <button type="button" class="btn btn-md dropdown-toggle" data-toggle="dropdown" aria-expanded="false">EDirect<span class = "caret"></span></button>    
+         <ul class = "dropdown-menu" role = "menu">
+                      <li><a href = "../../edirect/overview.html">EDirect Overview</a></li>                                                                                                                                                                                                                                                                                   <li><a href = "../../edirect/documentation.html">EDirect Documentation</a></li>                                                                                                   <li><a href = "../../edirect/install.html">Installing EDirect</a></li>                                                                                                                                                                                                               </ul>
+      </div><!--//btn-group-->
+   </div>
+ </div>
+</div>
+
+
+
+
+
+
+
+	<div class = "row">
+	<div class = "container-fluid breadcrumbs-container">
+	</div>
+	</div>
+	<div class = "row">
+	<div class = "container-fluid">
+	<div class = "content-pane">
+	
+	
+	
+	<h1>&quot;Welcome to E-utilities for PubMed&quot; Sample Code for Class Exercises</h1>
+	
+<p>Below you will find sample code for the examples presented in the <a href="../../classes.html#welcome-to-e-utilities">&ldquo;Welcome to E-utilities for PubMed&rdquo;</a> Insider&rsquo;s Guide course. These examples are written for use with EDirect in a Unix environment. If you need help installing and setting up EDirect, please see our <a href="../../edirect/install.html">&ldquo;Installing EDirect&rdquo; page</a>.</p><p>There are many different ways to answer the questions discussed in class. The sample code below provides one option, but by no means the only option, and not even necessarily the best option. Feel free to modify, adapt, edit, re-use or completely discard any of the suggestions below when trying to find the solution that works best for you.</p>
+<ul>
+  <li><a href="#find-the-current-most-active-authors-for-a-given-topic">Find the current &ldquo;most active&rdquo; authors for a given topic</a></li>
+  <li><a href="#generate-list-of-funding-agencies-who-are-most-active-in-funding-a-particular-topic">Generate list of funding agencies who are most active in funding a particular topic</a></li>
+  <li><a href="#create-a-customized-version-of-the-discovery-bar-results-by-year-histogram-comparing-two-searches">Create a customized version of the Discovery Bar &ldquo;Results By Year&rdquo; histogram, comparing two searches</a></li>
+  <li><a href="#find-the-most-commonly-discussed-topics-of-articles-written-by-authors-from-a-specific-institution">Find the most commonly-discussed topics of articles written by authors from a specific institution</a>
+  <ul>
+    <li><a href="#version-1-basic">Version 1: Basic</a></li>
+    <li><a href="#version-2-intermediate">Version 2: Intermediate</a></li>
+    <li><a href="#version-3-advanced">Version 3: Advanced</a></li>
+    <li><a href="#version-4">Version 4: ???</a></li>
+  </ul></li>
+</ul><h2><a href="#find-the-current-most-active-authors-for-a-given-topic" name="find-the-current-most-active-authors-for-a-given-topic">Find the current &ldquo;most active&rdquo; authors for a given topic</a></h2><h3>Goal:</h3><p>Find out who the &ldquo;hot&rdquo; authors are on a given topic. We are looking for authors that have written the most papers recently (i.e. in the last two years), on a specific subject. (For this example, we are looking at papers about diabetes and pregnancy.)</p><h3>Solution:</h3>
+<pre><code>esearch -db pubmed -query &quot;(diabetes AND pregnancy) AND (\&quot;2015/01/01\&quot;[PDAT] : \&quot;2017/12/31\&quot;[PDAT])&quot; | \
+efetch -format xml | \
+xtract -pattern Author -sep &quot; &quot; -element LastName,Initials | \
+sort-uniq-count-rank | \
+head -n 10
+</code></pre><p>This series of commands searches PubMed for the string &ldquo;(diabetes AND pregnancy) AND (&rdquo;2015/01/01&ldquo;[PDAT] : &rdquo;2017/12/31&ldquo;[PDAT])&rdquo;, retrieves the full XML records for each of the search results, extracts the last name and initials of every author on every record, sorts the authors by frequency of occurrence in the results set, and presents the top ten most frequently-occurring authors, along with the number of times that author appeared.</p><h3>Discussion:</h3>
+<pre><code>esearch -db pubmed -query &quot;(diabetes AND pregnancy) AND (\&quot;2015/01/01\&quot;[PDAT] : \&quot;2017/12/31\&quot;[PDAT])&quot; | \
+</code></pre><p>The first line of this command uses <code>esearch</code> to search PubMed (<code>-db pubmed</code>) for our search query (<code>-query &quot;(diabetes AND pregnancy) AND (\&quot;2015/01/01\&quot;[PDAT] : \&quot;2017/12/31\&quot;[PDAT])&quot;</code>). Our search query is constructed almost exactly like we would construct it in PubMed: we have a topic string (&ldquo;diabetes AND pregnancy&rdquo;) enclosed in parentheses and ANDed together with a date range. However, the double quotation marks (&ldquo;) in our search string pose a problem. We need to &rdquo;escape&ldquo; the double quotation marks (&rdquo;) in our search query by putting a &ldquo;\&rdquo; before them. This tells EDirect to interpret the quotation marks as just another character, and not a special character that marks the end of the <code>-query</code> argument. Otherwise, EDirect would interpret the double quotation marks before the first date as marking the end of the search query, and the rest of the query would not be searched.</p><p>The &ldquo;|&rdquo; character pipes the results of our <code>esearch</code> into our next command, and the &ldquo;\&rdquo; character at the end of the line allows us to continue our string of commands on the next line, for easier-to-read formatting.</p>
+<pre><code>efetch -format xml | \
+</code></pre><p>The second line takes the <code>esearch</code> results from our first line and uses <code>efetch</code> to retrieve the full records for each of our results in the XML format (<code>-format xml</code>), and pipes the XML output to the next line.</p>
+<pre><code>xtract -pattern Author -sep &quot; &quot; -element LastName,Initials | \
+</code></pre><p>The third line uses the <code>xtract</code> command to retrieve only the elements we need from the XML output, and display those elements in a tabular format. The <code>-pattern</code> command indicates that we should start a new row for every author (<code>-pattern Author</code>). Even if there are multiple authors on a single citation, each author will be on a new line, rather than putting all authors for the same citation on the same line. The command then extracts each author&rsquo;s last name and initials (<code>-element LastName,Initials</code>) and separates the two elements with a single space (<code>-sep &quot; &quot;</code>). This will output a list of authors&rsquo; names and initials, one author per line, and will pipe the list to the next line.</p>
+<pre><code>sort-uniq-count-rank | \
+</code></pre><p>The fourth line uses a special EDirect function (<code>sort-uniq-count-rank</code>) to sort the list of authors received from the previous line, grouping together the duplicates. The function then counts how many occurrences there are of each unique author, removes the duplicate authors, and then sorts the list of unique authors by how frequently they occur, with the most frequent authors at the top. The function also returns the numerical count, making it easier to quantify how frequently each author occurs in the data set.</p>
+<pre><code>head -n 10
+</code></pre><p>The fifth line, which is optional, shows us only the first ten rows from the output of the <code>sort-uniq-count-rank</code> function (<code>head -n 10</code>). Because this function puts the most frequently occurring authors first, this will show us only the ten most frequently occurring authors in our search results set. To show more or fewer rows, adjust the &ldquo;10&rdquo; up or down. If you want to see all of the authors, regardless of how frequently they appear, remove this line entirely. (If you do choose to remove this line, make sure you also remove the &ldquo;|&rdquo; and &ldquo;\&rdquo; characters from the previous line. Otherwise, the system will wait for you to finish entering your command.)</p>
+<hr/><h2><a href="#generate-list-of-funding-agencies-who-are-most-active-in-funding-a-particular-topic" name="generate-list-of-funding-agencies-who-are-most-active-in-funding-a-particular-topic">Generate list of funding agencies who are most active in funding a particular topic</a></h2><h3>Goal:</h3><p>Find out which funding agencies have been funding research on a given topic. We are looking for agencies that are associated with papers published recently (i.e. in the last two years), on a specific subject. (For this example, we are looking at papers about diabetes and pregnancy.)</p><h3>Solution:</h3>
+<pre><code>esearch -db pubmed -query &quot;(diabetes AND pregnancy) AND (\&quot;2015/01/01\&quot;[PDAT] : \&quot;2017/12/31\&quot;[PDAT])&quot; | \
+efetch -format xml | \
+xtract -pattern Grant -element Agency | \
+sort-uniq-count-rank | \
+head -n 10
+</code></pre><p>This series of commands searches PubMed for the string &ldquo;(diabetes AND pregnancy) AND (&rdquo;2015/01/01&ldquo;[PDAT] : &rdquo;2017/12/31&ldquo;[PDAT])&rdquo;, retrieves the full XML records for each of the search results, extracts the funding agency for every grant listed on every record, sorts the funding agencies by frequency of occurrence in the results set, and presents the top ten most frequently-occurring agencies, along with the number of times that agency appeared.</p><h3>Discussion:</h3>
+<pre><code>esearch -db pubmed -query &quot;(diabetes AND pregnancy) AND (\&quot;2015/01/01\&quot;[PDAT] : \&quot;2017/12/31\&quot;[PDAT])&quot; | \
+</code></pre><p>The first line of this command uses <code>esearch</code> to search PubMed (<code>-db pubmed</code>) for our search query (<code>-query &quot;(diabetes AND pregnancy) AND (\&quot;2015/01/01\&quot;[PDAT] : \&quot;2017/12/31\&quot;[PDAT])&quot;</code>). Our search query is constructed almost exactly like we would construct it in PubMed: we have a topic string (&ldquo;diabetes AND pregnancy&rdquo;) enclosed in parentheses and ANDed together with a date range. However, the double quotation marks (&ldquo;) in our search string pose a problem. We need to &rdquo;escape&ldquo; the double quotation marks (&rdquo;) in our search query by putting a &ldquo;\&rdquo; before them. This tells EDirect to interpret the quotation marks as just another character, and not a special character that marks the end of the <code>-query</code> argument. Otherwise, EDirect would interpret the double quotation marks before the first date as marking the end of the search query, and the rest of the query would not be searched.</p><p>The &ldquo;|&rdquo; character pipes the results of our <code>esearch</code> into our next command, and the &ldquo;\&rdquo; character at the end of the line allows us to continue our string of commands on the next line, for easier-to-read formatting.</p>
+<pre><code>efetch -format xml | \
+</code></pre><p>The second line takes the <code>esearch</code> results from our first line and uses <code>efetch</code> to retrieve the full records for each of our results in the XML format (<code>-format xml</code>), and pipes the XML output to the next line.</p>
+<pre><code>xtract -pattern Grant -element Agency | \
+</code></pre><p>The third line uses the <code>xtract</code> command to retrieve only the elements we need from the XML output, and display those elements in a tabular format. The <code>-pattern</code> command indicates that we should start a new row for every grant (<code>-pattern Grant</code>). Even if there are multiple grants on a single citation, each grant will be on a new line, rather than putting all grants for the same citation on the same line. The command then extracts each grant&rsquo;s funding agency (<code>-element Agency</code>). This will output a list of agencies, one agency per line, and will pipe the list to the next line.</p>
+<pre><code>sort-uniq-count-rank | \
+</code></pre><p>The fourth line uses a special EDirect function (<code>sort-uniq-count-rank</code>) to sort the list of agencies received from the previous line, grouping together the duplicates. The function then counts how many occurrences there are of each unique agency, removes the duplicate agencies, and then sorts the list of unique agencies by how frequently they occur, with the most frequent agencies at the top. The function also returns the numerical count, making it easier to quantify how frequently each agency occurs in the data set.</p>
+<pre><code>head -n 10
+</code></pre><p>The fifth line, which is optional, shows us only the first ten rows from the output of the <code>sort-uniq-count-rank</code> function (<code>head -n 10</code>). Because this function puts the most frequently occurring agencies first, this will show us only the ten most frequently occurring agencies in our search results set. To show more or fewer rows, adjust the &ldquo;10&rdquo; up or down. If you want to see all of the agencies, regardless of how frequently they appear, remove this line entirely. (If you do choose to remove this line, make sure you also remove the &ldquo;|&rdquo; and &ldquo;\&rdquo; characters from the previous line. Otherwise, the system will wait for you to finish entering your command.)</p>
+<hr/><h2><a href="#create-a-customized-version-of-the-discovery-bar-results-by-year-histogram-comparing-two-searches" name="create-a-customized-version-of-the-discovery-bar-results-by-year-histogram-comparing-two-searches">Create a customized version of the Discovery Bar &ldquo;Results By Year&rdquo; histogram, comparing two searches</a></h2><h3>Goal:</h3><p>In order to recreate the &ldquo;Results By Year&rdquo; histogram available in the PubMed Discovery Bar for a given search, we need to count how many occurrences of each Publication Year there are in the results set, then sort those counts by year. To compare the &ldquo;Results By Year&rdquo; for two searches, we need to do this twice, and combine the two outputs. For this example, the searches we are doing relate to abuse of specific opioids (&ldquo;fentanyl abuse&rdquo; vs. &ldquo;oxycodone abuse&rdquo;), and we will restrict our results to articles published between 1988 and 2017.</p><h3>Solution:</h3>
+<pre><code>esearch -db pubmed -query &quot;fentanyl abuse&quot; -datetype PDAT -mindate 1988 -maxdate 2017 | \
+efetch -format xml | \
+xtract -pattern PubmedArticle -block PubDate -element Year MedlineDate | \
+cut -c -4 | \
+sort-uniq-count-rank | \
+sort -n -t $&#39;\t&#39; -k 2 &gt; fentanyl_abuse.txt
+
+esearch -db pubmed -query &quot;oxycodone abuse&quot; -datetype PDAT -mindate 1988 -maxdate 2017 | \
+efetch -format xml | \
+xtract -pattern PubmedArticle -block PubDate -element Year MedlineDate | \
+cut -c -4 | \
+sort-uniq-count-rank | \
+sort -n -t $&#39;\t&#39; -k 2 &gt; oxycodone_abuse.txt
+
+join -j 2 -o 0,1.1,2.1 -a1 -a2 -e0 -t $&#39;\t&#39; &lt;(cat fentanyl_abuse.txt) &lt;(cat oxycodone_abuse.txt) &gt; abuse_compare.txt
+</code></pre><p>This series of commands searches PubMed for the string &ldquo;fentanyl abuse&rdquo; (restricted to publication dates between 1988 and 2017), retrieves the full XML records for each of the search results, extracts the year of publication from each record, counts how frequently each publication year appears in the results, then re-sorts by chronologically by year. The results are then saved to a file. The process is repeated for the string &ldquo;oxycodone abuse&rdquo;, and the two files are merged together.</p><p><em>(This example uses some Unix tools like</em> <code>sort</code>, <code>cut</code>, <em>and</em> <code>join</code> <em>that were not discussed in detail in <a href="../../classes.html#welcome-to-e-utilities">&ldquo;Welcome to E-utilities for PubMed&rdquo;</a>. We will address some of them in greater detail in our follow-up class, <a href="../../classes.html#edirect-for-pubmed">&ldquo;EDirect for PubMed&rdquo;</a>, but you can find a brief description of some of these tools in the <a href="https://www.ncbi.nlm.nih.gov/books/NBK179288/#_chapter6_Appendices_">appendices of NCBI&rsquo;s EDirect documentation</a>, under the heading &ldquo;UNIX Utilities.&rdquo;)</em></p><h3>Discussion:</h3>
+<pre><code>esearch -db pubmed -query &quot;fentanyl abuse&quot; -datetype PDAT -mindate 1988 -maxdate 2017 | \
+</code></pre><p>The first line of this command uses <code>esearch</code> to search PubMed (<code>-db pubmed</code>) for our search query (<code>-query &quot;fentanyl abuse&quot;</code>). Our search query is constructed exactly like we would construct it in PubMed: no tags, no punctuation, no Boolean operators. We simply put in our terms and they are automatically ANDed together. We use a few more arguments to restict our results based on publication date (<code>-datetype PDAT -mindate 1988 -maxdate 2017</code>).</p><p>The &ldquo;|&rdquo; character pipes the results of our <code>esearch</code> into our next command, and the &ldquo;\&rdquo; character at the end of the line allows us to continue our string of commands on the next line, for easier-to-read formatting.</p>
+<pre><code>efetch -format xml | \
+</code></pre><p>The second line takes the <code>esearch</code> results from our first line and uses <code>efetch</code> to retrieve the full records for each of our results in the XML format (<code>-format xml</code>), and pipes the XML output to the next line.</p>
+<pre><code>xtract -pattern PubmedArticle -block PubDate -element Year MedlineDate | \
+</code></pre><p>The third line uses the <code>xtract</code> command to retrieve only the elements we need from the XML output, and display those elements in a tabular format. The <code>-pattern</code> command indicates that we should start a new row for each PubMed record (<code>-pattern PubmedArticle</code>). We then want to look in the PubDate element for each record, and extract either the Year element or the MedlineDate element (each citation should only have one or the other; <code>-block PubDate -element Year MedlineDate</code>). Each line in the output will have either a publication year (from the Year element), or a publication year followed by a month or other, more specific date information (from the MedlineDate element). The output will then be piped to the next line.</p>
+<pre><code>cut -c -4 | \
+</code></pre><p>The fourth line cuts off each line after the fourth character, leaving only the four digits of the year on each row (<code>cut -c -4</code>). The list of years is then piped to the next line.</p>
+<pre><code>sort-uniq-count-rank | \
+</code></pre><p>The fifth line uses a special EDirect function (<code>sort-uniq-count-rank</code>) to sort the list of years received from the previous line, grouping together the duplicates. The function then counts how many occurrences there are of each unique year, removes the duplicate years, and then sorts the list of unique years by how frequently they occur, with the most frequently occurring years at the top. The function also returns the numerical count for each year.</p>
+<pre><code>sort -n -t $&#39;\t&#39; -k 2 &gt; fentanyl_abuse.txt
+</code></pre><p>The sixth line then re-sorts the results numerically by the second column of data (<code>sort -n -t $&#39;\t&#39; -k 2</code>), which is the list of unique years (the first column of data is the frequency counts generated on the previous line). The list of years and frequency counts is now sorted chronologically, and the result is then sent to a file (<code>&gt; fentanyl_abuse.txt</code>).</p>
+<pre><code>esearch -db pubmed -query &quot;oxycodone abuse&quot; -datetype PDAT -mindate 1988 -maxdate 2017 | \
+efetch -format xml | \
+xtract -pattern PubmedArticle -block PubDate -element Year MedlineDate | \
+cut -c -4 | \
+sort-uniq-count-rank | \
+sort -n -t $&#39;\t&#39; -k 2 &gt; oxycodone_abuse.txt
+</code></pre><p>The first six lines are then repeated, substituting out &ldquo;fentanyl&rdquo; for &ldquo;oxycodone&rdquo; in both the search string and the output file name.</p>
+<pre><code>join -j 2 -o 0,1.1,2.1 -a1 -a2 -e0 -t $&#39;\t&#39; &lt;(cat fentanyl_abuse.txt) &lt;(cat oxycodone_abuse.txt) &gt; abuse_compare.txt
+</code></pre><p>The final line uses a more advanced Unix command, <code>join</code>, that will allow us to merge together the two output files according to the values of a &ldquo;key&rdquo; column (in our case, the publication year). Both of our output files have the publication year in the second column, so we will join the two files using the second column of each file (<code>join -j 2</code>). We specify that the &ldquo;key&rdquo; column should be output first, followed by the first column of each file (<code>-o 0,1.1,2.1</code>). We want to make sure to include all of the publication years that were listed in either results set, even if they don&rsquo;t appear in the other (with SQL or other database querying techniques, this is sometimes referred to as a &ldquo;full outer join&rdquo;; <code>-a1 -a2</code>). If one of the files has no results for a given publication year, we will output a 0 instead of a blank, and we will separate the columns in our output by tabs (<code>-e0 -t $&#39;\t&#39;</code>).</p><p>The last part of the final line tells the <code>join</code> command which files to merge (<code>&lt;(cat fentanyl_abuse.txt) &lt;(cat oxycodone_abuse.txt)</code>) and where to save the output (<code>&gt; abuse_compare.txt</code>). If you want to instead view the results in your terminal window, you can omit the &ldquo;&gt;&rdquo; and everything that follows it on the last line.</p>
+<hr/><h2><a href="#find-the-most-commonly-discussed-topics-of-articles-written-by-authors-from-a-specific-institution" name="find-the-most-commonly-discussed-topics-of-articles-written-by-authors-from-a-specific-institution">Find the most commonly-discussed topics of articles written by authors from a specific institution</a></h2><h3>Goal:</h3><p>Find the most common topics for articles written by any author from a specific institution. For the purposes of this exercise, we will find the &ldquo;most common topics&rdquo; by determining which MeSH headings are most frequently attached to the records from our institution. This exercise assumes that the institution has many authors (or many research components with different names), and that searching for all of the authors (or all papers with any of the institution&rsquo;s names listed in the affiliation data) involves creating a long and complicated search string.</p><h3>Solutions:</h3><p>As mentioned before, most use cases have multiple solutions. There is almost always a way to accomplish 100% of your goal in a single script. However, there are usually also ways of accomplishing 90%, 75% or 50% of your goal in a single script, and doing the remaining 10%, 25% or 50% manually. Each individual user should decide whether the additional time and effort it will take to get from 90% to 100% is more or less efficient than simply doing the remaining 10% manually.</p><p>With that in mind, we have presented three different solutions below. Each solution is closer and closer to &ldquo;perfect.&rdquo; However, each solution adds new complexity and new commands which are more powerful, but also increasingly complicated. We encourage you to read through all three examples and see if one of them meets your needs, or if one of them could be adapted to meet your needs.</p><h4><a href="#version-1-basic" name="version-1-basic">Version 1: Basic</a></h4>
+<pre><code>esearch -db pubmed -query &quot;$(cat searchstring.txt)&quot; | \
+efetch -format xml | \
+xtract -pattern DescriptorName -element DescriptorName | \
+sort-uniq-count-rank | \
+head -n 10
+</code></pre><p>This series of commands searches PubMed for a string defined in the text file &ldquo;searchstring.txt&rdquo;, retrieves the full XML records for each of the search results, extracts each of the MeSH descriptors associated with every record in the results set, sorts the MeSH headings by frequency of occurrence in the results set, and presents the top ten most frequently-occurring MeSH headings, along with the number of times that heading appears.</p><h4>Discussion:</h4>
+<pre><code>esearch -db pubmed -query &quot;$(cat searchstring.txt)&quot; | \
+</code></pre><p>The first line uses <code>esearch</code> to search PubMed (<code>-db pubmed</code>). The line uses the Unix command <code>cat</code> to read the entire contents of a file (<code>searchstring.txt</code>) and use it as the search query (<code>-query &quot;$(cat searchstring.txt)&quot;</code>). This allows us to use a long and complex search strategy (involving many author names, many institutional names, or both), and to keep that search string in a separate file. Over time, we can update the search strategy without having to edit our actual script. Additionally, it makes the script more readable. </p><p>The &ldquo;|&rdquo; character pipes the results of our <code>esearch</code> into our next command, and the &ldquo;\&rdquo; character at the end of the line allows us to continue our string of commands on the next line, for easier-to-read formatting.</p>
+<pre><code>efetch -format xml | \
+</code></pre><p>The second line takes the <code>esearch</code> results from our first line and uses <code>efetch</code> to retrieve the full records for each of our results in the XML format (<code>-format xml</code>), and pipes the XML output to the next line.</p>
+<pre><code>xtract -pattern DescriptorName -element DescriptorName | \
+</code></pre><p>The third line uses the <code>xtract</code> command to retrieve only the elements we need from the XML output, and display those elements in a tabular format. The <code>-pattern</code> command indicates that we should start a new row for every MeSH heading in the results set (<code>-pattern DescriptorName</code>). Even if there are multiple MeSH headings on a single citation (which there likely will be), each MeSH heading will be on a new line, rather than putting all MeSH headings for the same citation on the same line. The command then extracts the name of each MeSH heading (<code>-element DescriptorName</code>). This will output a list of MeSH headings, one per line, and will pipe the list to the next line.</p>
+<pre><code>sort-uniq-count-rank | \
+</code></pre><p>The fourth line uses a special EDirect function (<code>sort-uniq-count-rank</code>) to sort the list of MeSH headings received from the previous line, grouping together the duplicates. The function then counts how many occurrences there are of each unique MeSH heading, removes the duplicate headings, and then sorts the list of unique headings by how frequently they occur, with the most frequent headings at the top. The function also returns the numerical count for each heading.</p>
+<pre><code>head -n 10
+</code></pre><p>The fifth line, which is optional, shows us only the first ten rows from the output of the <code>sort-uniq-count-rank</code> function (<code>head -n 10</code>). Because this function puts the most frequently occurring MeSH headings first, this will show us only the ten most frequently occurring headings in our search results set. To show more or fewer rows, adjust the &ldquo;10&rdquo; up or down. If you want to see all of the headings, regardless of how frequently they appear, remove this line entirely. (If you do choose to remove this line, make sure you also remove the &ldquo;|&rdquo; and &ldquo;\&rdquo; characters from the previous line. Otherwise, the system will wait for you to finish entering your command.)</p><h4><a href="#version-2-intermediate" name="version-2-intermediate">Version 2: Intermediate</a></h4>
+<pre><code>esearch -db pubmed -query &quot;$(cat searchstring.txt)&quot; | \
+efetch -format xml | \
+xtract -pattern DescriptorName -element DescriptorName | \
+grep -vxf checktags.txt | \
+sort-uniq-count-rank | \
+head -n 10
+</code></pre><p>As you may have noticed in Version 1 (depending on your search terms), &ldquo;Humans&rdquo; was probably among the most common MeSH headings in your output. Virtually every biomedical article will describe subjects of research (human or animal; mice or rats, etc.). Clinical articles will describe treatment, diagnosis, etc. of diseases in patients. These articles will almost always mention the number of patients, their sex and age. Experimental articles will almost always mention the species and sex of the animal subjects.</p><p>These concepts, which are mentioned in almost every article, are designated as &ldquo;<a href="https://www.nlm.nih.gov/bsd/indexing/training/CHK_010.html">check tags</a>&rdquo;. Check tags are routinely added to articles even if they are just mentioned in the article. If you like, you could just ignore these MeSH headings in your results. However, Version 2 of this code includes some lines which will automatically remove any headings that are check tags from your output. </p><h4>Discussion:</h4>
+<pre><code>esearch -db pubmed -query &quot;$(cat searchstring.txt)&quot; | \
+efetch -format xml | \
+xtract -pattern DescriptorName -element DescriptorName | \
+</code></pre><p>The first three lines are the same as Version 1, ending with the <code>xtract</code> command which outputs a list of MeSH headings, one per line, and will pipe the list to the next line. </p>
+<pre><code>grep -vxf checktags.txt | \
+</code></pre><p>The fourth line uses a very powerful Unix command, <code>grep</code>, which specializes in matching patterns in text. This line compares each line of text being piped in from our <code>xtract</code> command against every line in a specified file, and removes any lines from our <code>xtract</code> which match any of the lines in the file. The file (&ldquo;<a href="/checktags.txt" download>checktags.txt</a>&rdquo;) contains a list of all of the MeSH headings which are check tags, with one heading on each line. You can <a href="/checktags.txt" download>download the checktags.txt file</a> and use it as is, or you can modify it to filter out a different set of MeSH headings. The filtered list of MeSH headings is now piped to the next line.</p>
+<pre><code>sort-uniq-count-rank | \
+head -n 10
+</code></pre><p>The remaining lines of Version 2 are the same as Version 1.</p><h4><a href="#version-3-advanced" name="version-3-advanced">Version 3: Advanced</a></h4>
+<pre><code>esearch -db pubmed -query &quot;$(cat searchstring.txt)&quot; | \
+efetch -format xml | \
+xtract -pattern DescriptorName -sep &quot;&quot; -element DescriptorName@MajorTopicYN,DescriptorName | \
+grep -vxf nchecktags.txt | \
+cut -c 2- | \
+sort-uniq-count-rank | \
+head -n 10
+</code></pre><p>Version 2 filtered out the check tags from our result. However, while check tags are often added even if they are just mentioned in an article, those MeSH headings can sometimes be more central topics to the article. For example, &ldquo;pregnancy&rdquo; is a check tag, which is used to refer to research involving pregnant subjects. However, &ldquo;pregnancy&rdquo; can also be the main subject of an article. When it is, it will be denoted as a Major Topic. If we want to be even more precise than Version 2, we could make sure that we only filter out check tags when they are not the Major Topic of an article.</p><h4>Discussion:</h4>
+<pre><code>esearch -db pubmed -query &quot;$(cat searchstring.txt)&quot; | \
+efetch -format xml | \
+xtract -pattern DescriptorName -sep &quot;&quot; -element DescriptorName@MajorTopicYN,DescriptorName | \  
+</code></pre><p>Again, most of Version 3 is the same as Version 2. The first difference is in the third line. In addition to extracting the DescriptorName, we are also going to be extracting the attribute &ldquo;MajorTopicYN&rdquo; for each DescriptorName element (<code>-element DescriptorName@MajorTopicYN,DescriptorName</code>). The MajorTopicYN indicator (which is always either a &ldquo;Y&rdquo; if the MeSH heading is a Major Topic, or &ldquo;N&rdquo; if it is not) will be appended to the beginning of the descriptor name, because we have eliminated the separator between elements (<code>-sep &quot;&quot;</code>).</p>
+<pre><code>grep -vxf nchecktags.txt | \
+</code></pre><p>Since the output from our <code>xtract</code> now consists of MeSH headings with either &ldquo;Y&rdquo; or &ldquo;N&rdquo; in front of them, we also need to edit the file that contains the check tags we are filtering out (<code>grep -vxf nchecktags.txt</code>). The new file (<a href="/nchecktags.txt" download>nchecktags.txt</a>) is almost identical to the old file, with the exception that each heading in the file now starts with &ldquo;N&rdquo; (e.g. &ldquo;Humans&rdquo; becomes &ldquo;NHumans&rdquo;). If any of the headings in the output from our <code>xtract</code> are Major Topics, they will have a &ldquo;Y&rdquo; in front of them, and will not be filtered out by our N-prefixed check tag file. As before, the remaining, non-check tag MeSH headings are piped to the next line.</p>
+<pre><code>cut -c 2- | \
+</code></pre><p>Finally, we need to remove our extraneous &ldquo;Y&rdquo; and &ldquo;N&rdquo; characters from the front of the remaining MeSH headings (<code>cut -c 2-</code>).</p>
+<pre><code>sort-uniq-count-rank | \
+head -n 10
+</code></pre><p>The remaining lines of Version 3 are the same as Version 2.</p><h4><a href="#version-4" name="version-4">Version 4: ???</a></h4><p>Version 3 solved many of the problems, but is still not perfect. It does not handle MeSH subheadings, for example, and adding &ldquo;N&rdquo; to the front of each of the Check Tags in our filter file is inelegant. There are still more ways to improve this script, but the 90% of the task that this accomplishes will hopefully meet your needs. If it doesn&rsquo;t, feel free to keep improving it!</p>
+<hr/>	</div><!--end row-->
+	</div><!--end content pane-->
+	</div><!--end container--> 
+</div> <!-- End main-body -->
+
+		</div> <!--End container-fluid-->
+
+    <div id="footer">
+    <div class="container-fluid">
+    <div class = "row">
+        <div class = "col-md-12 col-sm-8 col-xs-6">
+	<p class = "white"><b>Content last updated:</b> 2018-02-07
+        <br/>
+        <a href="http://www.nlm.nih.gov/copyright.html">Copyright</a>, <a href="http://www.nlm.nih.gov/privacy.html">Privacy</a>, <a href="http://www.nlm.nih.gov/accessibility.html">Accessibility</a>
+        <br />
+        U.S. National Library of Medicine, 8600 Rockville Pike, Bethesda, MD 20894 <br />
+        <a href="http://www.nih.gov/">National Institutes of Health</a>, <a href="http://www.hhs.gov/">Health &amp; Human Services</a>
+        <br />
+        <a href="http://www.nih.gov/icd/od/foia/index.htm">Freedom of Information Act</a>, <a href="/contact/index.html">Contact Us</a>
+	<br/>
+	 Baked with <a href="http://jbake.org">JBake v2.4.0</a>
+       </div>
+      </div>
+      </div>
+    </div>
+			</div> <!--End wrapper-fluid-->
+  </body>
+</html>

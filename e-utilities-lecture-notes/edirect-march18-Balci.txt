@@ -1,0 +1,78 @@
+EDirect for PubMed Final Exam
+DUE: 11:59 PM EDT, March 26, 2018
+
+Serdar Balci
+
+
+Question 1:
+
+A. 
+
+esearch -db pubmed -query "'Scripps Research Institute'[Affiliation]" \
+-datetype PDAT -mindate 2016/03/01 | \
+efetch -format xml | \
+xtract -pattern DescriptorName -element DescriptorName | \
+sort-uniq-count-rank | \
+head -n 20
+
+
+B.
+
+esearch -db pubmed -query "'Scripps Research Institute'[Affiliation]" \
+-datetype PDAT -mindate 2016/03/01 | \
+efetch -format xml | \
+xtract -pattern DescriptorName -element DescriptorName | \
+grep -vxf checktags.txt | \
+sort-uniq-count-rank | \
+head -n 20
+
+
+C. 
+
+esearch -db pubmed -query "'Scripps Research Institute'[Affiliation]" \
+-datetype PDAT -mindate 2016/03/01 | \
+efetch -format xml | \
+xtract -pattern Keyword -element Keyword | \
+sort-uniq-count-rank | \
+head -n 20
+
+
+D. 
+
+esearch -db pubmed -query "'Scripps Research Institute'[Affiliation]" \
+-datetype PDAT -mindate 2016/03/01 | \
+efetch -format xml | \
+xtract -pattern Agency -element Agency | \
+sort-uniq-count-rank | \
+head -n 20
+
+
+E. 
+
+esearch -db pubmed -query "$(cat authorlist.txt)" \
+-datetype PDAT -mindate 2016/03/01 | \
+efetch -format xml | \
+xtract -pattern Agency -element Agency | \
+sort-uniq-count-rank | \
+head -n 20
+
+
+
+Question 2:
+
+esearch -db pubmed -query "hasretractionin" \
+-datetype PDAT -mindate 2016 -maxdate 2017 | \
+efetch -format xml |\
+xtract -pattern PubmedArticle -if Author -element MedlineCitation/PMID \
+-block Author -if Author/CollectiveName -element CollectiveName -block Author -position first -sep " " -element LastName,Initials \
+-block CommentsCorrections -if CommentsCorrections@RefType -equals RetractionIn -def "XXXXXXXX" -element CommentsCorrections/PMID -element CommentsCorrections/RefSource \
+>retractionlist.txt
+
+
+esearch -db pubmed -query "hasretractionin" \
+-datetype PDAT -mindate 2016 -maxdate 2017 | \
+efetch -format xml |\
+xtract -pattern PubmedArticle -if Author -element MedlineCitation/PMID \
+-block Author -if Author/CollectiveName -element CollectiveName -block Author -position first -sep " " -element LastName,Initials \
+-block CommentsCorrections -if CommentsCorrections@RefType -equals RetractionIn -def "XXXXXXXX" -element CommentsCorrections/PMID -element CommentsCorrections/RefSource \
+>retractionlist.txt

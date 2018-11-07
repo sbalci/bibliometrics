@@ -1,0 +1,7 @@
+<ENTREZ_DIRECT>
+  <Db>pubmed</Db>
+  <WebEnv>NCID_1_54233261_130.14.22.215_9001_1520434333_518150207_0MetA0_S_MegaStore_F_1</WebEnv>
+  <QueryKey>1</QueryKey>
+  <Count>5429</Count>
+  <Step>1</Step>
+</ENTREZ_DIRECT>

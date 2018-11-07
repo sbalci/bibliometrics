@@ -1,0 +1,3222 @@
+---
+title: "Evaluation of Pathology Literature using E-utilities & EDirect for PubMed"
+author: "Serdar Balcı, MD, Pathologist"
+date: "`r format(Sys.Date())`"
+output:
+  html_notebook:
+    code_folding: hide
+    df_print: kable
+    highlight: kate
+    number_sections: yes
+    theme: cerulean
+    toc: yes
+    toc_float: yes
+  html_document:
+    df_print: paged
+    toc: yes
+subtitle: Codes and Pages are Copied & Modified from "E-utilities & EDirect for PubMed"
+  lectures
+---
+
+NLMTrainers@nih.gov
+
+
+```{r necessary packages, include=FALSE}
+library(rstudioapi)
+library(tidyverse)
+```
+
+
+```{r eval=FALSE, include=FALSE}
+# https://cran.r-project.org/web/packages/rstudioapi/vignettes/terminal.html
+# myTerm <- rstudioapi::terminalCreate()
+# EdirectCall <- "esearch -db pubmed -query 'seasonal affective disorder' > myquery.txt \n"
+# rstudioapi::terminalSend(myTerm, EdirectCall)
+# rstudioapi::terminalKill(myTerm)
+# readLines("myquery.txt")
+```
+
+
+
+# The Insider's Guide to Accessing NLM Data
+
+[The Insider's Guide to Accessing NLM Data](https://dataguide.nlm.nih.gov/)
+
+
+# EDirect installation
+
+[Installing EDirect](https://dataguide.nlm.nih.gov/edirect/install.html)
+
+
+To install EDirect, open your Unix terminal and execute the following commands. (The easiest way to do this is to copy the whole block and paste it directly into your terminal window.)
+
+    cd ~
+    /bin/bash
+    perl -MNet::FTP -e \
+        '$ftp = new Net::FTP("ftp.ncbi.nlm.nih.gov", Passive => 1);
+        $ftp->login; $ftp->binary;
+        $ftp->get("/entrez/entrezdirect/edirect.tar.gz");'
+    gunzip -c edirect.tar.gz | tar xf -
+    rm edirect.tar.gz
+    builtin exit
+    export PATH=$PATH:$HOME/edirect >& /dev/null || setenv PATH "${PATH}:$HOME/edirect"
+    ./edirect/setup.sh
+
+
+This installs the EDirect software and gets it ready to use. Depending on your system’s configuration, you may see the following message:
+
+    In order to complete the configuration process, please execute the following:
+
+followed by a command that looks something like:
+
+    echo "export PATH=\$PATH:\$HOME/edirect" >> $HOME/.bash_profile
+
+If you see this prompt, copy the command provided and paste it into your terminal.
+
+Once the installation is complete, you will see the following message in your terminal window:
+
+    Entrez Direct has been successfully downloaded and installed.
+
+You can confirm EDirect is installed correctly by using the testing script below.
+
+## Test your EDirect installation
+
+To confirm that EDirect is installed and working properly, you can run your first EDirect script! Just type (or copy and paste) the following code into your terminal window, and press Enter.
+
+    echo "***********************" > installconfirm
+    echo "esearch version:" >> installconfirm
+    esearch -version >> installconfirm
+    echo "xtract version:" >> installconfirm
+    xtract -version >> installconfirm
+    echo "EDirect install status:" >> installconfirm
+    esearch -db pubmed -query "Babalobi OO[au] AND 2008[pdat]" | \
+    efetch -format xml | \
+    xtract -pattern Author -if Affiliation -contains Medicine \
+    -element Initials >> installconfirm
+    echo "***********************" >> installconfirm
+    cat installconfirm
+    rm installconfirm
+
+The result should be a message similar to the following:
+
+    ***********************
+    esearch version:
+    8.00
+    xtract version:
+    8.00
+    EDirect install status:
+    OK
+    ***********************
+
+If you see this output, you have installed EDirect successfully! 
+
+---
+
+
+
+
+
+# "Welcome to E-utilities for PubMed" Sample Code for Class Exercises
+
+Below you will find sample code for the examples presented in the “Welcome to E-utilities for PubMed” Insider’s Guide course. These examples are written for use with EDirect in a Unix environment. If you need help installing and setting up EDirect, please see our “Installing EDirect” page.
+
+There are many different ways to answer the questions discussed in class. The sample code below provides one option, but by no means the only option, and not even necessarily the best option. 
+
+**Feel free to modify, adapt, edit, re-use or completely discard any of the suggestions below when trying to find the solution that works best for you.**^[That is why I am preparing this page.]
+
+* Find the current “most active” authors for a given topic
+* Generate list of funding agencies who are most active in funding a particular topic
+* Create a customized version of the Discovery Bar “Results By Year” histogram, comparing two searches
+* Find the most commonly-discussed topics of articles written by authors from a specific institution
+    * Version 1: Basic
+    * Version 2: Intermediate
+    * Version 3: Advanced
+    * Version 4: ???
+
+
+### Find the current “most active” authors for a given topic
+
+**Goal:**
+
+Find out who the “hot” authors are on a given topic. We are looking for authors that have written the most papers recently (i.e. in the last two years), on a specific subject. (For this example, we are looking at papers about diabetes and pregnancy.)
+
+**Solution:**
+
+    esearch -db pubmed -query "(diabetes AND pregnancy) AND (\"2015/01/01\"[PDAT] : \"2017/12/31\"[PDAT])" | \
+    efetch -format xml | \
+    xtract -pattern Author -sep " " -element LastName,Initials | \
+    sort-uniq-count-rank | \
+    head -n 10
+
+
+
+```{r}
+myTerm <- rstudioapi::terminalCreate(show = FALSE)
+rstudioapi::terminalSend(myTerm, "esearch -db pubmed -query '(diabetes AND pregnancy) AND (\"2017/01/01\"[PDAT] : \"2017/12/31\"[PDAT])' | \n")
+rstudioapi::terminalSend(myTerm, "efetch -format xml | \n")
+rstudioapi::terminalSend(myTerm, "xtract -pattern Grant -element Agency | \n")
+rstudioapi::terminalSend(myTerm, "sort-uniq-count-rank | \n")
+rstudioapi::terminalSend(myTerm, "head -n 10 > myquery.txt \n")
+Sys.sleep(1)
+repeat{
+    Sys.sleep(0.1)
+    if(rstudioapi::terminalBusy(myTerm) == FALSE){
+        print("Code Executed")
+        break
+    }
+}
+
+```
+
+```{r}
+readLines("myquery.txt")
+```
+
+
+```{r}
+myTerm <- rstudioapi::terminalCreate(show = FALSE)
+rstudioapi::terminalSend(myTerm, "esearch -db pubmed -query '(diabetes AND pregnancy) AND (\"2017/01/01\"[PDAT] : \"2017/12/31\"[PDAT])' | efetch -format xml | xtract -pattern Grant -element Agency | sort-uniq-count-rank | head -n 10 > myquery.txt \n")
+Sys.sleep(1)
+repeat{
+    Sys.sleep(0.1)
+    if(rstudioapi::terminalBusy(myTerm) == FALSE){
+        print("Code Executed")
+        break
+    }
+}
+```
+
+
+This series of commands searches PubMed for the string `“(diabetes AND pregnancy) AND (”2015/01/01“[PDAT] : ”2017/12/31“[PDAT])”`, retrieves the full XML records for each of the search results, extracts the last name and initials of every author on every record, sorts the authors by frequency of occurrence in the results set, and presents the top ten most frequently-occurring authors, along with the number of times that author appeared.
+Discussion:
+
+    esearch -db pubmed -query "(diabetes AND pregnancy) AND (\"2015/01/01\"[PDAT] : \"2017/12/31\"[PDAT])" | \
+
+The first line of this command uses esearch to search PubMed `(-db pubmed)` for our search query `(-query "(diabetes AND pregnancy) AND (\"2015/01/01\"[PDAT] : \"2017/12/31\"[PDAT])")`. Our search query is constructed almost exactly like we would construct it in PubMed: we have a topic string `(“diabetes AND pregnancy”)` enclosed in parentheses and ANDed together with a date range. However, the double quotation marks (“) in our search string pose a problem. We need to ”escape“ the double quotation marks (”) in our search query by putting a `“\”` before them. This tells EDirect to interpret the quotation marks as just another character, and not a special character that marks the end of the -query argument. Otherwise, EDirect would interpret the double quotation marks before the first date as marking the end of the search query, and the rest of the query would not be searched.
+
+The `“|”` character pipes the results of our esearch into our next command, and the `“\”` character at the end of the line allows us to continue our string of commands on the next line, for easier-to-read formatting.
+
+    efetch -format xml | \
+
+The second line takes the esearch results from our first line and uses efetch to retrieve the full records for each of our results in the XML format `(-format xml)`, and pipes the XML output to the next line.
+
+    xtract -pattern Author -sep " " -element LastName,Initials | \
+
+The third line uses the xtract command to retrieve only the elements we need from the XML output, and display those elements in a tabular format. The `-pattern` command indicates that we should start a new row for every author `(-pattern Author)`. Even if there are multiple authors on a single citation, each author will be on a new line, rather than putting all authors for the same citation on the same line. The command then extracts each author’s last name and initials (-element LastName,Initials) and separates the two elements with a single space `(-sep " ")`. This will output a list of authors’ names and initials, one author per line, and will pipe the list to the next line.
+
+    sort-uniq-count-rank | \
+
+The fourth line uses a special EDirect function (sort-uniq-count-rank) to sort the list of authors received from the previous line, grouping together the duplicates. The function then counts how many occurrences there are of each unique author, removes the duplicate authors, and then sorts the list of unique authors by how frequently they occur, with the most frequent authors at the top. The function also returns the numerical count, making it easier to quantify how frequently each author occurs in the data set.
+
+    head -n 10
+
+The fifth line, which is optional, shows us only the first ten rows from the output of the sort-uniq-count-rank function (head -n 10). Because this function puts the most frequently occurring authors first, this will show us only the ten most frequently occurring authors in our search results set. To show more or fewer rows, adjust the “10” up or down. If you want to see all of the authors, regardless of how frequently they appear, remove this line entirely. (If you do choose to remove this line, make sure you also remove the `“|”` and `“\”` characters from the previous line. Otherwise, the system will wait for you to finish entering your command.)
+Generate list of funding agencies who are most active in funding a particular topic
+Goal:
+
+Find out which funding agencies have been funding research on a given topic. We are looking for agencies that are associated with papers published recently (i.e. in the last two years), on a specific subject. (For this example, we are looking at papers about diabetes and pregnancy.)
+
+
+**Solution:**
+
+    esearch -db pubmed -query "(diabetes AND pregnancy) AND (\"2015/01/01\"[PDAT] : \"2017/12/31\"[PDAT])" | \
+    efetch -format xml | \
+    xtract -pattern Grant -element Agency | \
+    sort-uniq-count-rank | \
+    head -n 10
+
+This series of commands searches PubMed for the string “(diabetes AND pregnancy) AND (”2015/01/01“[PDAT] : ”2017/12/31“[PDAT])”, retrieves the full XML records for each of the search results, extracts the funding agency for every grant listed on every record, sorts the funding agencies by frequency of occurrence in the results set, and presents the top ten most frequently-occurring agencies, along with the number of times that agency appeared.
+Discussion:
+
+    esearch -db pubmed -query "(diabetes AND pregnancy) AND (\"2015/01/01\"[PDAT] : \"2017/12/31\"[PDAT])" | \
+
+The first line of this command uses esearch to search PubMed (-db pubmed) for our search query (-query "(diabetes AND pregnancy) AND (\"2015/01/01\"[PDAT] : \"2017/12/31\"[PDAT])"). Our search query is constructed almost exactly like we would construct it in PubMed: we have a topic string (“diabetes AND pregnancy”) enclosed in parentheses and ANDed together with a date range. However, the double quotation marks (“) in our search string pose a problem. We need to ”escape“ the double quotation marks (”) in our search query by putting a `“\”` before them. This tells EDirect to interpret the quotation marks as just another character, and not a special character that marks the end of the -query argument. Otherwise, EDirect would interpret the double quotation marks before the first date as marking the end of the search query, and the rest of the query would not be searched.
+
+The `“|”` character pipes the results of our esearch into our next command, and the `“\”` character at the end of the line allows us to continue our string of commands on the next line, for easier-to-read formatting.
+
+    efetch -format xml | \
+
+The second line takes the esearch results from our first line and uses efetch to retrieve the full records for each of our results in the XML format (-format xml), and pipes the XML output to the next line.
+
+    xtract -pattern Grant -element Agency | \
+
+The third line uses the xtract command to retrieve only the elements we need from the XML output, and display those elements in a tabular format. The -pattern command indicates that we should start a new row for every grant (-pattern Grant). Even if there are multiple grants on a single citation, each grant will be on a new line, rather than putting all grants for the same citation on the same line. The command then extracts each grant’s funding agency (-element Agency). This will output a list of agencies, one agency per line, and will pipe the list to the next line.
+
+    sort-uniq-count-rank | \
+
+The fourth line uses a special EDirect function (sort-uniq-count-rank) to sort the list of agencies received from the previous line, grouping together the duplicates. The function then counts how many occurrences there are of each unique agency, removes the duplicate agencies, and then sorts the list of unique agencies by how frequently they occur, with the most frequent agencies at the top. The function also returns the numerical count, making it easier to quantify how frequently each agency occurs in the data set.
+
+    head -n 10
+
+The fifth line, which is optional, shows us only the first ten rows from the output of the sort-uniq-count-rank function (head -n 10). Because this function puts the most frequently occurring agencies first, this will show us only the ten most frequently occurring agencies in our search results set. To show more or fewer rows, adjust the “10” up or down. If you want to see all of the agencies, regardless of how frequently they appear, remove this line entirely. (If you do choose to remove this line, make sure you also remove the `“|”` and `“\”` characters from the previous line. Otherwise, the system will wait for you to finish entering your command.)
+Create a customized version of the Discovery Bar “Results By Year” histogram, comparing two searches
+Goal:
+
+In order to recreate the “Results By Year” histogram available in the PubMed Discovery Bar for a given search, we need to count how many occurrences of each Publication Year there are in the results set, then sort those counts by year. To compare the “Results By Year” for two searches, we need to do this twice, and combine the two outputs. For this example, the searches we are doing relate to abuse of specific opioids (“fentanyl abuse” vs. “oxycodone abuse”), and we will restrict our results to articles published between 1988 and 2017.
+
+
+**Solution:**
+
+    esearch -db pubmed -query "fentanyl abuse" -datetype PDAT -mindate 1988 -maxdate 2017 | \
+    efetch -format xml | \
+    xtract -pattern PubmedArticle -block PubDate -element Year MedlineDate | \
+    cut -c -4 | \
+    sort-uniq-count-rank | \
+    sort -n -t $'\t' -k 2 > fentanyl_abuse.txt
+
+    esearch -db pubmed -query "oxycodone abuse" -datetype PDAT -mindate 1988 -maxdate 2017 | \
+    efetch -format xml | \
+    xtract -pattern PubmedArticle -block PubDate -element Year MedlineDate | \
+    cut -c -4 | \
+    sort-uniq-count-rank | \
+    sort -n -t $'\t' -k 2 > oxycodone_abuse.txt
+
+    join -j 2 -o 0,1.1,2.1 -a1 -a2 -e0 -t $'\t' <(cat fentanyl_abuse.txt) <(cat oxycodone_abuse.txt) > abuse_compare.txt
+
+This series of commands searches PubMed for the string “fentanyl abuse” (restricted to publication dates between 1988 and 2017), retrieves the full XML records for each of the search results, extracts the year of publication from each record, counts how frequently each publication year appears in the results, then re-sorts by chronologically by year. The results are then saved to a file. The process is repeated for the string “oxycodone abuse”, and the two files are merged together.
+
+(This example uses some Unix tools like sort, cut, and join that were not discussed in detail in “Welcome to E-utilities for PubMed”. We will address some of them in greater detail in our follow-up class, “EDirect for PubMed”, but you can find a brief description of some of these tools in the appendices of NCBI’s EDirect documentation, under the heading “UNIX Utilities.”)
+Discussion:
+
+    esearch -db pubmed -query "fentanyl abuse" -datetype PDAT -mindate 1988 -maxdate 2017 | \
+
+The first line of this command uses esearch to search PubMed (-db pubmed) for our search query (-query "fentanyl abuse"). Our search query is constructed exactly like we would construct it in PubMed: no tags, no punctuation, no Boolean operators. We simply put in our terms and they are automatically ANDed together. We use a few more arguments to restict our results based on publication date (-datetype PDAT -mindate 1988 -maxdate 2017).
+
+The `“|”` character pipes the results of our esearch into our next command, and the `“\”` character at the end of the line allows us to continue our string of commands on the next line, for easier-to-read formatting.
+
+    efetch -format xml | \
+
+The second line takes the esearch results from our first line and uses efetch to retrieve the full records for each of our results in the XML format (-format xml), and pipes the XML output to the next line.
+
+    xtract -pattern PubmedArticle -block PubDate -element Year MedlineDate | \
+
+The third line uses the xtract command to retrieve only the elements we need from the XML output, and display those elements in a tabular format. The -pattern command indicates that we should start a new row for each PubMed record (-pattern PubmedArticle). We then want to look in the PubDate element for each record, and extract either the Year element or the MedlineDate element (each citation should only have one or the other; -block PubDate -element Year MedlineDate). Each line in the output will have either a publication year (from the Year element), or a publication year followed by a month or other, more specific date information (from the MedlineDate element). The output will then be piped to the next line.
+
+    cut -c -4 | \
+
+The fourth line cuts off each line after the fourth character, leaving only the four digits of the year on each row (cut -c -4). The list of years is then piped to the next line.
+
+    sort-uniq-count-rank | \
+
+The fifth line uses a special EDirect function (sort-uniq-count-rank) to sort the list of years received from the previous line, grouping together the duplicates. The function then counts how many occurrences there are of each unique year, removes the duplicate years, and then sorts the list of unique years by how frequently they occur, with the most frequently occurring years at the top. The function also returns the numerical count for each year.
+
+    sort -n -t $'\t' -k 2 > fentanyl_abuse.txt
+
+The sixth line then re-sorts the results numerically by the second column of data (sort -n -t $'\t' -k 2), which is the list of unique years (the first column of data is the frequency counts generated on the previous line). The list of years and frequency counts is now sorted chronologically, and the result is then sent to a file (> fentanyl_abuse.txt).
+
+    esearch -db pubmed -query "oxycodone abuse" -datetype PDAT -mindate 1988 -maxdate 2017 | \
+    efetch -format xml | \
+    xtract -pattern PubmedArticle -block PubDate -element Year MedlineDate | \
+    cut -c -4 | \
+    sort-uniq-count-rank | \
+    sort -n -t $'\t' -k 2 > oxycodone_abuse.txt
+
+The first six lines are then repeated, substituting out “fentanyl” for “oxycodone” in both the search string and the output file name.
+
+    join -j 2 -o 0,1.1,2.1 -a1 -a2 -e0 -t $'\t' <(cat fentanyl_abuse.txt) <(cat oxycodone_abuse.txt) > abuse_compare.txt
+
+The final line uses a more advanced Unix command, join, that will allow us to merge together the two output files according to the values of a “key” column (in our case, the publication year). Both of our output files have the publication year in the second column, so we will join the two files using the second column of each file (join -j 2). We specify that the “key” column should be output first, followed by the first column of each file (-o 0,1.1,2.1). We want to make sure to include all of the publication years that were listed in either results set, even if they don’t appear in the other (with SQL or other database querying techniques, this is sometimes referred to as a “full outer join”; -a1 -a2). If one of the files has no results for a given publication year, we will output a 0 instead of a blank, and we will separate the columns in our output by tabs (-e0 -t $'\t').
+
+The last part of the final line tells the join command which files to merge (<(cat fentanyl_abuse.txt) <(cat oxycodone_abuse.txt)) and where to save the output (> abuse_compare.txt). If you want to instead view the results in your terminal window, you can omit the “>” and everything that follows it on the last line.
+Find the most commonly-discussed topics of articles written by authors from a specific institution
+Goal:
+
+Find the most common topics for articles written by any author from a specific institution. For the purposes of this exercise, we will find the “most common topics” by determining which MeSH headings are most frequently attached to the records from our institution. This exercise assumes that the institution has many authors (or many research components with different names), and that searching for all of the authors (or all papers with any of the institution’s names listed in the affiliation data) involves creating a long and complicated search string.
+Solutions:
+
+As mentioned before, most use cases have multiple solutions. There is almost always a way to accomplish 100% of your goal in a single script. However, there are usually also ways of accomplishing 90%, 75% or 50% of your goal in a single script, and doing the remaining 10%, 25% or 50% manually. Each individual user should decide whether the additional time and effort it will take to get from 90% to 100% is more or less efficient than simply doing the remaining 10% manually.
+
+With that in mind, we have presented three different solutions below. Each solution is closer and closer to “perfect.” However, each solution adds new complexity and new commands which are more powerful, but also increasingly complicated. We encourage you to read through all three examples and see if one of them meets your needs, or if one of them could be adapted to meet your needs.
+Version 1: Basic
+
+    esearch -db pubmed -query "$(cat searchstring.txt)" | \
+    efetch -format xml | \
+    xtract -pattern DescriptorName -element DescriptorName | \
+    sort-uniq-count-rank | \
+    head -n 10
+
+This series of commands searches PubMed for a string defined in the text file “searchstring.txt”, retrieves the full XML records for each of the search results, extracts each of the MeSH descriptors associated with every record in the results set, sorts the MeSH headings by frequency of occurrence in the results set, and presents the top ten most frequently-occurring MeSH headings, along with the number of times that heading appears.
+Discussion:
+
+    esearch -db pubmed -query "$(cat searchstring.txt)" | \
+
+The first line uses esearch to search PubMed (-db pubmed). The line uses the Unix command cat to read the entire contents of a file (searchstring.txt) and use it as the search query (-query "$(cat searchstring.txt)"). This allows us to use a long and complex search strategy (involving many author names, many institutional names, or both), and to keep that search string in a separate file. Over time, we can update the search strategy without having to edit our actual script. Additionally, it makes the script more readable.
+
+The `“|”` character pipes the results of our esearch into our next command, and the `“\”` character at the end of the line allows us to continue our string of commands on the next line, for easier-to-read formatting.
+
+    efetch -format xml | \
+
+The second line takes the esearch results from our first line and uses efetch to retrieve the full records for each of our results in the XML format (-format xml), and pipes the XML output to the next line.
+
+    xtract -pattern DescriptorName -element DescriptorName | \
+
+The third line uses the xtract command to retrieve only the elements we need from the XML output, and display those elements in a tabular format. The -pattern command indicates that we should start a new row for every MeSH heading in the results set (-pattern DescriptorName). Even if there are multiple MeSH headings on a single citation (which there likely will be), each MeSH heading will be on a new line, rather than putting all MeSH headings for the same citation on the same line. The command then extracts the name of each MeSH heading (-element DescriptorName). This will output a list of MeSH headings, one per line, and will pipe the list to the next line.
+
+    sort-uniq-count-rank | \
+
+The fourth line uses a special EDirect function (sort-uniq-count-rank) to sort the list of MeSH headings received from the previous line, grouping together the duplicates. The function then counts how many occurrences there are of each unique MeSH heading, removes the duplicate headings, and then sorts the list of unique headings by how frequently they occur, with the most frequent headings at the top. The function also returns the numerical count for each heading.
+
+    head -n 10
+
+The fifth line, which is optional, shows us only the first ten rows from the output of the sort-uniq-count-rank function (head -n 10). Because this function puts the most frequently occurring MeSH headings first, this will show us only the ten most frequently occurring headings in our search results set. To show more or fewer rows, adjust the “10” up or down. If you want to see all of the headings, regardless of how frequently they appear, remove this line entirely. (If you do choose to remove this line, make sure you also remove the `“|”` and `“\”` characters from the previous line. Otherwise, the system will wait for you to finish entering your command.)
+Version 2: Intermediate
+
+    esearch -db pubmed -query "$(cat searchstring.txt)" | \
+    efetch -format xml | \
+    xtract -pattern DescriptorName -element DescriptorName | \
+    grep -vxf checktags.txt | \
+    sort-uniq-count-rank | \
+    head -n 10
+
+As you may have noticed in Version 1 (depending on your search terms), “Humans” was probably among the most common MeSH headings in your output. Virtually every biomedical article will describe subjects of research (human or animal; mice or rats, etc.). Clinical articles will describe treatment, diagnosis, etc. of diseases in patients. These articles will almost always mention the number of patients, their sex and age. Experimental articles will almost always mention the species and sex of the animal subjects.
+
+These concepts, which are mentioned in almost every article, are designated as “check tags”. Check tags are routinely added to articles even if they are just mentioned in the article. If you like, you could just ignore these MeSH headings in your results. However, Version 2 of this code includes some lines which will automatically remove any headings that are check tags from your output.
+Discussion:
+
+    esearch -db pubmed -query "$(cat searchstring.txt)" | \
+    efetch -format xml | \
+    xtract -pattern DescriptorName -element DescriptorName | \
+
+The first three lines are the same as Version 1, ending with the xtract command which outputs a list of MeSH headings, one per line, and will pipe the list to the next line.
+
+    grep -vxf checktags.txt | \
+
+The fourth line uses a very powerful Unix command, grep, which specializes in matching patterns in text. This line compares each line of text being piped in from our xtract command against every line in a specified file, and removes any lines from our xtract which match any of the lines in the file. The file (“checktags.txt”) contains a list of all of the MeSH headings which are check tags, with one heading on each line. You can download the checktags.txt file and use it as is, or you can modify it to filter out a different set of MeSH headings. The filtered list of MeSH headings is now piped to the next line.
+
+    sort-uniq-count-rank | \
+    head -n 10
+
+The remaining lines of Version 2 are the same as Version 1.
+Version 3: Advanced
+
+    esearch -db pubmed -query "$(cat searchstring.txt)" | \
+    efetch -format xml | \
+    xtract -pattern DescriptorName -sep "" -element DescriptorName@MajorTopicYN,DescriptorName | \
+    grep -vxf nchecktags.txt | \
+    cut -c 2- | \
+    sort-uniq-count-rank | \
+    head -n 10
+
+Version 2 filtered out the check tags from our result. However, while check tags are often added even if they are just mentioned in an article, those MeSH headings can sometimes be more central topics to the article. For example, “pregnancy” is a check tag, which is used to refer to research involving pregnant subjects. However, “pregnancy” can also be the main subject of an article. When it is, it will be denoted as a Major Topic. If we want to be even more precise than Version 2, we could make sure that we only filter out check tags when they are not the Major Topic of an article.
+Discussion:
+
+    esearch -db pubmed -query "$(cat searchstring.txt)" | \
+    efetch -format xml | \
+    xtract -pattern DescriptorName -sep "" -element DescriptorName@MajorTopicYN,DescriptorName | \  
+
+Again, most of Version 3 is the same as Version 2. The first difference is in the third line. In addition to extracting the DescriptorName, we are also going to be extracting the attribute “MajorTopicYN” for each DescriptorName element (-element DescriptorName@MajorTopicYN,DescriptorName). The MajorTopicYN indicator (which is always either a “Y” if the MeSH heading is a Major Topic, or “N” if it is not) will be appended to the beginning of the descriptor name, because we have eliminated the separator between elements (-sep "").
+
+    grep -vxf nchecktags.txt | \
+
+Since the output from our xtract now consists of MeSH headings with either “Y” or “N” in front of them, we also need to edit the file that contains the check tags we are filtering out (grep -vxf nchecktags.txt). The new file (nchecktags.txt) is almost identical to the old file, with the exception that each heading in the file now starts with “N” (e.g. “Humans” becomes “NHumans”). If any of the headings in the output from our xtract are Major Topics, they will have a “Y” in front of them, and will not be filtered out by our N-prefixed check tag file. As before, the remaining, non-check tag MeSH headings are piped to the next line.
+
+    cut -c 2- | \
+
+Finally, we need to remove our extraneous “Y” and “N” characters from the front of the remaining MeSH headings (cut -c 2-).
+
+    sort-uniq-count-rank | \
+    head -n 10
+
+The remaining lines of Version 3 are the same as Version 2.
+Version 4: ???
+
+Version 3 solved many of the problems, but is still not perfect. It does not handle MeSH subheadings, for example, and adding “N” to the front of each of the Check Tags in our filter file is inelegant. There are still more ways to improve this script, but the 90% of the task that this accomplishes will hopefully meet your needs. If it doesn’t, feel free to keep improving it!
+
+
+
+# EDirect for PubMed" Class Materials
+
+[EDirect for PubMed" Class Materials](https://dataguide.nlm.nih.gov/classes/edirect-for-pubmed/materials.html)
+
+
+
+## Part One "EDirect for PubMed: Part 1: Getting PubMed Data" Sample Code
+
+### Part One
+
+
+https://dataguide.nlm.nih.gov/classes/edirect-for-pubmed/samplecode1.html
+
+
+#### esearch
+
+**Conduct a simple search of PubMed for articles on seasonal affective disorder**
+
+    esearch -db pubmed -query "seasonal affective disorder"
+
+
+```{r part1-1.txt}
+myTerm <- rstudioapi::terminalCreate(show = FALSE)
+rstudioapi::terminalSend(myTerm, "esearch -db pubmed -query \"seasonal affective disorder\" > part1-1.txt \n")
+Sys.sleep(1)
+repeat{
+    Sys.sleep(0.1)
+    if(rstudioapi::terminalBusy(myTerm) == FALSE){
+        print("Code Executed")
+        break
+    }
+}
+
+
+readLines("part1-1.txt")
+
+```
+
+
+
+This line of code uses the esearch command to search PubMed (`-db pubmed`) for our search query `(-query "seasonal affective disorder")`.
+
+If you want to see the query translation for your search (like you would see in the Search Details box with the web version of PubMed), you can add an additional argument to your command:
+
+    esearch -db pubmed -query "seasonal affective disorder" -log
+
+By adding the -log argument to esearch, the command will also output the E-utilities URL and query translation for your search.
+
+
+```{r part1-2}
+myTerm <- rstudioapi::terminalCreate(show = FALSE)
+rstudioapi::terminalSend(myTerm, "esearch -db pubmed -query 'seasonal affective disorder' -log &> part1-2.txt \n ")
+Sys.sleep(1)
+repeat{
+    Sys.sleep(0.1)
+    if(rstudioapi::terminalBusy(myTerm) == FALSE){
+        print("Code Executed")
+        break
+    }
+}
+
+rstudioapi::terminalKill(myTerm)
+readLines("part1-2.txt")
+
+# Problem in saving with >
+
+```
+
+
+
+**Conduct a simple search of PubMed for articles on malaria in the journal JAMA**
+
+    esearch -db pubmed -query "malaria AND jama[journal]"
+
+This line of code uses the esearch command to search PubMed `(-db pubmed)` for our search query `(-query "malaria AND jama[journal]")`. Note that the search query can include Boolean operators (AND) and search field tags ([journal]) to help focus our search, just as we can in the web version of PubMed.
+
+```{r part1-3}
+myTerm <- rstudioapi::terminalCreate(show = FALSE)
+rstudioapi::terminalSend(myTerm, "esearch -db pubmed -query \"malaria AND jama[journal]\" &> part1-3.txt \n")
+Sys.sleep(1)
+repeat{
+    Sys.sleep(0.1)
+    if(rstudioapi::terminalBusy(myTerm) == FALSE){
+        print("Code Executed")
+        break
+    }
+}
+readLines("part1-3.txt")
+```
+
+
+
+
+**Restrict search results by publication date**
+
+    esearch -db pubmed -query "malaria AND jama[journal]" \
+    -datetype PDAT -mindate 2015 -maxdate 2017
+
+The first line of code is the same as our previous example, though the `“\”` character at the end of the line allows us to continue our command on the next line, for easier-to-read formatting.
+
+The second line limits the search results by publication date `-datetype PDAT`, including only articles published between 2015 and 2017 `-mindate 2015 -maxdate 2017`.
+
+
+**`“\”` does not work as a second line in `rstudioapi::` functions**
+
+```{r part1-4}
+myTerm <- rstudioapi::terminalCreate(show = FALSE)
+rstudioapi::terminalSend(myTerm, "esearch -db pubmed -query \"malaria AND jama[journal]\" -datetype PDAT -mindate 2015 -maxdate 2017 &> part1-4.txt \n")
+Sys.sleep(1)
+repeat{
+    Sys.sleep(0.1)
+    if(rstudioapi::terminalBusy(myTerm) == FALSE){
+        print("Code Executed")
+        break
+    }
+}
+readLines("part1-4.txt")
+```
+
+
+
+**Conduct a PubMed search with a search string that includes quotation marks**
+
+    esearch -db pubmed -query "cancer AND \"science\"[journal]"
+
+This line of code uses the esearch command to search PubMed `-db pubmed` for our search query `-query "cancer AND \"science\"[journal]"`. We need to “escape” the double quotation marks `“` in our search query by putting a `\` before them. This tells EDirect to interpret the quotation marks as just another character, and not a special character that marks the end of the `-query` argument. Otherwise, EDirect would interpret the double quotation marks before the first date as marking the end of the search query, and the rest of the query would not be searched.
+
+```{r part1-5}
+myTerm <- rstudioapi::terminalCreate(show = FALSE)
+rstudioapi::terminalSend(myTerm, "esearch -db pubmed -query 'cancer AND \"science\"[journal]' &> part1-5.txt \n")
+Sys.sleep(1)
+repeat{
+    Sys.sleep(0.1)
+    if(rstudioapi::terminalBusy(myTerm) == FALSE){
+        print("Code Executed")
+        break
+    }
+}
+readLines("part1-5.txt")
+```
+
+
+
+
+
+#### efetch
+
+**Retrieve a single PubMed record in text abstract format**
+
+    efetch -db pubmed -id 25359968 -format abstract
+
+This line of code uses the efetch command to retrieve a record from PubMed `-db pubmed`. We specify that we will retrieve the record for PMID 25359968 `-id 25359968` and that we want the results in the text abstract format `-format abstract`.
+
+
+```{r part1-6}
+myTerm <- rstudioapi::terminalCreate(show = FALSE)
+rstudioapi::terminalSend(myTerm, "efetch -db pubmed -id 25359968 -format abstract -log > part1-6.txt \n")
+Sys.sleep(1)
+repeat{
+    Sys.sleep(0.1)
+    if(rstudioapi::terminalBusy(myTerm) == FALSE){
+        print("Code Executed")
+        break
+    }
+}
+readLines("part1-6.txt")
+```
+
+    efetch -db pubmed -id 25359968 -format medline
+    
+    efetch -db pubmed -id 25359968 -format xml
+    
+    efetch -db pubmed -id 25359968 -format uid
+
+Retrieve multiple PubMed records in text abstract format
+
+    efetch -db pubmed -id 24102982,21171099,17150207 -format abstract
+
+This line of code uses the efetch command to retrieve records from PubMed (-db pubmed). We specify that we will retrieve the records for PMID 24102982,21171099,17150207 (-id 24102982,21171099,17150207) and that we want the results in the text abstract format (-format abstract).
+
+
+**Creating a data pipeline**
+
+**Conduct a PubMed search and retrieve the results as a list of PMIDs**
+
+```{r part1-pipe}
+myTerm <- rstudioapi::terminalCreate(show = FALSE)
+rstudioapi::terminalSend(myTerm, " esearch -db pubmed -query \"asthenopia[mh] AND nursing[sh]\" | efetch -format uid &> part1-pipe.txt \n")
+Sys.sleep(1)
+repeat{
+    Sys.sleep(0.1)
+    if(rstudioapi::terminalBusy(myTerm) == FALSE){
+        print("Code Executed")
+        break
+    }
+}
+readLines("part1-pipe.txt")
+```
+
+
+
+
+
+    esearch -db pubmed -query "asthenopia[mh] AND nursing[sh]" | efetch -format uid
+
+This line of code uses the esearch command to search PubMed (-db pubmed) for our search query (-query "asthenopia[mh] AND nursing[sh]"), and then pipes the resulting PMIDs into an efetch command (| efetch), which retrieves the PubMed records, but outputs only the PMIDs (-format uid). For more information about piping data from one EDirect command to another, please review the page on Making data pipelines with the History server in our EDirect overview.
+
+
+**In-class exercise solutions**
+
+
+**Exercise 1: esearch**
+
+How many Spanish-language articles about diabetes are in PubMed?
+
+**Solution:**
+
+    esearch -db pubmed -query "diabetes AND spanish[lang]"
+
+
+```{r part1-e1}
+myTerm <- rstudioapi::terminalCreate(show = FALSE)
+rstudioapi::terminalSend(myTerm, "esearch -db pubmed -query \"diabetes AND spanish[lang]\" &> part1-e1.txt \n")
+Sys.sleep(1)
+repeat{
+    Sys.sleep(0.1)
+    if(rstudioapi::terminalBusy(myTerm) == FALSE){
+        print("Code Executed")
+        break
+    }
+}
+readLines("part1-e1.txt")
+```
+
+
+
+This line of code uses the esearch command to search PubMed `-db pubmed` for our search query `-query "diabetes AND spanish[lang]"`. Note that the search query can include Boolean operators `AND` and search field tags `[lang]` to help focus our search, just as we can in the web version of PubMed.
+
+**Exercise 2: esearch**
+
+How many articles were written by BH Smith between 2012 and 2017, inclusive?
+
+**Solutions:**
+
+    esearch -db pubmed -query "smith bh[author]" -datetype PDAT -mindate 2012 -maxdate 2017
+
+
+```{r part1-e2}
+myTerm <- rstudioapi::terminalCreate(show = FALSE)
+rstudioapi::terminalSend(myTerm, "esearch -db pubmed -query \"smith bh[author]\" -datetype PDAT -mindate 2012 -maxdate 2017 &> part1-e2.txt \n")
+Sys.sleep(1)
+repeat{
+    Sys.sleep(0.1)
+    if(rstudioapi::terminalBusy(myTerm) == FALSE){
+        print("Code Executed")
+        break
+    }
+}
+readLines("part1-e2.txt")
+```
+
+
+
+
+There are multiple possible solutions to this exercise. This solution uses the esearch command to search PubMed (-db pubmed) for our search query (-query "smith bh[author]"). Note that the search query can include search field tags ([author]) to help focus our search, just as we can in the web version of PubMed. The esearch command also limits the search results by publication date (-datetype PDAT), including only articles published between 2012 and 2017 (-mindate 2012 -maxdate 2017).
+
+    esearch -db pubmed -query "smith bh[author] AND (2012/01/01[pdat] : 2017/12/31[pdat])"
+
+The second solution is largely the same as the first. Rather than use the -datetype, -mindate, and -maxdate arguments to limit the search by publication date, this solution incorporates the date restriction into the search string itself (-query "smith bh[author] AND (2012/01/01[pdat] : 2017/12/31[pdat])"), just as you would include a date restriction in a search string in the web version of PubMed.
+
+
+**Exercise 3: efetch**
+
+Who is the first author listed on the PubMed record 26287646?
+
+**Solution:**
+
+    efetch -db pubmed -id 26287646 -format abstract
+
+This line of code uses the efetch command to retrieve a record from PubMed (-db pubmed). We specify that we will retrieve the record for PMID 25359968 (-id 25359968). The command retrieves the record in the text abstract format (-format abstract), which allows us to easily see that the first author of the article is PF Brennan. Rather than using the abstract format, we could instead use -format medline or -format xml to retrieve the record in the MEDLINE or XML formats, if we prefer.
+Exercise 4: Combining Commands
+
+How do we get a list of PMIDs for all of the articles written by BH Smith between 2012 and 2017?
+
+**Solutions:**
+
+    esearch -db pubmed -query "smith bh[author]" -datetype PDAT -mindate 2012 -maxdate 2017 | \
+    efetch -format uid
+
+This solution begins the same as the first solution for Exercise 2. The first line concludes by piping (|) the results of the esearch command into a command on the next line (the `“\”` character at the end of the line allows us to continue our command on the next line, for easier-to-read formatting).
+
+The efetch command in the second line accepts the PMIDs piped from the previous line, and retrieves the PubMed records, but outputs only the PMIDs (-format uid).
+
+    esearch -db pubmed -query "smith bh[author] AND (2012/01/01[pdat] : 2017/12/31[pdat]" | \
+    efetch -format uid
+
+
+Similarly, this solution begins the same as the second solution for Exercise 2, and then pipes the results of the esearch into the efetch, which retrieves the PubMed records, but outputs only the PMIDs (-format uid).
+
+For more information about piping data from one EDirect command to another, please review the page on Making data pipelines with the History server in our EDirect overview.
+
+**Homework solutions**
+
+**Question 1**
+
+Using EDirect, write a command to find out how many citations are in PubMed for articles about using melatonin to treat sleep disorders.
+
+**Solution:**
+
+    esearch -db pubmed -query "melatonin sleep disorder"
+
+This line of code uses the esearch command to search PubMed (-db pubmed) for our search query (-query "melatonin sleep disorder").
+Question 2
+
+How many of the PubMed citations identified in question 2 were added to PubMed (i.e. created) between January 1, 2015 and July 1, 2017?
+
+**Solution:**
+
+There are multiple possible solutions to this question.
+
+    esearch -db pubmed -query "melatonin sleep disorder" -datetype CRDT -mindate 2015/01/01 -maxdate 2017/07/01
+
+Both of these solutions use the esearch command to search PubMed (-db pubmed) for our search query (-query "melatonin sleep disorder"). In the first solution, the esearch command also limits the search results by the date citations were added to PubMed, using the “CRDT” date type (-datetype CRDT), including only articles created between January 1, 2015 and July 1, 2017 (-mindate 2015/01/01 -maxdate 2017/07/01).
+
+    esearch -db pubmed -query "melatonin sleep disorder"  AND (2015/01/01[crdt] : 2017/07/01[crdt])"
+
+The second solution is largely the same as the first. Rather than use the -datetype, -mindate, and -maxdate arguments to limit the search by create date, this solution incorporates the date restriction into the search string itself (-query "melatonin sleep disorder" AND (2015/01/01[crdt] : 2017/07/01[crdt])"), just as you would include a date restriction in a search string in the web version of PubMed.
+
+**Question 3**
+
+Write a command to retreive the abstracts of the following PubMed records:
+
+    27240713,27027883,22468771,20121990
+
+**Solution:**
+
+    efetch -db pubmed -id 27240713,27027883,22468771,20121990 -format abstract
+
+This line of code uses the efetch command to retrieve records from PubMed (-db pubmed). We specify that we will retrieve the records for four PMIDs: 27240713, 27027883, 22468771, and 20121990 (-id 27240713,27027883,22468771,20121990). The command retrieves the records in the text abstract format (-format abstract).
+
+**Question 4**
+
+Modify your answer to Question 3 to retrieve the full XML of all four records.
+
+**Solution:**
+
+    efetch -db pubmed -id 27240713,27027883,22468771,20121990 -format xml
+
+This solution is largely the same as the solution for Question 3, but the -format argument has been changed to retrieve XML instead of the text Abstract format (-format xml).
+
+**Question 5**
+
+Write a series of commands that retrieves a list of PMIDs for all citations for papers written by the author with the ORCID 0000-0002-1141-6306.
+
+**Solution:**
+
+    esearch -db pubmed -query "0000-0002-1141-6306[auid]" | \
+    efetch -format uid
+
+This solution begins by using the esearch command to search PubMed (-db pubmed) for citations including an author identifier of “0000-0002-1141-6306” (-query "0000-0002-1141-6306[auid]"). The first line concludes by piping (|) the results of the esearch command into a command on the next line (the `“\”` character at the end of the line allows us to continue our command on the next line, for easier-to-read formatting).
+
+The efetch command in the second line accepts the PMIDs piped from the previous line, and retrieves the PubMed records, but outputs only the PMIDs (-format uid).
+
+### Part One
+
+https://dataguide.nlm.nih.gov/edirect-for-pubmed-1.txt
+
+The Insider's Guide to Accessing NLM Data: EDirect for PubMed
+Part One: Getting PubMed Data
+
+Course Materials
+
+NOTE: Solutions to all exercises are at the bottom of this document.
+
+
+Commands are instructions given by a user telling a computer to do something
+
+Arguments provide input data or modify the behavior of a command
+
+
+TIPS FOR CYGWIN USERS:
+
+Copy: Ctrl + Insert
+(NOT Ctrl + C!)
+
+Paste: Shift + Insert
+(NOT Ctrl + V!)
+
+
+
+TIPS FOR ALL USERS:
+
+Ctrl + C "cancels" and gets you back to a prompt
+
+Up and Down arrow keys allow you to cycle through your recent commands
+
+clear: clears your screen
+
+
+**esearch**
+
+esearch searches a database and returns the unique identifier of every record that meets the search criteria - in this case, PMIDs.
+
+    -db to specify database: -db pubmed
+    -query to enter your query in quotes: -query "seasonal affective disorder"
+
+
+COMMAND STRING:
+
+    esearch -db pubmed -query "seasonal affective disorder"
+
+PUBMED SEARCH:
+
+    seasonal affective disorder
+
+
+
+Show PubMed's translation of your search terms like you receive in the Search Details in PubMed
+
+COMMAND STRING:
+
+    esearch -db pubmed -query "seasonal affective disorder" -log
+
+Details display at end of XML snippit 
+
+    "seasonal affective disorder"[MeSH Terms] OR ("seasonal"[All Fields] AND "affective"[All Fields] AND "disorder"[All Fields]) OR "seasonal affective disorder"[All Fields]
+
+
+Search like you do in PubMed with uppercase Boolean AND/OR/NOT and field tags as needed.
+
+PUBMED SEARCH:
+
+    malaria AND jama[journal]
+
+COMMAND STRING:
+
+    esearch -db pubmed -query "malaria AND jama[journal]"
+
+
+Restricting by Date
+
+    -datetype specifies date field: -datetype PDAT
+    -mindate -maxdate specifies range: -mindate 2015 -maxdate 2017 
+
+COMMAND STRING:
+
+    esearch -db pubmed -query "malaria AND jama[journal]" -datetype PDAT -mindate 2015 -maxdate 2017
+
+
+Use backslash `"\"` to indicate that you have not finished writing the command - it is continued on the next line.
+
+COMMAND STRING:
+
+    esearch -db pubmed -query "malaria AND jama[journal]" \
+    -datetype PDAT -mindate 2015 -maxdate 2017
+
+
+
+Be Careful with Quotes
+
+PUBMED SEARCH:
+
+    cancer AND science[journal]
+
+    cancer AND "science"[journal]
+
+
+COMMAND STRING:
+
+    esearch -db pubmed -query "cancer AND \"science\"[journal]"
+
+
+
+**EXERCISE 1: esearch**
+
+How many Spanish-language articles about diabetes are in PubMed?
+Hint: use the [lang] field tag
+
+(ANSWERS TO ALL EXERCISES ARE AT THE BOTTOM OF THIS HANDOUT.)
+
+
+**EXERCISE 2: esearch**
+
+How many articles were written by BH Smith between 2012 and 2017, inclusive?
+
+(ANSWERS TO ALL EXERCISES ARE AT THE BOTTOM OF THIS HANDOUT.)
+
+
+
+**efetch**
+
+efetch retrieves the complete record in the format that you specify.
+
+    -db to specify database: -db pubmed
+    -id to specify PMID: -id 25359968
+    -format to specify format: -format abstract
+
+COMMAND STRING:
+
+    efetch -db pubmed -id 25359968 -format abstract
+
+
+
+
+efetch Formats
+
+    -format options:
+
+MEDLINE
+
+    -format medline
+
+XML
+
+    -format xml
+
+PMID list
+
+    -format uid
+
+Summary
+
+    -format docsum
+
+
+efetch Multiple Records
+
+Separate multiple PMIDs in the -id argument with commas.
+
+COMMAND STRING:
+
+    efetch -db pubmed -id 24102982,21171099,17150207 -format abstract
+
+    efetch -db pubmed -id 26024162 -format abstract
+
+
+
+EXERCISE 3: efetch
+Who is the first author listed on the PubMed record 26287646?
+
+(ANSWERS TO ALL EXERCISES ARE AT THE BOTTOM OF THIS HANDOUT.)
+
+
+
+Creating a data pipeline
+
+Use pipe "|" [Shift + \] to "pipe" the results of one command into the next
+
+COMMAND STRING:
+
+    esearch -db pubmed -query "asthenopia[mh] AND nursing[sh]" | efetch -format uid
+
+
+
+EXERCISE 4: Combining Commands
+How do we get a list of PMIDs for all of the articles written by BH Smith between 2012 and 2017?
+Hint: Use the up arrow to access your previous commands
+Hint: Remember -format uid
+
+(ANSWERS TO ALL EXERCISES ARE AT THE BOTTOM OF THIS HANDOUT.)
+
+
+HOMEWORK FOR PART ONE
+
+(Answers are available at: https://dataguide.nlm.nih.gov/classes/edirect-for-pubmed/samplecode1.html)
+
+
+**Question 1:**
+
+Using EDirect, write a command to find out how many citations are in PubMed for articles about using melatonin to treat sleep disorders.
+
+
+**Question 2:**
+
+How many of the PubMed citations identified in question 2 were added to PubMed (i.e. created) between January 1, 2015 and July 1, 2017?
+
+
+**Question 3:**
+
+Write a command to retrieve the abstracts of the following PubMed records:
+
+    27240713
+    27027883
+    22468771
+    20121990
+
+
+**Question 4:**
+
+Modify your answer to Question 3 to retrieve the full XML of all four records.	
+
+
+**Question 5:**
+
+Write a series of commands that retrieves a list of PMIDs for all citations for papers written by the author with the ORCID 0000-0002-1141-6306.
+
+
+EXERCISE SOLUTIONS:
+
+EXERCISE 1: esearch
+How many Spanish-language articles about diabetes are in PubMed?
+Hint: use the [lang] field tag
+
+**Solution:**
+
+    esearch -db pubmed -query "diabetes AND spanish[lang]"
+
+
+EXERCISE 2: esearch
+How many articles were written by BH Smith between 2012 and 2017, inclusive?
+Hint: use the [author] field tag
+
+SOLUTIONS:
+
+    esearch -db pubmed -query "smith bh[author]" \
+    -datetype PDAT -mindate 2012 -maxdate 2017
+
+    esearch -db pubmed -query "smith bh[author] \
+    AND (2012/01/01[pdat] : 2017/12/31[pdat])"
+
+
+EXERCISE 3: efetch
+Who is the first author listed on the PubMed record 26287646?
+
+**Solution:**
+
+    efetch -db pubmed -id 26287646 -format abstract
+
+The first author is Brennan PF
+
+
+
+EXERCISE 4: Combining Commands
+How do we get a list of PMIDs for all of the articles written by BH Smith between 2012 and 2017?
+Hint: Use the up arrow to access your previous commands
+Hint: Remember -format uid
+
+SOLUTIONS:
+
+    esearch -db pubmed -query "smith bh[author] AND \
+    (2012/01/01[pdat] : 2017/12/31[pdat]" | \
+    efetch -format uid
+
+
+
+    esearch -db pubmed -query "smith bh[author]" \
+    -datetype PDAT -mindate 2012 -maxdate 2017 | \
+    efetch -format uid
+
+
+## Part Two "EDirect for PubMed: Part 2: Extracting Data from XML" Sample Code
+
+### Part Two
+
+https://dataguide.nlm.nih.gov/classes/edirect-for-pubmed/samplecode2.html
+
+
+**xtract Basics**
+
+For an introduction to the xtract command, see the xtract section of our EDirect documentation.
+Retrieve the article titles for a list of PubMed records
+
+    efetch -db pubmed -id 24102982,21171099,17150207 -format xml | \
+    xtract -pattern PubmedArticle -element ArticleTitle
+
+The first line of this code uses the efetch command to retrieve records from PubMed (-db pubmed -id 24102982,21171099,17150207) in XML format (-format xml), and concludes by piping (|) the resulting XML into a command on the next line (the `“\”` character at the end of the line allows us to continue our command on the next line, for easier-to-read formatting).
+
+The second line uses the xtract command to retrieve only the elements we need from the XML output, and display those elements in a tabular format. The -pattern argument indicates that we should start a new row in our output table for every PubMed record (-pattern PubmedArticle). The -element argument indicates that the table should include a single column, containing the article title for the given record (-element ArticleTitle).
+Retrieve the list of authors for a series of PubMed records
+
+    efetch -db pubmed -id 24102982,21171099,17150207 -format xml | \
+    xtract -pattern Author -element LastName
+
+The first line of this code uses the efetch command to retrieve records from PubMed (-db pubmed -id 24102982,21171099,17150207) in XML format (-format xml), and concludes by piping (|) the resulting XML into a command on the next line (the `“\”` character at the end of the line allows us to continue our command on the next line, for easier-to-read formatting).
+
+The second line uses the xtract command to retrieve only the elements we need from the XML output, and display those elements in a tabular format. The -pattern argument indicates that we should start a new row in our output table for every author (-pattern Author). The -element argument indicates that the table should include a single column, containing the last name for the given author (-element LastName).
+Retrieve the PMID and year of publication for a PubMed record
+
+In order to retrieve the PMID and the year of publication for a PubMed record, we might try to use code such as the following:
+
+    efetch -db pubmed -id 27101380 -format xml | \
+    xtract -pattern PubmedArticle -element PMID Year
+
+The first line of this code uses the efetch command to retrieve a record from PubMed (-db pubmed -id 27101380) in XML format (-format xml), and concludes by piping (|) the resulting XML into a command on the next line (the `“\”` character at the end of the line allows us to continue our command on the next line, for easier-to-read formatting).
+
+The second line uses the xtract command to create a table, with one row for every PubMed record in our XML (xtract -pattern PubmedArticle; in this case, the table will only have a single row). The line then uses the -element argument to create two columns, one for PMID and one for Year. (-element PMID Year). However, the output of this series of commands is not what we expect:
+
+    27101380        27619336        27619799        27746956        27747057        2016    2016    2016      2016    2015    2016    2016    2016    2016
+
+Rather than getting a single PMID and a single year, we get 5 PMIDs and 9 Years. This is because, while the -element argument is designed to create a new column for each element or attribute specified, it populates each column with the contents of every occurrence of the specified element or attribute in the -pattern. This means that if there are multiple occurrences of the <PMID> or <Year> elements in a PubMed record, the contents of all occurrences will be displayed. As a result, we see not only the PMID for the record, but also the PMIDs used to link it to other records which contain related comments or corrections. Furthermore, in addition to the publication year, we also the year for the other eight dates associated with the PubMed record.
+
+We can avoid this by using Parent/Child construction to specify that we only want the contents of the <PMID> element that is a direct child of the <MedlineCitation> element, and that we only want the <Year> element that is a child of the <PubDate> element:
+
+    efetch -db pubmed -id 27101380 -format xml | \
+    xtract -pattern PubmedArticle -element MedlineCitation/PMID PubDate/Year
+
+This version of the code gives us the output we expect:
+
+    27101380        2016
+
+Retrieve three data elements for a list of PubMed records
+
+    efetch -db pubmed -id 24102982,21171099,17150207 -format xml | \
+    xtract -pattern PubmedArticle -element MedlineCitation/PMID ISOAbbreviation ArticleTitle    
+
+The first line of this code uses the efetch command to retrieve records from PubMed (-db pubmed -id 24102982,21171099,17150207) in XML format (-format xml), and concludes by piping (|) the resulting XML into a command on the next line (the `“\”` character at the end of the line allows us to continue our command on the next line, for easier-to-read formatting).
+
+The second line uses the xtract command to create a table, with one row for every PubMed record in our XML (xtract -pattern PubmedArticle), and with three columns: one for PMID (specifically, the contents of the <PMID> element that is a child of the <MedlineCitation> element), one for the journal title abbreviation, and one for the article title (-element MedlineCitation/PMID ISOAbbreviation ArticleTitle).
+sort-uniq-count-rank and head
+Sort a list of authors by the frequency they appear in your results set
+
+    esearch -db pubmed -query "traumatic brain injury athletes" -datetype PDAT -mindate 2016 -maxdate 2017 | \
+    efetch -format xml | \
+    xtract -pattern Author -element LastName,Initials | \
+    sort-uniq-count-rank | \
+    head -n 10  
+
+This series of commands searches PubMed for the string “traumatic brain injury athletes”, restricts results to those published in 2016 and 2017, retrieves the full XML records for each of the search results, extracts the last name and initials of every author on every record, sorts the authors by frequency of occurrence in the results set, and presents the top ten most frequently-occurring authors, along with the number of times that author appeared.
+
+    esearch -db pubmed -query "traumatic brain injury athletes" -datetype PDAT -mindate 2016 -maxdate 2017 | \
+
+The first line of this command uses esearch to search PubMed (-db pubmed) for our search query (-query "traumatic brain injury athletes"). The line also restricts the search results to articles that were published in 2016 or 2017 (-datetype PDAT -mindate 2016 -maxdate 2017).
+
+The `“|”` character pipes the results of our esearch into our next command, and the `“\”` character at the end of the line allows us to continue our string of commands on the next line, for easier-to-read formatting.
+
+    efetch -format xml | \
+
+The second line takes the esearch results from our first line and uses efetch to retrieve the full records for each of our results in the XML format (-format xml), and pipes the XML output to the next line.
+
+    xtract -pattern Author -element LastName,Initials | \
+
+The third line uses the xtract command to retrieve only the elements we need from the XML output, and display those elements in a tabular format. The -pattern command indicates that we should start a new row for every author (-pattern Author). Even if there are multiple authors on a single citation, each author will be on a new line, rather than putting all authors for the same citation on the same line. The command then extracts each author’s last name and initials (-element LastName,Initials). This will output a list of authors’ names and initials, one author per line, and will pipe the list to the next line.
+
+    sort-uniq-count-rank | \
+
+The fourth line uses a special EDirect function (sort-uniq-count-rank) to sort the list of authors received from the previous line, grouping together the duplicates. The function then counts how many occurrences there are of each unique author, removes the duplicate authors, and then sorts the list of unique authors by how frequently they occur, with the most frequent authors at the top. The function also returns the numerical count, making it easier to quantify how frequently each author occurs in the data set.
+
+    head -n 10
+
+The fifth line, which is optional, shows us only the first ten rows from the output of the sort-uniq-count-rank function (head -n 10). Because this function puts the most frequently occurring authors first, this will show us only the ten most frequently occurring authors in our search results set:
+
+    14      Iverson     GL
+    11      Guskiewicz  KM
+    10      Meehan   WP
+    9       Kerr       ZY
+    9       Kontos   AP
+    9       Solomon     GS
+    9       Zuckerman   SL
+    8       Zafonte     R
+    7       Broglio     SP
+    7       Covassin    T
+
+(Note: Your output may vary slightly, as additional citations are added to PubMed and the “most frequent” authors change.)
+
+To show more or fewer rows, adjust the “10” up or down. If you want to see all of the authors, regardless of how frequently they appear, remove this line entirely. (If you do choose to remove this line, make sure you also remove the `“|”` and `“\”` characters from the previous line. Otherwise, the system will wait for you to finish entering your command.)
+In-class exercise solutions
+
+Note: The first three exercises ask for an xtract command. The solutions below start with efetch commands that retrieve a sample set of PubMed records in XML, which are then piped into the xtract command. This allows us to test and verify the solutions using appropriate sample data.
+Exercise 1
+
+Write an xtract command that creates a table with one row per PubMed article. Each row should have two columns: volume number and issue number.
+
+**Solution:**
+
+    efetch -db pubmed -id 24102982,21171099,17150207 -format xml | \
+    xtract -pattern PubmedArticle -element Volume Issue
+
+This xtract command creates a table, with each PubMed record in our input populating its own row (xtract -pattern PubmedArticle), and with columns for volume number and issue number (-element Volume Issue).
+Exercise 2
+
+Write an xtract command that creates a table with one row per PubMed record. Each row should have three columns: PMID, journal ISSN, and citation status.
+
+**Solution:**
+
+    efetch -db pubmed -id 24102982,21171099,17150207 -format xml | \
+    xtract -pattern PubmedArticle -element MedlineCitation/PMID Journal/ISSN MedlineCitation@Status
+
+This xtract command begins the same as the solution for Exercise 1 (xtract -pattern PubmedArticle). When creating the first column, this command uses Parent/Child construction to specify that we want the <PMID> element that is the child of the <MedlineCitation> element, and not another <PMID> element elsewhere in the PubMed record (like as a child of a <CommentsCorrections> element; -element MedlineCitation/PMID).
+
+Similarly, the second column is also created using Parent/Child construction. This is probably not strictly necessary, as the <ISSN> element only appears in one location in the PubMed XML structure. However, this demonstrates that there may be multiple valid EDirect solutions to a given question (Journal/ISSN).
+
+Finally, the citation status, which is found in the “Status” attribute of the <MedlineCitation> element, is placed in the third column (MedlineCitation@Status).
+Exercise 3
+
+Find out which authors have been writing about traumatic brain injuries in athletes, with publications in 2016 and 2017. The output should be a list of author names, one per line, with each author’s last name and initials.
+
+**Solution:**
+
+    esearch -db pubmed -query "traumatic brain injury athletes" -datetype PDAT -mindate 2016 -maxdate 2017 | \
+    efetch -format xml | \
+    xtract -pattern Author -element LastName,Initials
+
+This series of commands searches PubMed for the string “traumatic brain injury athletes”, restricts results to those published in 2016 and 2017, retrieves the full XML records for each of the search results, and extracts the last name and initials of every author on every record.
+
+    esearch -db pubmed -query "traumatic brain injury athletes" -datetype PDAT -mindate 2016 -maxdate 2017 | \
+
+
+The first line of code uses esearch to search PubMed (-db pubmed) for our search query (-query "traumatic brain injury athletes"). The line also restricts the search results to articles that were published in 2016 or 2017 (-datetype PDAT -mindate 2016 -maxdate 2017).
+
+The `“|”` character pipes the results of our esearch into our next command, and the `“\”` character at the end of the line allows us to continue our string of commands on the next line, for easier-to-read formatting.
+
+    efetch -format xml | \
+
+The second line takes the esearch results from our first line and uses efetch to retrieve the full records for each of our results in the XML format (-format xml), and pipes the XML output to the next line.
+
+    xtract -pattern Author -element LastName,Initials
+
+The third line uses the xtract command to retrieve only the elements we need from the XML output, and display those elements in a tabular format. The -pattern argument indicates that we should start a new row for every author (-pattern Author). Even if there are multiple authors on a single citation, each author will be on a new line, rather than putting all authors for the same citation on the same line.
+
+The command then extracts each author’s last name and initials (-element LastName,Initials).
+Homework solutions
+
+**Question 1**
+
+Using the efetch command below to retrieve PubMed XML, write an xtract command to extract specific elements and arrange them into a table. The table should have one PubMed record per row, with columns for PMID, Journal Title Abbreviation, Publication Year, Volume, Issue and Page Numbers.
+
+    efetch -db pubmed -id 12312644,12262899,11630826,22074095,22077608,21279770,22084910 -format xml
+
+**Solution:**
+
+    efetch -db pubmed -id 12312644,12262899,11630826,22074095,22077608,21279770,22084910 -format xml | \
+    xtract -pattern PubmedArticle -element MedlineCitation/PMID ISOAbbreviation PubDate/Year Volume Issue MedlinePgn
+
+This xtract command creates a table, with each PubMed record in our input populating its own row (xtract -pattern PubmedArticle). When creating the first column, this command uses Parent/Child construction to specify that we want the <PMID> element that is the child of the <MedlineCitation> element, and not another <PMID> element elsewhere in the PubMed record (like as a child of a <CommentsCorrections> element; -element MedlineCitation/PMID).
+
+The second column is created without Parent/Child construction, as the <ISOAbbreviation> element is not repeated in a single PubMed XML record (ISOAbbreviation).
+
+The third column also uses Parent/Child construction to retrieve the publication year (as opposed to other <Year> elements; PubDate/Year); the remaining elements only appear in one location in the PubMed XML structure, so Parent/Child construction is unnecessary (Volume Issue MedlinePgn).
+
+**Question 2**
+
+Create a table of the authors attached to PubMed record 28341696. The table should include each author’s last name, initials, and affiliation information (if listed).
+
+**Solution:**
+
+    efetch -db pubmed -id 28341696 -format xml | \
+    xtract -pattern Author -element LastName Initials Affiliation
+
+This first line of this solution uses the efetch command to retrieve a record from PubMed (-db pubmed). We specify that we will retrieve the record for PMID 28341696 (-id 28341696) and that we want the results in XML (-format xml).
+
+    xtract -pattern Author -element LastName Initials Affiliation
+
+The second line uses the xtract command to retrieve only the elements we need from the XML output, and display those elements in a tabular format. The -pattern argument indicates that we should start a new row for every author (-pattern Author). Even if there are multiple authors on a single citation, each author will be on a new line, rather than putting all authors for the same citation on the same line. The command then extracts each author’s last name, initials, and affiliation information (-element LastName Initials Affiliation).
+
+**Question 3**
+
+Write a series of commands to generate a table of PubMed records for review articles about the Paleolithic diet. The table should have one row per citation, and should include columns for the PMID, the citation status, and the article title.
+
+
+**Solution:**
+
+    esearch -db pubmed -query "review[pt] paleolithic diet" | \
+    efetch -format xml | \
+    xtract -pattern PubmedArticle -element MedlineCitation/PMID MedlineCitation@Status ArticleTitle
+
+This series of commands searches PubMed for the string “review[pt] paleolithic diet”, retrieves the full XML records for each of the search results, and extracts the last name and initials of every author on every record.
+
+    esearch -db pubmed -query "review[pt] paleolithic diet" | \
+
+The first line of code uses esearch to search PubMed (-db pubmed) for our search query (-query "review[pt] paleolithic diet"). Note that the search query can include search field tags ([pt]) to help focus our search, just as we can in the web version of PubMed.
+
+The `“|”` character pipes the results of our esearch into our next command, and the `“\”` character at the end of the line allows us to continue our string of commands on the next line, for easier-to-read formatting.
+
+    efetch -format xml | \
+
+The second line takes the esearch results from our first line and uses efetch to retrieve the full records for each of our results in the XML format (-format xml), and pipes the XML output to the next line.
+
+xtract -pattern PubmedArticle -element MedlineCitation/PMID MedlineCitation@Status ArticleTitle
+
+The third line uses the xtract command to retrieve only the elements we need from the XML output, and display those elements in a tabular format. The -pattern argument indicates that we should start a new row for every PubMed record (-pattern PubmedArticle).
+
+The command then extracts each record’s PMID (using Parent/Child construction; -element MedlineCitation/PMID), citation status (using “@” to retrieve the attribute value for “Status”; MedlineCitation@Status), and article title (ArticleTitle).
+
+
+
+### Part Two
+
+https://dataguide.nlm.nih.gov/edirect-for-pubmed-2.txt
+
+
+The Insider's Guide to Accessing NLM Data: EDirect for PubMed
+Part Two: Extracting Data from XML
+Course Materials
+
+NOTE: Solutions to all exercises are at the bottom of this document.
+
+
+REMINDERS FROM PART ONE
+
+esearch: Searches a database and returns PMIDs
+
+efetch: Retrieves PubMed records in a variety of formats
+
+Use "|" (Shift + \, pronounced "pipe") to "pipe" the results of one command into the next
+
+
+
+
+TIPS FOR CYGWIN USERS:
+
+Copy: Ctrl + Insert
+(NOT Ctrl + C!)
+
+Paste: Shift + Insert
+(NOT Ctrl + V!)
+
+
+
+
+TIPS FOR ALL USERS:
+
+Ctrl + C "cancels" and gets you back to a prompt
+
+Up and Down arrow keys allow you to cycle through your recent commands
+
+clear: clears your screen
+
+----------------------------------------------------------------------
+
+
+xtract
+
+Extracts specific elements from XML and arranges them in a customized tabular format.
+
+----------------------------------------------------------------------
+
+Getting XML
+
+From efetch:
+
+[...] | efetch -format xml | xtract [...]
+
+From a file on your computer using "-input":
+
+xtract -input file.xml [...]
+
+----------------------------------------------------------------------
+
+XML Element Descriptions 
+https://www.nlm.nih.gov/bsd/licensee/elements_descriptions.html 
+
+PubMed DTD Documentation
+https://dtd.nlm.nih.gov/ncbi/pubmed/out/doc/2018/ 
+
+----------------------------------------------------------------------
+
+Before you start xtract-ing...
+
+Look at some PubMed XML by searching PubMed for a few PMIDs:
+
+24102982,21171099,17150207
+
+----------------------------------------------------------------------
+
+Getting a small sample dataset
+
+    efetch -db pubmed -id 24102982,21171099,17150207 -format xml
+
+----------------------------------------------------------------------
+
+-pattern to identify which element will create a new row in the output table
+
+-element to identify which element(s) or attribute(s) will create columns in the output table
+
+
+A basic xtract Command:
+
+COMMAND STRING:
+
+    efetch -db pubmed -id 24102982,21171099,17150207 -format xml | \
+    xtract -pattern PubmedArticle -element ArticleTitle
+
+
+    efetch -db pubmed -id 24102982,21171099,17150207 -format xml | \
+    xtract -pattern Author -element LastName
+
+----------------------------------------------------------------------
+
+Creating multiple columns
+
+Create multiple columns using the same -element argument by including multiple XML element names.
+Separate the names with spaces.
+
+Example:
+
+    xtract -pattern PubmedArticle -element Agency GrantID
+
+----------------------------------------------------------------------
+
+EXERCISE 1:
+Write an xtract command that:
+*	creates a table with one row per PubMed article.
+*	Each row should have two columns:
+	*	Volume
+	*	Issue Number
+
+Use the following efetch as input:
+
+efetch -db pubmed -id 24102982,21171099,17150207 -format xml | \	
+
+(ANSWERS TO ALL EXERCISES ARE AT THE BOTTOM OF THIS HANDOUT.)
+	
+----------------------------------------------------------------------
+Isolating the elements we need
+
+COMMAND STRING:
+
+    efetch -db pubmed -id 27101380 -format xml | \
+    xtract -pattern PubmedArticle -element PMID Year 
+
+----------------------------------------------------------------------
+
+Parent/Child construction
+
+Retrieves only elements that are the child of a specific parent.
+
+Format: ParentElement/ChildElement
+
+Example:
+
+    -element MedlineCitation/PMID
+
+----------------------------------------------------------------------
+
+Solving xtract Example 1
+We have a set of records
+We want a tabular list with PMID, Journal Title Abbreviation, and Article Title
+
+COMMAND STRING:
+efetch -db pubmed -id 24102982,21171099,17150207 -format xml | \
+xtract -pattern PubmedArticle -element MedlineCitation/PMID Journal/ISOAbbreviation ArticleTitle
+
+----------------------------------------------------------------------
+
+xtract-ing attribute values
+
+Format: ElementName@AttributeName
+
+Example:
+
+    -element DescriptorName@MajorTopicYN
+
+----------------------------------------------------------------------
+
+EXERCISE 2
+Write an xtract command that:
+*	Has one row per PubMed records
+*	Has three columns:
+	*	PMID
+	*	Journal ISSN
+	*	Citation status
+
+Use the following efetch as input:
+
+    efetch -db pubmed -id 24102982,21171099,17150207 -format xml | \
+
+(ANSWERS TO ALL EXERCISES ARE AT THE BOTTOM OF THIS HANDOUT.)
+	
+----------------------------------------------------------------------
+
+EXERCISE 3: Putting it all together
+
+We want to find out which authors have been writing about traumatic brain injuries in athletes
+*	Limit to publications from 2016 and 2017.
+We want to see just the author names, one per line.
+We want the last name and initials, separated by a space.
+We want the whole script (not just the xtract command).
+
+(ANSWERS TO ALL EXERCISES ARE AT THE BOTTOM OF THIS HANDOUT.)
+
+
+----------------------------------------------------------------------
+
+sort-uniq-count-rank
+
+Four steps of sort-uniq-count-rank
+1. Sorts all of the lines in your input alphabetically by the full contents of the line
+2. Eliminates all duplicates, leaving only unique values.
+3. Counts up how many of each unique value there were in your input, and provides that frequency count next to each unique value.
+4. Re-sorts the unique values in descending order by frequency, so the most frequently occurring values are at the top.
+
+COMMAND STRING:
+
+esearch -db pubmed -query "traumatic brain injury athletes" -datetype PDAT -mindate 2016 -maxdate 2017 | \
+efetch -format xml | \
+xtract -pattern Author -element LastName Initials | \
+sort-uniq-count-rank
+
+----------------------------------------------------------------------
+
+head
+
+Limits output to only the first few lines of input.
+
+Example:
+
+    head -n 10
+
+Outputs only the first ten lines of the input.
+
+COMMAND STRING:
+
+    esearch -db pubmed -query "traumatic brain injury athletes" -datetype PDAT -mindate 2016 -maxdate 2017 | \
+    efetch -format xml | \
+    xtract -pattern Author -element LastName Initials | \
+    sort-uniq-count-rank | \
+    head -n 10
+
+
+HOMEWORK FOR PART TWO)
+
+(Answers are available at: https://dataguide.nlm.nih.gov/classes/edirect-for-pubmed/samplecode2.html)
+
+**Question 1:**
+
+Using the efetch command below to retrieve PubMed XML, write an xtract command with one record per row, with columns for PMID, Journal Title Abbreviation, Publication Year, Volume, Issue and Page Numbers.
+
+    efetch -db pubmed -id 12312644,12262899,11630826,22074095,22077608,21279770,22084910 -format xml
+
+
+**Question 2:**
+
+Create a table of the authors attached to PubMed record 28341696. The table should include each author's last name, initials, and affiliation information (if listed).
+
+
+**Question 3:**
+
+Write a series of commands to generate a table of PubMed records for review articles about the paleolithic diet. The table should have one row per citation, and should include columns for the PMID, the citation status, and the article title.
+
+
+EXERCISE SOLUTIONS:
+
+**EXERCISE 1:**
+Write an xtract command that:
+*	creates a table with one row per PubMed article.
+*	Each row should have two columns:
+	*	Volume
+	*	Issue Number
+
+**Solution:**
+
+    efetch -db pubmed -id 24102982,21171099,17150207 -format xml | \
+    xtract -pattern PubmedArticle -element Volume Issue
+
+
+
+**EXERCISE 2:**
+Write an xtract command that:
+*	Has one row per PubMed records
+*	Has three columns:
+	*	PMID
+	*	Journal ISSN
+	*	Citation status
+
+**Solution:**
+
+    efetch -db pubmed -id 24102982,21171099,17150207 -format xml | \
+    xtract -pattern PubmedArticle -element MedlineCitation/PMID Journal/ISSN MedlineCitation@Status
+
+
+
+**EXERCISE 3: Putting it all together**
+
+We want to find out which authors have been writing about traumatic brain injuries in athletes
+*	Limit to publications from 2016 and 2017.
+We want to see just the author names, one per line.
+We want the last name and initials, separated by a space.
+We want the whole script (not just the xtract command).
+
+**Solution:**
+
+    esearch -db pubmed -query "traumatic brain injury athletes" -datetype PDAT -mindate 2016 -maxdate 2017 | \
+    efetch -format xml | \
+    xtract -pattern Author -element LastName Initials
+
+
+## Part Three "EDirect for PubMed: Part 3: Formatting Results and Unix Tools" Sample Code
+
+### Part Three
+
+https://dataguide.nlm.nih.gov/classes/edirect-for-pubmed/samplecode3.html
+
+
+xtract Formatting arguments
+
+For an introduction to xtract Formatting arguments, see the Customizing separators section of our EDirect documentation.
+Change the separators in an xtract output table
+
+We can use the -tab and -sep arguments to modify the separators in an xtract output table. We will start with a basic xtract statement with no customized separators:
+
+    efetch -db pubmed -id 24102982,21171099,17150207 -format xml | \
+    xtract -pattern PubmedArticle -element MedlineCitation/PMID ISSN LastName
+
+The first line of this code uses the efetch command to retrieve records from PubMed (-db pubmed -id 24102982,21171099,17150207) in XML format (-format xml), and concludes by piping (|) the resulting XML into a command on the next line (the `“\”` character at the end of the line allows us to continue our command on the next line, for easier-to-read formatting).
+
+The second line uses the xtract command to create a table, with one row for every PubMed record in our XML (xtract -pattern PubmedArticle), and with three columns: one for PMID (specifically, the contents of the <PMID> element that is a child of the <MedlineCitation> element), one for the journal ISSN, and one for author last name (-element MedlineCitation/PMID ISSN LastName). For articles with more than one author, we will see multiple author last names in the third column:
+
+    24102982        1742-4658       Wu      Doyle   Barry   Beauvais        Rozkalne        Piao    Lawlor    Kopin   Walsh   Gussoni
+    21171099        1097-4598       Wu      Gussoni
+    17150207        0012-1606       Yoon    Molloy  Wu      Cowan   Gussoni
+
+By default, xtract separates columns in the output table with tabs (indicated in Unix as `\t`). Additionally, by default, xtract separates multiple values in the same column with tabs. So the following series of commands:
+
+    efetch -db pubmed -id 24102982,21171099,17150207 -format xml | \
+    xtract -pattern PubmedArticle -tab "\t" -sep "\t" -element MedlineCitation/PMID ISSN LastName
+
+produces the same output as before, since we are telling xtract to use a tab to separate between columns `(-tab "\t")` and between multiple values in the same column (-sep "\t"), which xtract is already doing by default:
+
+    24102982        1742-4658       Wu      Doyle   Barry   Beauvais        Rozkalne        Piao    Lawlor    Kopin   Walsh   Gussoni
+    21171099        1097-4598       Wu      Gussoni
+    17150207        0012-1606       Yoon    Molloy  Wu      Cowan   Gussoni
+
+We can modify the output by modifying the -sep argument:
+
+    efetch -db pubmed -id 24102982,21171099,17150207 -format xml | \
+    xtract -pattern PubmedArticle -tab "\t" -sep " " -element MedlineCitation/PMID ISSN LastName
+
+This series of commands tells xtract to keep the separators between columns the same, but to separate multiple values in the same column (such as the multiple author last names in our third column) by spaces instead of tabs:
+
+    24102982        1742-4658       Wu Doyle Barry Beauvais Rozkalne Piao Lawlor Kopin Walsh Gussoni
+    21171099        1097-4598       Wu Gussoni
+    17150207        0012-1606       Yoon Molloy Wu Cowan Gussoni
+
+We can further modify the output by modifying the -tab argument:
+
+    efetch -db pubmed -id 24102982,21171099,17150207 -format xml | \
+    xtract -pattern PubmedArticle -tab "|" -sep " " -element MedlineCitation/PMID ISSN LastName
+
+This time, the separators between columns have been changed from tabs to pipes (-tab "|"), while multiple values in the same column are still separated by spaces:
+
+    24102982|1742-4658|Wu Doyle Barry Beauvais Rozkalne Piao Lawlor Kopin Walsh Gussoni
+    21171099|1097-4598|Wu Gussoni
+    17150207|0012-1606|Yoon Molloy Wu Cowan Gussoni
+
+The -tab and -sep arguments also allow you to specify separators of more than one character:
+
+    efetch -db pubmed -id 24102982,21171099,17150207 -format xml | \
+    xtract -pattern PubmedArticle -tab "|" -sep ", " -element MedlineCitation/PMID ISSN LastName
+
+This series of commands uses pipes to separate the columns (-tab "|"), but uses a comma followed by a space to separate the last names (-sep ", "):
+
+    24102982|1742-4658|Wu, Doyle, Barry, Beauvais, Rozkalne, Piao, Lawlor, Kopin, Walsh, Gussoni
+    21171099|1097-4598|Wu, Gussoni
+    17150207|0012-1606|Yoon, Molloy, Wu, Cowan, Gussoni
+
+xtract Exploration arguments
+
+For an introduction to xtract Exploration arguments, see the Exploration arguments section of our EDirect documentation.
+Retrieve author names for a list of PubMed records
+
+In order to retrieve the author names (including last name and initials) for all of the authors associated with each of several PubMed records, we might try to use code such as the following:
+
+    efetch -db pubmed -id 24102982,21171099,17150207 -format xml | \
+    xtract -pattern PubmedArticle -element MedlineCitation/PMID LastName Initials
+
+The first line of this code uses the efetch command to retrieve records from PubMed (-db pubmed -id 24102982,21171099,17150207) in XML format (-format xml), and concludes by piping (|) the resulting XML into a command on the next line (the `“\”` character at the end of the line allows us to continue our command on the next line, for easier-to-read formatting).
+
+The second line uses the xtract command to create a table, with one row for every PubMed record in our XML (xtract -pattern PubmedArticle), and with three columns: one for PMID (specifically, the contents of the <PMID> element that is a child of the <MedlineCitation> element), one for author last name, and one for author initials (-element MedlineCitation/PMID LastName Initials). However, the output of this series of commands is not what we expect:
+
+    24102982        Wu      Doyle   Barry   Beauvais        Rozkalne        Piao    Lawlor  Kopin   Walsh     Gussoni MP      JR      B       A       A       X       MW      AS    CA      E
+    21171099        Wu      Gussoni MP      E
+    17150207        Yoon    Molloy  Wu      Cowan   Gussoni S       MJ      MP      DB      E
+
+The PMID appears as we expect, as does the first author last name. However, rather than following the first author’s last name with the corresponding initials, our output lists all of the authors’ last names for a PubMed record first, before listing all of the authors’ initials.
+
+To retain the relationship between last name and initials, we could use the following series of commands:
+
+    efetch -db pubmed -id 24102982,21171099,17150207 -format xml | \
+    xtract -pattern PubmedArticle -element MedlineCitation/PMID -block Author -element LastName Initials
+
+The second line of this code creates a column for the PMID as before (xtract -pattern PubmedArticle -element MedlineCitation/PMID). However, the code then uses the -block argument to direct xtract to look for an <Author> element, then to look within that <Author> for <LastName> and <Initials> elements (-block Author -element LastName Initials). Because each author has only one last name and one set of initials, xtract outputs a corresponding pair of last name and initials, before moving on to find the next author. This process is then repeated for each author, giving us the output we expect:
+
+    24102982        Wu      MP      Doyle   JR      Barry   B       Beauvais        A       Rozkalne        A       Piao    X       Lawlor  MW      Kopin   AS   Walsh    CA      Gussoni E
+    21171099        Wu      MP      Gussoni E
+    17150207        Yoon    S       Molloy  MJ      Wu      MP      Cowan   DB      Gussoni E
+
+Putting values from multiple elements in the same column
+Separate author last name and initials with a space, while separating columns with a tab
+
+    efetch -db pubmed -id 24102982,21171099,17150207 -format xml | \
+    xtract -pattern PubmedArticle -element MedlineCitation/PMID -block Author -sep " " -element LastName,Initials
+
+The first line of this code uses the efetch command to retrieve records from PubMed (-db pubmed -id 24102982,21171099,17150207) in XML format (-format xml), and concludes by piping (|) the resulting XML into a command on the next line (the `“\”` character at the end of the line allows us to continue our command on the next line, for easier-to-read formatting).
+
+The second line uses the xtract command to create a table, with one row for every PubMed record in our XML (xtract -pattern PubmedArticle), and creates a column for the PMID (xtract -pattern PubmedArticle -element MedlineCitation/PMID). As seen in previous examples, the code than uses the -block argument to direct xtract to look for an <Author> element (-block Author), then to look within that <Author> for <LastName> and <Initials> elements.
+
+Because each author has only one last name and one set of initials, xtract outputs a corresponding pair of last name and initials, before moving on to find the next author. However, rather than putting the last name and initials in separate columns, this command uses a comma to group together both the last name and initials in the same column (-element LastName,Initials). This tells xtract to separate the last name and initials with the character we define in the -sep argument (which we have defined as a single space: -sep " "), instead of using the separator between columns (which is still the default tab), and gives us the output we desire:
+
+    24102982        Wu MP   Doyle JR        Barry B Beauvais A      Rozkalne A      Piao X  Lawlor MW       Kopin AS        Walsh CA      Gussoni E
+    21171099        Wu MP   Gussoni E
+    17150207        Yoon S  Molloy MJ       Wu MP   Cowan DB        Gussoni E
+
+Working with files
+Saving results to a file
+
+    efetch -db pubmed -id 24102982,21171099,17150207 -format xml > testfile.txt
+
+This line of code uses the efetch command to retrieve records from PubMed (-db pubmed -id 24102982,21171099,17150207) in XML format (-format xml), and redirects the XML output to a file named “testfile.txt” (> testfile.txt).
+Using a search string saved in a file to search PubMed
+
+    esearch -db pubmed -query "$(cat searchstring.txt)"
+
+This line of code uses the esearch command to search PubMed (-db pubmed). The search query is stored in a text file (“searchstring.txt”), and the cat command is used to access the contents of the file for use as a search query (-query "$(cat searchstring.txt)"). The dollar-sign and parentheses around cat searchstring.txt indicate that Unix should use the value of cat searchstring.txt (i.e. the contents of the file “searchstring.txt”), rather than simply the words “cat searchstring.txt”.
+epost
+Post two PMIDs to the History server
+
+    epost -db pubmed -id 24102982,21171099
+
+This line of code uses the epost command to post two unique identifiers (UIDs) to the History server (-id 24102982,21171099), indicating that the UIDs are for records in the PubMed database (i.e. that the UIDs are actually PMIDs; -db pubmed).
+
+For more information about piping data from one EDirect command to another, please review the page on Making data pipelines with the History server in our EDirect overview.
+Post two PMIDs to the History server and retrieve the corresponding PubMed records in abstract format
+
+    epost -db pubmed -id 24102982,21171099 | efetch -format abstract
+
+This line of code uses the epost command to post two unique identifiers (UIDs) to the History server (-id 24102982,21171099), indicating that the UIDs are for records in the PubMed database (i.e. that the UIDs are actually PMIDs; -db pubmed). The line then pipes information to an efetch command (| efetch), which allows the efetch command to retrieve the correct PMIDs from the History server. The efetch command then retrieves the corresponding PubMed records in text abstract format (-format abstract). For more information about piping data from one EDirect command to another, please review the page on Making data pipelines with the History server in our EDirect overview.
+Retrieve PubMed records in abstract format for a list of PMIDs contained in a CSV file
+
+    cat pmids.csv | epost -db pubmed | efetch -format abstract
+
+This line of code uses cat to open a CSV file (“pmids.csv”) which contains a list of PMIDs (cat pmids.csv). Rather than displaying the contents of the file on the screen, this line of code pipes the contents of the file into an epost command (| epost). The epost command stores the PMIDs on the History server, indicating to the History server that they are PMIDs, and not UIDs from a different database (-db pubmed). Finally, the line pipes the information to an efetch command (| efetch), which allows the efetch command to retrieve the correct PMIDs from the History server. The efetch command then retrieves the corresponding PubMed records in text abstract format (-format abstract).
+
+    epost -db pubmed -input pmids.csv | efetch -format abstract
+
+This line of code is another way of accomplishing the same task as the previous example. Rather than use cat to open the file “pmids.csv”, this line uses the epost command’s -input argument, which is a new feature of EDirect, added in version 4.90 (released on September 14, 2016). The epost command stores the PMIDs on the History server, indicating to the History server that they are PMIDs, and not UIDs from a different database (-db pubmed). Finally, the line pipes the information to an efetch command (| efetch), which allows the efetch command to retrieve the correct PMIDs from the History server. The efetch command then retrieves the corresponding PubMed records in text abstract format (-format abstract).
+
+For more information about piping data from one EDirect command to another, please review the page on Making data pipelines with the History server in our EDirect overview.
+In-class exercise solutions
+
+Note: The first two exercises ask for an xtract command. The solutions below start with efetch commands that retrieve a sample set of PubMed records in XML, which are then piped into the xtract command. This allows us to test and verify the solutions using appropriate sample data.
+Exercise 1
+
+Write an xtract command that generates a new row for each PubMed record, and has columns for PMID, journal title abbreviation, and author-supplied keywords. Each column should be separated by `“|”`. Multiple keywords in the last column should be separated with commas.
+
+Sample Output:
+
+    26359634|Elife|Argonaute,RNA silencing,biochemistry,biophysics,human,microRNA,structural biology
+
+**Solution:**
+
+    efetch -db pubmed -id 26359634,24102982,28194521,27794519 -format xml | \
+    xtract -pattern PubmedArticle -tab "|" -sep "," -element MedlineCitation/PMID ISOAbbreviation Keyword
+
+This xtract command creates a table, with each PubMed record in our input populating its own row (xtract -pattern PubmedArticle), and with columns for PMID (specified using Parent/Child construction), journal title abbreviation, and author-supplied keywords (-element MedlineCitation/PMID ISOAbbreviation Keyword).
+
+Instead of separating the columns by tabs, the command uses the -tab argument to specify pipe (``“|”``) as a separator (-tab "|"). Because each record could have multiple author-supplied keywords, the command uses the -sep argument to specify a separator between multiple values in a column (i.e. multiple author-supplied keywords in the third column; -sep ",").
+Exercise 2
+
+Write an xtract command that creates a table with a new row for each PubMed record. Each row should have the record’s PMID, as well as a list of all the MeSH headings for the records, separated by ``“|”``. If a MeSH heading has subheadings attached, separate the heading and subheadings with “/”. For example:
+
+    24102982|Cell Fusion|Myoblasts/cytology/metabolism|Muscle Development/physiology
+
+**Solution:**
+
+    efetch -db pubmed -id 24102982,21171099,17150207 -format xml | \
+    xtract -pattern PubmedArticle -tab "|" -element MedlineCitation/PMID \
+    -block MeshHeading -tab "|" -sep "/" -element DescriptorName,QualifierName
+
+This xtract command begins the same as the solution for Exercise 1 (xtract -pattern PubmedArticle). The command then specifies a separator between columns (-tab "|") and the first column in the output table (using Parent/Child construction; -element MedlineCitation/PMID). The `“\”` character at the end of the line allows us to continue our string of commands on the next line, for easier-to-read formatting.
+
+The command continues on the next line, using -block to maintain the relationship between MeSH headings and related subheadings. The -block argument directs xtract to look for a <MeshHeading> element (-block MeshHeading) then to look within that <MeshHeading> for <DescriptorName> and <QualifierName> elements. Another argument is needed to respecify the separator between columns (-tab "|"), as the separators are reset to default by -block.
+
+Each <MeshHeading> element contains one <DescriptorName>, but may contain zero or more <QualifierName> elements. For each -block, the -element argument populates a column with the <DescriptorName> and all of the <QualifierName> elements, if there are any (-element DescriptorName,QualifierName). For MeSH headings with subheadings, this will place multiple values in the same column (one <DescriptorName> and one or more <QualifierName> elements), so we establish “/” as a separator between multiple values in the same column (-sep "/").
+
+**Exercise 3**
+
+How can we get the full XML of all articles about the relationship of Zika Virus to microcephaly in Brazil? Save your results to a file.
+
+**Solution:**
+
+    esearch -db pubmed -query "zika virus microcephaly brazil" | \
+    efetch -format xml > zika.xml
+
+This solution begins by using the esearch command to search PubMed (-db pubmed) for our search query (-query "zika virus microcephaly brazil"). The first line concludes by piping (|) the results of the esearch command into a command on the next line (the `“\”` character at the end of the line allows us to continue our command on the next line, for easier-to-read formatting).
+
+The efetch command in the second line accepts the PMIDs piped from the previous line, and retrieves the PubMed records in full XML (-format xml). The results of the command is then redirected to a file (> zika.xml).
+Homework solutions
+
+Question 1
+
+In the PubMed XML of each record, there is a <History> element, with one or more elements which provide dates for various stages in each article’s life cycle. These can include when the article was submitted to the publisher for review, when the article was accepted by the publisher for publication, when it was added to PubMed, and/or when it was indexed for MEDLINE, among others. Not all citations will include entries for each type of date.
+
+For the following list of PMIDs
+
+    22389010,20060130,14678125,19750182,19042713,18586245
+
+write a series of commands that retrieves each record and extracts all of these different dates, along with the labels that indicate which type of date is which.
+
+Each PubMed record should appear on a separate line. Each line should start with the PMID, followed by a tab, followed by the list of dates. For each date, include the label, followed by a “:”, followed by the year, month and day, separated by slashes. Separate each date with a `“|”`.
+
+Example output:
+
+    18586245        received:2008/01/21|revised:2008/05/05|accepted:2008/05/07|pubmed:2008/7/1|medline:2008/10/28|entrez:2008/7/1
+
+**Solution:**
+
+    efetch -db pubmed -id 22389010,20060130,14678125,19750182,19042713,18586245 -format xml | \
+    xtract -pattern PubmedArticle -element MedlineCitation/PMID \
+    -block PubMedPubDate -tab ":" -sep "/" -element PubMedPubDate@PubStatus \
+    -tab "|" -element Year,Month,Day
+
+Question 2
+
+Identify your “working directory”. Write a series of commands that retrieve PubMed data, redirect the output to a file, and locate the file on your computer.
+
+**Solution:**
+
+The solution to this question may vary, depending on what type of Unix system you are using to run EDirect. One possible solution for identifying your “working directory” is:
+
+    pwd
+
+The pwd command prints to the screen the name of your working directory. Depending on your system, this may give you all of the information you need to find your working directory. If not, please review the material presented in “EDirect for PubMed: Part 3: Formatting Results and Unix Tools”.
+
+The second part of this question may also have many solutions. One possible solution is:
+
+    efetch -db pubmed -id 22389010,20060130,14678125,19750182,19042713,18586245 -format abstract > abstracts.txt
+
+This solution uses a basic efetch command to retrieve the six PubMed records specified in the the text abstract format (-format abstract). The command then redirects the output to a text file (> abstracts.txt). Provided you have found your working directory, you can find your new file and open it in a text editor.
+Question 3
+
+Write a series of commands that identifies the top ten agencies that have most frequently funded published research on diabetes and pregnancy over the last year and a half. Your script should start with a search for articles about diabetes and pregnancy that were published between January 1, 2016 and June 30, 2017, should extract the agencies listed as funders on each citation, and should output a list of the ten most frequently occuring agencies. Save the results to a file.
+
+Note: This script may take some time to run. As you build it, consider testing with small set of PubMed records, or with a search that has a smaller date range.
+
+**Solution:**
+
+    esearch -db pubmed -query "diabetes AND pregnancy" -datetype PDAT -mindate 2016/01/01 -maxdate 2017/06/30 | \
+    efetch -format xml | \
+    xtract -pattern Author -sep " " -element LastName,Initials | \
+    sort-uniq-count-rank | \
+    head -n 10
+
+This series of commands searches PubMed for the string “diabetes AND pregnancy” with a publication date between January 1, 2016 and June 30, 2017; retrieves the full XML records for each of the search results; extracts the last name and initials of every author on every record; sorts the authors by frequency of occurence in the results set; and presents the top ten most frequently-occuring authors, along with the number of times that author appeared.
+
+    esearch -db pubmed -query "diabetes AND pregnancy" -datetype PDAT -mindate 2016/01/01 -maxdate 2017/06/30 | \
+
+The first line of this command uses esearch to search PubMed (-db pubmed) for our search query (-query "diabetes AND pregnancy"). We use the -datetype, -mindate, and -maxdate arguments to add our date restriction (-datetype PDAT -mindate 2016/01/01 -maxdate 2017/06/30). Alternatively, we could include the date restriction in our search string, as part of our -query argument.
+
+The `“|”` character pipes the results of our esearch into our next command, and the `“\”` character at the end of the line allows us to continue our string of commands on the next line, for easier-to-read formatting.
+
+    efetch -format xml | \
+
+The second line takes the esearch results from our first line and uses efetch to retrieve the full records for each of our results in the XML format (-format xml), and pipes the XML output to the next line.
+
+    xtract -pattern Author -sep " " -element LastName,Initials | \
+
+The third line uses the xtract command to retrieve only the elements we need from the XML output, and display those elements in a tabular format. The -pattern command indicates that we should start a new row for every author (-pattern Author). Even if there are multiple authors on a single citation, each author will be on a new line, rather than putting all authors for the same citation on the same line. The command then extracts each author’s last name and initials (-element LastName,Initials) and separates the two elements with a single space (-sep " "). This will output a list of authors’ names and initials, one author per line, and will pipe the list to the next line.
+
+    sort-uniq-count-rank | \
+
+The fourth line uses a special EDirect function (sort-uniq-count-rank) to sort the list of authors received from the previous line, grouping together the duplicates. The function then counts how many occurrences there are of each unique author, removes the duplicate authors, and then sorts the list of unique authors by how frequently they occur, with the most frequent authors at the top. The function also returns the numerical count, making it easier to quantify how frequently each author occurs in the data set.
+
+    head -n 10
+
+The fifth line, which is optional, shows us only the first ten rows from the output of the sort-uniq-count-rank function (head -n 10). Because this function puts the most frequently occurring authors first, this will show us only the ten most frequently occurring authors in our search results set.
+Question 4
+
+Write a PubMed search strategy and save it to a file. Write a series of commands to search PubMed using the search string contained in the file and retrieve a list of PMIDs for all records which meet the search criteria.
+
+**Solution:**
+
+The solution to this may vary, based on your strategy and the name of the file to which you save it. For this example, our search strategy is saved to a file named “searchstring.txt”.
+
+    esearch -db pubmed -query "$(cat searchstring.txt)" | \
+    efetch -format uid
+
+The first line uses esearch to search PubMed (-db pubmed). The line uses the Unix command cat to read the entire contents of a file (searchstring.txt) and use it as the search query (-query "$(cat searchstring.txt)").
+
+The `“|”` character pipes the results of our esearch into our next command, and the `“\”` character at the end of the line allows us to continue our string of commands on the next line, for easier-to-read formatting.
+
+    efetch -format uid
+
+The second line takes the esearch result from our first line and uses efetch to retrieve the PMIDs for all of the records in our results set. (efetch -format uid).
+
+**Question 5**
+
+Save the following list of PMIDs in a .csv file:
+
+    22389010,20060130,14678125,19750182,19042713,18586245
+
+Write a series of commands to retrieve the full PubMed XML records for all of the PMIDs in the file, and save the resulting XML to a .xml file.
+
+**Solution:**
+
+The solution to this may vary, based on how you choose to save your PMIDs to a file, and on the name of that file. To begin, you could save your PMIDs to a file using efetch:
+
+    efetch -db pubmed -id 22389010,20060130,14678125,19750182,19042713,18586245 -format uid > pmids.csv
+
+Regardless of how you get the PMIDs into a .csv file, you can use epost -input and efetch to retrieve the records.
+
+    epost -db pubmed -input pmids.csv | \
+    efetch -format xml > records.xml
+
+The first line of this solution uses epost to retrieve the numbers from the “pmids.csv” file (-input pmids.csv) and save them to the history server, along with the indication that the numbers are PMIDs, and refer to records in PubMed (-db pubmed)
+
+The `“|”` character pipes the WebEnv and QueryKey output of our epost into our next command, and the `“\”` character at the end of the line allows us to continue our string of commands on the next line, for easier-to-read formatting.
+
+The efetch command on the second line receiveds the WebEnv and QueryKey from the epost and uses the information to locate on the history server the specific set of PMIDs posted by our epost command. The efetch command then retrieves the full records for each of those PMIDs in full PubMed XML (-format xml), and saves the output to a new file (> records.xml).
+
+### Part Three
+
+https://dataguide.nlm.nih.gov/edirect-for-pubmed-3.txt
+
+
+The Insider's Guide to Accessing NLM Data: EDirect for PubMed
+Part Three: Formatting Results and Unix tools
+Course Materials
+
+NOTE: Solutions to all exercises are at the bottom of this document.
+
+
+REMINDERS FROM PART ONE
+
+esearch: Searches a database and returns PMIDs
+
+efetch: Retrieves PubMed records in a variety of formats
+
+Use "|" (Shift + \, pronounced "pipe") to "pipe" the results of one command into the next
+
+
+----------------------------------------------------------------------
+
+REMINDERS FROM PART TWO
+
+xtract: Pulls data from XML and arranges it in a table
+
+-pattern: Defines rows for xtract
+
+-element: Defines columns for xtract
+
+Identify XML elements by name (e.g. ArticleTitle)
+
+Identify specific child elements with Parent/Child construction (e.g. MedlineCitation/PMID)
+
+Identify attributes with "@" (e.g. MedlineCitation@Status)
+
+----------------------------------------------------------------------
+
+TIPS FOR CYGWIN USERS:
+
+Copy: Ctrl + Insert
+(NOT Ctrl + C!)
+
+Paste: Shift + Insert
+(NOT Ctrl + V!)
+
+----------------------------------------------------------------------
+
+TIPS FOR ALL USERS:
+
+Ctrl + C "cancels" and gets you back to a prompt
+
+Up and Down arrow keys allow you to cycle through your recent commands
+
+clear: clears your screen
+
+----------------------------------------------------------------------
+
+-tab and -sep
+
+-tab defines the separator between columns
+-sep defines the separator between multiple values in the same columns
+
+The default for both -tab and -sep is "\t" (the tab character)
+Changes to -tab and -sep only affect subsequent -element/-first/-last arguments
+
+COMMAND STRING:
+
+    efetch -db pubmed -id 24102982,21171099,17150207 -format xml | \
+    xtract -pattern PubmedArticle -element MedlineCitation/PMID ISSN LastName
+
+    efetch -db pubmed -id 24102982,21171099,17150207 -format xml | \
+    xtract -pattern PubmedArticle -tab "\t" -sep "\t" \
+    -element MedlineCitation/PMID ISSN LastName
+
+    efetch -db pubmed -id 24102982,21171099,17150207 -format xml | \
+    xtract -pattern PubmedArticle -tab "\t" -sep " " \
+    -element MedlineCitation/PMID ISSN LastName
+
+    efetch -db pubmed -id 24102982,21171099,17150207 -format xml | \
+    xtract -pattern PubmedArticle -tab "|" -sep " " \
+    -element MedlineCitation/PMID ISSN LastName
+
+    efetch -db pubmed -id 24102982,21171099,17150207 -format xml | \
+    xtract -pattern PubmedArticle -tab "|" -sep "," \
+    -element MedlineCitation/PMID ISSN LastName
+
+    efetch -db pubmed -id 24102982,21171099,17150207 -format xml | \
+    xtract -pattern PubmedArticle -tab "|" -sep ", " \
+    -element MedlineCitation/PMID ISSN LastName
+
+
+
+With -tab/-sep, order matters!
+
+-tab/-sep only affect subsequent -elements
+
+Later -tab/-sep overwrite earlier ones
+
+
+
+
+**EXERCISE 1**
+
+Write an xtract command that:
+*	has a new row for each PubMed record
+*	has columns for PMID, Journal Title Abbreviation, and Author-supplied Keywords
+Each column should be separated by "|"
+Multiple keywords in the last column should be separated with commas
+Sample Output:
+
+
+    26359634|Elife|Argonaute,RNA silencing,biochemistry,biophysics,human,microRNA,structural biology
+
+Use the following efetch as input:
+
+    efetch -db pubmed -id 26359634,24102982,28194521,27794519 -format xml | \
+
+(ANSWERS TO ALL EXERCISES ARE AT THE BOTTOM OF THIS HANDOUT.)
+
+
+
+Authors: First Draft
+
+COMMAND STRING:
+
+    efetch -db pubmed -id 24102982,21171099,17150207 -format xml | \
+    xtract -pattern PubmedArticle -element MedlineCitation/PMID LastName Initials
+
+----------------------------------------------------------------------
+
+-block
+
+-block associates multiple child elements of the same parent element in the results
+
+COMMAND STRING:
+
+    efetch -db pubmed -id 24102982,21171099,17150207 -format xml | \
+    xtract -pattern PubmedArticle -element MedlineCitation/PMID -block Author -element LastName Initials
+
+----------------------------------------------------------------------
+
+What we know so far...
+
+
+    efetch -db pubmed -id 24102982,21171099,17150207 -format xml | \
+    xtract -pattern PubmedArticle -tab "|" -sep ", " \
+    -element MedlineCitation/PMID ISSN LastName
+
+----------------------------------------------------------------------
+
+Putting two different elements in the same column
+
+Separate multiple -element values with a comma instead of a space.
+
+COMMAND STRING:
+
+    efetch -db pubmed -id 24102982,21171099,17150207 -format xml | \
+    xtract -pattern PubmedArticle -element MedlineCitation/PMID \
+    -block Author -sep " " -element LastName,Initials
+
+
+
+"-block" resets -tab/-sep to default
+
+COMMAND STRING:
+
+    efetch -db pubmed -id 24102982,21171099,17150207 -format xml | \
+    xtract -pattern PubmedArticle -tab "|" -element MedlineCitation/PMID \
+    -block Author -sep " " -element LastName,Initials
+
+
+    efetch -db pubmed -id 24102982,21171099,17150207 -format xml | \
+    xtract -pattern PubmedArticle -tab "|" -element MedlineCitation/PMID \
+    -block Author -tab "|" -sep " " -element LastName,Initials
+
+----------------------------------------------------------------------
+
+**EXERCISE 2**
+
+Write an xtract command that:
+*	Has a new row for each PubMed record
+*	Has a column for PMID
+*	Lists all of the MeSH headings, separated by "|"
+	*	If a heading has multiple subheadings attached, separate the heading and subheadings with "/"
+Sample Output:
+
+
+    24102982|Cell Fusion|Myoblasts/cytology/metabolism|Muscle Development/physiology
+
+Use the following efetch as input:
+
+    efetch -db pubmed -id 24102982,21171099,17150207 -format xml | \
+
+(ANSWERS TO ALL EXERCISES ARE AT THE BOTTOM OF THIS HANDOUT.)
+
+----------------------------------------------------------------------
+
+Saving results to a file
+
+Use ">" to save the output to a file
+
+COMMAND STRING:
+
+    efetch -db pubmed -id 24102982,21171099,17150207 -format xml > testfile.txt
+
+    efetch -db pubmed -id 24102982,21171099,17150207 -format xml > testfile.xml
+
+
+
+But where is my file!?
+
+Use "pwd" to "Print the Working Directory" (a.k.a display on the screen the name of the directory you are working in). This is where your file was saved.
+
+CYGWIN USERS:
+
+Your working directory is probably a subfolder of the folder where you installed Cygwin. In Cygwin, try:
+
+cygpath -w ~
+
+MAC USERS:
+
+Your working directory is probably in your Users folder:
+
+Users/<your user name>
+
+----------------------------------------------------------------------
+
+Another way to find your files
+
+COMMAND STRING:
+
+efetch -db pubmed -id 24102982,21171099,25359968,17150207 -format uid > specialname.csv
+
+Use "ls" to list the files in your current directory.
+
+----------------------------------------------------------------------
+
+EXERCISE 3: Retrieving XML 
+How can I get the full XML of all articles about the relationship of Zika Virus to microcephaly in Brazil?  Save your results to a file.
+
+(ANSWERS TO ALL EXERCISES ARE AT THE BOTTOM OF THIS HANDOUT.)
+
+----------------------------------------------------------------------
+
+cat
+
+Short for concatenate, "cat" opens files to display them on the screen. "cat" can also combine/append files
+
+
+----------------------------------------------------------------------
+
+Reading a search string from a file 
+
+Use "$(cat filename)" to use the contents of a file in a command
+
+COMMAND STRING:
+
+    esearch -db pubmed -query "$(cat searchstring.txt)"
+
+----------------------------------------------------------------------
+
+epost uploads a list of PMIDs to the history server
+
+COMMAND STRING:
+
+    epost -db pubmed -id 24102982,21171099
+
+    epost -db pubmed -id 24102982,21171099 | efetch -format abstract
+
+
+
+An epost-efetch pipeline
+
+    cat specialname.csv | epost -db pubmed | efetch -format abstract
+
+Using the -input argument
+
+    epost -db pubmed -input specialname.csv | efetch -format abstract
+
+
+HOMEWORK FOR PART THREE
+
+(Answers are available at: https://dataguide.nlm.nih.gov/classes/edirect-for-pubmed/samplecode3.html)
+
+
+**Question 1:**
+
+In the PubMed XML of each record, there is a <History> element, with one or more <PubmedPubDate> elements which provide dates for various stages in each article's life cycle. These can include when the article was submitted to the publisher for review, when the article was accepted by the publisher for publication, when it was added to PubMed, and/or when it was indexed for MEDLINE, among others. Not all citations will include entries for each type of date.
+
+For the following list of PMIDs
+
+    22389010
+    20060130
+    14678125
+    19750182
+    19042713
+    18586245
+
+write a series of commands that retrieves each record and extracts all of these different dates, along with the labels that indicate which type of date is which.
+
+Each PubMed record should appear on a separate line. Each line should start with the PMID, followed by a tab, followed by the list of dates. For each date, include the label, followed by a ":", followed by the year, month and day, separated by slashes. Separate each date with a "|".
+
+Example output:
+
+    18586245        received:2008/01/21|revised:2008/05/05|accepted:2008/05/07|pubmed:2008/7/1|medline:2008/10/28|entrez:2008/7/1
+
+
+**Question 2:**
+
+Identify your "working directory". Write a series of commands that retrieve PubMed data, redirect the output to a file, and locate the file on your computer.
+
+
+**Question 3:**
+
+Write a series of commands that identifies the top ten agencies that have most frequently funded published research on diabetes and pregnancy over the last year and a half. Your script should start with a search for articles about diabetes and pregnancy that were published between January 1, 2016 and June 30, 2017, should extract the agencies listed as funders on each citation, and should output a list of the ten most frequently occurring agencies. Save the results to a file.
+
+Note: This script may take some time to run. As you build it, consider testing with small set of PubMed records, or with a search that has a smaller date range.
+
+
+**Question 4:**
+
+Write a PubMed search strategy and save it to a file. Write a series of commands to search PubMed using the search string contained in the file and retrieve a list of PMIDs for all records which meet the search criteria.
+
+
+**Question 5:**
+
+Save the following list of PMIDs in a .csv file:
+
+    22389010
+    20060130
+    14678125
+    19750182
+    19042713
+    18586245
+
+Write a series of commands to retrieve the full PubMed XML records for all of the PMIDs in the file, and save the resulting XML to a .xml file.
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+EXERCISE SOLUTIONS:
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+EXERCISE 1
+Write an xtract command that:
+*	has a new row for each PubMed recprd
+*	has columns for PMID, Journal Title Abbreviation, and Author-supplied Keywords
+Each column should be separated by "|"
+Multiple keywords in the last column should be separated with commas
+Sample Output:
+
+26359634|Elife|Argonaute,RNA silencing,biochemistry,biophysics,human,microRNA,structural biology
+
+
+**Solution:**
+
+    efetch -db pubmed -id 26359634,24102982,28194521,27794519 -format xml | \
+    xtract -pattern PubmedArticle -tab "|" -sep "," -element MedlineCitation/PMID ISOAbbreviation Keyword
+
+-=-=-=-=-=-=-=-=-=-=-=-=-
+EXERCISE 2:
+Write an xtract command that:
+*	Has a new row for each PubMed record
+*	Has a column for PMID
+*	Lists all of the MeSH headings, separated by "|"
+	*	If a heading has multiple subheadings attached, separate the heading and subheadings with "/"
+Sample Output:
+
+
+    24102982|Cell Fusion|Myoblasts/cytology/metabolism|Muscle Development/physiology
+
+**Solution:**
+
+    efetch -db pubmed -id 24102982,21171099,17150207 -format xml | \
+    xtract -pattern PubmedArticle -tab "|" -element MedlineCitation/PMID \
+    -block MeshHeading -tab "|" -sep "/" -element DescriptorName,QualifierName
+
+-=-=-=-=-=-=-=-=-=-=-=-=-
+EXERCISE 3: Retrieving XML 
+How can I get the full XML of all articles about the relationship of Zika Virus to microcephaly in Brazil?  Save your results to a file.
+
+**Solution:**
+
+    esearch -db pubmed \
+    -query "zika virus microcephaly brazil" | \
+    efetch -format xml > zika.xml
+
+
+## Part Four "EDirect for PubMed: Part 4: xtract Conditional Arguments" Sample Code
+
+### Part Four
+
+https://dataguide.nlm.nih.gov/classes/edirect-for-pubmed/samplecode4.html
+
+
+
+
+xtract Conditional arguments
+
+For an introduction to the xtract Conditional arguments, see the Filtering output with Conditional arguments section of our EDirect documentation.
+Include only authors with ORCID IDs in the output table
+
+    efetch -db pubmed -id 27460563,27298442,27392493,27363997,27298443 -format xml | \
+    xtract -pattern Author -if Identifier -sep " " -element LastName,Initials Identifier
+
+The first line of this code uses the efetch command to retrieve records from PubMed (-db pubmed -id 27460563,27298442,27392493,27363997,27298443) in XML format (-format xml), and concludes by piping (|) the resulting XML into a command on the next line (the `“\”` character at the end of the line allows us to continue our command on the next line, for easier-to-read formatting).
+
+The second line uses the xtract command to retrieve only the elements we need from the XML output, and display those elements in a tabular format. The -pattern argument indicates that we should start a new row for each <Author> element (-pattern Author), but only if the <Author> element contains an <Identifier> element (which is the where an author’s ORCID ID is stored). If an author does not have an ORCID ID, the author will not have an <Identifier> element; no row is created for the author, and xtract skips to the next author (-if Identifier).
+
+The command creates two columns for each row: one with the author’s last name and initials (-element LastName,Initials) separated with a single space (-sep " "), and one with the author’s ORCID ID (Identifier).
+Include only articles from the journal JAMA in the output table
+
+    efetch -db pubmed -id 27460563,27532912,27392493,27363997,24108526 -format xml | \
+    xtract -pattern PubmedArticle -if ISOAbbreviation -equals JAMA -element Volume Issue
+
+The first line of this code uses the efetch command to retrieve records from PubMed (-db pubmed -id 27460563,27532912,27392493,27363997,24108526) in XML format (-format xml), and concludes by piping (|) the resulting XML into a command on the next line (the `“\”` character at the end of the line allows us to continue our command on the next line, for easier-to-read formatting).
+
+The second line uses the xtract command to retrieve only the elements we need from the XML output, and display those elements in a tabular format. The -pattern argument indicates that we should start a new row for each PubMed record (-pattern PubmedArticle), but only if the article’s journal title abbreviation (<ISOAbbreviation>) is “JAMA”. If a citation is from a different journal, no row is created for the record, and xtract skips to the next record (-if ISOAbbreviation -equals JAMA).
+
+The command creates two columns for each row: one with the article’s Volume number, one with the article’s Issue number (-element Volume Issue).
+Include only MEDLINE articles in the output table
+
+    efetch -db pubmed -id 27460563,27532912,27392493,27363997,24108526 -format xml | \
+    xtract -pattern PubmedArticle -if MedlineCitation@Status -equals MEDLINE -element MedlineCitation/PMID
+
+The first line of this code uses the efetch command to retrieve records from PubMed (-db pubmed -id 27460563,27532912,27392493,27363997,24108526) in XML format (-format xml), and concludes by piping (|) the resulting XML into a command on the next line (the `“\”` character at the end of the line allows us to continue our command on the next line, for easier-to-read formatting).
+
+The second line uses the xtract command to retrieve only the elements we need from the XML output, and display those elements in a tabular format. The -pattern argument indicates that we should start a new row for each PubMed record (-pattern PubmedArticle), but only if the record’s citation status (which is found in the “Status” attribute of the <MedlineCitation> element) is “MEDLINE”. If a citation is not in “MEDLINE” status, no row is created for the record, and xtract skips to the next record (-if MedlineCitation@Status -equals MEDLINE).
+
+The command creates a single column for each row, containing the record’s PMID (specifically, the contents of the <PMID> element that is a child of the <MedlineCitation> element; -element MedlineCitation/PMID)
+Include only authors whose affiliation mentions Japan in the output table
+
+    efetch -db pubmed -id 27460563,27532912,27392493,27363997,24108526 -format xml | \
+    xtract -pattern Author -if Affiliation -contains Japan -sep " " -element LastName,Initials Affiliation
+
+The first line of this code uses the efetch command to retrieve records from PubMed (-db pubmed -id 27460563,27532912,27392493,27363997,24108526) in XML format (-format xml), and concludes by piping (|) the resulting XML into a command on the next line (the `“\”` character at the end of the line allows us to continue our command on the next line, for easier-to-read formatting).
+
+The second line uses the xtract command to retrieve only the elements we need from the XML output, and display those elements in a tabular format. The -pattern argument indicates that we should start a new row for each <Author> element (-pattern Author), but only if the <Author> element contains an <Affiliation> element which includes the word “Japan”. If an author does not have affiliation data, or the author’s affiliation data does not contain Japan, no row is created for the author, and xtract skips to the next author (-if Affiliation -contains Japan).
+
+The command creates two columns for each row: one with the author’s last name and initials (-element LastName,Initials) separated with a single space (-sep " "), and one with the author’s affiliation data (Affiliation).
+Output a list of PMIDs and corresponding DOIs
+
+    efetch -db pubmed -id 16940437,16049336,11972038 -format xml | \
+    xtract -pattern PubmedArticle -element MedlineCitation/PMID \
+    -block ArticleId -if ArticleId@IdType -equals doi -element ArticleId
+
+The first line of this code uses the efetch command to retrieve records from PubMed (-db pubmed -id 16940437,16049336,11972038) in XML format (-format xml), and concludes by piping (|) the resulting XML into a command on the next line (the `“\”` character at the end of the line allows us to continue our command on the next line, for easier-to-read formatting).
+
+Beginning on the second line, the xtract command creates a table, with each PubMed record in our input populating its own row (xtract -pattern PubmedArticle). The first column of each row will contain the record’s PMID, using Parent/Child construction to specify that we want the <PMID> element that is the child of the <MedlineCitation> element, and not another <PMID> element elsewhere in the PubMed record (e.g. as a child of a <CommentsCorrections> element; -element MedlineCitation/PMID).
+
+The xtract command continues on the third line by checking each <ArticleId> element in a PubMed record (-block ArticleId). If an <ArticleId> element contains a DOI (indicated by the “IdType” attribute for the <ArticleId> equaling “doi”; -if ArticleId@IdType -equals doi), then the command puts the DOI in the second column (-element ArticleId). If not, the second column is left blank.
+
+The result of this command will be a two column table, where the first column is always a PMID, and the second column is either the corresponding DOI (if there is one), or is blank (if there is no DOI).
+Combining multiple Conditional arguments
+Output a list of PMIDs and corresponding DOIs and PMCIDs
+
+    efetch -db pubmed -id 16940437,16049336,11972038 -format xml | \
+    xtract -pattern PubmedArticle -element MedlineCitation/PMID \
+    -block ArticleId -if ArticleId@IdType -equals doi \
+    -or ArticleId@IdType -equals pmc -element ArticleId
+
+The first line of this code uses the efetch command to retrieve records from PubMed (-db pubmed -id 16940437,16049336,11972038) in XML format (-format xml), and concludes by piping (|) the resulting XML into a command on the next line (the `“\”` character at the end of the line allows us to continue our command on the next line, for easier-to-read formatting).
+
+Beginning on the second line, the xtract command creates a table, with each PubMed record in our input populating its own row (xtract -pattern PubmedArticle). The first column of each row will contain the record’s PMID, using Parent/Child construction to specify that we want the <PMID> element that is the child of the <MedlineCitation> element, and not another <PMID> element elsewhere in the PubMed record (e.g. as a child of a <CommentsCorrections> element; -element MedlineCitation/PMID).
+
+The xtract command continues on the third line by checking each <ArticleId> element in a PubMed record (-block ArticleId). If an <ArticleId> element contains a DOI (indicated by the “IdType” attribute for the <ArticleId> equaling “doi”; -if ArticleId@IdType -equals doi) OR a PMC ID (indicated by the “IdType” attribute for the <ArticleId> equaling “pmc”; -or ArticleId@IdType -equals pmc), then the command puts the contents of the <ArticleId> element in the second column (-element ArticleId).
+
+Because a PubMed record can have multiple <ArticleId> elements, and because the -block argument checks each <ArticleId> separately, this command may result in both a DOI and a PMC ID appearing the second column of some rows.
+Include only authors with the last name Kamal and with affiliation data in the output table
+
+    efetch -db pubmed -id 27798514,24372221,24332497,24307782 -format xml | \
+    xtract -pattern Author -if LastName -equals Kamal -and Affiliation \
+    -sep " " -element LastName,Initials Affiliation
+
+The first line of this code uses the efetch command to retrieve records from PubMed (-db pubmed -id 27798514,24372221,24332497,24307782) in XML format (-format xml), and concludes by piping (|) the resulting XML into a command on the next line (the `“\”` character at the end of the line allows us to continue our command on the next line, for easier-to-read formatting).
+
+The second line uses the xtract command to retrieve only the elements we need from the XML output, and display those elements in a tabular format. The -pattern argument indicates that we should start a new row for each <Author> element (-pattern Author), but only if the <LastName> element for the <Author> is “Kamal”, AND the <Author> element contains an <Affiliation> element (-if LastName -equals Kamal -and Affiliation). If an author’s last name is not “Kamal” or the author does not have affiliation data, no row is created for the author, and xtract skips to the next author.
+
+The command creates two columns for each row: one with the author’s last name and initials (-element LastName,Initials) separated with a single space (-sep " "), and one with the author’s affiliation data (Affiliation).
+Include only PubMed records indexed with the MeSH heading “Microcephaly”, and with any MeSH heading containing the words “Zika Virus” in the output table
+
+    efetch -db pubmed -id 27582188,27417495,27409810,27306170,18142192 -format xml | \
+    xtract -pattern PubmedArticle -if DescriptorName -contains "Zika Virus" \
+    -and DescriptorName -equals Microcephaly -element MedlineCitation/PMID ArticleTitle
+
+The first line of this code uses the efetch command to retrieve records from PubMed (-db pubmed -id 27582188,27417495,27409810,27306170,18142192) in XML format (-format xml), and concludes by piping (|) the resulting XML into a command on the next line (the `“\”` character at the end of the line allows us to continue our command on the next line, for easier-to-read formatting).
+
+The second line uses the xtract command to retrieve only the elements we need from the XML output, and display those elements in a tabular format. The -pattern argument indicates that we should start a new row for each PubMed record (-pattern PubmedArticle), but only if the record has a <DescriptorName> element that contains the words “Zika Virus” (-if DescriptorName -contains "Zika Virus"), AND a <DescriptorName> element that equals “Microcephaly” (-and DescriptorName -equals Microcephaly). If a record does not have MeSH headings assigned that meet those criteria, no row is created for the author, and xtract skips to the next author. Note that, because of the use of -contains, both the MeSH heading “Zika Virus” and the MeSH heading “Zika Virus Infection” will satisfy the first condition in this command.
+
+The command creates two columns for each row: one with the record’s PMID (specifically, the contents of the <PMID> element that is a child of the <MedlineCitation> element), one with the article’s title (-element MedlineCitation/PMID ArticleTitle).
+xtract and the -position argument
+Include only the First Author in the output table
+
+    efetch -db pubmed -id 28594955,28594944,28594945,28594943,28594948,28594957 -format xml | \
+    xtract -pattern PubmedArticle -element MedlineCitation/PMID \
+    -block Author -position first -sep " " -element LastName,Initials
+
+The first line of this code uses the efetch command to retrieve records from PubMed (-db pubmed -id 28594955,28594944,28594945,28594943,28594948,28594957) in XML format (-format xml), and concludes by piping (|) the resulting XML into a command on the next line (the `“\”` character at the end of the line allows us to continue our command on the next line, for easier-to-read formatting).
+
+Beginning on the second line, the xtract command creates a table, with each PubMed record in our input populating its own row (xtract -pattern PubmedArticle). The first column of each row will contain the record’s PMID, using Parent/Child construction to specify that we want the <PMID> element that is the child of the <MedlineCitation> element, and not another <PMID> element elsewhere in the PubMed record (e.g. as a child of a <CommentsCorrections> element; -element MedlineCitation/PMID).
+
+In the third line, xtract looks through each PubMed record for an <Author> element (-block Author). When it finds the first <Author> (-position first), it populates the second column in the row with the first author’s last name and initials, separated by a space (-sep " " -element LastName,Initials).
+Dealing with blanks
+Specify a placeholder to replace blank spaces in the output table
+
+    efetch -db pubmed -id 28594955,28594944,28594945,28594943,28594948,28594957 -format xml | \
+    xtract -pattern PubmedArticle -element MedlineCitation/PMID \
+    -block Author -position first -sep " " -def "N/A" -element LastName,Initials Identifier
+
+This series of commands is largely the same as the “Include only the First Author in the output table” example presented above. However, in the third line, we have added the -def argument to specify the placeholder value (“N/A”) for any blank cells in the output table (-def "N/A").
+In-class exercise solutions
+
+Note: The first two exercises ask for an xtract command. The solutions below start with efetch commands that retrieve a sample set of PubMed records in XML, which are then piped into the xtract command. This allows us to test and verify the solutions using appropriate sample data.
+Exercise 1
+
+Write an xtract command that creates a table with one row per PubMed record, but that only includes PubMed records if they have MeSH headings. Each row should have two columns: PMID and citation status.
+
+**Solution:**
+
+    efetch -db pubmed -id 26277396,29313986,19649173,21906097,25380814 -format xml | \
+    xtract -pattern PubmedArticle -if MeshHeading -element MedlineCitation/PMID MedlineCitation@Status
+
+This xtract command creates a table, with each PubMed record in our input populating its own row (xtract -pattern PubmedArticle), but only if the record contains a <MeshHeading> element (-if MeshHeading). If a record does not have MeSH headings attached, no row is created for the record, and xtract skips to the next record.
+
+For each row in the output, xtract creates two columns: one with the record’s PMID (specifically, the contents of the <PMID> element that is a child of the <MedlineCitation> element), one with the record’s citation status (-element MedlineCitation/PMID MedlineCitation@Status).
+
+Exercise 2
+
+Write an xtract command that creates a table with one row per PubMed record, but that only includes PubMed records for articles published in one of the JAMA journals (e.g. JAMA cardiology, JAMA oncology, etc.). Each row should have two columns: PMID and journal title abbreviation.
+
+**Solution:**
+
+    efetch -db pubmed -id 27829097,27829076,19649173,21603067,25380814 -format xml | \
+    xtract -pattern PubmedArticle -if ISOAbbreviation -starts-with JAMA -element MedlineCitation/PMID ISOAbbreviation
+
+This xtract command creates a table, with each PubMed record in our input populating its own row (xtract -pattern PubmedArticle), but only if the record has a journal title abbreviation that begins with “JAMA” (-if ISOAbbreviation -starts-with JAMA).
+
+For each row in the output, xtract creates two columns: one with the record’s PMID (specifically, the contents of the <PMID> element that is a child of the <MedlineCitation> element), one with the article’s journal title abbreviation (-element MedlineCitation/PMID ISOAbbreviation).
+Exercise 3
+
+Write a series of commands that generates a list of the different affiliation data used by author BH Smith between 2012 and 2017. The script should output the PMID for each article published by BH Smith in that time frame, along with the BH Smith’s affiliation data for each article.
+
+**Solution:**
+
+    esearch -db pubmed -query "smith bh[Author]" -datetype PDAT -mindate 2012 -maxdate 2017 | \
+    efetch -format xml | \
+    xtract -pattern PubmedArticle -element MedlineCitation/PMID \
+    -block Author -if LastName -equals Smith -and Initials -equals BH -element LastName,Initials Affiliation
+
+This series of commands searches for publications by the author BH Smith that were published between 2012 and 2017, retrieves the full XML records for each of the search results, extracts the PMID and BH Smith’s affiliation data from each record, and displays the results in a table.
+
+    esearch -db pubmed -query "smith bh[Author]" -datetype PDAT -mindate 2012 -maxdate 2017 | \
+
+The first line of code uses esearch to search PubMed (-db pubmed) for articles where “smith bh” is the author (-query "smith bh[Author]"). The line also restricts the search results to articles that were published between 2011 and 2016 (-datetype PDAT -mindate 2012 -maxdate 2017).
+
+The `“|”` character pipes the results of our esearch into our next command, and the `“\”` character at the end of the line allows us to continue our string of commands on the next line, for easier-to-read formatting.
+
+    efetch -format xml | \
+
+The second line takes the esearch results from our first line and uses efetch to retrieve the full records for each of our results in the XML format (-format xml), and pipes the XML output to the next line.
+
+    xtract -pattern PubmedArticle -element MedlineCitation/PMID \
+
+Beginning on the third line, the xtract command creates a table with each PubMed record in our input populating its own row (xtract -pattern PubmedArticle), and with three columns. The first column of each row will contain the record’s PMID, using Parent/Child construction to specify that we want the <PMID> element that is the child of the <MedlineCitation> element, and not another <PMID> element elsewhere in the PubMed record (e.g. as a child of a <CommentsCorrections> element).
+
+    -block Author -if LastName -equals Smith -and Initials -equals BH -sep " " -element LastName,Initials Affiliation
+
+The xtract command continues on the fourth line by checking each <Author> element in a PubMed record (-block Author). If a given author’s <LastName> is Smith AND <Initials> are BH (-if LastName -equals Smith -and Initials -equals BH), the xtract command populates the second column with the author’s last name and initials (separated by a space), and the third column with the author’s affiliation (-sep " " -element LastName,Initials Affiliation). Outputting the last name and initials into the second column is slightly redundant, as we know that they will always be “Smith BH”. However, it is helpful as a confirmation that our Conditional arguments are correct.
+Homework solutions
+
+Question 1
+
+Fetch the records for the following list of PMIDs:
+
+    28197844,28176235,28161874,28183232,28164731,27937077,28118756,27845598,27049596,27710139
+
+Write an xtract command that outputs the PMID and Article Title, but only for records that have a structured abstract. Hint: in PubMed records, structured abstracts are broken up into multiple AbstractText elements, each with their own “NlmCategory” attribute.
+
+**Solution:**
+
+    efetch -db pubmed -id 28197844,28176235,28161874,28183232,28164731,27937077,28118756,27845598,27049596,27710139 -format xml | \
+    xtract -pattern PubmedArticle -if AbstractText@NlmCategory -element MedlineCitation/PMID ArticleTitle
+
+The first line of this solution uses efetch to retrieve several records from PubMed in XML format.
+
+The `“|”` character pipes the results of our efetch into our next command, and the `“\”` character at the end of the line allows us to continue our string of commands on the next line, for easier-to-read formatting.
+
+This xtract command creates a table, with each PubMed record in our input populating its own row (xtract -pattern PubmedArticle), but only if the record has one or more “AbstractText” elements that contain an “NlmCategory” attribute (-if AbstractText@NlmCategory). This will ensure that only PubMed records with structured abstracts are included.
+
+For each row in the output, xtract creates two columns: one with the record’s PMID (specifically, the contents of the <PMID> element that is a child of the <MedlineCitation> element), one with the article title (-element MedlineCitation/PMID ArticleTitle).
+
+Question 2
+
+Modify your command from Question 1 to display the “RESULTS” section of each structured abstract, if there is one, in place of the Article Title. If there is no “RESULTS” section, display just the PMID, leaving the second column blank. Hint: Use the “NlmCategory” attribute to determine whether a particular AbstractText element contains “RESULTS”.
+
+**Solution:**
+
+    efetch -db pubmed -id 28197844,28176235,28161874,28183232,28164731,27937077,28118756,27845598,27049596,27710139 -format xml | \
+    xtract -pattern PubmedArticle -if AbstractText@NlmCategory -element MedlineCitation/PMID \
+    -block AbstractText -if AbstractText@NlmCategory -equals RESULTS -element AbstractText
+
+This solution begins the same as the solution for Question 2. However, rather than including the article title in the first -element argument, the xtract command continues on the third line (with the `“\”` character at the end of the second line allowing us to continue our string of commands on the next line, for easier-to-read formatting.
+
+    -block AbstractText -if AbstractText@NlmCategory -equals RESULTS -element AbstractText
+
+In the third line, the command uses -block to look for an <AbstractText> element (-block AbstractText), then looks within that <AbstractText> element to see if it has an “NlmCategory” attribute with the value “RESULTS” (-if AbstractText@NlmCategory -equals RESULTS). If it does, the command then outputs the contents of the <AbstractText> element in the second column. If the <AbstractText> element does not have an “NlmCategory” with the value “RESULTS”, the command proceeds to check the next <AbstractText> element in the record. The process repeats for each <AbstractText> element in the record.
+
+Question 3
+
+When indexing a record for MEDLINE, indexers can assign MeSH headings (descriptors) to represent concepts found in an article, and MeSH subheadings (qualifiers) to describe a specific aspect of a concept. Indexers denote some of MeSH headings as “Major Topics” (i.e. one of the primary topics of the article). When assigning a “Major Topic”, the indexer can determine that heading itself is a major topic, or that a specific heading/subheading pair is a major topic. When a heading/subheading pair is assigned as a Major Topic, only the subheading will be labeled as Major in the PubMed XML.
+
+Write an xtract command that outputs one PubMed record per row. Each row should have the record’s PMID and a pipe-delimited list of all of the MeSH Headings the indexers have determined are Major Topics. Note: the list should only include headings (descriptors), not subheadings (qualifiers). However, if a heading/subheading pair is assigned as major, the list should include that heading.
+
+You can use the following efetch command to retrieve some sample records:
+
+    efetch -db pubmed -id 24102982,21171099,17150207 -format xml | \
+
+**Solution:**
+
+    efetch -db pubmed -id 24102982,21171099,17150207 -format xml | \
+    xtract -pattern PubmedArticle -element MedlineCitation/PMID \
+    -block MeshHeading -if DescriptorName@MajorTopicYN -equals Y -or QualifierName@MajorTopicYN -equals Y \
+    -tab "|" -element DescriptorName
+
+This solution uses the example efetch command to retrieve three PubMed records in XML, then outputs a table with one row per PubMed record. Each row begins with the record’s PMID, followed by a pipe-delimited list of all of the MeSH Headings that the indexers have determined are Major Topics.
+
+    xtract -pattern PubmedArticle -element MedlineCitation/PMID \
+
+Beginning on the second line, the xtract command creates a table, with each PubMed record in our input populating its own row (xtract -pattern PubmedArticle) with the record’s PMID (-element MedlineCitation/PMID) and additional data, which is specified on the subsequent lines.
+
+    -block MeshHeading -if DescriptorName@MajorTopicYN -equals Y -or QualifierName@MajorTopicYN -equals Y \
+
+In the third line, we start to check each <MeshHeading> element to determine if it has been labeled Major. The command uses -block to look for the first <MeshHeading> element in the record (-block MeshHeading). The command then looks within that <MeshHeading> element to see if its child <DescriptorName> element has a “MajorTopicYN” attribute with a value of “Y” (-if DescriptorName@MajorTopicYN -equals Y), or if any of its child <QualifierName> elements have a “MajorTopicYN” attribute with a value of “Y” (-or QualifierName@MajorTopicYN -equals Y). If either of these are true, the MeSH heading has been labeled as a Major Topic, and the command will continue on the next line (see below). If neither of these conditions are true, the command will proceed to the next <MeshHeading> element and repeat the process, looking for MeSH Headings which are Major Topics.
+
+    -tab "|" -element DescriptorName
+
+The fourth line specifies that the DescriptorName will appear in the second column of our table (-element DescriptorName). Each indexed record will have at least one Major Topic assigned, and probably more than one. We use the -tab argument to specify a separator between the multiple MeSH descriptors (-tab "|"). It is important to place the -tab argument after the -block, as -block resets any -tab arguments that have been previously specified. We use -tab instead of -sep, as -block automatically creates a new column at the end of each block, so by specifying `“|”` in our -tab argument, we insure that our blocks are pipe-delimited.
+
+Question 4
+
+Write a series of commands to search for articles reporting on clinical trials relating to tularemia and output a table of citations. Each row should include the PMID for an article, as well as the name and affiliation information (if any) for the last author. If the last author does not have affiliation information, put “Not Available” in the last column instead.
+
+**Solution:**
+
+    esearch -db pubmed -query "tularemia clinical trial" | \
+    efetch -format xml | \
+    xtract -pattern PubmedArticle -element MedlineCitation/PMID \
+    -block Author -position last -sep " " -def "Not Available" -element LastName,Initials Affiliation
+
+This solution of commands searches PubMed for the string “tularemia clinical trial”, retrieves the full XML records and outputs the PMID as well as the last name, initials affiliation information (if any) of each article’s last author.
+
+    esearch -db pubmed -query "tularemia clinical trial" | \
+
+The first line of this command uses esearch to search PubMed (-db pubmed) for our search query (-query "tularemia clinical trial").
+
+The `“|”` character pipes the results of our esearch into our next command, and the `“\”` character at the end of the line allows us to continue our string of commands on the next line, for easier-to-read formatting.
+
+    efetch -format xml | \
+
+The second line takes the esearch results from our first line and uses efetch to retrieve the full records for each of our results in the XML format (-format xml), and pipes the XML output to the next line.
+
+    -pattern PubmedArticle -element MedlineCitation/PMID \
+
+Beginning on the third line, the xtract command creates a table, with each PubMed record in our input populating its own row (xtract -pattern PubmedArticle) with the record’s PMID (-element MedlineCitation/PMID) and additional data, which is specified on the subsequent lines.
+
+    -block Author -position last -sep " " -def "Not Available" -element LastName,Initials Affiliation
+
+The fourth line uses the -block and -position arguments to identify the last <Author> element in each record (-block Author -position last). The last name and initials of the last author, separated by a space (-sep " "), are placed in the second column, with the last author’s affiliation information (if present) is placed in the third column (-element LastName,Initials Affiliation). If the last author has no affiliation information, the third column will contain the default value of “Not Available” instead of being left blank (-def "Not Available")
+
+### Part Four
+
+https://dataguide.nlm.nih.gov/edirect-for-pubmed-4.txt
+
+----------------------------------------------------------------------
+The Insider's Guide to Accessing NLM Data: EDirect for PubMed
+Part Four: xtract Conditional Arguments
+Course Materials
+
+
+NOTE: Solutions to all exercises are at the bottom of this document.
+
+
+
+REMINDERS FROM PART ONE
+
+esearch: Searches a database and returns PMIDs
+
+efetch: Retrieves PubMed records in a variety of formats
+
+Use "|" (Shift + \, pronounced "pipe") to "pipe" the results of one command into the next
+
+
+
+REMINDERS FROM PART TWO
+
+xtract: Pulls data from XML and arranges it in a table
+
+-pattern: Defines rows for xtract
+
+-element: Defines columns for xtract
+
+Identify XML elements by name (e.g. ArticleTitle)
+
+Identify specific child elements with Parent/Child construction (e.g. MedlineCitation/PMID)
+
+Identify attributes with "@" (e.g. MedlineCitation@Status)
+
+
+
+REMINDERS FROM PART THREE
+
+-block: Selects and groups child elements of the same parent
+
+-tab: Defines the separator between columns (default is tab, "\t")
+
+-sep: Defines the separator between values in the same column (default is tab, "\t")
+
+Use ">" to save the output to a file
+
+Use "cat" to pull the contents of a file into the EDirect command
+
+epost: Stores PMIDs to the History Server
+
+
+
+TIPS FOR CYGWIN USERS:
+
+Ctrl + C does not Copy
+(Cygwin default for Copy is Ctrl + Insert)
+
+Ctrl + V does not Paste
+(Cygwin default for Paste is Shift + Insert)
+
+
+
+
+TIPS FOR ALL USERS:
+
+Ctrl + C "cancels" and gets you back to a prompt
+
+Up and Down arrow keys allow you to cycle through your recent commands
+
+clear: clears your screen
+
+
+
+If-Then
+
+If the condition is met...
+Then, create a new row for the pattern and populate the specified columns.
+(If not, skip the pattern and move on to the next one.)
+
+
+
+-if
+
+COMMAND STRING:
+
+    efetch -db pubmed -id 27460563,27298442,27392493,27363997,27298443 -format xml
+
+    efetch -db pubmed -id 27460563,27298442,27392493,27363997,27298443 -format xml | \
+    xtract -pattern Author -sep " " -element LastName,Initials Identifier
+
+    efetch -db pubmed -id 27460563,27298442,27392493,27363997,27298443 -format xml | \
+    xtract -pattern Author -if Identifier -sep " " -element LastName,Initials Identifier
+
+
+
+EXERCISE 1:
+
+Write an xtract command that only includes PubMed records if they have MeSH headings
+*	One row per PubMed record
+*	Two columns: PMID, Citation Status
+Hint: Use this efetch to test:
+
+
+    efetch -db pubmed -id 26277396,29313986,19649173,21906097,25380814 -format xml | \
+
+
+
+-if/-equals
+
+COMMAND STRING:
+
+    efetch -db pubmed -id 27460563,27532912,27392493,27363997,24108526 -format xml | \
+    xtract -pattern PubmedArticle -if ISOAbbreviation -equals JAMA -element Volume Issue
+
+
+
+-if/-equals: Attributes
+
+COMMAND STRING:
+
+    efetch -db pubmed -id 27460563,27532912,27392493,27363997,24108526 -format xml | \
+    xtract -pattern PubmedArticle -if MedlineCitation@Status -equals MEDLINE \
+    -element MedlineCitation/PMID
+
+
+
+Alternatives to -equals
+
+-contains: Element or attribute contains this string
+-starts-with: Element or attribute starts with this string
+-ends-with: Element or attribute ends with this string
+-is-not: Element or attribute does not match this string
+
+
+
+-if/-contains
+
+COMMAND STRING:
+
+    efetch -db pubmed -id 27460563,27532912,27392493,27363997,24108526 -format xml | \
+    xtract -pattern Author -if Affiliation -contains Japan \
+    -sep " " -element LastName,Initials Affiliation
+
+
+
+
+EXERCISE 2:
+Write an xtract command that only includes PubMed records for articles published in one of the JAMA journals (e.g. JAMA cardiology, JAMA oncology, etc.)
+*	One row per PubMed record
+*	Two Columns: PMID, ISOAbbreviation
+*	ISOAbbreviation should start with "JAMA"
+Hint: Use this efetch to test:
+
+
+    efetch -db pubmed -id 27829097,27829076,19649173,21603067,25380814 -format xml | \
+
+
+
+
+-if in a -block
+
+COMMAND STRING:
+
+    efetch -db pubmed -id 16940437,16049336,11972038 -format xml | \
+    xtract -pattern PubmedArticle -element MedlineCitation/PMID \
+    -block ArticleId -if ArticleId@IdType -equals doi -element ArticleId
+
+
+
+
+Combining multiple conditions
+
+-or: at least one condition must be true
+
+-and: all conditions must be true
+
+
+
+
+-or
+
+COMMAND STRING:
+
+    efetch -db pubmed -id 16940437,16049336,11972038 -format xml | \
+    xtract -pattern PubmedArticle -element MedlineCitation/PMID \
+    -block ArticleId -if ArticleId@IdType -equals doi \
+    -or ArticleId@IdType -equals pmc -element ArticleId
+
+
+
+
+-and
+
+COMMAND STRING:
+
+    efetch -db pubmed -id 27798514,24372221,24332497,24307782 -format xml | \
+    xtract -pattern Author -if LastName -equals Kamal -and Affiliation \
+    -sep " " -element LastName,Initials Affiliation
+
+
+    efetch -db pubmed -id 27582188,27417495,27409810,27306170,18142192 -format xml | \
+    xtract -pattern PubmedArticle -if DescriptorName -contains "Zika Virus" \
+    -and DescriptorName -equals Microcephaly -element MedlineCitation/PMID ArticleTitle
+
+
+
+
+EXERCISE 3
+We want to do a search for author BH Smith, and see the different affiliations that are listed for that author
+*	Limit to publications from 2012 through 2017
+
+We only want to see affiliation data for BH Smith, no other authors.
+
+We want our output to be a table of citations with specific data:
+*	PMID
+*	Author Last Name/Initials (should always be BH Smith)
+*	Affiliation Data
+
+Write the whole script (not just the xtract command).
+
+
+
+
+-position
+
+Include a -block based on its position:
+
+    xtract -pattern PubmedArticle -element MedlineCitation/PMID \
+    -block Author -position first -sep " " -element LastName,Initials
+
+Use -position with an integer, "first" or "last":
+
+-position 3
+
+-position first
+
+-position last
+
+COMMAND STRING:
+
+    efetch -db pubmed -id 28594955,28594944,28594945,28594943,28594948,28594957 -format xml | \
+    xtract -pattern PubmedArticle -element MedlineCitation/PMID \
+    -block Author -sep " " -element LastName,Initials
+
+
+    efetch -db pubmed -id 28594955,28594944,28594945,28594943,28594948,28594957 -format xml | \
+    xtract -pattern PubmedArticle -element MedlineCitation/PMID \
+    -block Author -position first -sep " " -element LastName,Initials
+
+
+    efetch -db pubmed -id 28594955,28594944,28594945,28594943,28594948,28594957 -format xml | \
+    xtract -pattern PubmedArticle -element MedlineCitation/PMID \
+    -block Author -position last -sep " " -element LastName,Initials
+
+
+
+Dealing with blanks
+
+Use -def to define a placeholder to replace blank cells
+
+Placement for -def is the same as for -tab/-sep.
+*	Subsequent -def arguments overwrite earlier ones.
+*	-block arguments clear previous -def arguments.
+
+COMMAND STRING:
+
+    efetch -db pubmed -id 28594955,28594944,28594945,28594943,28594948,28594957 -format xml | \
+    xtract -pattern PubmedArticle -element MedlineCitation/PMID \
+    -block Author -position first -sep " " -element LastName,Initials Identifier
+
+    efetch -db pubmed -id 28594955,28594944,28594945,28594943,28594948,28594957 -format xml | \
+    xtract -pattern PubmedArticle -element MedlineCitation/PMID \
+    -block Author -position first -sep " " -def "N/A" -element LastName,Initials Identifier
+
+
+HOMEWORK FOR PART FOUR
+
+(Answers are available at: https://dataguide.nlm.nih.gov/classes/edirect-for-pubmed/samplecode4.html)
+
+
+Question 1: 
+
+Fetch the records for the following list of PMIDs:
+
+    28197844
+    28176235
+    28161874
+    28183232
+    28164731
+    27937077
+    28118756
+    27845598
+    27049596
+    27710139
+
+Write an xtract command that outputs the PMID and Article Title, but only for records that have a structured abstract. Hint: in PubMed records, structured abstracts are broken up into multiple AbstractText elements, each with their own "NlmCategory" attribute.
+
+
+Question 2:
+
+Modify your command from Question 1 to display the "RESULTS" section of each structured abstract, if there is one, in place of the Article Title. If there is no "RESULTS" section, display just the PMID, leaving the second column blank. Hint: Use the "NlmCategory" attribute to determine whether a particular AbstractText element contains "RESULTS".
+
+
+Question 3:
+
+When indexing a record for MEDLINE, indexers can assign MeSH headings (descriptors) to represent concepts found in an article, and MeSH subheadings (qualifiers) to describe a specific aspect of a concept. Indexers denote some of the assigned MeSH headings as "Major Topics" (i.e. one of the primary topics of the article). When assigning a "Major Topic", the indexer can determine that the heading itself is a major topic, or that a specific heading/subheading pair is a major topic. When a heading/subheading pair is assigned as a Major Topic, only the subheading will be labeled as Major in the PubMed XML.
+
+Write an xtract command that outputs one PubMed record per row. Each row should have the record's PMID and a pipe-delimited list of all of the MeSH Headings the indexers have determined are Major Topics. Note: the list should only include headings (descriptors), not subheadings (qualifiers). However, if a heading/subheading pair is assigned as major, the list should include that heading. 
+
+You can use the following efetch command to retrieve some sample records:
+
+    efetch -db pubmed -id 24102982,21171099,17150207 -format xml | \
+
+
+
+Question 4:
+
+Write a series of commands to search for articles reporting on clinical trials relating to tularemia and output a table of citations. Each row should include the PMID for an article, as well as the name and affiliation information (if any) for the last author. If the last author does not have affiliation information, put "Not Available" in the last column instead.
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+EXERCISE SOLUTIONS:
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+EXERCISE 1:
+Write an xtract command that only includes PubMed records if they have MeSH headings
+*	One row per PubMed record
+*	Two columns: PMID, Citation Status
+Hint: Use this efetch to test:
+
+
+    efetch -db pubmed -id 26277396,29313986,19649173,21906097,25380814 -format xml
+
+**Solution:**
+
+    efetch -db pubmed -id 26277396,29313986,19649173,21906097,25380814 -format xml | \
+    xtract -pattern PubmedArticle -if MeshHeading \
+    -element MedlineCitation/PMID MedlineCitation@Status
+
+-=-=-=-=-=-=-=-=-=-=-=-=-
+EXERCISE 2:
+Write an xtract command that only includes PubMed records for articles published in one of the JAMA journals (e.g. JAMA cardiology, JAMA oncology, etc.)
+*	One row per PubMed record
+*	Two Columns: PMID, ISOAbbreviation
+*	ISOAbbreviation should start with "JAMA"
+
+efetch -db pubmed -id 27829097,27829076,19649173,21603067,25380814 -format xml
+
+**Solution:**
+
+    efetch -db pubmed -id 27829097,27829076,19649173,21603067,25380814 -format xml | \
+    xtract -pattern PubmedArticle -if ISOAbbreviation -starts-with JAMA \
+    -element MedlineCitation/PMID ISOAbbreviation
+
+-=-=-=-=-=-=-=-=-=-=-=-=-
+EXERCISE 3
+We want to do a search for author BH Smith, and see the different affiliations that are listed for that author
+*	Limit to publications from 2012 through 2017
+
+We only want to see affiliation data for BH Smith, no other authors.
+
+We want our output to be a table of citations with specific data:
+*	PMID
+*	Author Last Name/Initials (should always be BH Smith)
+*	Affiliation Data
+
+Write the whole script (not just the xtract command).
+
+**Solution:**
+
+    esearch -db pubmed -query "smith bh[Author]" \
+    -datetype PDAT -mindate 2012 -maxdate 2017 | \
+    efetch -format xml | \
+    xtract -pattern PubmedArticle -element MedlineCitation/PMID \
+    -block Author -if LastName -equals Smith -and Initials -equals BH -sep " " -element LastName,Initials Affiliation
+
+
+
+## Part Five "EDirect for PubMed: Part 5: Developing and Building Scripts" Sample Code
+
+### Part Five
+
+https://dataguide.nlm.nih.gov/classes/edirect-for-pubmed/samplecode5.html
+
+
+Case study
+
+Retrieve a list of articles published in between March 1, 2017 and February 28, 2018 about breast cancer that include clinical trial information from ClinicalTrials.gov. Include the PMID, journal title abbreviation, first author’s last name and initials, and ClinicalTrials.gov NCT number(s) for each record. Save the entire output to a text file.
+
+**Solution**
+
+    esearch -db pubmed -query "breast cancer AND clinicaltrials.gov[si]" \
+    -datetype PDAT -mindate 2017/03/01 -maxdate 2018/02/28 | \
+    efetch -format xml | \
+    xtract -pattern PubmedArticle -element MedlineCitation/PMID ISOAbbreviation \
+    -block Author -position first -sep " " -element LastName,Initials \
+    -block DataBank -if DataBankName -equals ClinicalTrials.gov \
+    -sep "|" -element AccessionNumber > clinicaltrials.txt
+
+Discussion
+
+    esearch -db pubmed -query "breast cancer AND clinicaltrials.gov[si]" \
+
+The first line of this command uses esearch to search PubMed (-db pubmed) for our search query (-query "breast cancer AND clinicaltrials.gov[si]"). The “clinicaltrials.gov[si]” portion of the query ensures that only records with ClinicalTrials.gov NCT numbers are included in our results. The `“\”` character at the end of the line allows us to continue our string of commands on the next line, for easier-to-read formatting.
+
+    -datetype PDAT -mindate 2017/03/01 -maxdate 2018/02/28 | \
+
+The second line restricts the search results to articles that were published between March 1, 2017 and February 28, 2018 (-datetype PDAT -mindate 2017/03/01 -maxdate 2018/02/28). The `“|”` character pipes the results of our esearch into our next command.
+
+    efetch -format xml | \
+
+The third line takes the esearch results from our first two lines and uses efetch to retrieve the full records for each of our results in the XML format (-format xml), and pipes the XML output to the next line.
+
+    xtract -pattern PubmedArticle -element MedlineCitation/PMID ISOAbbreviation \
+
+Beginning on the fourth line, the xtract command creates a table with each PubMed record in our input populating its own row (xtract -pattern PubmedArticle), and with four columns. The first column of each row will contain the record’s PMID, using Parent/Child construction to specify that we want the <PMID> element that is the child of the <MedlineCitation> element, and not another <PMID> element elsewhere in the PubMed record (e.g. as a child of a <CommentsCorrections> element), while the second column will contain the article’s journal title abbreviation (-element MedlineCitation/PMID ISOAbbreviation).
+
+    -block Author -position 1 -sep " " -element LastName,Initials \
+
+In the fifth line, xtract looks through each PubMed record for an <Author> element (-block Author). When it finds the first <Author> (-position 1), it populates the third column in the row with the first author’s last name and initials, separated by a space (-sep " " -element LastName,Initials).
+
+    -block DataBank -if DataBankName -equals ClinicalTrials.gov \
+
+In the sixth line, xtract looks through each PubMed record for <DataBank> elements which have a child <DataBankName> element that equals “ClinicalTrials.gov” (-block DataBank -if DataBankName -equals ClinicalTrials.gov). This will ensure that only ClinicalTrials.gov data is included, while data from non-ClinicalTrials.gov <DataBank> elements is excluded.
+
+    -sep "|" -element AccessionNumber > clinicaltrials.txt
+
+In the seventh line, xtract specifies that the fourth column should be populated with the <AccessionNumber> (i.e. NCT number) from the included <DataBank> elements (-element AccessionNumber). If a record has multiple NCT numbers attached, they will be separated by pipes (-sep "|").
+
+Finally, the results of the script are saved to a file (> clinicaltrials.txt).
+
+### Part Five
+
+https://dataguide.nlm.nih.gov/edirect-for-pubmed-5.txt
+
+
+
+The Insider's Guide to Accessing NLM Data: EDirect for PubMed
+Part Five: Developing and Building Scripts
+Course Materials
+
+NOTE: Solutions to all exercises are at the bottom of this document.
+
+
+
+REMINDERS FROM PART ONE
+
+esearch: Searches a database and returns PMIDs
+
+efetch: Retrieves PubMed records in a variety of formats
+
+Use "|" (Shift + \, pronounced "pipe") to "pipe" the results of one command into the next
+
+
+
+REMINDERS FROM PART TWO
+
+xtract: Pulls data from XML and arranges it in a table
+
+-pattern: Defines rows for xtract
+
+-element: Defines columns for xtract
+
+Identify XML elements by name (e.g. ArticleTitle)
+
+Identify specific child elements with Parent/Child construction (e.g. MedlineCitation/PMID)
+
+Identify attributes with "@" (e.g. MedlineCitation@Status)
+
+
+
+REMINDERS FROM PART THREE
+
+-block: Selects and groups child elements of the same parent
+
+-tab: Defines the separator between columns (default is tab, "\t")
+
+-sep: Defines the separator between values in the same column (default is tab, "\t")
+
+Use ">" to save the output to a file
+
+Use "cat" to pull the contents of a file into the EDirect command
+
+epost: Stores PMIDs to the History Server
+
+
+
+REMINDERS FROM PART FOUR
+
+-if: Defines an element/attribute that must be present in order to include a pattern/block.
+(e.g. "If <element> is present in the pattern/block, include pattern/block in the output.")
+
+-if/-equals: Defines a specific element/attribute that must be equal to a specific value in order to include a pattern/block,
+(e.g. "If an <element> equals [value] in the pattern/block, include pattern/block in the output.")
+
+
+Alternatives to -equals: let you define more specific conditions
+-contains: Element or attribute must contain this string
+-starts-with: Element or attribute must start with this string
+-ends-with: Element or attribute must end with this string
+-is-not: Element or attribute must not match this string
+
+
+Alternatives to -if: let you combine multiple conditions
+-or: at least one condition must be true
+-and: all conditions must be true
+
+
+-position: Includes a block based on its position in a series of blocks.
+Use -position with an integer, "first" or "last":
+
+
+
+Tips for Developing a Script
+
+1. Identify your goal.
+	* Identify your input
+	* Identify your output
+	* Identify your format
+2. Choose your tool.
+3. Decide how much to automate.
+4. Build one step at a time.
+
+
+
+E-utilities Usage Guidelines and Requirements from NCBI
+https://www.ncbi.nlm.nih.gov/books/NBK25497/#chapter2.Usage_Guidelines_and_Requiremen
+
+NLM Data Distribution: Download MEDLINE/PubMed Data
+https://www.nlm.nih.gov/databases/download/pubmed_medline.html
+
+Using EDirect to create a local copy of PubMed
+https://dataguide.nlm.nih.gov/edirect/archive.html
+
+NCBI Documentation: EDirect: Local Data Cache
+https://www.ncbi.nlm.nih.gov/books/NBK179288/#chapter6.Local_Data_Cache
+
+----------------------------------------------------------------------
+
+Case 1: Simple table of data elements
+
+We want a list of articles about breast cancer that were published in 2016 and the first half of 2017 and are linked to ClinicalTrials.gov entries.
+
+For each article we want:
+*	PMID
+*	NCT Number(s)
+*	First Author
+*	Journal
+
+----------------------------------------------------------------------
+
+Case Study
+
+COMMAND STRING:
+
+    esearch -db pubmed -query "breast cancer AND clinicaltrials.gov[si]"
+    
+    esearch -db pubmed -query "breast cancer AND clinicaltrials.gov[si]" \
+    -datetype PDAT -mindate 2017/03/01 -maxdate 2018/02/28
+    
+    esearch -db pubmed -query "breast cancer AND clinicaltrials.gov[si]" \
+    -datetype PDAT -mindate 2018/01/01 -maxdate 2018/02/28
+    
+    efetch -db pubmed -id 29172605,29158011,29136523,29045554,29045543,28918548,28741175,28702218 -format xml
+    
+    efetch -db pubmed -id 29172605,29158011,29136523,29045554,29045543,28918548,28741175,28702218 -format xml | \
+    xtract -pattern PubmedArticle -element MedlineCitation/PMID ISOAbbreviation
+    
+    efetch -db pubmed -id 29172605,29158011,29136523,29045554,29045543,28918548,28741175,28702218 -format xml | \
+    xtract -pattern PubmedArticle -element MedlineCitation/PMID ISOAbbreviation \
+    -block Author -position first -sep " " -element LastName,Initials
+    
+    efetch -db pubmed -id 29172605,29158011,29136523,29045554,29045543,28918548,28741175,28702218 -format xml | \
+    xtract -pattern PubmedArticle -element MedlineCitation/PMID ISOAbbreviation \
+    -block Author -position first -sep " " -element LastName,Initials \
+    -block DataBank -if DataBankName -equals ClinicalTrials.gov \
+    -sep "|" -element AccessionNumber
+
+CASE STUDY **Solution:**
+
+    esearch -db pubmed -query "breast cancer AND clinicaltrials.gov[si]" \
+    -datetype PDAT -mindate 2017/03/01 -maxdate 2018/02/28 | \
+    efetch -format xml | \
+    xtract -pattern PubmedArticle -element MedlineCitation/PMID ISOAbbreviation \
+    -block Author -position first -sep " " -element LastName,Initials \
+    -block DataBank -if DataBankName -equals ClinicalTrials.gov \
+    -sep "|" -element AccessionNumber > clinicaltrials.txt
+
+----------------------------------------------------------------------
+
+EDirect Cookbook on GitHub
+https://ncbi-hackathons.github.io/EDirectCookbook/
+
+
+
+
+
+
+# Materials and Methods Used For This Analyses
+
+## The Insider's Guide to Accessing NLM Data
+
+### "Welcome to E-utilities for PubMed" Class Materials
+https://dataguide.nlm.nih.gov/classes/intro/materials.html
+
+> Webinar Recording
+> https://dataguide.nlm.nih.gov/classes/intro/recording.html
+
+> "Welcome to E-utilities for PubMed" Sample Code for Class Exercises
+> https://dataguide.nlm.nih.gov/classes/intro/samplecode.html
+
+
+> Entrez Programming Utilities Help
+> https://www.ncbi.nlm.nih.gov/books/NBK25501/
+
+> Entrez Direct: E-utilities on the UNIX Command Line
+> https://www.ncbi.nlm.nih.gov/books/NBK179288/
+
+### Installing EDirect
+https://dataguide.nlm.nih.gov/edirect/install.html
+
+
+
+### The 9 E-utilities and Associated Parameters
+https://dataguide.nlm.nih.gov/eutilities/utilities.html
+

@@ -315,7 +315,6 @@ deneme4 <- deneme2 %>%
 
 ```{r}
 deneme4 %>% 
-
 ggplot() +
   aes(y = total, x = year, group = Country, color = Country) +
   geom_line() + 
@@ -329,6 +328,28 @@ ggplot() +
 
 
 <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">While helping the preparation of <a href="https://twitter.com/hashtag/PBPath?src=hash&amp;ref_src=twsrc%5Etfw">#PBPath</a> Journal Watch (<a href="https://t.co/WiBsJixzlc">https://t.co/WiBsJixzlc</a>)  I thought that many SEER <a href="https://twitter.com/NCICancerStats?ref_src=twsrc%5Etfw">@NCICancerStats</a> studies are from China. So using edirect <a href="https://twitter.com/NCBI?ref_src=twsrc%5Etfw">@NCBI</a> and <a href="https://twitter.com/hashtag/RStats?src=hash&amp;ref_src=twsrc%5Etfw">#RStats</a> I draw the attached graph. What do you think? Do Chinese do research on SEER that much? <a href="https://t.co/3Op5r9ofbK">pic.twitter.com/3Op5r9ofbK</a></p>&mdash; Serdar Balcı (@serdarbalci) <a href="https://twitter.com/serdarbalci/status/1048663302916788224?ref_src=twsrc%5Etfw">October 6, 2018</a></blockquote><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+```{r}
+p <- deneme4 %>% 
+ggplot() +
+  aes(y = total, x = year, group = Country, color = Country) +
+  geom_line() + 
+  # guides(fill=FALSE, color=FALSE) +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1))
+
+
+```
+
+
+
+
+
+
+
+
+
+
 
 
 

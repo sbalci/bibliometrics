@@ -1,0 +1,337 @@
+<!DOCTYPE html>  
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <title>&quot;EDirect for PubMed: Part 1: Getting PubMed Data&quot; Sample Code - The Insider's Guide to Accessing NLM Data - National Library of Medicine</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="DC.Title" content = "&quot;EDirect for PubMed: Part 1: Getting PubMed Data&quot; Sample Code"/>
+    <meta name="DC.Publisher" content="U.S. National Library of Medicine" />
+    <meta name="DC.Subject.Keyword" content="E-utilities API, PubMed API, Entrez Programming Utilities, NLM Data, PubMed Data">
+    <meta name="DC.Rights" content="Public Domain" />
+    <meta name="DC.Language" content="eng" />
+    <meta name="generator" content="JBake">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge;IE=9;IE=8;"/>
+
+    <!-- Le styles -->
+    <link href="../../css/nlm-dropdown.css" rel="stylesheet" type="text/css">
+    <link href="../../css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="../../css/asciidoctor.css" rel="stylesheet" type="text/css">
+    <link href="../../css/prettify.css" rel="stylesheet" type="text/css">
+    <link href="../../css/uts-docs.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/styles/default.min.css" type="text/css">
+    <link rel="stylesheet" href="https://www.nlm.nih.gov/core/nlm-autocomplete/1.0/nlm-autocomplete.css" type="text/css">
+    <link rel="stylesheet" href="https://www.nlm.nih.gov/core/jquery-ui/1.8/jquery-ui.css" type="text/css">
+    <link href="//cdn.datatables.net/1.10.3/css/jquery.dataTables.css" rel="stylesheet" />
+    <link href="//cdn.datatables.net/responsive/1.0.2/css/dataTables.responsive.css" rel="stylesheet" />
+
+
+    <script src="//code.jquery.com/jquery-1.11.3.min.js" type="text/javascript"></script>
+    <script src="//code.jquery.com/ui/1.11.3/jquery-ui.min.js" type="text/javascript"></script>
+    <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
+    <script src="../../js/master.js" type="text/javascript"></script>
+    <script src="../../js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="../../js/prettify.js" type="text/javascript"></script>
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/highlight.min.js" type="text/javascript"></script>-->
+    <script type="text/javascript" src="//cdn.datatables.net/1.10.3/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="//cdn.datatables.net/responsive/1.0.2/js/dataTables.responsive.min.js"></script>
+
+
+    
+    
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+    <script src="../../js/html5shiv.min.js" type="text/javascript"></script>
+    <![endif]-->
+    <link rel="shortcut icon" href="../../favicon.ico">
+    
+    <script type = "text/javascript" language = "javascript">
+      var $ = jQuery.noConflict();
+      
+      $(document).ready(function() {
+        
+       $("th").attr("scope","col");
+       
+        $("input#search.search-input").click(function(){
+          $(this).attr("value","");
+          
+        });
+        
+        $("input#search.search-input").blur(function(){
+          $(this).attr("value","Search");
+          
+        });
+       //Make external URLs open in new tab 
+	  $('.content-pane a[href^="http://"]').attr("target","_blank");
+      $('.content-pane a[href^="https://"]').attr("target","_blank");
+	  
+	 
+	 // Opening accordion based on URL
+        var url = document.location.toString();
+
+        if ( url.match('#') ) {
+            $('#'+url.split('#')[1]+'>.panel-collapse').addClass('in');
+            //append campaign parameters to Welcome Registration URL.
+            if ( url.match('\\?') && url.match('#welcome') ) {
+                var source = url.slice(url.indexOf("utm_source")+11,url.indexOf("&",url.indexOf("utm_source")+11));
+                $('#'+url.split('#')[1]+' .btn-reg').attr('href',function(){
+                    return this.href + '&SourceId=' + source.replace(/-/g, '');
+                });
+            }
+        }
+
+     //Adjust relative references
+    if ( url.match('dataguide_docs/') ){
+        $('a[href^="/"]').attr('href',function(){
+            return 'https://www.nlm.nih.gov/dataguide_docs' + this.href.slice(23);
+            });
+        $('img[src^="/"]').attr('src',function(){
+            return 'https://www.nlm.nih.gov/dataguide_docs' + this.src.slice(23);
+            });
+        $('div.responsiveVidBox>script').text(function () {
+            return $(this).text().replace(/(\/.*\.srt)/,"/dataguide_docs$1");
+            });
+
+    }
+
+
+        });
+      
+
+    </script>
+    <script type="text/javascript" src="https://assets.nlm.nih.gov/jwplayer/8/jwplayer.js"></script>
+   <script type="text/javascript">jwplayer.key="eNFaXCjyURVoCCGiHp7HTQ3hDhE/AfL0g8VE1fRbL84=";</script>
+	<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-84367246-1', 'auto');
+  ga('send', 'pageview');
+  </script>
+  <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-MT6MLL');</script>
+<!-- End Google Tag Manager -->
+  
+
+
+  </head>
+  <!--<body onload="prettyPrint();hljs.initHighlighting();">-->
+  
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MT6MLL"
+height="0" width="0" style="display:none;visibility:hidden" title="googletagmanager"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+  
+  <div id="wrapper-fluid">
+     <div class="container-fluid">
+
+      <!--header to hold banner + top navigation area -->
+      <!-- responsive design header using bootstrap css framework -->
+<div class = "row header">
+  <div class="container-fluid">
+     <div class = "row">
+        <div class = "col-md-6 col-sm-6 col-xs-12">
+            <a href = "https://www.nlm.nih.gov"><img class= "nlm-logo img-responsive" alt="National Library of Medicine" style="margin-right:1em;" src="../../nlm-logo.png"></a>
+        </div>
+        <div class = "col-md-6 col-sm-6 col-xs-12" id = "search-form">
+         <form method="get" action="//vsearch.nlm.nih.gov/vivisimo/cgi-bin/query-meta" target="_self" name="searchForm" id="searchForm">
+         <label for="search" class="hidden">Search</label>
+         <input type="text" name="query" value="Search" class="search-input" id="search"/>
+         <input type="hidden" name="v:project" value="nlm-main-website" />
+         </form>
+       </div>
+       <div class = "col-md-6 col-sm-8 col-xs-12">
+           
+       </div>
+    </div>
+  </div>
+</div>
+<div class = "row nlm-dropdown-menu">
+  <div class = "container-fluid">
+      <div id = "nav">
+         <ul class = "topnav">
+         <li></li>
+         </ul>
+      </div>
+  </div>
+</div>
+
+		<div id="main-body">
+
+<div class = "row uts-nav">
+   <div class="col-md-8 col-sm-8 col-xs-12">
+	<a href="/">
+	<img class="img-responsive pull-left" style="padding-top:.2em; margin-right:1em;" alt="UTS Logo" src="/images/bulbktrans.png">
+    <p class = "orange uts-title"><a href= "/" >The Insider's Guide to Accessing NLM Data</a></p>
+   </div>
+   <div class="col-md-4 col-sm-4 col-xs-12">
+    <p class = "umls-menu pull-right">
+ 
+     <a class="btn btn-default" href = "/contact/index.html">Contact Us</a>
+    </p>
+    </div>
+</div>
+
+
+<!--Navbar Menu-->
+<div class = "row">
+  <div class = "container-fluid navbar navbar-default" role = "navigation">
+   <div class="btn-group navbar-btn visible-*" role="group">
+   
+   <!--Overview Category Dropdown-->
+   <div class="btn-group" role="group">
+        <button type="button" class="btn btn-md dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Insider's Guide Overview<span class = "caret"></span></button>    
+         <ul class = "dropdown-menu" role = "menu">
+                                                       <li><a href = "../../eutilities/what_is_eutilities.html">What is E-utilities?</a></li>                                                                                                                                                                                                                                       <li><a href = "../../eutilities/when_to_use_eutilities.html">When should you use E-utilities?</a></li>                                                                                                   <li><a href = "../../eutilities/how_eutilities_works.html">How does E-utilities work?</a></li>                                                                                                                                                                                                                          </ul>
+      </div><!--//btn-group for Overview category-->
+                                                                                                                                                                        <a class = "btn btn-md" role = "button" href = "../../classes.html">Classes</a>                                                      <div class="btn-group" role="group">
+        <button type="button" class="btn btn-md dropdown-toggle" data-toggle="dropdown" aria-expanded="false">E-utilities Documentation<span class = "caret"></span></button>    
+         <ul class = "dropdown-menu" role = "menu">
+                                                                                                              <li><a href = "../../eutilities/utilities.html">The 9 E-utilities and Associated Parameters</a></li>                                                                                                                                                                                                                            <li><a href = "../../eutilities/history.html">E-utilities and the History server</a></li>                                                                                                                                                                                                                                                                                 </ul>
+      </div><!--//btn-group-->
+      <div class="btn-group" role="group">
+        <button type="button" class="btn btn-md dropdown-toggle" data-toggle="dropdown" aria-expanded="false">EDirect<span class = "caret"></span></button>    
+         <ul class = "dropdown-menu" role = "menu">
+                      <li><a href = "../../edirect/overview.html">EDirect Overview</a></li>                                                                                                                                                                                                                                                                                   <li><a href = "../../edirect/documentation.html">EDirect Documentation</a></li>                                                                                                   <li><a href = "../../edirect/install.html">Installing EDirect</a></li>                                                                                                                                                                                                               </ul>
+      </div><!--//btn-group-->
+   </div>
+ </div>
+</div>
+
+
+
+
+
+
+
+	<div class = "row">
+	<div class = "container-fluid breadcrumbs-container">
+	</div>
+	</div>
+	<div class = "row">
+	<div class = "container-fluid">
+	<div class = "content-pane">
+	
+	
+	
+	<h1>&quot;EDirect for PubMed: Part 1: Getting PubMed Data&quot; Sample Code</h1>
+	
+<p>Below you will find sample code for the examples, in-class exercises and homework presented in the first session of the <a href="../../classes.html#edirect-for-pubmed">&ldquo;EDirect for PubMed&rdquo;</a> Insider&rsquo;s Guide class. These examples are written for use with EDirect in a Unix environment. If you need help installing and setting up EDirect, please see our <a href="../../edirect/install.html">&ldquo;Installing EDirect&rdquo; page</a>. </p><p>For more examples, please see the sample code from the other parts of &ldquo;EDirect for PubMed&rdquo;: </p>
+<ul>
+  <li><a href="/classes/edirect-for-pubmed/samplecode2.html">Part 2: Extracting Data from XML</a></li>
+  <li><a href="/classes/edirect-for-pubmed/samplecode3.html">Part 3: Formatting Results and Unix Tools</a></li>
+  <li><a href="/classes/edirect-for-pubmed/samplecode4.html">Part 4: xtract Conditional Arguments</a></li>
+  <li><a href="/classes/edirect-for-pubmed/samplecode5.html">Part 5: Developing and Building Scripts</a></li>
+</ul><p>The code below is lightly annotated to explain how it works, but if you are looking for more information, we suggest you review our <a href="/edirect/documentation.html">EDirect documentation</a>.</p><p>There are many different ways to answer the questions discussed in class. The sample code below provides some options, but by no means the only options. Feel free to modify, adapt, edit, re-use or completely discard any of the suggestions below when trying to find a solution that works best for you.</p>
+<ul>
+  <li><strong><a href="#esearch">esearch</a></strong>
+  <ul>
+    <li><a href="#conduct-a-simple-search-of-pubmed-for-articles-on-seasonal-affective-disorder">Conduct a simple search of PubMed for articles on seasonal affective disorder</a></li>
+    <li><a href="#conduct-a-simple-search-of-pubmed-for-articles-on-malaria-in-the-journal-jama">Conduct a simple search of PubMed for articles on malaria in the journal JAMA</a></li>
+    <li><a href="#restrict-search-results-by-publication-date">Restrict search results by publication date</a></li>
+    <li><a href="#conduct-a-pubmed-search-with-a-search-string-that-includes-quotation-marks">Conduct a PubMed search with a search string that includes quotation marks</a></li>
+  </ul></li>
+  <li><strong><a href="#efetch">efetch</a></strong>
+  <ul>
+    <li><a href="#retrieve-a-single-pubmed-record-in-text-abstract-format">Retrieve a single PubMed record in text abstract format</a></li>
+    <li><a href="#retrieve-multiple-pubmed-records-in-text-abstract-format">Retrieve multiple PubMed records in text abstract format</a></li>
+  </ul></li>
+  <li><strong><a href="#creating-a-data-pipeline">Creating a data pipeline</a></strong>
+  <ul>
+    <li><a href="#conduct-a-pubmed-search-and-retrieve-the-results-as-a-list-of-pmids">Conduct a PubMed search and retrieve the results as a list of PMIDs</a></li>
+  </ul></li>
+  <li><strong><a href="#in-class-exercise-solutions">In-class exercise solutions</a></strong>
+  <ul>
+    <li><a href="#exercise-1-esearch">Exercise 1: esearch</a></li>
+    <li><a href="#exercise-2-esearch">Exercise 2: esearch</a></li>
+    <li><a href="#exercise-3-efetch">Exercise 3: efetch</a></li>
+    <li><a href="#exercise-4-combining-commands">Exercise 4: Combining Commands</a></li>
+  </ul></li>
+  <li><strong><a href="#homework-solutions">Homework solutions</a></strong>
+  <ul>
+    <li><a href="#question-1">Question 1</a></li>
+    <li><a href="#question-2">Question 2</a></li>
+    <li><a href="#question-3">Question 3</a></li>
+    <li><a href="#question-4">Question 4</a></li>
+    <li><a href="#question-5">Question 5</a></li>
+  </ul></li>
+</ul><h2><a href="#esearch" name="esearch">esearch</a></h2><h3><a href="#conduct-a-simple-search-of-pubmed-for-articles-on-seasonal-affective-disorder" name="conduct-a-simple-search-of-pubmed-for-articles-on-seasonal-affective-disorder">Conduct a simple search of PubMed for articles on seasonal affective disorder</a></h3>
+<pre><code>esearch -db pubmed -query &quot;seasonal affective disorder&quot;
+</code></pre><p>This line of code uses the <code>esearch</code> command to search PubMed (<code>-db pubmed</code>) for our search query (<code>-query &quot;seasonal affective disorder&quot;</code>).</p><p>If you want to see the query translation for your search (like you would see in the Search Details box with the web version of PubMed), you can add an additional argument to your command:</p>
+<pre><code>esearch -db pubmed -query &quot;seasonal affective disorder&quot; -log
+</code></pre><p>By adding the <code>-log</code> argument to <code>esearch</code>, the command will also output the E-utilities URL and query translation for your search.</p><h3><a href="#conduct-a-simple-search-of-pubmed-for-articles-on-malaria-in-the-journal-jama" name="conduct-a-simple-search-of-pubmed-for-articles-on-malaria-in-the-journal-jama">Conduct a simple search of PubMed for articles on malaria in the journal JAMA</a></h3>
+<pre><code>esearch -db pubmed -query &quot;malaria AND jama[journal]&quot;
+</code></pre><p>This line of code uses the <code>esearch</code> command to search PubMed (<code>-db pubmed</code>) for our search query (<code>-query &quot;malaria AND jama[journal]&quot;</code>). Note that the search query can include Boolean operators (<code>AND</code>) and search field tags (<code>[journal]</code>) to help focus our search, just as we can in the web version of PubMed.</p><h3><a href="#restrict-search-results-by-publication-date" name="restrict-search-results-by-publication-date">Restrict search results by publication date</a></h3>
+<pre><code>esearch -db pubmed -query &quot;malaria AND jama[journal]&quot; \
+-datetype PDAT -mindate 2015 -maxdate 2017
+</code></pre><p>The first line of code is the same as our previous example, though the &ldquo;\&rdquo; character at the end of the line allows us to continue our command on the next line, for easier-to-read formatting.</p><p>The second line limits the search results by publication date (<code>-datetype PDAT</code>), including only articles published between 2015 and 2017 (<code>-mindate 2015 -maxdate 2017</code>).</p><h3><a href="#conduct-a-pubmed-search-with-a-search-string-that-includes-quotation-marks" name="conduct-a-pubmed-search-with-a-search-string-that-includes-quotation-marks">Conduct a PubMed search with a search string that includes quotation marks</a></h3>
+<pre><code>esearch -db pubmed -query &quot;cancer AND \&quot;science\&quot;[journal]&quot;
+</code></pre><p>This line of code uses the <code>esearch</code> command to search PubMed (<code>-db pubmed</code>) for our search query (<code>-query &quot;cancer AND \&quot;science\&quot;[journal]&quot;</code>). We need to &ldquo;escape&rdquo; the double quotation marks (&ldquo;) in our search query by putting a &rdquo;\&quot; before them. This tells EDirect to interpret the quotation marks as just another character, and not a special character that marks the end of the <code>-query</code> argument. Otherwise, EDirect would interpret the double quotation marks before the first date as marking the end of the search query, and the rest of the query would not be searched.</p><h2><a href="#efetch" name="efetch">efetch</a></h2><h3><a href="#retrieve-a-single-pubmed-record-in-text-abstract-format" name="retrieve-a-single-pubmed-record-in-text-abstract-format">Retrieve a single PubMed record in text abstract format</a></h3>
+<pre><code>efetch -db pubmed -id 25359968 -format abstract
+</code></pre><p>This line of code uses the <code>efetch</code> command to retrieve a record from PubMed (<code>-db pubmed</code>). We specify that we will retrieve the record for PMID 25359968 (<code>-id 25359968</code>) and that we want the results in the text abstract format (<code>-format abstract</code>).</p><h3><a href="#retrieve-multiple-pubmed-records-in-text-abstract-format" name="retrieve-multiple-pubmed-records-in-text-abstract-format">Retrieve multiple PubMed records in text abstract format</a></h3>
+<pre><code>efetch -db pubmed -id 24102982,21171099,17150207 -format abstract
+</code></pre><p>This line of code uses the <code>efetch</code> command to retrieve records from PubMed (<code>-db pubmed</code>). We specify that we will retrieve the records for PMID 24102982,21171099,17150207 (<code>-id 24102982,21171099,17150207</code>) and that we want the results in the text abstract format (<code>-format abstract</code>).</p><h2><a href="#creating-a-data-pipeline" name="creating-a-data-pipeline">Creating a data pipeline</a></h2><h3><a href="#conduct-a-pubmed-search-and-retrieve-the-results-as-a-list-of-pmids" name="conduct-a-pubmed-search-and-retrieve-the-results-as-a-list-of-pmids">Conduct a PubMed search and retrieve the results as a list of PMIDs</a></h3>
+<pre><code>esearch -db pubmed -query &quot;asthenopia[mh] AND nursing[sh]&quot; | efetch -format uid
+</code></pre><p>This line of code uses the <code>esearch</code> command to search PubMed (<code>-db pubmed</code>) for our search query (<code>-query &quot;asthenopia[mh] AND nursing[sh]&quot;</code>), and then pipes the resulting PMIDs into an <code>efetch</code> command (<code>| efetch</code>), which retrieves the PubMed records, but outputs only the PMIDs (<code>-format uid</code>). For more information about piping data from one EDirect command to another, please review the page on <a href="/edirect/edirect-history.html">Making data pipelines with the History server</a> in our <a href="/edirect/overview.html">EDirect overview</a>.</p><h2><a href="#in-class-exercise-solutions" name="in-class-exercise-solutions">In-class exercise solutions</a></h2><h3><a href="#exercise-1-esearch" name="exercise-1-esearch">Exercise 1: esearch</a></h3><p>How many Spanish-language articles about diabetes are in PubMed?</p><h4>Solution:</h4>
+<pre><code>esearch -db pubmed -query &quot;diabetes AND spanish[lang]&quot;
+</code></pre><p>This line of code uses the <code>esearch</code> command to search PubMed (<code>-db pubmed</code>) for our search query (<code>-query &quot;diabetes AND spanish[lang]&quot;</code>). Note that the search query can include Boolean operators (<code>AND</code>) and search field tags (<code>[lang]</code>) to help focus our search, just as we can in the web version of PubMed.</p><h3><a href="#exercise-2-esearch" name="exercise-2-esearch">Exercise 2: esearch</a></h3><p>How many articles were written by BH Smith between 2012 and 2017, inclusive?</p><h4>Solutions:</h4>
+<pre><code>esearch -db pubmed -query &quot;smith bh[author]&quot; -datetype PDAT -mindate 2012 -maxdate 2017
+</code></pre><p>There are multiple possible solutions to this exercise. This solution uses the <code>esearch</code> command to search PubMed (<code>-db pubmed</code>) for our search query (<code>-query &quot;smith bh[author]&quot;</code>). Note that the search query can include search field tags (<code>[author]</code>) to help focus our search, just as we can in the web version of PubMed. The <code>esearch</code> command also limits the search results by publication date (<code>-datetype PDAT</code>), including only articles published between 2012 and 2017 (<code>-mindate 2012 -maxdate 2017</code>).</p>
+<pre><code>esearch -db pubmed -query &quot;smith bh[author] AND (2012/01/01[pdat] : 2017/12/31[pdat])&quot;
+</code></pre><p>The second solution is largely the same as the first. Rather than use the <code>-datetype</code>, <code>-mindate</code>, and <code>-maxdate</code> arguments to limit the search by publication date, this solution incorporates the date restriction into the search string itself (<code>-query &quot;smith bh[author] AND (2012/01/01[pdat] : 2017/12/31[pdat])&quot;</code>), just as you would include a date restriction in a search string in the web version of PubMed.</p><h3><a href="#exercise-3-efetch" name="exercise-3-efetch">Exercise 3: efetch</a></h3><p>Who is the first author listed on the PubMed record 26287646?</p><h4>Solution:</h4>
+<pre><code>efetch -db pubmed -id 26287646 -format abstract
+</code></pre><p>This line of code uses the <code>efetch</code> command to retrieve a record from PubMed (<code>-db pubmed</code>). We specify that we will retrieve the record for PMID 25359968 (<code>-id 25359968</code>). The command retrieves the record in the text abstract format (<code>-format abstract</code>), which allows us to easily see that the first author of the article is PF Brennan. Rather than using the abstract format, we could instead use <code>-format medline</code> or <code>-format xml</code> to retrieve the record in the MEDLINE or XML formats, if we prefer.</p><h3><a href="#exercise-4-combining-commands" name="exercise-4-combining-commands">Exercise 4: Combining Commands</a></h3><p>How do we get a list of PMIDs for all of the articles written by BH Smith between 2012 and 2017?</p><h4>Solutions:</h4>
+<pre><code>esearch -db pubmed -query &quot;smith bh[author]&quot; -datetype PDAT -mindate 2012 -maxdate 2017 | \
+efetch -format uid
+</code></pre><p>This solution begins the same as the first solution for Exercise 2. The first line concludes by piping (<code>|</code>) the results of the <code>esearch</code> command into a command on the next line (the &ldquo;\&rdquo; character at the end of the line allows us to continue our command on the next line, for easier-to-read formatting).</p><p>The <code>efetch</code> command in the second line accepts the PMIDs piped from the previous line, and retrieves the PubMed records, but outputs only the PMIDs (<code>-format uid</code>).</p>
+<pre><code>esearch -db pubmed -query &quot;smith bh[author] AND (2012/01/01[pdat] : 2017/12/31[pdat])&quot; | \
+efetch -format uid
+</code></pre><p>Similarly, this solution begins the same as the second solution for Exercise 2, and then pipes the results of the <code>esearch</code> into the <code>efetch</code>, which retrieves the PubMed records, but outputs only the PMIDs (<code>-format uid</code>).</p><p>For more information about piping data from one EDirect command to another, please review the page on <a href="/edirect/edirect-history.html">Making data pipelines with the History server</a> in our <a href="/edirect/overview.html">EDirect overview</a>.</p><h2><a href="#homework-solutions" name="homework-solutions">Homework solutions</a></h2><h3><a href="#question-1" name="question-1">Question 1</a></h3><p>Using EDirect, write a command to find out how many citations are in PubMed for articles about using melatonin to treat sleep disorders.</p><h4>Solution:</h4>
+<pre><code>esearch -db pubmed -query &quot;melatonin sleep disorder&quot;
+</code></pre><p>This line of code uses the <code>esearch</code> command to search PubMed (<code>-db pubmed</code>) for our search query (<code>-query &quot;melatonin sleep disorder&quot;</code>).</p><h3><a href="#question-2" name="question-2">Question 2</a></h3><p>How many of the PubMed citations identified in question 2 were added to PubMed (i.e. created) between January 1, 2015 and July 1, 2017?</p><h4>Solution:</h4><p>There are multiple possible solutions to this question. </p>
+<pre><code>esearch -db pubmed -query &quot;melatonin sleep disorder&quot; -datetype CRDT -mindate 2015/01/01 -maxdate 2017/07/01
+</code></pre><p>Both of these solutions use the <code>esearch</code> command to search PubMed (<code>-db pubmed</code>) for our search query (<code>-query &quot;melatonin sleep disorder&quot;</code>). In the first solution, the <code>esearch</code> command also limits the search results by the date citations were added to PubMed, using the &ldquo;CRDT&rdquo; date type (<code>-datetype CRDT</code>), including only articles created between January 1, 2015 and July 1, 2017 (<code>-mindate 2015/01/01 -maxdate 2017/07/01</code>).</p>
+<pre><code>esearch -db pubmed -query &quot;melatonin sleep disorder&quot;  AND (2015/01/01[crdt] : 2017/07/01[crdt])&quot;
+</code></pre><p>The second solution is largely the same as the first. Rather than use the <code>-datetype</code>, <code>-mindate</code>, and <code>-maxdate</code> arguments to limit the search by create date, this solution incorporates the date restriction into the search string itself (<code>-query &quot;melatonin sleep disorder&quot;  AND (2015/01/01[crdt] : 2017/07/01[crdt])&quot;</code>), just as you would include a date restriction in a search string in the web version of PubMed.</p><h3><a href="#question-3" name="question-3">Question 3</a></h3><p>Write a command to retreive the abstracts of the following PubMed records:</p>
+<pre><code>27240713,27027883,22468771,20121990
+</code></pre><h4>Solution:</h4>
+<pre><code>efetch -db pubmed -id 27240713,27027883,22468771,20121990 -format abstract
+</code></pre><p>This line of code uses the <code>efetch</code> command to retrieve records from PubMed (<code>-db pubmed</code>). We specify that we will retrieve the records for four PMIDs: 27240713, 27027883, 22468771, and 20121990 (<code>-id 27240713,27027883,22468771,20121990</code>). The command retrieves the records in the text abstract format (<code>-format abstract</code>).</p><h3><a href="#question-4" name="question-4">Question 4</a></h3><p>Modify your answer to Question 3 to retrieve the full XML of all four records.</p><h4>Solution:</h4>
+<pre><code>efetch -db pubmed -id 27240713,27027883,22468771,20121990 -format xml
+</code></pre><p>This solution is largely the same as the solution for Question 3, but the <code>-format</code> argument has been changed to retrieve XML instead of the text Abstract format (<code>-format xml</code>).</p><h3><a href="#question-5" name="question-5">Question 5</a></h3><p>Write a series of commands that retrieves a list of PMIDs for all citations for papers written by the author with the ORCID 0000-0002-1141-6306.</p><h4>Solution:</h4>
+<pre><code>esearch -db pubmed -query &quot;0000-0002-1141-6306[auid]&quot; | \
+efetch -format uid
+</code></pre><p>This solution begins by using the <code>esearch</code> command to search PubMed (<code>-db pubmed</code>) for citations including an author identifier of &ldquo;0000-0002-1141-6306&rdquo; (<code>-query &quot;0000-0002-1141-6306[auid]&quot;</code>). The first line concludes by piping (<code>|</code>) the results of the <code>esearch</code> command into a command on the next line (the &ldquo;\&rdquo; character at the end of the line allows us to continue our command on the next line, for easier-to-read formatting).</p><p>The <code>efetch</code> command in the second line accepts the PMIDs piped from the previous line, and retrieves the PubMed records, but outputs only the PMIDs (<code>-format uid</code>).</p>	</div><!--end row-->
+	</div><!--end content pane-->
+	</div><!--end container--> 
+</div> <!-- End main-body -->
+
+		</div> <!--End container-fluid-->
+
+    <div id="footer">
+    <div class="container-fluid">
+    <div class = "row">
+        <div class = "col-md-12 col-sm-8 col-xs-6">
+	<p class = "white"><b>Content last updated:</b> 2017-06-02
+        <br/>
+        <a href="http://www.nlm.nih.gov/copyright.html">Copyright</a>, <a href="http://www.nlm.nih.gov/privacy.html">Privacy</a>, <a href="http://www.nlm.nih.gov/accessibility.html">Accessibility</a>
+        <br />
+        U.S. National Library of Medicine, 8600 Rockville Pike, Bethesda, MD 20894 <br />
+        <a href="http://www.nih.gov/">National Institutes of Health</a>, <a href="http://www.hhs.gov/">Health &amp; Human Services</a>
+        <br />
+        <a href="http://www.nih.gov/icd/od/foia/index.htm">Freedom of Information Act</a>, <a href="/contact/index.html">Contact Us</a>
+	<br/>
+	 Baked with <a href="http://jbake.org">JBake v2.4.0</a>
+       </div>
+      </div>
+      </div>
+    </div>
+			</div> <!--End wrapper-fluid-->
+  </body>
+</html>

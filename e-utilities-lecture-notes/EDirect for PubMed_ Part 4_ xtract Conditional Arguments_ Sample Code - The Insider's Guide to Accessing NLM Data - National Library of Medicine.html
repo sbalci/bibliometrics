@@ -1,0 +1,388 @@
+<!DOCTYPE html>  
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <title>&quot;EDirect for PubMed: Part 4: xtract Conditional Arguments&quot; Sample Code - The Insider's Guide to Accessing NLM Data - National Library of Medicine</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="DC.Title" content = "&quot;EDirect for PubMed: Part 4: xtract Conditional Arguments&quot; Sample Code"/>
+    <meta name="DC.Publisher" content="U.S. National Library of Medicine" />
+    <meta name="DC.Subject.Keyword" content="E-utilities API, PubMed API, Entrez Programming Utilities, NLM Data, PubMed Data">
+    <meta name="DC.Rights" content="Public Domain" />
+    <meta name="DC.Language" content="eng" />
+    <meta name="generator" content="JBake">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge;IE=9;IE=8;"/>
+
+    <!-- Le styles -->
+    <link href="../../css/nlm-dropdown.css" rel="stylesheet" type="text/css">
+    <link href="../../css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="../../css/asciidoctor.css" rel="stylesheet" type="text/css">
+    <link href="../../css/prettify.css" rel="stylesheet" type="text/css">
+    <link href="../../css/uts-docs.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/styles/default.min.css" type="text/css">
+    <link rel="stylesheet" href="https://www.nlm.nih.gov/core/nlm-autocomplete/1.0/nlm-autocomplete.css" type="text/css">
+    <link rel="stylesheet" href="https://www.nlm.nih.gov/core/jquery-ui/1.8/jquery-ui.css" type="text/css">
+    <link href="//cdn.datatables.net/1.10.3/css/jquery.dataTables.css" rel="stylesheet" />
+    <link href="//cdn.datatables.net/responsive/1.0.2/css/dataTables.responsive.css" rel="stylesheet" />
+
+
+    <script src="//code.jquery.com/jquery-1.11.3.min.js" type="text/javascript"></script>
+    <script src="//code.jquery.com/ui/1.11.3/jquery-ui.min.js" type="text/javascript"></script>
+    <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
+    <script src="../../js/master.js" type="text/javascript"></script>
+    <script src="../../js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="../../js/prettify.js" type="text/javascript"></script>
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/highlight.min.js" type="text/javascript"></script>-->
+    <script type="text/javascript" src="//cdn.datatables.net/1.10.3/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="//cdn.datatables.net/responsive/1.0.2/js/dataTables.responsive.min.js"></script>
+
+
+    
+    
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+    <script src="../../js/html5shiv.min.js" type="text/javascript"></script>
+    <![endif]-->
+    <link rel="shortcut icon" href="../../favicon.ico">
+    
+    <script type = "text/javascript" language = "javascript">
+      var $ = jQuery.noConflict();
+      
+      $(document).ready(function() {
+        
+       $("th").attr("scope","col");
+       
+        $("input#search.search-input").click(function(){
+          $(this).attr("value","");
+          
+        });
+        
+        $("input#search.search-input").blur(function(){
+          $(this).attr("value","Search");
+          
+        });
+       //Make external URLs open in new tab 
+	  $('.content-pane a[href^="http://"]').attr("target","_blank");
+      $('.content-pane a[href^="https://"]').attr("target","_blank");
+	  
+	 
+	 // Opening accordion based on URL
+        var url = document.location.toString();
+
+        if ( url.match('#') ) {
+            $('#'+url.split('#')[1]+'>.panel-collapse').addClass('in');
+            //append campaign parameters to Welcome Registration URL.
+            if ( url.match('\\?') && url.match('#welcome') ) {
+                var source = url.slice(url.indexOf("utm_source")+11,url.indexOf("&",url.indexOf("utm_source")+11));
+                $('#'+url.split('#')[1]+' .btn-reg').attr('href',function(){
+                    return this.href + '&SourceId=' + source.replace(/-/g, '');
+                });
+            }
+        }
+
+     //Adjust relative references
+    if ( url.match('dataguide_docs/') ){
+        $('a[href^="/"]').attr('href',function(){
+            return 'https://www.nlm.nih.gov/dataguide_docs' + this.href.slice(23);
+            });
+        $('img[src^="/"]').attr('src',function(){
+            return 'https://www.nlm.nih.gov/dataguide_docs' + this.src.slice(23);
+            });
+        $('div.responsiveVidBox>script').text(function () {
+            return $(this).text().replace(/(\/.*\.srt)/,"/dataguide_docs$1");
+            });
+
+    }
+
+
+        });
+      
+
+    </script>
+    <script type="text/javascript" src="https://assets.nlm.nih.gov/jwplayer/8/jwplayer.js"></script>
+   <script type="text/javascript">jwplayer.key="eNFaXCjyURVoCCGiHp7HTQ3hDhE/AfL0g8VE1fRbL84=";</script>
+	<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-84367246-1', 'auto');
+  ga('send', 'pageview');
+  </script>
+  <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-MT6MLL');</script>
+<!-- End Google Tag Manager -->
+  
+
+
+  </head>
+  <!--<body onload="prettyPrint();hljs.initHighlighting();">-->
+  
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MT6MLL"
+height="0" width="0" style="display:none;visibility:hidden" title="googletagmanager"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+  
+  <div id="wrapper-fluid">
+     <div class="container-fluid">
+
+      <!--header to hold banner + top navigation area -->
+      <!-- responsive design header using bootstrap css framework -->
+<div class = "row header">
+  <div class="container-fluid">
+     <div class = "row">
+        <div class = "col-md-6 col-sm-6 col-xs-12">
+            <a href = "https://www.nlm.nih.gov"><img class= "nlm-logo img-responsive" alt="National Library of Medicine" style="margin-right:1em;" src="../../nlm-logo.png"></a>
+        </div>
+        <div class = "col-md-6 col-sm-6 col-xs-12" id = "search-form">
+         <form method="get" action="//vsearch.nlm.nih.gov/vivisimo/cgi-bin/query-meta" target="_self" name="searchForm" id="searchForm">
+         <label for="search" class="hidden">Search</label>
+         <input type="text" name="query" value="Search" class="search-input" id="search"/>
+         <input type="hidden" name="v:project" value="nlm-main-website" />
+         </form>
+       </div>
+       <div class = "col-md-6 col-sm-8 col-xs-12">
+           
+       </div>
+    </div>
+  </div>
+</div>
+<div class = "row nlm-dropdown-menu">
+  <div class = "container-fluid">
+      <div id = "nav">
+         <ul class = "topnav">
+         <li></li>
+         </ul>
+      </div>
+  </div>
+</div>
+
+		<div id="main-body">
+
+<div class = "row uts-nav">
+   <div class="col-md-8 col-sm-8 col-xs-12">
+	<a href="/">
+	<img class="img-responsive pull-left" style="padding-top:.2em; margin-right:1em;" alt="UTS Logo" src="/images/bulbktrans.png">
+    <p class = "orange uts-title"><a href= "/" >The Insider's Guide to Accessing NLM Data</a></p>
+   </div>
+   <div class="col-md-4 col-sm-4 col-xs-12">
+    <p class = "umls-menu pull-right">
+ 
+     <a class="btn btn-default" href = "/contact/index.html">Contact Us</a>
+    </p>
+    </div>
+</div>
+
+
+<!--Navbar Menu-->
+<div class = "row">
+  <div class = "container-fluid navbar navbar-default" role = "navigation">
+   <div class="btn-group navbar-btn visible-*" role="group">
+   
+   <!--Overview Category Dropdown-->
+   <div class="btn-group" role="group">
+        <button type="button" class="btn btn-md dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Insider's Guide Overview<span class = "caret"></span></button>    
+         <ul class = "dropdown-menu" role = "menu">
+                                                       <li><a href = "../../eutilities/what_is_eutilities.html">What is E-utilities?</a></li>                                                                                                                                                                                                                                       <li><a href = "../../eutilities/when_to_use_eutilities.html">When should you use E-utilities?</a></li>                                                                                                   <li><a href = "../../eutilities/how_eutilities_works.html">How does E-utilities work?</a></li>                                                                                                                                                                                                                          </ul>
+      </div><!--//btn-group for Overview category-->
+                                                                                                                                                                        <a class = "btn btn-md" role = "button" href = "../../classes.html">Classes</a>                                                      <div class="btn-group" role="group">
+        <button type="button" class="btn btn-md dropdown-toggle" data-toggle="dropdown" aria-expanded="false">E-utilities Documentation<span class = "caret"></span></button>    
+         <ul class = "dropdown-menu" role = "menu">
+                                                                                                              <li><a href = "../../eutilities/utilities.html">The 9 E-utilities and Associated Parameters</a></li>                                                                                                                                                                                                                            <li><a href = "../../eutilities/history.html">E-utilities and the History server</a></li>                                                                                                                                                                                                                                                                                 </ul>
+      </div><!--//btn-group-->
+      <div class="btn-group" role="group">
+        <button type="button" class="btn btn-md dropdown-toggle" data-toggle="dropdown" aria-expanded="false">EDirect<span class = "caret"></span></button>    
+         <ul class = "dropdown-menu" role = "menu">
+                      <li><a href = "../../edirect/overview.html">EDirect Overview</a></li>                                                                                                                                                                                                                                                                                   <li><a href = "../../edirect/documentation.html">EDirect Documentation</a></li>                                                                                                   <li><a href = "../../edirect/install.html">Installing EDirect</a></li>                                                                                                                                                                                                               </ul>
+      </div><!--//btn-group-->
+   </div>
+ </div>
+</div>
+
+
+
+
+
+
+
+	<div class = "row">
+	<div class = "container-fluid breadcrumbs-container">
+	</div>
+	</div>
+	<div class = "row">
+	<div class = "container-fluid">
+	<div class = "content-pane">
+	
+	
+	
+	<h1>&quot;EDirect for PubMed: Part 4: xtract Conditional Arguments&quot; Sample Code</h1>
+	
+<p>Below you will find sample code for the examples, in-class exercises and homework presented in the fourth session of the <a href="../../classes.html#edirect-for-pubmed">&ldquo;EDirect for PubMed&rdquo;</a> Insider&rsquo;s Guide class. These examples are written for use with EDirect in a Unix environment. If you need help installing and setting up EDirect, please see our <a href="../../edirect/install.html">&ldquo;Installing EDirect&rdquo; page</a>. </p><p>For more examples, please see the sample code from the other parts of &ldquo;EDirect for PubMed&rdquo;: </p>
+<ul>
+  <li><a href="/classes/edirect-for-pubmed/samplecode1.html">Part 1: Getting PubMed Data</a></li>
+  <li><a href="/classes/edirect-for-pubmed/samplecode2.html">Part 2: Extracting Data from XML</a></li>
+  <li><a href="/classes/edirect-for-pubmed/samplecode3.html">Part 3: Formatting Results and Unix Tools</a></li>
+  <li><a href="/classes/edirect-for-pubmed/samplecode5.html">Part 5: Developing and Building Scripts</a></li>
+</ul><p>The code below is lightly annotated to explain how it works, but if you are looking for more information, we suggest you review our <a href="/edirect/documentation.html">EDirect documentation</a>.</p><p>There are many different ways to answer the questions discussed in class. The sample code below provides some options, but by no means the only options. Feel free to modify, adapt, edit, re-use or completely discard any of the suggestions below when trying to find a solution that works best for you.</p>
+<ul>
+  <li><strong><a href="#xtract-conditional-arguments">xtract Conditional arguments</a></strong>
+  <ul>
+    <li><a href="#include-only-authors-with-orcid-ids-in-the-output-table">Include only authors with ORCID IDs in the output table</a></li>
+    <li><a href="#include-only-articles-from-the-journal-jama-in-the-output-table">Include only articles from the journal JAMA in the output table</a></li>
+    <li><a href="#include-only-medline-articles-in-the-output-table">Include only MEDLINE articles in the output table</a></li>
+    <li><a href="#include-only-authors-whose-affiliation-mentions-japan-in-the-output-table">Include only authors whose affiliation mentions Japan in the output table</a></li>
+    <li><a href="#output-a-list-of-pmids-and-corresponding-dois">Output a list of PMIDs and corresponding DOIs</a></li>
+  </ul></li>
+  <li><strong><a href="#combining-multiple-conditional-arguments">Combining multiple Conditional arguments</a></strong>
+  <ul>
+    <li><a href="#output-a-list-of-pmids-and-corresponding-dois-and-pmcids">Output a list of PMIDs and corresponding DOIs</a></li>
+    <li><a href="#include-only-authors-with-the-last-name-kamal-and-with-affiliation-data-in-the-output-table">Include only authors with the last name Kamal and with affiliation data in the output table</a></li>
+    <li><a href="#include-only-pubmed-records-indexed-with-the-mesh-heading-microcephaly-and-with-any-mesh-heading-containing-the-words-zika-virus-in-the-output-table">Include only PubMed records indexed with the MeSH heading &ldquo;Microcephaly&rdquo;, and with any MeSH heading containing the words &ldquo;Zika Virus&rdquo; in the output table</a></li>
+  </ul></li>
+  <li><strong><a href="#xtract-and-the-position-argument">xtract and the -position argument</a></strong>
+  <ul>
+    <li><a href="#include-only-the-first-author-in-the-output-table">Include only the First Author in the output table</a></li>
+  </ul></li>
+  <li><strong><a href="#dealing-with-blanks">Dealing with blanks</a></strong>
+  <ul>
+    <li><a href="#specify-a-placeholder-to-replace-blank-spaces-in-the-output-table">Specify a placeholder to replace blank spaces in the output table</a></li>
+  </ul></li>
+  <li><strong><a href="#in-class-exercise-solutions">In-class exercise solutions</a></strong>
+  <ul>
+    <li><a href="#exercise-1">Exercise 1</a></li>
+    <li><a href="#exercise-2">Exercise 2</a></li>
+    <li><a href="#exercise-3">Exercise 3</a></li>
+  </ul></li>
+  <li><strong><a href="#homework-solutions">Homework solutions</a></strong>
+  <ul>
+    <li><a href="#question-1">Question 1</a></li>
+    <li><a href="#question-2">Question 2</a></li>
+    <li><a href="#question-3">Question 3</a></li>
+    <li><a href="#question-4">Question 4</a></li>
+  </ul></li>
+</ul><h2><a href="#xtract-conditional-arguments" name="xtract-conditional-arguments">xtract Conditional arguments</a></h2><p>For an introduction to the <code>xtract</code> Conditional arguments, see the <a href="/edirect/xtract_conditional.html">Filtering output with Conditional arguments</a> section of our <a href="/edirect/documentation.html">EDirect documentation</a>.</p><h3><a href="#include-only-authors-with-orcid-ids-in-the-output-table" name="include-only-authors-with-orcid-ids-in-the-output-table">Include only authors with ORCID IDs in the output table</a></h3>
+<pre><code>efetch -db pubmed -id 27460563,27298442,27392493,27363997,27298443 -format xml | \
+xtract -pattern Author -if Identifier -sep &quot; &quot; -element LastName,Initials Identifier
+</code></pre><p>The first line of this code uses the <code>efetch</code> command to retrieve records from PubMed (<code>-db pubmed -id 27460563,27298442,27392493,27363997,27298443</code>) in XML format (<code>-format xml</code>), and concludes by piping (<code>|</code>) the resulting XML into a command on the next line (the &ldquo;\&rdquo; character at the end of the line allows us to continue our command on the next line, for easier-to-read formatting). </p><p>The second line uses the <code>xtract</code> command to retrieve only the elements we need from the XML output, and display those elements in a tabular format. The <code>-pattern</code> argument indicates that we should start a new row for each <code>&lt;Author&gt;</code> element (<code>-pattern Author</code>), but only if the <code>&lt;Author&gt;</code> element contains an <code>&lt;Identifier&gt;</code> element (which is the where an author&rsquo;s ORCID ID is stored). If an author does not have an ORCID ID, the author will not have an <code>&lt;Identifier&gt;</code> element; no row is created for the author, and <code>xtract</code> skips to the next author (<code>-if Identifier</code>).</p><p>The command creates two columns for each row: one with the author&rsquo;s last name and initials (<code>-element LastName,Initials</code>) separated with a single space (<code>-sep &quot; &quot;</code>), and one with the author&rsquo;s ORCID ID (<code>Identifier</code>).</p><h3><a href="#include-only-articles-from-the-journal-jama-in-the-output-table" name="include-only-articles-from-the-journal-jama-in-the-output-table">Include only articles from the journal JAMA in the output table</a></h3>
+<pre><code>efetch -db pubmed -id 27460563,27532912,27392493,27363997,24108526 -format xml | \
+xtract -pattern PubmedArticle -if ISOAbbreviation -equals JAMA -element Volume Issue
+</code></pre><p>The first line of this code uses the <code>efetch</code> command to retrieve records from PubMed (<code>-db pubmed -id 27460563,27532912,27392493,27363997,24108526</code>) in XML format (<code>-format xml</code>), and concludes by piping (<code>|</code>) the resulting XML into a command on the next line (the &ldquo;\&rdquo; character at the end of the line allows us to continue our command on the next line, for easier-to-read formatting). </p><p>The second line uses the <code>xtract</code> command to retrieve only the elements we need from the XML output, and display those elements in a tabular format. The <code>-pattern</code> argument indicates that we should start a new row for each PubMed record (<code>-pattern PubmedArticle</code>), but only if the article&rsquo;s journal title abbreviation (<code>&lt;ISOAbbreviation&gt;</code>) is &ldquo;JAMA&rdquo;. If a citation is from a different journal, no row is created for the record, and <code>xtract</code> skips to the next record (<code>-if ISOAbbreviation -equals JAMA</code>).</p><p>The command creates two columns for each row: one with the article&rsquo;s Volume number, one with the article&rsquo;s Issue number (<code>-element Volume Issue</code>).</p><h3><a href="#include-only-medline-articles-in-the-output-table" name="include-only-medline-articles-in-the-output-table">Include only MEDLINE articles in the output table</a></h3>
+<pre><code>efetch -db pubmed -id 27460563,27532912,27392493,27363997,24108526 -format xml | \
+xtract -pattern PubmedArticle -if MedlineCitation@Status -equals MEDLINE -element MedlineCitation/PMID
+</code></pre><p>The first line of this code uses the <code>efetch</code> command to retrieve records from PubMed (<code>-db pubmed -id 27460563,27532912,27392493,27363997,24108526</code>) in XML format (<code>-format xml</code>), and concludes by piping (<code>|</code>) the resulting XML into a command on the next line (the &ldquo;\&rdquo; character at the end of the line allows us to continue our command on the next line, for easier-to-read formatting). </p><p>The second line uses the <code>xtract</code> command to retrieve only the elements we need from the XML output, and display those elements in a tabular format. The <code>-pattern</code> argument indicates that we should start a new row for each PubMed record (<code>-pattern PubmedArticle</code>), but only if the record&rsquo;s citation status (which is found in the &ldquo;Status&rdquo; attribute of the <code>&lt;MedlineCitation&gt;</code> element) is &ldquo;MEDLINE&rdquo;. If a citation is not in &ldquo;MEDLINE&rdquo; status, no row is created for the record, and <code>xtract</code> skips to the next record (<code>-if MedlineCitation@Status -equals MEDLINE</code>).</p><p>The command creates a single column for each row, containing the record&rsquo;s PMID (specifically, the contents of the <code>&lt;PMID&gt;</code> element that is a child of the <code>&lt;MedlineCitation&gt;</code> element; <code>-element MedlineCitation/PMID</code>)</p><h3><a href="#include-only-authors-whose-affiliation-mentions-japan-in-the-output-table" name="include-only-authors-whose-affiliation-mentions-japan-in-the-output-table">Include only authors whose affiliation mentions Japan in the output table</a></h3>
+<pre><code>efetch -db pubmed -id 27460563,27532912,27392493,27363997,24108526 -format xml | \
+xtract -pattern Author -if Affiliation -contains Japan -sep &quot; &quot; -element LastName,Initials Affiliation
+</code></pre><p>The first line of this code uses the <code>efetch</code> command to retrieve records from PubMed (<code>-db pubmed -id 27460563,27532912,27392493,27363997,24108526</code>) in XML format (<code>-format xml</code>), and concludes by piping (<code>|</code>) the resulting XML into a command on the next line (the &ldquo;\&rdquo; character at the end of the line allows us to continue our command on the next line, for easier-to-read formatting). </p><p>The second line uses the <code>xtract</code> command to retrieve only the elements we need from the XML output, and display those elements in a tabular format. The <code>-pattern</code> argument indicates that we should start a new row for each <code>&lt;Author&gt;</code> element (<code>-pattern Author</code>), but only if the <code>&lt;Author&gt;</code> element contains an <code>&lt;Affiliation&gt;</code> element which includes the word &ldquo;Japan&rdquo;. If an author does not have affiliation data, or the author&rsquo;s affiliation data does not contain Japan, no row is created for the author, and <code>xtract</code> skips to the next author (<code>-if Affiliation -contains Japan</code>).</p><p>The command creates two columns for each row: one with the author&rsquo;s last name and initials (<code>-element LastName,Initials</code>) separated with a single space (<code>-sep &quot; &quot;</code>), and one with the author&rsquo;s affiliation data (<code>Affiliation</code>). </p><h3><a href="#output-a-list-of-pmids-and-corresponding-dois" name="output-a-list-of-pmids-and-corresponding-dois">Output a list of PMIDs and corresponding DOIs</a></h3>
+<pre><code>efetch -db pubmed -id 16940437,16049336,11972038 -format xml | \
+xtract -pattern PubmedArticle -element MedlineCitation/PMID \
+-block ArticleId -if ArticleId@IdType -equals doi -element ArticleId
+</code></pre><p>The first line of this code uses the <code>efetch</code> command to retrieve records from PubMed (<code>-db pubmed -id 16940437,16049336,11972038</code>) in XML format (<code>-format xml</code>), and concludes by piping (<code>|</code>) the resulting XML into a command on the next line (the &ldquo;\&rdquo; character at the end of the line allows us to continue our command on the next line, for easier-to-read formatting).</p><p>Beginning on the second line, the <code>xtract</code> command creates a table, with each PubMed record in our input populating its own row (<code>xtract -pattern PubmedArticle</code>). The first column of each row will contain the record&rsquo;s PMID, using Parent/Child construction to specify that we want the <code>&lt;PMID&gt;</code> element that is the child of the <code>&lt;MedlineCitation&gt;</code> element, and not another <code>&lt;PMID&gt;</code> element elsewhere in the PubMed record (e.g. as a child of a <code>&lt;CommentsCorrections&gt;</code> element; <code>-element MedlineCitation/PMID</code>).</p><p>The <code>xtract</code> command continues on the third line by checking each <code>&lt;ArticleId&gt;</code> element in a PubMed record (<code>-block ArticleId</code>). If an <code>&lt;ArticleId&gt;</code> element contains a DOI (indicated by the &ldquo;IdType&rdquo; attribute for the <code>&lt;ArticleId&gt;</code> equaling &ldquo;doi&rdquo;; <code>-if ArticleId@IdType -equals doi</code>), then the command puts the DOI in the second column (<code>-element ArticleId</code>). If not, the second column is left blank.</p><p>The result of this command will be a two column table, where the first column is always a PMID, and the second column is either the corresponding DOI (if there is one), or is blank (if there is no DOI).</p><h2><a href="#combining-multiple-conditional-arguments" name="combining-multiple-conditional-arguments">Combining multiple Conditional arguments</a></h2><h3><a href="#output-a-list-of-pmids-and-corresponding-dois-and-pmcids" name="output-a-list-of-pmids-and-corresponding-dois-and-pmcids">Output a list of PMIDs and corresponding DOIs and PMCIDs</a></h3>
+<pre><code>efetch -db pubmed -id 16940437,16049336,11972038 -format xml | \
+xtract -pattern PubmedArticle -element MedlineCitation/PMID \
+-block ArticleId -if ArticleId@IdType -equals doi \
+-or ArticleId@IdType -equals pmc -element ArticleId
+</code></pre><p>The first line of this code uses the <code>efetch</code> command to retrieve records from PubMed (<code>-db pubmed -id 16940437,16049336,11972038</code>) in XML format (<code>-format xml</code>), and concludes by piping (<code>|</code>) the resulting XML into a command on the next line (the &ldquo;\&rdquo; character at the end of the line allows us to continue our command on the next line, for easier-to-read formatting).</p><p>Beginning on the second line, the <code>xtract</code> command creates a table, with each PubMed record in our input populating its own row (<code>xtract -pattern PubmedArticle</code>). The first column of each row will contain the record&rsquo;s PMID, using Parent/Child construction to specify that we want the <code>&lt;PMID&gt;</code> element that is the child of the <code>&lt;MedlineCitation&gt;</code> element, and not another <code>&lt;PMID&gt;</code> element elsewhere in the PubMed record (e.g. as a child of a <code>&lt;CommentsCorrections&gt;</code> element; <code>-element MedlineCitation/PMID</code>).</p><p>The <code>xtract</code> command continues on the third line by checking each <code>&lt;ArticleId&gt;</code> element in a PubMed record (<code>-block ArticleId</code>). If an <code>&lt;ArticleId&gt;</code> element contains a DOI (indicated by the &ldquo;IdType&rdquo; attribute for the <code>&lt;ArticleId&gt;</code> equaling &ldquo;doi&rdquo;; <code>-if ArticleId@IdType -equals doi</code>) OR a PMC ID (indicated by the &ldquo;IdType&rdquo; attribute for the <code>&lt;ArticleId&gt;</code> equaling &ldquo;pmc&rdquo;; <code>-or ArticleId@IdType -equals pmc</code>), then the command puts the contents of the <code>&lt;ArticleId&gt;</code> element in the second column (<code>-element ArticleId</code>).</p><p>Because a PubMed record can have multiple <code>&lt;ArticleId&gt;</code> elements, and because the <code>-block</code> argument checks each <code>&lt;ArticleId&gt;</code> separately, this command may result in both a DOI and a PMC ID appearing the second column of some rows.</p><h3><a href="#include-only-authors-with-the-last-name-kamal-and-with-affiliation-data-in-the-output-table" name="include-only-authors-with-the-last-name-kamal-and-with-affiliation-data-in-the-output-table">Include only authors with the last name Kamal and with affiliation data in the output table</a></h3>
+<pre><code>efetch -db pubmed -id 27798514,24372221,24332497,24307782 -format xml | \
+xtract -pattern Author -if LastName -equals Kamal -and Affiliation \
+-sep &quot; &quot; -element LastName,Initials Affiliation
+</code></pre><p>The first line of this code uses the <code>efetch</code> command to retrieve records from PubMed (<code>-db pubmed -id 27798514,24372221,24332497,24307782</code>) in XML format (<code>-format xml</code>), and concludes by piping (<code>|</code>) the resulting XML into a command on the next line (the &ldquo;\&rdquo; character at the end of the line allows us to continue our command on the next line, for easier-to-read formatting). </p><p>The second line uses the <code>xtract</code> command to retrieve only the elements we need from the XML output, and display those elements in a tabular format. The <code>-pattern</code> argument indicates that we should start a new row for each <code>&lt;Author&gt;</code> element (<code>-pattern Author</code>), but only if the <code>&lt;LastName&gt;</code> element for the <code>&lt;Author&gt;</code> is &ldquo;Kamal&rdquo;, AND the <code>&lt;Author&gt;</code> element contains an <code>&lt;Affiliation&gt;</code> element (<code>-if LastName -equals Kamal -and Affiliation</code>). If an author&rsquo;s last name is not &ldquo;Kamal&rdquo; or the author does not have affiliation data, no row is created for the author, and <code>xtract</code> skips to the next author.</p><p>The command creates two columns for each row: one with the author&rsquo;s last name and initials (<code>-element LastName,Initials</code>) separated with a single space (<code>-sep &quot; &quot;</code>), and one with the author&rsquo;s affiliation data (<code>Affiliation</code>). </p><h3><a href="#include-only-pubmed-records-indexed-with-the-mesh-heading-microcephaly-and-with-any-mesh-heading-containing-the-words-zika-virus-in-the-output-table" name="include-only-pubmed-records-indexed-with-the-mesh-heading-microcephaly-and-with-any-mesh-heading-containing-the-words-zika-virus-in-the-output-table">Include only PubMed records indexed with the MeSH heading &ldquo;Microcephaly&rdquo;, and with any MeSH heading containing the words &ldquo;Zika Virus&rdquo; in the output table</a></h3>
+<pre><code>efetch -db pubmed -id 27582188,27417495,27409810,27306170,18142192 -format xml | \
+xtract -pattern PubmedArticle -if DescriptorName -contains &quot;Zika Virus&quot; \
+-and DescriptorName -equals Microcephaly -element MedlineCitation/PMID ArticleTitle
+</code></pre><p>The first line of this code uses the <code>efetch</code> command to retrieve records from PubMed (<code>-db pubmed -id 27582188,27417495,27409810,27306170,18142192</code>) in XML format (<code>-format xml</code>), and concludes by piping (<code>|</code>) the resulting XML into a command on the next line (the &ldquo;\&rdquo; character at the end of the line allows us to continue our command on the next line, for easier-to-read formatting). </p><p>The second line uses the <code>xtract</code> command to retrieve only the elements we need from the XML output, and display those elements in a tabular format. The <code>-pattern</code> argument indicates that we should start a new row for each PubMed record (<code>-pattern PubmedArticle</code>), but only if the record has a <code>&lt;DescriptorName&gt;</code> element that contains the words &ldquo;Zika Virus&rdquo; (<code>-if DescriptorName -contains &quot;Zika Virus&quot;</code>), AND a <code>&lt;DescriptorName&gt;</code> element that equals &ldquo;Microcephaly&rdquo; (<code>-and DescriptorName -equals Microcephaly</code>). If a record does not have MeSH headings assigned that meet those criteria, no row is created for the author, and <code>xtract</code> skips to the next author. Note that, because of the use of <code>-contains</code>, both the MeSH heading &ldquo;Zika Virus&rdquo; and the MeSH heading &ldquo;Zika Virus Infection&rdquo; will satisfy the first condition in this command.</p><p>The command creates two columns for each row: one with the record&rsquo;s PMID (specifically, the contents of the <code>&lt;PMID&gt;</code> element that is a child of the <code>&lt;MedlineCitation&gt;</code> element), one with the article&rsquo;s title (<code>-element MedlineCitation/PMID ArticleTitle</code>).</p><h2><a href="#xtract-and-the-position-argument" name="xtract-and-the-position-argument">xtract and the -position argument</a></h2><h3><a href="#include-only-the-first-author-in-the-output-table" name="include-only-the-first-author-in-the-output-table">Include only the First Author in the output table</a></h3>
+<pre><code>efetch -db pubmed -id 28594955,28594944,28594945,28594943,28594948,28594957 -format xml | \
+xtract -pattern PubmedArticle -element MedlineCitation/PMID \
+-block Author -position first -sep &quot; &quot; -element LastName,Initials
+</code></pre><p>The first line of this code uses the <code>efetch</code> command to retrieve records from PubMed (<code>-db pubmed -id 28594955,28594944,28594945,28594943,28594948,28594957</code>) in XML format (<code>-format xml</code>), and concludes by piping (<code>|</code>) the resulting XML into a command on the next line (the &ldquo;\&rdquo; character at the end of the line allows us to continue our command on the next line, for easier-to-read formatting).</p><p>Beginning on the second line, the <code>xtract</code> command creates a table, with each PubMed record in our input populating its own row (<code>xtract -pattern PubmedArticle</code>). The first column of each row will contain the record&rsquo;s PMID, using Parent/Child construction to specify that we want the <code>&lt;PMID&gt;</code> element that is the child of the <code>&lt;MedlineCitation&gt;</code> element, and not another <code>&lt;PMID&gt;</code> element elsewhere in the PubMed record (e.g. as a child of a <code>&lt;CommentsCorrections&gt;</code> element; <code>-element MedlineCitation/PMID</code>). </p><p>In the third line, <code>xtract</code> looks through each PubMed record for an <code>&lt;Author&gt;</code> element (<code>-block Author</code>). When it finds the first <code>&lt;Author&gt;</code> (<code>-position first</code>), it populates the second column in the row with the first author&rsquo;s last name and initials, separated by a space (<code>-sep &quot; &quot; -element LastName,Initials</code>).</p><h2><a href="#dealing-with-blanks" name="dealing-with-blanks">Dealing with blanks</a></h2><h3><a href="#specify-a-placeholder-to-replace-blank-spaces-in-the-output-table" name="specify-a-placeholder-to-replace-blank-spaces-in-the-output-table">Specify a placeholder to replace blank spaces in the output table</a></h3>
+<pre><code>efetch -db pubmed -id 28594955,28594944,28594945,28594943,28594948,28594957 -format xml | \
+xtract -pattern PubmedArticle -element MedlineCitation/PMID \
+-block Author -position first -sep &quot; &quot; -def &quot;N/A&quot; -element LastName,Initials Identifier
+</code></pre><p>This series of commands is largely the same as the <a href="#include-only-the-first-author-in-the-output-table">&ldquo;Include only the First Author in the output table&rdquo;</a> example presented above. However, in the third line, we have added the <code>-def</code> argument to specify the placeholder value (&ldquo;N/A&rdquo;) for any blank cells in the output table (<code>-def &quot;N/A&quot;</code>).</p><h2><a href="#in-class-exercise-solutions" name="in-class-exercise-solutions">In-class exercise solutions</a></h2><p>Note: The first two exercises ask for an <code>xtract</code> command. The solutions below start with <code>efetch</code> commands that retrieve a sample set of PubMed records in XML, which are then piped into the <code>xtract</code> command. This allows us to test and verify the solutions using appropriate sample data.</p><h3><a href="#exercise-1" name="exercise-1">Exercise 1</a></h3><p>Write an <code>xtract</code> command that creates a table with one row per PubMed record, but that only includes PubMed records if they have MeSH headings. Each row should have two columns: PMID and citation status.</p><h4>Solution:</h4>
+<pre><code>efetch -db pubmed -id 26277396,29313986,19649173,21906097,25380814 -format xml | \
+xtract -pattern PubmedArticle -if MeshHeading -element MedlineCitation/PMID MedlineCitation@Status
+</code></pre><p>This <code>xtract</code> command creates a table, with each PubMed record in our input populating its own row (<code>xtract -pattern PubmedArticle</code>), but only if the record contains a <code>&lt;MeshHeading&gt;</code> element (<code>-if MeshHeading</code>). If a record does not have MeSH headings attached, no row is created for the record, and <code>xtract</code> skips to the next record.</p><p>For each row in the output, <code>xtract</code> creates two columns: one with the record&rsquo;s PMID (specifically, the contents of the <code>&lt;PMID&gt;</code> element that is a child of the <code>&lt;MedlineCitation&gt;</code> element), one with the record&rsquo;s citation status (<code>-element MedlineCitation/PMID MedlineCitation@Status</code>).</p><h3><a href="#exercise-2" name="exercise-2">Exercise 2</a></h3><p>Write an <code>xtract</code> command that creates a table with one row per PubMed record, but that only includes PubMed records for articles published in one of the JAMA journals (e.g. JAMA cardiology, JAMA oncology, etc.). Each row should have two columns: PMID and journal title abbreviation.</p><h4>Solution:</h4>
+<pre><code>efetch -db pubmed -id 27829097,27829076,19649173,21603067,25380814 -format xml | \
+xtract -pattern PubmedArticle -if ISOAbbreviation -starts-with JAMA -element MedlineCitation/PMID ISOAbbreviation
+</code></pre><p>This <code>xtract</code> command creates a table, with each PubMed record in our input populating its own row (<code>xtract -pattern PubmedArticle</code>), but only if the record has a journal title abbreviation that begins with &ldquo;JAMA&rdquo; (<code>-if ISOAbbreviation -starts-with JAMA</code>).</p><p>For each row in the output, <code>xtract</code> creates two columns: one with the record&rsquo;s PMID (specifically, the contents of the <code>&lt;PMID&gt;</code> element that is a child of the <code>&lt;MedlineCitation&gt;</code> element), one with the article&rsquo;s journal title abbreviation (<code>-element MedlineCitation/PMID ISOAbbreviation</code>).</p><h3><a href="#exercise-3" name="exercise-3">Exercise 3</a></h3><p>Write a series of commands that generates a list of the different affiliation data used by author BH Smith between 2012 and 2017. The script should output the PMID for each article published by BH Smith in that time frame, along with the BH Smith&rsquo;s affiliation data for each article.</p><h4>Solution:</h4>
+<pre><code>esearch -db pubmed -query &quot;smith bh[Author]&quot; -datetype PDAT -mindate 2012 -maxdate 2017 | \
+efetch -format xml | \
+xtract -pattern PubmedArticle -element MedlineCitation/PMID \
+-block Author -if LastName -equals Smith -and Initials -equals BH -element LastName,Initials Affiliation
+</code></pre><p>This series of commands searches for publications by the author BH Smith that were published between 2012 and 2017, retrieves the full XML records for each of the search results, extracts the PMID and BH Smith&rsquo;s affiliation data from each record, and displays the results in a table.</p>
+<pre><code>esearch -db pubmed -query &quot;smith bh[Author]&quot; -datetype PDAT -mindate 2012 -maxdate 2017 | \
+</code></pre><p>The first line of code uses <code>esearch</code> to search PubMed (<code>-db pubmed</code>) for articles where &ldquo;smith bh&rdquo; is the author (<code>-query &quot;smith bh[Author]&quot;</code>). The line also restricts the search results to articles that were published between 2011 and 2016 (<code>-datetype PDAT -mindate 2012 -maxdate 2017</code>).</p><p>The &ldquo;|&rdquo; character pipes the results of our <code>esearch</code> into our next command, and the &ldquo;\&rdquo; character at the end of the line allows us to continue our string of commands on the next line, for easier-to-read formatting.</p>
+<pre><code>efetch -format xml | \
+</code></pre><p>The second line takes the <code>esearch</code> results from our first line and uses <code>efetch</code> to retrieve the full records for each of our results in the XML format (<code>-format xml</code>), and pipes the XML output to the next line.</p>
+<pre><code>xtract -pattern PubmedArticle -element MedlineCitation/PMID \
+</code></pre><p>Beginning on the third line, the <code>xtract</code> command creates a table with each PubMed record in our input populating its own row (<code>xtract -pattern PubmedArticle</code>), and with three columns. The first column of each row will contain the record&rsquo;s PMID, using Parent/Child construction to specify that we want the <code>&lt;PMID&gt;</code> element that is the child of the <code>&lt;MedlineCitation&gt;</code> element, and not another <code>&lt;PMID&gt;</code> element elsewhere in the PubMed record (e.g. as a child of a <code>&lt;CommentsCorrections&gt;</code> element).</p>
+<pre><code>-block Author -if LastName -equals Smith -and Initials -equals BH -sep &quot; &quot; -element LastName,Initials Affiliation
+</code></pre><p>The <code>xtract</code> command continues on the fourth line by checking each <code>&lt;Author&gt;</code> element in a PubMed record (<code>-block Author</code>). If a given author&rsquo;s <code>&lt;LastName&gt;</code> is Smith AND <code>&lt;Initials&gt;</code> are BH (<code>-if LastName -equals Smith -and Initials -equals BH</code>), the <code>xtract</code> command populates the second column with the author&rsquo;s last name and initials (separated by a space), and the third column with the author&rsquo;s affiliation (<code>-sep &quot; &quot; -element LastName,Initials Affiliation</code>). Outputting the last name and initials into the second column is slightly redundant, as we know that they will always be &ldquo;Smith BH&rdquo;. However, it is helpful as a confirmation that our Conditional arguments are correct.</p><h2><a href="#homework-solutions" name="homework-solutions">Homework solutions</a></h2><h3><a href="#question-1" name="question-1">Question 1</a></h3><p>Fetch the records for the following list of PMIDs:</p>
+<pre><code>28197844,28176235,28161874,28183232,28164731,27937077,28118756,27845598,27049596,27710139
+</code></pre><p>Write an xtract command that outputs the PMID and Article Title, but only for records that have a structured abstract. Hint: in PubMed records, structured abstracts are broken up into multiple AbstractText elements, each with their own &ldquo;NlmCategory&rdquo; attribute.</p><h4>Solution:</h4>
+<pre><code>efetch -db pubmed -id 28197844,28176235,28161874,28183232,28164731,27937077,28118756,27845598,27049596,27710139 -format xml | \
+xtract -pattern PubmedArticle -if AbstractText@NlmCategory -element MedlineCitation/PMID ArticleTitle
+</code></pre><p>The first line of this solution uses <code>efetch</code> to retrieve several records from PubMed in XML format. </p><p>The &ldquo;|&rdquo; character pipes the results of our <code>efetch</code> into our next command, and the &ldquo;\&rdquo; character at the end of the line allows us to continue our string of commands on the next line, for easier-to-read formatting.</p><p>This <code>xtract</code> command creates a table, with each PubMed record in our input populating its own row (<code>xtract -pattern PubmedArticle</code>), but only if the record has one or more &ldquo;AbstractText&rdquo; elements that contain an &ldquo;NlmCategory&rdquo; attribute (<code>-if AbstractText@NlmCategory</code>). This will ensure that only PubMed records with structured abstracts are included.</p><p>For each row in the output, <code>xtract</code> creates two columns: one with the record&rsquo;s PMID (specifically, the contents of the <code>&lt;PMID&gt;</code> element that is a child of the <code>&lt;MedlineCitation&gt;</code> element), one with the article title (<code>-element MedlineCitation/PMID ArticleTitle</code>).</p><h3><a href="#question-2" name="question-2">Question 2</a></h3><p>Modify your command from Question 1 to display the &ldquo;RESULTS&rdquo; section of each structured abstract, if there is one, in place of the Article Title. If there is no &ldquo;RESULTS&rdquo; section, display just the PMID, leaving the second column blank. Hint: Use the &ldquo;NlmCategory&rdquo; attribute to determine whether a particular AbstractText element contains &ldquo;RESULTS&rdquo;.</p><h4>Solution:</h4>
+<pre><code>efetch -db pubmed -id 28197844,28176235,28161874,28183232,28164731,27937077,28118756,27845598,27049596,27710139 -format xml | \
+xtract -pattern PubmedArticle -if AbstractText@NlmCategory -element MedlineCitation/PMID \
+-block AbstractText -if AbstractText@NlmCategory -equals RESULTS -element AbstractText
+</code></pre><p>This solution begins the same as the solution for Question 2. However, rather than including the article title in the first <code>-element</code> argument, the <code>xtract</code> command continues on the third line (with the &ldquo;\&rdquo; character at the end of the second line allowing us to continue our string of commands on the next line, for easier-to-read formatting.</p>
+<pre><code>-block AbstractText -if AbstractText@NlmCategory -equals RESULTS -element AbstractText
+</code></pre><p>In the third line, the command uses <code>-block</code> to look for an <code>&lt;AbstractText&gt;</code> element (<code>-block AbstractText</code>), then looks within that <code>&lt;AbstractText&gt;</code> element to see if it has an &ldquo;NlmCategory&rdquo; attribute with the value &ldquo;RESULTS&rdquo; (<code>-if AbstractText@NlmCategory -equals RESULTS</code>). If it does, the command then outputs the contents of the <code>&lt;AbstractText&gt;</code> element in the second column. If the <code>&lt;AbstractText&gt;</code> element does not have an &ldquo;NlmCategory&rdquo; with the value &ldquo;RESULTS&rdquo;, the command proceeds to check the next <code>&lt;AbstractText&gt;</code> element in the record. The process repeats for each <code>&lt;AbstractText&gt;</code> element in the record.</p><h3><a href="#question-3" name="question-3">Question 3</a></h3><p>When indexing a record for MEDLINE, indexers can assign MeSH headings (descriptors) to represent concepts found in an article, and MeSH subheadings (qualifiers) to describe a specific aspect of a concept. Indexers denote some of MeSH headings as &ldquo;Major Topics&rdquo; (i.e. one of the primary topics of the article). When assigning a &ldquo;Major Topic&rdquo;, the indexer can determine that heading itself is a major topic, or that a specific heading/subheading pair is a major topic. When a heading/subheading pair is assigned as a Major Topic, only the subheading will be labeled as Major in the PubMed XML.</p><p>Write an xtract command that outputs one PubMed record per row. Each row should have the record&rsquo;s PMID and a pipe-delimited list of all of the MeSH Headings the indexers have determined are Major Topics. Note: the list should only include headings (descriptors), not subheadings (qualifiers). However, if a heading/subheading pair is assigned as major, the list should include that heading. </p><p>You can use the following efetch command to retrieve some sample records:</p>
+<pre><code>efetch -db pubmed -id 24102982,21171099,17150207 -format xml | \
+</code></pre><h4>Solution:</h4>
+<pre><code>efetch -db pubmed -id 24102982,21171099,17150207 -format xml | \
+xtract -pattern PubmedArticle -element MedlineCitation/PMID \
+-block MeshHeading -if DescriptorName@MajorTopicYN -equals Y -or QualifierName@MajorTopicYN -equals Y \
+-tab &quot;|&quot; -element DescriptorName
+</code></pre><p>This solution uses the example <code>efetch</code> command to retrieve three PubMed records in XML, then outputs a table with one row per PubMed record. Each row begins with the record&rsquo;s PMID, followed by a pipe-delimited list of all of the MeSH Headings that the indexers have determined are Major Topics.</p>
+<pre><code>xtract -pattern PubmedArticle -element MedlineCitation/PMID \
+</code></pre><p>Beginning on the second line, the <code>xtract</code> command creates a table, with each PubMed record in our input populating its own row (<code>xtract -pattern PubmedArticle</code>) with the record&rsquo;s PMID (<code>-element MedlineCitation/PMID</code>) and additional data, which is specified on the subsequent lines.</p>
+<pre><code>-block MeshHeading -if DescriptorName@MajorTopicYN -equals Y -or QualifierName@MajorTopicYN -equals Y \
+</code></pre><p>In the third line, we start to check each <code>&lt;MeshHeading&gt;</code> element to determine if it has been labeled Major. The command uses <code>-block</code> to look for the first <code>&lt;MeshHeading&gt;</code> element in the record (<code>-block MeshHeading</code>). The command then looks within that <code>&lt;MeshHeading&gt;</code> element to see if its child <code>&lt;DescriptorName&gt;</code> element has a &ldquo;MajorTopicYN&rdquo; attribute with a value of &ldquo;Y&rdquo; (<code>-if DescriptorName@MajorTopicYN -equals Y</code>), or if any of its child <code>&lt;QualifierName&gt;</code> elements have a &ldquo;MajorTopicYN&rdquo; attribute with a value of &ldquo;Y&rdquo; (<code>-or QualifierName@MajorTopicYN -equals Y</code>). If either of these are true, the MeSH heading has been labeled as a Major Topic, and the command will continue on the next line (see below). If neither of these conditions are true, the command will proceed to the next <code>&lt;MeshHeading&gt;</code> element and repeat the process, looking for MeSH Headings which are Major Topics.</p>
+<pre><code>-tab &quot;|&quot; -element DescriptorName
+</code></pre><p>The fourth line specifies that the DescriptorName will appear in the second column of our table (<code>-element DescriptorName</code>). Each indexed record will have at least one Major Topic assigned, and probably more than one. We use the <code>-tab</code> argument to specify a separator between the multiple MeSH descriptors (<code>-tab &quot;|&quot;</code>). It is important to place the <code>-tab</code> argument after the <code>-block</code>, as <code>-block</code> resets any <code>-tab</code> arguments that have been previously specified. We use <code>-tab</code> instead of <code>-sep</code>, as <code>-block</code> automatically creates a new column at the end of each block, so by specifying &ldquo;|&rdquo; in our <code>-tab</code> argument, we insure that our blocks are pipe-delimited.</p><h3><a href="#question-4" name="question-4">Question 4</a></h3><p>Write a series of commands to search for articles reporting on clinical trials relating to tularemia and output a table of citations. Each row should include the PMID for an article, as well as the name and affiliation information (if any) for the last author. If the last author does not have affiliation information, put &ldquo;Not Available&rdquo; in the last column instead.</p><h4>Solution:</h4>
+<pre><code>esearch -db pubmed -query &quot;tularemia clinical trial&quot; | \
+efetch -format xml | \
+xtract -pattern PubmedArticle -element MedlineCitation/PMID \
+-block Author -position last -sep &quot; &quot; -def &quot;Not Available&quot; -element LastName,Initials Affiliation
+</code></pre><p>This solution of commands searches PubMed for the string &ldquo;tularemia clinical trial&rdquo;, retrieves the full XML records and outputs the PMID as well as the last name, initials affiliation information (if any) of each article&rsquo;s last author.</p>
+<pre><code>esearch -db pubmed -query &quot;tularemia clinical trial&quot; | \
+</code></pre><p>The first line of this command uses <code>esearch</code> to search PubMed (<code>-db pubmed</code>) for our search query (<code>-query &quot;tularemia clinical trial&quot;</code>).</p><p>The &ldquo;|&rdquo; character pipes the results of our <code>esearch</code> into our next command, and the &ldquo;\&rdquo; character at the end of the line allows us to continue our string of commands on the next line, for easier-to-read formatting.</p>
+<pre><code>efetch -format xml | \
+</code></pre><p>The second line takes the <code>esearch</code> results from our first line and uses <code>efetch</code> to retrieve the full records for each of our results in the XML format (<code>-format xml</code>), and pipes the XML output to the next line.</p>
+<pre><code>-pattern PubmedArticle -element MedlineCitation/PMID \
+</code></pre><p>Beginning on the third line, the <code>xtract</code> command creates a table, with each PubMed record in our input populating its own row (<code>xtract -pattern PubmedArticle</code>) with the record&rsquo;s PMID (<code>-element MedlineCitation/PMID</code>) and additional data, which is specified on the subsequent lines.</p>
+<pre><code>-block Author -position last -sep &quot; &quot; -def &quot;Not Available&quot; -element LastName,Initials Affiliation
+</code></pre><p>The fourth line uses the <code>-block</code> and <code>-position</code> arguments to identify the last <code>&lt;Author&gt;</code> element in each record (<code>-block Author -position last</code>). The last name and initials of the last author, separated by a space (<code>-sep &quot; &quot;</code>), are placed in the second column, with the last author&rsquo;s affiliation information (if present) is placed in the third column (<code>-element LastName,Initials Affiliation</code>). If the last author has no affiliation information, the third column will contain the default value of &ldquo;Not Available&rdquo; instead of being left blank (<code>-def &quot;Not Available&quot;</code>)</p>	</div><!--end row-->
+	</div><!--end content pane-->
+	</div><!--end container--> 
+</div> <!-- End main-body -->
+
+		</div> <!--End container-fluid-->
+
+    <div id="footer">
+    <div class="container-fluid">
+    <div class = "row">
+        <div class = "col-md-12 col-sm-8 col-xs-6">
+	<p class = "white"><b>Content last updated:</b> 2017-06-07
+        <br/>
+        <a href="http://www.nlm.nih.gov/copyright.html">Copyright</a>, <a href="http://www.nlm.nih.gov/privacy.html">Privacy</a>, <a href="http://www.nlm.nih.gov/accessibility.html">Accessibility</a>
+        <br />
+        U.S. National Library of Medicine, 8600 Rockville Pike, Bethesda, MD 20894 <br />
+        <a href="http://www.nih.gov/">National Institutes of Health</a>, <a href="http://www.hhs.gov/">Health &amp; Human Services</a>
+        <br />
+        <a href="http://www.nih.gov/icd/od/foia/index.htm">Freedom of Information Act</a>, <a href="/contact/index.html">Contact Us</a>
+	<br/>
+	 Baked with <a href="http://jbake.org">JBake v2.4.0</a>
+       </div>
+      </div>
+      </div>
+    </div>
+			</div> <!--End wrapper-fluid-->
+  </body>
+</html>

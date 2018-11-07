@@ -1,0 +1,365 @@
+<!DOCTYPE html>  
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <title>&quot;EDirect for PubMed: Part 2: Extracting Data from XML&quot; Sample Code - The Insider's Guide to Accessing NLM Data - National Library of Medicine</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="DC.Title" content = "&quot;EDirect for PubMed: Part 2: Extracting Data from XML&quot; Sample Code"/>
+    <meta name="DC.Publisher" content="U.S. National Library of Medicine" />
+    <meta name="DC.Subject.Keyword" content="E-utilities API, PubMed API, Entrez Programming Utilities, NLM Data, PubMed Data">
+    <meta name="DC.Rights" content="Public Domain" />
+    <meta name="DC.Language" content="eng" />
+    <meta name="generator" content="JBake">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge;IE=9;IE=8;"/>
+
+    <!-- Le styles -->
+    <link href="../../css/nlm-dropdown.css" rel="stylesheet" type="text/css">
+    <link href="../../css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="../../css/asciidoctor.css" rel="stylesheet" type="text/css">
+    <link href="../../css/prettify.css" rel="stylesheet" type="text/css">
+    <link href="../../css/uts-docs.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/styles/default.min.css" type="text/css">
+    <link rel="stylesheet" href="https://www.nlm.nih.gov/core/nlm-autocomplete/1.0/nlm-autocomplete.css" type="text/css">
+    <link rel="stylesheet" href="https://www.nlm.nih.gov/core/jquery-ui/1.8/jquery-ui.css" type="text/css">
+    <link href="//cdn.datatables.net/1.10.3/css/jquery.dataTables.css" rel="stylesheet" />
+    <link href="//cdn.datatables.net/responsive/1.0.2/css/dataTables.responsive.css" rel="stylesheet" />
+
+
+    <script src="//code.jquery.com/jquery-1.11.3.min.js" type="text/javascript"></script>
+    <script src="//code.jquery.com/ui/1.11.3/jquery-ui.min.js" type="text/javascript"></script>
+    <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
+    <script src="../../js/master.js" type="text/javascript"></script>
+    <script src="../../js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="../../js/prettify.js" type="text/javascript"></script>
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/highlight.min.js" type="text/javascript"></script>-->
+    <script type="text/javascript" src="//cdn.datatables.net/1.10.3/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="//cdn.datatables.net/responsive/1.0.2/js/dataTables.responsive.min.js"></script>
+
+
+    
+    
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+    <script src="../../js/html5shiv.min.js" type="text/javascript"></script>
+    <![endif]-->
+    <link rel="shortcut icon" href="../../favicon.ico">
+    
+    <script type = "text/javascript" language = "javascript">
+      var $ = jQuery.noConflict();
+      
+      $(document).ready(function() {
+        
+       $("th").attr("scope","col");
+       
+        $("input#search.search-input").click(function(){
+          $(this).attr("value","");
+          
+        });
+        
+        $("input#search.search-input").blur(function(){
+          $(this).attr("value","Search");
+          
+        });
+       //Make external URLs open in new tab 
+	  $('.content-pane a[href^="http://"]').attr("target","_blank");
+      $('.content-pane a[href^="https://"]').attr("target","_blank");
+	  
+	 
+	 // Opening accordion based on URL
+        var url = document.location.toString();
+
+        if ( url.match('#') ) {
+            $('#'+url.split('#')[1]+'>.panel-collapse').addClass('in');
+            //append campaign parameters to Welcome Registration URL.
+            if ( url.match('\\?') && url.match('#welcome') ) {
+                var source = url.slice(url.indexOf("utm_source")+11,url.indexOf("&",url.indexOf("utm_source")+11));
+                $('#'+url.split('#')[1]+' .btn-reg').attr('href',function(){
+                    return this.href + '&SourceId=' + source.replace(/-/g, '');
+                });
+            }
+        }
+
+     //Adjust relative references
+    if ( url.match('dataguide_docs/') ){
+        $('a[href^="/"]').attr('href',function(){
+            return 'https://www.nlm.nih.gov/dataguide_docs' + this.href.slice(23);
+            });
+        $('img[src^="/"]').attr('src',function(){
+            return 'https://www.nlm.nih.gov/dataguide_docs' + this.src.slice(23);
+            });
+        $('div.responsiveVidBox>script').text(function () {
+            return $(this).text().replace(/(\/.*\.srt)/,"/dataguide_docs$1");
+            });
+
+    }
+
+
+        });
+      
+
+    </script>
+    <script type="text/javascript" src="https://assets.nlm.nih.gov/jwplayer/8/jwplayer.js"></script>
+   <script type="text/javascript">jwplayer.key="eNFaXCjyURVoCCGiHp7HTQ3hDhE/AfL0g8VE1fRbL84=";</script>
+	<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-84367246-1', 'auto');
+  ga('send', 'pageview');
+  </script>
+  <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-MT6MLL');</script>
+<!-- End Google Tag Manager -->
+  
+
+
+  </head>
+  <!--<body onload="prettyPrint();hljs.initHighlighting();">-->
+  
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MT6MLL"
+height="0" width="0" style="display:none;visibility:hidden" title="googletagmanager"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+  
+  <div id="wrapper-fluid">
+     <div class="container-fluid">
+
+      <!--header to hold banner + top navigation area -->
+      <!-- responsive design header using bootstrap css framework -->
+<div class = "row header">
+  <div class="container-fluid">
+     <div class = "row">
+        <div class = "col-md-6 col-sm-6 col-xs-12">
+            <a href = "https://www.nlm.nih.gov"><img class= "nlm-logo img-responsive" alt="National Library of Medicine" style="margin-right:1em;" src="../../nlm-logo.png"></a>
+        </div>
+        <div class = "col-md-6 col-sm-6 col-xs-12" id = "search-form">
+         <form method="get" action="//vsearch.nlm.nih.gov/vivisimo/cgi-bin/query-meta" target="_self" name="searchForm" id="searchForm">
+         <label for="search" class="hidden">Search</label>
+         <input type="text" name="query" value="Search" class="search-input" id="search"/>
+         <input type="hidden" name="v:project" value="nlm-main-website" />
+         </form>
+       </div>
+       <div class = "col-md-6 col-sm-8 col-xs-12">
+           
+       </div>
+    </div>
+  </div>
+</div>
+<div class = "row nlm-dropdown-menu">
+  <div class = "container-fluid">
+      <div id = "nav">
+         <ul class = "topnav">
+         <li></li>
+         </ul>
+      </div>
+  </div>
+</div>
+
+		<div id="main-body">
+
+<div class = "row uts-nav">
+   <div class="col-md-8 col-sm-8 col-xs-12">
+	<a href="/">
+	<img class="img-responsive pull-left" style="padding-top:.2em; margin-right:1em;" alt="UTS Logo" src="/images/bulbktrans.png">
+    <p class = "orange uts-title"><a href= "/" >The Insider's Guide to Accessing NLM Data</a></p>
+   </div>
+   <div class="col-md-4 col-sm-4 col-xs-12">
+    <p class = "umls-menu pull-right">
+ 
+     <a class="btn btn-default" href = "/contact/index.html">Contact Us</a>
+    </p>
+    </div>
+</div>
+
+
+<!--Navbar Menu-->
+<div class = "row">
+  <div class = "container-fluid navbar navbar-default" role = "navigation">
+   <div class="btn-group navbar-btn visible-*" role="group">
+   
+   <!--Overview Category Dropdown-->
+   <div class="btn-group" role="group">
+        <button type="button" class="btn btn-md dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Insider's Guide Overview<span class = "caret"></span></button>    
+         <ul class = "dropdown-menu" role = "menu">
+                                                       <li><a href = "../../eutilities/what_is_eutilities.html">What is E-utilities?</a></li>                                                                                                                                                                                                                                       <li><a href = "../../eutilities/when_to_use_eutilities.html">When should you use E-utilities?</a></li>                                                                                                   <li><a href = "../../eutilities/how_eutilities_works.html">How does E-utilities work?</a></li>                                                                                                                                                                                                                          </ul>
+      </div><!--//btn-group for Overview category-->
+                                                                                                                                                                        <a class = "btn btn-md" role = "button" href = "../../classes.html">Classes</a>                                                      <div class="btn-group" role="group">
+        <button type="button" class="btn btn-md dropdown-toggle" data-toggle="dropdown" aria-expanded="false">E-utilities Documentation<span class = "caret"></span></button>    
+         <ul class = "dropdown-menu" role = "menu">
+                                                                                                              <li><a href = "../../eutilities/utilities.html">The 9 E-utilities and Associated Parameters</a></li>                                                                                                                                                                                                                            <li><a href = "../../eutilities/history.html">E-utilities and the History server</a></li>                                                                                                                                                                                                                                                                                 </ul>
+      </div><!--//btn-group-->
+      <div class="btn-group" role="group">
+        <button type="button" class="btn btn-md dropdown-toggle" data-toggle="dropdown" aria-expanded="false">EDirect<span class = "caret"></span></button>    
+         <ul class = "dropdown-menu" role = "menu">
+                      <li><a href = "../../edirect/overview.html">EDirect Overview</a></li>                                                                                                                                                                                                                                                                                   <li><a href = "../../edirect/documentation.html">EDirect Documentation</a></li>                                                                                                   <li><a href = "../../edirect/install.html">Installing EDirect</a></li>                                                                                                                                                                                                               </ul>
+      </div><!--//btn-group-->
+   </div>
+ </div>
+</div>
+
+
+
+
+
+
+
+	<div class = "row">
+	<div class = "container-fluid breadcrumbs-container">
+	</div>
+	</div>
+	<div class = "row">
+	<div class = "container-fluid">
+	<div class = "content-pane">
+	
+	
+	
+	<h1>&quot;EDirect for PubMed: Part 2: Extracting Data from XML&quot; Sample Code</h1>
+	
+<p>Below you will find sample code for the examples, in-class exercises and homework presented in the second session of the <a href="../../classes.html#edirect-for-pubmed">&ldquo;EDirect for PubMed&rdquo;</a> Insider&rsquo;s Guide class. These examples are written for use with EDirect in a Unix environment. If you need help installing and setting up EDirect, please see our <a href="../../edirect/install.html">&ldquo;Installing EDirect&rdquo; page</a>. </p><p>For more examples, please see the sample code from the other parts of &ldquo;EDirect for PubMed&rdquo;: </p>
+<ul>
+  <li><a href="/classes/edirect-for-pubmed/samplecode1.html">Part 1: Getting PubMed Data</a></li>
+  <li><a href="/classes/edirect-for-pubmed/samplecode3.html">Part 3: Formatting Results and Unix Tools</a></li>
+  <li><a href="/classes/edirect-for-pubmed/samplecode4.html">Part 4: xtract Conditional Arguments</a></li>
+  <li><a href="/classes/edirect-for-pubmed/samplecode5.html">Part 5: Developing and Building Scripts</a></li>
+</ul><p>The code below is lightly annotated to explain how it works, but if you are looking for more information, we suggest you review our <a href="/edirect/documentation.html">EDirect documentation</a>.</p><p>There are many different ways to answer the questions discussed in class. The sample code below provides some options, but by no means the only options. Feel free to modify, adapt, edit, re-use or completely discard any of the suggestions below when trying to find a solution that works best for you.</p>
+<ul>
+  <li><strong><a href="#xtract-basics">xtract Basics</a></strong>
+  <ul>
+    <li><a href="#retrieve-the-article-titles-for-a-list-of-pubmed-records">Retrieve the article titles for a list of PubMed records</a></li>
+    <li><a href="#retrieve-the-list-of-authors-for-a-series-of-pubmed-records">Retrieve the list of authors for a series of PubMed records</a></li>
+    <li><a href="#retrieve-the-pmid-and-year-of-publication-for-a-pubmed-record">Retrieve the PMID and year of publication for a PubMed record</a></li>
+    <li><a href="#retrieve-three-data-elements-for-a-list-of-pubmed-records">Retrieve three data elements for a list of PubMed records</a></li>
+  </ul></li>
+  <li><strong><a href="#sort-uniq-count-rank-and-head">sort-uniq-count-rank and head</a></strong>
+  <ul>
+    <li><a href="#sort-a-list-of-authors-by-the-frequency-they-appear-in-your-results-set">Sort a list of authors by the frequency they appear in your results set</a></li>
+  </ul></li>
+  <li><strong><a href="#in-class-exercise-solutions">In-class exercise solutions</a></strong>
+  <ul>
+    <li><a href="#exercise-1">Exercise 1</a></li>
+    <li><a href="#exercise-2">Exercise 2</a></li>
+    <li><a href="#exercise-3">Exercise 3</a></li>
+  </ul></li>
+  <li><strong><a href="#homework-solutions">Homework solutions</a></strong>
+  <ul>
+    <li><a href="#question-1">Question 1</a></li>
+    <li><a href="#question-2">Question 2</a></li>
+    <li><a href="#question-3">Question 3</a></li>
+  </ul></li>
+</ul><h2><a href="#xtract-basics" name="xtract-basics">xtract Basics</a></h2><p>For an introduction to the <code>xtract</code> command, see the <a href="/edirect/xtract.html">xtract</a> section of our <a href="/edirect/documentation.html">EDirect documentation</a>.</p><h3><a href="#retrieve-the-article-titles-for-a-list-of-pubmed-records" name="retrieve-the-article-titles-for-a-list-of-pubmed-records">Retrieve the article titles for a list of PubMed records</a></h3>
+<pre><code>efetch -db pubmed -id 24102982,21171099,17150207 -format xml | \
+xtract -pattern PubmedArticle -element ArticleTitle
+</code></pre><p>The first line of this code uses the <code>efetch</code> command to retrieve records from PubMed (<code>-db pubmed -id 24102982,21171099,17150207</code>) in XML format (<code>-format xml</code>), and concludes by piping (<code>|</code>) the resulting XML into a command on the next line (the &ldquo;\&rdquo; character at the end of the line allows us to continue our command on the next line, for easier-to-read formatting).</p><p>The second line uses the <code>xtract</code> command to retrieve only the elements we need from the XML output, and display those elements in a tabular format. The <code>-pattern</code> argument indicates that we should start a new row in our output table for every PubMed record (<code>-pattern PubmedArticle</code>). The <code>-element</code> argument indicates that the table should include a single column, containing the article title for the given record (<code>-element ArticleTitle</code>).</p><h3><a href="#retrieve-the-list-of-authors-for-a-series-of-pubmed-records" name="retrieve-the-list-of-authors-for-a-series-of-pubmed-records">Retrieve the list of authors for a series of PubMed records</a></h3>
+<pre><code>efetch -db pubmed -id 24102982,21171099,17150207 -format xml | \
+xtract -pattern Author -element LastName
+</code></pre><p>The first line of this code uses the <code>efetch</code> command to retrieve records from PubMed (<code>-db pubmed -id 24102982,21171099,17150207</code>) in XML format (<code>-format xml</code>), and concludes by piping (<code>|</code>) the resulting XML into a command on the next line (the &ldquo;\&rdquo; character at the end of the line allows us to continue our command on the next line, for easier-to-read formatting).</p><p>The second line uses the <code>xtract</code> command to retrieve only the elements we need from the XML output, and display those elements in a tabular format. The <code>-pattern</code> argument indicates that we should start a new row in our output table for every author (<code>-pattern Author</code>). The <code>-element</code> argument indicates that the table should include a single column, containing the last name for the given author (<code>-element LastName</code>).</p><h3><a href="#retrieve-the-pmid-and-year-of-publication-for-a-pubmed-record" name="retrieve-the-pmid-and-year-of-publication-for-a-pubmed-record">Retrieve the PMID and year of publication for a PubMed record</a></h3><p>In order to retrieve the PMID and the year of publication for a PubMed record, we might try to use code such as the following:</p>
+<pre><code>efetch -db pubmed -id 27101380 -format xml | \
+xtract -pattern PubmedArticle -element PMID Year
+</code></pre><p>The first line of this code uses the <code>efetch</code> command to retrieve a record from PubMed (<code>-db pubmed -id 27101380</code>) in XML format (<code>-format xml</code>), and concludes by piping (<code>|</code>) the resulting XML into a command on the next line (the &ldquo;\&rdquo; character at the end of the line allows us to continue our command on the next line, for easier-to-read formatting).</p><p>The second line uses the <code>xtract</code> command to create a table, with one row for every PubMed record in our XML (<code>xtract -pattern PubmedArticle</code>; in this case, the table will only have a single row). The line then uses the <code>-element</code> argument to create two columns, one for PMID and one for Year. (<code>-element PMID Year</code>). However, the output of this series of commands is not what we expect:</p>
+<pre><code>27101380        27619336        27619799        27746956        27747057        2016    2016    2016      2016    2015    2016    2016    2016    2016
+</code></pre><p>Rather than getting a single PMID and a single year, we get 5 PMIDs and 9 Years. This is because, while the <code>-element</code> argument is designed to create a new column for each element or attribute specified, it populates each column with the contents of <strong>every</strong> occurrence of the specified element or attribute in the <code>-pattern</code>. This means that if there are multiple occurrences of the <code>&lt;PMID&gt;</code> or <code>&lt;Year&gt;</code> elements in a PubMed record, the contents of all occurrences will be displayed. As a result, we see not only the PMID for the record, but also the PMIDs used to link it to other records which contain related comments or corrections. Furthermore, in addition to the publication year, we also the year for the other eight dates associated with the PubMed record.</p><p>We can avoid this by using <a href="/edirect/xtract.html#working-with-xml" title="EDirect Documentation: xtract: Working with XML">Parent/Child construction</a> to specify that we only want the contents of the <code>&lt;PMID&gt;</code> element that is a direct child of the <code>&lt;MedlineCitation&gt;</code> element, and that we only want the <code>&lt;Year&gt;</code> element that is a child of the <code>&lt;PubDate&gt;</code> element:</p>
+<pre><code>efetch -db pubmed -id 27101380 -format xml | \
+xtract -pattern PubmedArticle -element MedlineCitation/PMID PubDate/Year
+</code></pre><p>This version of the code gives us the output we expect:</p>
+<pre><code>27101380        2016
+</code></pre><h3><a href="#retrieve-three-data-elements-for-a-list-of-pubmed-records" name="retrieve-three-data-elements-for-a-list-of-pubmed-records">Retrieve three data elements for a list of PubMed records</a></h3>
+<pre><code>efetch -db pubmed -id 24102982,21171099,17150207 -format xml | \
+xtract -pattern PubmedArticle -element MedlineCitation/PMID ISOAbbreviation ArticleTitle    
+</code></pre><p>The first line of this code uses the <code>efetch</code> command to retrieve records from PubMed (<code>-db pubmed -id 24102982,21171099,17150207</code>) in XML format (<code>-format xml</code>), and concludes by piping (<code>|</code>) the resulting XML into a command on the next line (the &ldquo;\&rdquo; character at the end of the line allows us to continue our command on the next line, for easier-to-read formatting).</p><p>The second line uses the <code>xtract</code> command to create a table, with one row for every PubMed record in our XML (<code>xtract -pattern PubmedArticle</code>), and with three columns: one for PMID (specifically, the contents of the <code>&lt;PMID&gt;</code> element that is a child of the <code>&lt;MedlineCitation&gt;</code> element), one for the journal title abbreviation, and one for the article title (<code>-element MedlineCitation/PMID ISOAbbreviation ArticleTitle</code>).</p><h2><a href="#sort-uniq-count-rank-and-head" name="sort-uniq-count-rank-and-head">sort-uniq-count-rank and head</h2><h3><a href="#sort-a-list-of-authors-by-the-frequency-they-appear-in-your-results-set" name="sort-a-list-of-authors-by-the-frequency-they-appear-in-your-results-set">Sort a list of authors by the frequency they appear in your results set</a></h3>
+<pre><code>esearch -db pubmed -query &quot;traumatic brain injury athletes&quot; -datetype PDAT -mindate 2016 -maxdate 2017 | \
+efetch -format xml | \
+xtract -pattern Author -element LastName,Initials | \
+sort-uniq-count-rank | \
+head -n 10  
+</code></pre><p>This series of commands searches PubMed for the string &ldquo;traumatic brain injury athletes&rdquo;, restricts results to those published in 2016 and 2017, retrieves the full XML records for each of the search results, extracts the last name and initials of every author on every record, sorts the authors by frequency of occurrence in the results set, and presents the top ten most frequently-occurring authors, along with the number of times that author appeared.</p>
+<pre><code>esearch -db pubmed -query &quot;traumatic brain injury athletes&quot; -datetype PDAT -mindate 2016 -maxdate 2017 | \
+</code></pre><p>The first line of this command uses <code>esearch</code> to search PubMed (<code>-db pubmed</code>) for our search query (<code>-query &quot;traumatic brain injury athletes&quot;</code>). The line also restricts the search results to articles that were published in 2016 or 2017 (<code>-datetype PDAT -mindate 2016 -maxdate 2017</code>).</p><p>The &ldquo;|&rdquo; character pipes the results of our <code>esearch</code> into our next command, and the &ldquo;\&rdquo; character at the end of the line allows us to continue our string of commands on the next line, for easier-to-read formatting.</p>
+<pre><code>efetch -format xml | \
+</code></pre><p>The second line takes the <code>esearch</code> results from our first line and uses <code>efetch</code> to retrieve the full records for each of our results in the XML format (<code>-format xml</code>), and pipes the XML output to the next line.</p>
+<pre><code>xtract -pattern Author -element LastName,Initials | \
+</code></pre><p>The third line uses the <code>xtract</code> command to retrieve only the elements we need from the XML output, and display those elements in a tabular format. The <code>-pattern</code> command indicates that we should start a new row for every author (<code>-pattern Author</code>). Even if there are multiple authors on a single citation, each author will be on a new line, rather than putting all authors for the same citation on the same line. The command then extracts each author&rsquo;s last name and initials (<code>-element LastName,Initials</code>). This will output a list of authors&rsquo; names and initials, one author per line, and will pipe the list to the next line.</p>
+<pre><code>sort-uniq-count-rank | \
+</code></pre><p>The fourth line uses a special EDirect function (<code>sort-uniq-count-rank</code>) to sort the list of authors received from the previous line, grouping together the duplicates. The function then counts how many occurrences there are of each unique author, removes the duplicate authors, and then sorts the list of unique authors by how frequently they occur, with the most frequent authors at the top. The function also returns the numerical count, making it easier to quantify how frequently each author occurs in the data set.</p>
+<pre><code>head -n 10
+</code></pre><p>The fifth line, which is optional, shows us only the first ten rows from the output of the <code>sort-uniq-count-rank</code> function (<code>head -n 10</code>). Because this function puts the most frequently occurring authors first, this will show us only the ten most frequently occurring authors in our search results set:</p>
+<pre><code>14      Iverson     GL
+11      Guskiewicz  KM
+10      Meehan   WP
+9       Kerr       ZY
+9       Kontos   AP
+9       Solomon     GS
+9       Zuckerman   SL
+8       Zafonte     R
+7       Broglio     SP
+7       Covassin    T
+</code></pre><p>(Note: Your output may vary slightly, as additional citations are added to PubMed and the &ldquo;most frequent&rdquo; authors change.)</p><p>To show more or fewer rows, adjust the &ldquo;10&rdquo; up or down. If you want to see all of the authors, regardless of how frequently they appear, remove this line entirely. (If you do choose to remove this line, make sure you also remove the &ldquo;|&rdquo; and &ldquo;\&rdquo; characters from the previous line. Otherwise, the system will wait for you to finish entering your command.)</p><h2><a href="#in-class-exercise-solutions" name="in-class-exercise-solutions">In-class exercise solutions</a></h2><p>Note: The first three exercises ask for an <code>xtract</code> command. The solutions below start with <code>efetch</code> commands that retrieve a sample set of PubMed records in XML, which are then piped into the <code>xtract</code> command. This allows us to test and verify the solutions using appropriate sample data.</p><h3><a href="#exercise-1" name="exercise-1">Exercise 1</a></h3><p>Write an <code>xtract</code> command that creates a table with one row per PubMed article. Each row should have two columns: volume number and issue number.</p><h4>Solution:</h4>
+<pre><code>efetch -db pubmed -id 24102982,21171099,17150207 -format xml | \
+xtract -pattern PubmedArticle -element Volume Issue
+</code></pre><p>This <code>xtract</code> command creates a table, with each PubMed record in our input populating its own row (<code>xtract -pattern PubmedArticle</code>), and with columns for volume number and issue number (<code>-element Volume Issue</code>).</p><h3><a href="#exercise-2" name="exercise-2">Exercise 2</a></h3><p>Write an xtract command that creates a table with one row per PubMed record. Each row should have three columns: PMID, journal ISSN, and citation status.</p><h4>Solution:</h4>
+<pre><code>efetch -db pubmed -id 24102982,21171099,17150207 -format xml | \
+xtract -pattern PubmedArticle -element MedlineCitation/PMID Journal/ISSN MedlineCitation@Status
+</code></pre><p>This <code>xtract</code> command begins the same as the solution for Exercise 1 (<code>xtract -pattern PubmedArticle</code>). When creating the first column, this command uses Parent/Child construction to specify that we want the <code>&lt;PMID&gt;</code> element that is the child of the <code>&lt;MedlineCitation&gt;</code> element, and not another <code>&lt;PMID&gt;</code> element elsewhere in the PubMed record (like as a child of a <code>&lt;CommentsCorrections&gt;</code> element; <code>-element MedlineCitation/PMID</code>).</p><p>Similarly, the second column is also created using Parent/Child construction. This is probably not strictly necessary, as the <code>&lt;ISSN&gt;</code> element only appears in one location in the PubMed XML structure. However, this demonstrates that there may be multiple valid EDirect solutions to a given question (<code>Journal/ISSN</code>).</p><p>Finally, the citation status, which is found in the &ldquo;Status&rdquo; attribute of the <code>&lt;MedlineCitation&gt;</code> element, is placed in the third column (<code>MedlineCitation@Status</code>).</p><h3><a href="#exercise-3" name="exercise-3">Exercise 3</a></h3><p>Find out which authors have been writing about traumatic brain injuries in athletes, with publications in 2016 and 2017. The output should be a list of author names, one per line, with each author&rsquo;s last name and initials.</p><h4>Solution:</h4>
+<pre><code>esearch -db pubmed -query &quot;traumatic brain injury athletes&quot; -datetype PDAT -mindate 2016 -maxdate 2017 | \
+efetch -format xml | \
+xtract -pattern Author -element LastName,Initials
+</code></pre><p>This series of commands searches PubMed for the string &ldquo;traumatic brain injury athletes&rdquo;, restricts results to those published in 2016 and 2017, retrieves the full XML records for each of the search results, and extracts the last name and initials of every author on every record.</p>
+<pre><code>esearch -db pubmed -query &quot;traumatic brain injury athletes&quot; -datetype PDAT -mindate 2016 -maxdate 2017 | \
+</code></pre><p>The first line of code uses <code>esearch</code> to search PubMed (<code>-db pubmed</code>) for our search query (<code>-query &quot;traumatic brain injury athletes&quot;</code>). The line also restricts the search results to articles that were published in 2016 or 2017 (<code>-datetype PDAT -mindate 2016 -maxdate 2017</code>).</p><p>The &ldquo;|&rdquo; character pipes the results of our <code>esearch</code> into our next command, and the &ldquo;\&rdquo; character at the end of the line allows us to continue our string of commands on the next line, for easier-to-read formatting.</p>
+<pre><code>efetch -format xml | \
+</code></pre><p>The second line takes the <code>esearch</code> results from our first line and uses <code>efetch</code> to retrieve the full records for each of our results in the XML format (<code>-format xml</code>), and pipes the XML output to the next line.</p>
+<pre><code>xtract -pattern Author -element LastName,Initials
+</code></pre><p>The third line uses the <code>xtract</code> command to retrieve only the elements we need from the XML output, and display those elements in a tabular format. The <code>-pattern</code> argument indicates that we should start a new row for every author (<code>-pattern Author</code>). Even if there are multiple authors on a single citation, each author will be on a new line, rather than putting all authors for the same citation on the same line. </p><p>The command then extracts each author&rsquo;s last name and initials (<code>-element LastName,Initials</code>).</p><h2><a href="#homework-solutions" name="homework-solutions">Homework solutions</a></h2><h3><a href="#question-1" name="question-1">Question 1</a></h3><p>Using the efetch command below to retrieve PubMed XML, write an xtract command to extract specific elements and arrange them into a table. The table should have one PubMed record per row, with columns for PMID, Journal Title Abbreviation, Publication Year, Volume, Issue and Page Numbers.</p>
+<pre><code>efetch -db pubmed -id 12312644,12262899,11630826,22074095,22077608,21279770,22084910 -format xml
+</code></pre><h4>Solution:</h4>
+<pre><code>efetch -db pubmed -id 12312644,12262899,11630826,22074095,22077608,21279770,22084910 -format xml | \
+xtract -pattern PubmedArticle -element MedlineCitation/PMID ISOAbbreviation PubDate/Year Volume Issue MedlinePgn
+</code></pre><p>This <code>xtract</code> command creates a table, with each PubMed record in our input populating its own row (<code>xtract -pattern PubmedArticle</code>). When creating the first column, this command uses Parent/Child construction to specify that we want the <code>&lt;PMID&gt;</code> element that is the child of the <code>&lt;MedlineCitation&gt;</code> element, and not another <code>&lt;PMID&gt;</code> element elsewhere in the PubMed record (like as a child of a <code>&lt;CommentsCorrections&gt;</code> element; <code>-element MedlineCitation/PMID</code>).</p><p>The second column is created without Parent/Child construction, as the <code>&lt;ISOAbbreviation&gt;</code> element is not repeated in a single PubMed XML record (<code>ISOAbbreviation</code>).</p><p>The third column also uses Parent/Child construction to retrieve the publication year (as opposed to other <code>&lt;Year&gt;</code> elements; <code>PubDate/Year</code>); the remaining elements only appear in one location in the PubMed XML structure, so Parent/Child construction is unnecessary (<code>Volume Issue MedlinePgn</code>).</p><h3><a href="#question-2" name="question-2">Question 2</a></h3><p>Create a table of the authors attached to PubMed record 28341696. The table should include each author&rsquo;s last name, initials, and affiliation information (if listed).</p><h4>Solution:</h4>
+<pre><code>efetch -db pubmed -id 28341696 -format xml | \
+xtract -pattern Author -element LastName Initials Affiliation
+</code></pre><p>This first line of this solution uses the <code>efetch</code> command to retrieve a record from PubMed (<code>-db pubmed</code>). We specify that we will retrieve the record for PMID 28341696 (<code>-id 28341696</code>) and that we want the results in XML (<code>-format xml</code>). </p>
+<pre><code>xtract -pattern Author -element LastName Initials Affiliation
+</code></pre><p>The second line uses the <code>xtract</code> command to retrieve only the elements we need from the XML output, and display those elements in a tabular format. The <code>-pattern</code> argument indicates that we should start a new row for every author (<code>-pattern Author</code>). Even if there are multiple authors on a single citation, each author will be on a new line, rather than putting all authors for the same citation on the same line. The command then extracts each author&rsquo;s last name, initials, and affiliation information (<code>-element LastName Initials Affiliation</code>).</p><h3><a href="#question-3" name="question-3">Question 3</a></h3><p>Write a series of commands to generate a table of PubMed records for review articles about the Paleolithic diet. The table should have one row per citation, and should include columns for the PMID, the citation status, and the article title.</p><h4>Solution:</h4>
+<pre><code>esearch -db pubmed -query &quot;review[pt] paleolithic diet&quot; | \
+efetch -format xml | \
+xtract -pattern PubmedArticle -element MedlineCitation/PMID MedlineCitation@Status ArticleTitle
+</code></pre><p>This series of commands searches PubMed for the string &ldquo;review[pt] paleolithic diet&rdquo;, retrieves the full XML records for each of the search results, and extracts the last name and initials of every author on every record.</p>
+<pre><code>esearch -db pubmed -query &quot;review[pt] paleolithic diet&quot; | \
+</code></pre><p>The first line of code uses <code>esearch</code> to search PubMed (<code>-db pubmed</code>) for our search query (<code>-query &quot;review[pt] paleolithic diet&quot;</code>). Note that the search query can include search field tags (<code>[pt]</code>) to help focus our search, just as we can in the web version of PubMed.</p><p>The &ldquo;|&rdquo; character pipes the results of our <code>esearch</code> into our next command, and the &ldquo;\&rdquo; character at the end of the line allows us to continue our string of commands on the next line, for easier-to-read formatting.</p>
+<pre><code>efetch -format xml | \
+</code></pre><p>The second line takes the <code>esearch</code> results from our first line and uses <code>efetch</code> to retrieve the full records for each of our results in the XML format (<code>-format xml</code>), and pipes the XML output to the next line.</p>
+<pre><code>xtract -pattern PubmedArticle -element MedlineCitation/PMID MedlineCitation@Status ArticleTitle
+</code></pre><p>The third line uses the <code>xtract</code> command to retrieve only the elements we need from the XML output, and display those elements in a tabular format. The <code>-pattern</code> argument indicates that we should start a new row for every PubMed record (<code>-pattern PubmedArticle</code>).</p><p>The command then extracts each record&rsquo;s PMID (using Parent/Child construction; <code>-element MedlineCitation/PMID</code>), citation status (using &ldquo;@&rdquo; to retrieve the attribute value for &ldquo;Status&rdquo;; <code>MedlineCitation@Status</code>), and article title (<code>ArticleTitle</code>).</p>	</div><!--end row-->
+	</div><!--end content pane-->
+	</div><!--end container--> 
+</div> <!-- End main-body -->
+
+		</div> <!--End container-fluid-->
+
+    <div id="footer">
+    <div class="container-fluid">
+    <div class = "row">
+        <div class = "col-md-12 col-sm-8 col-xs-6">
+	<p class = "white"><b>Content last updated:</b> 2017-06-05
+        <br/>
+        <a href="http://www.nlm.nih.gov/copyright.html">Copyright</a>, <a href="http://www.nlm.nih.gov/privacy.html">Privacy</a>, <a href="http://www.nlm.nih.gov/accessibility.html">Accessibility</a>
+        <br />
+        U.S. National Library of Medicine, 8600 Rockville Pike, Bethesda, MD 20894 <br />
+        <a href="http://www.nih.gov/">National Institutes of Health</a>, <a href="http://www.hhs.gov/">Health &amp; Human Services</a>
+        <br />
+        <a href="http://www.nih.gov/icd/od/foia/index.htm">Freedom of Information Act</a>, <a href="/contact/index.html">Contact Us</a>
+	<br/>
+	 Baked with <a href="http://jbake.org">JBake v2.4.0</a>
+       </div>
+      </div>
+      </div>
+    </div>
+			</div> <!--End wrapper-fluid-->
+  </body>
+</html>

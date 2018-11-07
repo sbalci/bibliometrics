@@ -1,0 +1,37 @@
+
+1. Science. 2014 Oct 31;346(6209):608-13. doi: 10.1126/science.1258040.
+
+Structural basis for microRNA targeting.
+
+Schirle NT(1), Sheu-Gruttadauria J(1), MacRae IJ(2).
+
+Author information: 
+(1)Department of Integrative Structural and Computational Biology, The Scripps
+Research Institute, La Jolla, CA 92037, USA.
+(2)Department of Integrative Structural and Computational Biology, The Scripps
+Research Institute, La Jolla, CA 92037, USA. macrae@scripps.edu.
+
+Comment in
+    Science. 2014 Oct 31;346(6209):542-3.
+
+MicroRNAs (miRNAs) control expression of thousands of genes in plants and
+animals. miRNAs function by guiding Argonaute proteins to complementary sites in 
+messenger RNAs (mRNAs) targeted for repression. We determined crystal structures 
+of human Argonaute-2 (Ago2) bound to a defined guide RNA with and without target 
+RNAs representing miRNA recognition sites. These structures suggest a stepwise
+mechanism, in which Ago2 primarily exposes guide nucleotides (nt) 2 to 5 for
+initial target pairing. Pairing to nt 2 to 5 promotes conformational changes that
+expose nt 2 to 8 and 13 to 16 for further target recognition. Interactions with
+the guide-target minor groove allow Ago2 to interrogate target RNAs in a
+sequence-independent manner, whereas an adenosine binding-pocket opposite guide
+nt 1 further facilitates target recognition. Spurious slicing of miRNA targets is
+avoided through an inhibitory coordination of one catalytic magnesium ion. These 
+results explain the conserved nucleotide-pairing patterns in animal miRNA target 
+sites first observed over two decades ago.
+
+Copyright © 2014, American Association for the Advancement of Science.
+
+DOI: 10.1126/science.1258040 
+PMCID: PMC4313529
+PMID: 25359968  [Indexed for MEDLINE]
+

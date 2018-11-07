@@ -1,0 +1,31 @@
+500 Can't connect to eutils.ncbi.nlm.nih.gov:443
+No do_post output returned from 'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=diabetes%20AND%20spanish%5Blang%5D&retmax=0&usehistory=y&edirect_os=darwin&edirect=7.90&tool=edirect&email=serdarbalciold@cf1-2.local'
+Result of do_post http request is
+$VAR1 = bless( {
+                 '_headers' => bless( {
+                                        'content-type' => 'text/plain',
+                                        'client-warning' => 'Internal response',
+                                        '::std_case' => {
+                                                          'client-date' => 'Client-Date',
+                                                          'client-warning' => 'Client-Warning'
+                                                        },
+                                        'client-date' => 'Wed, 07 Mar 2018 16:52:57 GMT'
+                                      }, 'HTTP::Headers' ),
+                 '_request' => bless( {
+                                        '_uri' => bless( do{\(my $o = 'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi')}, 'URI::https' ),
+                                        '_headers' => bless( {
+                                                               'content-type' => 'application/x-www-form-urlencoded',
+                                                               'user-agent' => 'libwww-perl/6.05'
+                                                             }, 'HTTP::Headers' ),
+                                        '_content' => 'db=pubmed&term=diabetes%20AND%20spanish%5Blang%5D&retmax=0&usehistory=y&edirect_os=darwin&edirect=7.90&tool=edirect&email=serdarbalciold@cf1-2.local',
+                                        '_method' => 'POST'
+                                      }, 'HTTP::Request' ),
+                 '_content' => 'Can\'t connect to eutils.ncbi.nlm.nih.gov:443
+
+LWP::Protocol::https::Socket: getaddrinfo: nodename nor servname provided, or not known at /System/Library/Perl/Extras/5.18/LWP/Protocol/http.pm line 51.
+',
+                 '_msg' => 'Can\'t connect to eutils.ncbi.nlm.nih.gov:443',
+                 '_rc' => 500
+               }, 'HTTP::Response' );
+
+WebEnv value not found in search output - WebEnv1 

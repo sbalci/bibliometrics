@@ -1,0 +1,280 @@
+<!DOCTYPE html>  
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <title>&quot;EDirect for PubMed: Part 5: Developing and Building Scripts&quot; Sample Code - The Insider's Guide to Accessing NLM Data - National Library of Medicine</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="DC.Title" content = "&quot;EDirect for PubMed: Part 5: Developing and Building Scripts&quot; Sample Code"/>
+    <meta name="DC.Publisher" content="U.S. National Library of Medicine" />
+    <meta name="DC.Subject.Keyword" content="E-utilities API, PubMed API, Entrez Programming Utilities, NLM Data, PubMed Data">
+    <meta name="DC.Rights" content="Public Domain" />
+    <meta name="DC.Language" content="eng" />
+    <meta name="generator" content="JBake">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge;IE=9;IE=8;"/>
+
+    <!-- Le styles -->
+    <link href="../../css/nlm-dropdown.css" rel="stylesheet" type="text/css">
+    <link href="../../css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="../../css/asciidoctor.css" rel="stylesheet" type="text/css">
+    <link href="../../css/prettify.css" rel="stylesheet" type="text/css">
+    <link href="../../css/uts-docs.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/styles/default.min.css" type="text/css">
+    <link rel="stylesheet" href="https://www.nlm.nih.gov/core/nlm-autocomplete/1.0/nlm-autocomplete.css" type="text/css">
+    <link rel="stylesheet" href="https://www.nlm.nih.gov/core/jquery-ui/1.8/jquery-ui.css" type="text/css">
+    <link href="//cdn.datatables.net/1.10.3/css/jquery.dataTables.css" rel="stylesheet" />
+    <link href="//cdn.datatables.net/responsive/1.0.2/css/dataTables.responsive.css" rel="stylesheet" />
+
+
+    <script src="//code.jquery.com/jquery-1.11.3.min.js" type="text/javascript"></script>
+    <script src="//code.jquery.com/ui/1.11.3/jquery-ui.min.js" type="text/javascript"></script>
+    <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
+    <script src="../../js/master.js" type="text/javascript"></script>
+    <script src="../../js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="../../js/prettify.js" type="text/javascript"></script>
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/highlight.min.js" type="text/javascript"></script>-->
+    <script type="text/javascript" src="//cdn.datatables.net/1.10.3/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="//cdn.datatables.net/responsive/1.0.2/js/dataTables.responsive.min.js"></script>
+
+
+    
+    
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+    <script src="../../js/html5shiv.min.js" type="text/javascript"></script>
+    <![endif]-->
+    <link rel="shortcut icon" href="../../favicon.ico">
+    
+    <script type = "text/javascript" language = "javascript">
+      var $ = jQuery.noConflict();
+      
+      $(document).ready(function() {
+        
+       $("th").attr("scope","col");
+       
+        $("input#search.search-input").click(function(){
+          $(this).attr("value","");
+          
+        });
+        
+        $("input#search.search-input").blur(function(){
+          $(this).attr("value","Search");
+          
+        });
+       //Make external URLs open in new tab 
+	  $('.content-pane a[href^="http://"]').attr("target","_blank");
+      $('.content-pane a[href^="https://"]').attr("target","_blank");
+	  
+	 
+	 // Opening accordion based on URL
+        var url = document.location.toString();
+
+        if ( url.match('#') ) {
+            $('#'+url.split('#')[1]+'>.panel-collapse').addClass('in');
+            //append campaign parameters to Welcome Registration URL.
+            if ( url.match('\\?') && url.match('#welcome') ) {
+                var source = url.slice(url.indexOf("utm_source")+11,url.indexOf("&",url.indexOf("utm_source")+11));
+                $('#'+url.split('#')[1]+' .btn-reg').attr('href',function(){
+                    return this.href + '&SourceId=' + source.replace(/-/g, '');
+                });
+            }
+        }
+
+     //Adjust relative references
+    if ( url.match('dataguide_docs/') ){
+        $('a[href^="/"]').attr('href',function(){
+            return 'https://www.nlm.nih.gov/dataguide_docs' + this.href.slice(23);
+            });
+        $('img[src^="/"]').attr('src',function(){
+            return 'https://www.nlm.nih.gov/dataguide_docs' + this.src.slice(23);
+            });
+        $('div.responsiveVidBox>script').text(function () {
+            return $(this).text().replace(/(\/.*\.srt)/,"/dataguide_docs$1");
+            });
+
+    }
+
+
+        });
+      
+
+    </script>
+    <script type="text/javascript" src="https://assets.nlm.nih.gov/jwplayer/8/jwplayer.js"></script>
+   <script type="text/javascript">jwplayer.key="eNFaXCjyURVoCCGiHp7HTQ3hDhE/AfL0g8VE1fRbL84=";</script>
+	<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-84367246-1', 'auto');
+  ga('send', 'pageview');
+  </script>
+  <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-MT6MLL');</script>
+<!-- End Google Tag Manager -->
+  
+
+
+  </head>
+  <!--<body onload="prettyPrint();hljs.initHighlighting();">-->
+  
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MT6MLL"
+height="0" width="0" style="display:none;visibility:hidden" title="googletagmanager"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+  
+  <div id="wrapper-fluid">
+     <div class="container-fluid">
+
+      <!--header to hold banner + top navigation area -->
+      <!-- responsive design header using bootstrap css framework -->
+<div class = "row header">
+  <div class="container-fluid">
+     <div class = "row">
+        <div class = "col-md-6 col-sm-6 col-xs-12">
+            <a href = "https://www.nlm.nih.gov"><img class= "nlm-logo img-responsive" alt="National Library of Medicine" style="margin-right:1em;" src="../../nlm-logo.png"></a>
+        </div>
+        <div class = "col-md-6 col-sm-6 col-xs-12" id = "search-form">
+         <form method="get" action="//vsearch.nlm.nih.gov/vivisimo/cgi-bin/query-meta" target="_self" name="searchForm" id="searchForm">
+         <label for="search" class="hidden">Search</label>
+         <input type="text" name="query" value="Search" class="search-input" id="search"/>
+         <input type="hidden" name="v:project" value="nlm-main-website" />
+         </form>
+       </div>
+       <div class = "col-md-6 col-sm-8 col-xs-12">
+           
+       </div>
+    </div>
+  </div>
+</div>
+<div class = "row nlm-dropdown-menu">
+  <div class = "container-fluid">
+      <div id = "nav">
+         <ul class = "topnav">
+         <li></li>
+         </ul>
+      </div>
+  </div>
+</div>
+
+		<div id="main-body">
+
+<div class = "row uts-nav">
+   <div class="col-md-8 col-sm-8 col-xs-12">
+	<a href="/">
+	<img class="img-responsive pull-left" style="padding-top:.2em; margin-right:1em;" alt="UTS Logo" src="/images/bulbktrans.png">
+    <p class = "orange uts-title"><a href= "/" >The Insider's Guide to Accessing NLM Data</a></p>
+   </div>
+   <div class="col-md-4 col-sm-4 col-xs-12">
+    <p class = "umls-menu pull-right">
+ 
+     <a class="btn btn-default" href = "/contact/index.html">Contact Us</a>
+    </p>
+    </div>
+</div>
+
+
+<!--Navbar Menu-->
+<div class = "row">
+  <div class = "container-fluid navbar navbar-default" role = "navigation">
+   <div class="btn-group navbar-btn visible-*" role="group">
+   
+   <!--Overview Category Dropdown-->
+   <div class="btn-group" role="group">
+        <button type="button" class="btn btn-md dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Insider's Guide Overview<span class = "caret"></span></button>    
+         <ul class = "dropdown-menu" role = "menu">
+                                                       <li><a href = "../../eutilities/what_is_eutilities.html">What is E-utilities?</a></li>                                                                                                                                                                                                                                       <li><a href = "../../eutilities/when_to_use_eutilities.html">When should you use E-utilities?</a></li>                                                                                                   <li><a href = "../../eutilities/how_eutilities_works.html">How does E-utilities work?</a></li>                                                                                                                                                                                                                          </ul>
+      </div><!--//btn-group for Overview category-->
+                                                                                                                                                                        <a class = "btn btn-md" role = "button" href = "../../classes.html">Classes</a>                                                      <div class="btn-group" role="group">
+        <button type="button" class="btn btn-md dropdown-toggle" data-toggle="dropdown" aria-expanded="false">E-utilities Documentation<span class = "caret"></span></button>    
+         <ul class = "dropdown-menu" role = "menu">
+                                                                                                              <li><a href = "../../eutilities/utilities.html">The 9 E-utilities and Associated Parameters</a></li>                                                                                                                                                                                                                            <li><a href = "../../eutilities/history.html">E-utilities and the History server</a></li>                                                                                                                                                                                                                                                                                 </ul>
+      </div><!--//btn-group-->
+      <div class="btn-group" role="group">
+        <button type="button" class="btn btn-md dropdown-toggle" data-toggle="dropdown" aria-expanded="false">EDirect<span class = "caret"></span></button>    
+         <ul class = "dropdown-menu" role = "menu">
+                      <li><a href = "../../edirect/overview.html">EDirect Overview</a></li>                                                                                                                                                                                                                                                                                   <li><a href = "../../edirect/documentation.html">EDirect Documentation</a></li>                                                                                                   <li><a href = "../../edirect/install.html">Installing EDirect</a></li>                                                                                                                                                                                                               </ul>
+      </div><!--//btn-group-->
+   </div>
+ </div>
+</div>
+
+
+
+
+
+
+
+	<div class = "row">
+	<div class = "container-fluid breadcrumbs-container">
+	</div>
+	</div>
+	<div class = "row">
+	<div class = "container-fluid">
+	<div class = "content-pane">
+	
+	
+	
+	<h1>&quot;EDirect for PubMed: Part 5: Developing and Building Scripts&quot; Sample Code</h1>
+	
+<p>Below you will find sample code for the examples, in-class exercises and homework presented in the fifth session of the <a href="../../classes.html#edirect-for-pubmed">&ldquo;EDirect for PubMed&rdquo;</a> Insider&rsquo;s Guide class. These examples are written for use with EDirect in a Unix environment. If you need help installing and setting up EDirect, please see our <a href="../../edirect/install.html">&ldquo;Installing EDirect&rdquo; page</a>. </p><p>For more examples, please see the sample code from the other parts of &ldquo;EDirect for PubMed&rdquo;: </p>
+<ul>
+  <li><a href="/classes/edirect-for-pubmed/samplecode1.html">Part 1: Getting PubMed Data</a></li>
+  <li><a href="/classes/edirect-for-pubmed/samplecode2.html">Part 2: Extracting Data from XML</a></li>
+  <li><a href="/classes/edirect-for-pubmed/samplecode3.html">Part 3: Formatting Results and Unix Tools</a></li>
+  <li><a href="/classes/edirect-for-pubmed/samplecode4.html">Part 4: xtract Conditional Arguments</a></li>
+</ul><p>The code below is lightly annotated to explain how it works, but if you are looking for more information, we suggest you review our <a href="/edirect/documentation.html">EDirect documentation</a>.</p><p>There are many different ways to answer the questions discussed in class. The sample code below provides some options, but by no means the only options. Feel free to modify, adapt, edit, re-use or completely discard any of the suggestions below when trying to find a solution that works best for you.</p><h2><a href="#case-study" name="case-study">Case study</a></h2><p>Retrieve a list of articles published in between March 1, 2017 and February 28, 2018 about breast cancer that include clinical trial information from ClinicalTrials.gov. Include the PMID, journal title abbreviation, first author&rsquo;s last name and initials, and ClinicalTrials.gov NCT number(s) for each record. Save the entire output to a text file.</p><h3><a href="#solution" name="solution">Solution</a></h3>
+<pre><code>esearch -db pubmed -query &quot;breast cancer AND clinicaltrials.gov[si]&quot; \
+-datetype PDAT -mindate 2017/03/01 -maxdate 2018/02/28 | \
+efetch -format xml | \
+xtract -pattern PubmedArticle -element MedlineCitation/PMID ISOAbbreviation \
+-block Author -position first -sep &quot; &quot; -element LastName,Initials \
+-block DataBank -if DataBankName -equals ClinicalTrials.gov \
+-sep &quot;|&quot; -element AccessionNumber &gt; clinicaltrials.txt
+</code></pre><h3><a href="#discussion" name="discussion">Discussion</a></h3>
+<pre><code>esearch -db pubmed -query &quot;breast cancer AND clinicaltrials.gov[si]&quot; \
+</code></pre><p>The first line of this command uses <code>esearch</code> to search PubMed (<code>-db pubmed</code>) for our search query (<code>-query &quot;breast cancer AND clinicaltrials.gov[si]&quot;</code>). The &ldquo;clinicaltrials.gov[si]&rdquo; portion of the query ensures that only records with ClinicalTrials.gov NCT numbers are included in our results. The &ldquo;\&rdquo; character at the end of the line allows us to continue our string of commands on the next line, for easier-to-read formatting.</p>
+<pre><code>-datetype PDAT -mindate 2017/03/01 -maxdate 2018/02/28 | \
+</code></pre><p>The second line restricts the search results to articles that were published between March 1, 2017 and February 28, 2018 (<code>-datetype PDAT -mindate 2017/03/01 -maxdate 2018/02/28</code>). The &ldquo;|&rdquo; character pipes the results of our <code>esearch</code> into our next command.</p>
+<pre><code>efetch -format xml | \
+</code></pre><p>The third line takes the <code>esearch</code> results from our first two lines and uses <code>efetch</code> to retrieve the full records for each of our results in the XML format (<code>-format xml</code>), and pipes the XML output to the next line.</p>
+<pre><code>xtract -pattern PubmedArticle -element MedlineCitation/PMID ISOAbbreviation \
+</code></pre><p>Beginning on the fourth line, the <code>xtract</code> command creates a table with each PubMed record in our input populating its own row (<code>xtract -pattern PubmedArticle</code>), and with four columns. The first column of each row will contain the record&rsquo;s PMID, using Parent/Child construction to specify that we want the <code>&lt;PMID&gt;</code> element that is the child of the <code>&lt;MedlineCitation&gt;</code> element, and not another <code>&lt;PMID&gt;</code> element elsewhere in the PubMed record (e.g. as a child of a <code>&lt;CommentsCorrections&gt;</code> element), while the second column will contain the article&rsquo;s journal title abbreviation (<code>-element MedlineCitation/PMID ISOAbbreviation</code>).</p>
+<pre><code>-block Author -position 1 -sep &quot; &quot; -element LastName,Initials \
+</code></pre><p>In the fifth line, <code>xtract</code> looks through each PubMed record for an <code>&lt;Author&gt;</code> element (<code>-block Author</code>). When it finds the first <code>&lt;Author&gt;</code> (<code>-position 1</code>), it populates the third column in the row with the first author&rsquo;s last name and initials, separated by a space (<code>-sep &quot; &quot; -element LastName,Initials</code>).</p>
+<pre><code>-block DataBank -if DataBankName -equals ClinicalTrials.gov \
+</code></pre><p>In the sixth line, <code>xtract</code> looks through each PubMed record for <code>&lt;DataBank&gt;</code> elements which have a child <code>&lt;DataBankName&gt;</code> element that equals &ldquo;ClinicalTrials.gov&rdquo; (<code>-block DataBank -if DataBankName -equals ClinicalTrials.gov</code>). This will ensure that only ClinicalTrials.gov data is included, while data from non-ClinicalTrials.gov <code>&lt;DataBank&gt;</code> elements is excluded.</p>
+<pre><code>-sep &quot;|&quot; -element AccessionNumber &gt; clinicaltrials.txt
+</code></pre><p>In the seventh line, <code>xtract</code> specifies that the fourth column should be populated with the <code>&lt;AccessionNumber&gt;</code> (i.e. NCT number) from the included <code>&lt;DataBank&gt;</code> elements (<code>-element AccessionNumber</code>). If a record has multiple NCT numbers attached, they will be separated by pipes (<code>-sep &quot;|&quot;</code>).</p><p>Finally, the results of the script are saved to a file (<code>&gt; clinicaltrials.txt</code>).</p>	</div><!--end row-->
+	</div><!--end content pane-->
+	</div><!--end container--> 
+</div> <!-- End main-body -->
+
+		</div> <!--End container-fluid-->
+
+    <div id="footer">
+    <div class="container-fluid">
+    <div class = "row">
+        <div class = "col-md-12 col-sm-8 col-xs-6">
+	<p class = "white"><b>Content last updated:</b> 2017-06-08
+        <br/>
+        <a href="http://www.nlm.nih.gov/copyright.html">Copyright</a>, <a href="http://www.nlm.nih.gov/privacy.html">Privacy</a>, <a href="http://www.nlm.nih.gov/accessibility.html">Accessibility</a>
+        <br />
+        U.S. National Library of Medicine, 8600 Rockville Pike, Bethesda, MD 20894 <br />
+        <a href="http://www.nih.gov/">National Institutes of Health</a>, <a href="http://www.hhs.gov/">Health &amp; Human Services</a>
+        <br />
+        <a href="http://www.nih.gov/icd/od/foia/index.htm">Freedom of Information Act</a>, <a href="/contact/index.html">Contact Us</a>
+	<br/>
+	 Baked with <a href="http://jbake.org">JBake v2.4.0</a>
+       </div>
+      </div>
+      </div>
+    </div>
+			</div> <!--End wrapper-fluid-->
+  </body>
+</html>

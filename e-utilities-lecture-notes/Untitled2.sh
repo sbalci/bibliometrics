@@ -1,0 +1,1 @@
+esearch -db pubmed -query "seasonal affective disorder"

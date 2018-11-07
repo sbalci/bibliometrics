@@ -1,0 +1,1534 @@
+<?xml version="1.0" ?>
+<!DOCTYPE PubmedArticleSet PUBLIC "-//NLM//DTD PubMedArticle, 1st January 2018//EN" "https://dtd.nlm.nih.gov/ncbi/pubmed/out/pubmed_180101.dtd">
+<PubmedArticleSet>
+<PubmedArticle>
+    <MedlineCitation Status="MEDLINE" Owner="NLM">
+        <PMID Version="1">24102982</PMID>
+        <DateCompleted>
+            <Year>2014</Year>
+            <Month>01</Month>
+            <Day>22</Day>
+        </DateCompleted>
+        <DateRevised>
+            <Year>2017</Year>
+            <Month>02</Month>
+            <Day>20</Day>
+        </DateRevised>
+        <Article PubModel="Print-Electronic">
+            <Journal>
+                <ISSN IssnType="Electronic">1742-4658</ISSN>
+                <JournalIssue CitedMedium="Internet">
+                    <Volume>280</Volume>
+                    <Issue>23</Issue>
+                    <PubDate>
+                        <Year>2013</Year>
+                        <Month>Dec</Month>
+                    </PubDate>
+                </JournalIssue>
+                <Title>The FEBS journal</Title>
+                <ISOAbbreviation>FEBS J.</ISOAbbreviation>
+            </Journal>
+            <ArticleTitle>G-protein coupled receptor 56 promotes myoblast fusion through serum response factor- and nuclear factor of activated T-cell-mediated signalling but is not essential for muscle development in vivo.</ArticleTitle>
+            <Pagination>
+                <MedlinePgn>6097-113</MedlinePgn>
+            </Pagination>
+            <ELocationID EIdType="doi" ValidYN="Y">10.1111/febs.12529</ELocationID>
+            <Abstract>
+                <AbstractText>Mammalian muscle cell differentiation is a complex process of multiple steps for which many of the factors involved have not yet been defined. In a screen to identify the regulators of myogenic cell fusion, we found that the gene for G-protein coupled receptor 56 (GPR56) was transiently up-regulated during the early fusion of human myoblasts. Human mutations in the gene for GPR56 cause the disease bilateral frontoparietal polymicrogyria; however, the consequences of receptor dysfunction on muscle development have not been explored. Using knockout mice, we defined the role of GPR56 in skeletal muscle. GPR56(-/-) myoblasts have decreased fusion and smaller myotube sizes in culture. In addition, a loss of GPR56 expression in muscle cells results in decreases or delays in the expression of myogenic differentiation 1, myogenin and nuclear factor of activated T-cell (NFAT)c2. Our data suggest that these abnormalities result from decreased GPR56-mediated serum response element and NFAT signalling. Despite these changes, no overt differences in phenotype were identified in the muscle of GPR56 knockout mice, which presented only a mild but statistically significant elevation of serum creatine kinase compared to wild-type. In agreement with these findings, clinical data from 13 bilateral frontoparietal polymicrogyria patients revealed mild serum creatine kinase increase in only two patients. In summary, targeted disruption of GPR56 in mice results in myoblast abnormalities. The absence of a severe muscle phenotype in GPR56 knockout mice and human patients suggests that other factors may compensate for the lack of this G-protein coupled receptor during muscle development and that the motor delay observed in these patients is likely not a result of primary muscle abnormalities.</AbstractText>
+                <CopyrightInformation>© 2013 FEBS.</CopyrightInformation>
+            </Abstract>
+            <AuthorList CompleteYN="Y">
+                <Author ValidYN="Y">
+                    <LastName>Wu</LastName>
+                    <ForeName>Melissa P</ForeName>
+                    <Initials>MP</Initials>
+                    <AffiliationInfo>
+                        <Affiliation>Department of Biological and Biomedical Sciences, Harvard Medical School, Boston, MA, USA; Division of Genetics, Boston Children's Hospital, MA, USA.</Affiliation>
+                    </AffiliationInfo>
+                </Author>
+                <Author ValidYN="Y">
+                    <LastName>Doyle</LastName>
+                    <ForeName>Jamie R</ForeName>
+                    <Initials>JR</Initials>
+                </Author>
+                <Author ValidYN="Y">
+                    <LastName>Barry</LastName>
+                    <ForeName>Brenda</ForeName>
+                    <Initials>B</Initials>
+                </Author>
+                <Author ValidYN="Y">
+                    <LastName>Beauvais</LastName>
+                    <ForeName>Ariane</ForeName>
+                    <Initials>A</Initials>
+                </Author>
+                <Author ValidYN="Y">
+                    <LastName>Rozkalne</LastName>
+                    <ForeName>Anete</ForeName>
+                    <Initials>A</Initials>
+                </Author>
+                <Author ValidYN="Y">
+                    <LastName>Piao</LastName>
+                    <ForeName>Xianhua</ForeName>
+                    <Initials>X</Initials>
+                </Author>
+                <Author ValidYN="Y">
+                    <LastName>Lawlor</LastName>
+                    <ForeName>Michael W</ForeName>
+                    <Initials>MW</Initials>
+                </Author>
+                <Author ValidYN="Y">
+                    <LastName>Kopin</LastName>
+                    <ForeName>Alan S</ForeName>
+                    <Initials>AS</Initials>
+                </Author>
+                <Author ValidYN="Y">
+                    <LastName>Walsh</LastName>
+                    <ForeName>Christopher A</ForeName>
+                    <Initials>CA</Initials>
+                </Author>
+                <Author ValidYN="Y">
+                    <LastName>Gussoni</LastName>
+                    <ForeName>Emanuela</ForeName>
+                    <Initials>E</Initials>
+                </Author>
+            </AuthorList>
+            <Language>eng</Language>
+            <GrantList CompleteYN="Y">
+                <Grant>
+                    <GrantID>2R01NS047727</GrantID>
+                    <Acronym>NS</Acronym>
+                    <Agency>NINDS NIH HHS</Agency>
+                    <Country>United States</Country>
+                </Grant>
+                <Grant>
+                    <GrantID>R01 NS047727</GrantID>
+                    <Acronym>NS</Acronym>
+                    <Agency>NINDS NIH HHS</Agency>
+                    <Country>United States</Country>
+                </Grant>
+                <Grant>
+                    <GrantID>T32 GM007226</GrantID>
+                    <Acronym>GM</Acronym>
+                    <Agency>NIGMS NIH HHS</Agency>
+                    <Country>United States</Country>
+                </Grant>
+                <Grant>
+                    <GrantID>L40 AR057721</GrantID>
+                    <Acronym>AR</Acronym>
+                    <Agency>NIAMS NIH HHS</Agency>
+                    <Country>United States</Country>
+                </Grant>
+                <Grant>
+                    <GrantID>P30-HD1865</GrantID>
+                    <Acronym>HD</Acronym>
+                    <Agency>NICHD NIH HHS</Agency>
+                    <Country>United States</Country>
+                </Grant>
+                <Grant>
+                    <GrantID>1R01AR060317-01</GrantID>
+                    <Acronym>AR</Acronym>
+                    <Agency>NIAMS NIH HHS</Agency>
+                    <Country>United States</Country>
+                </Grant>
+                <Grant>
+                    <GrantID>P30 HD018655</GrantID>
+                    <Acronym>HD</Acronym>
+                    <Agency>NICHD NIH HHS</Agency>
+                    <Country>United States</Country>
+                </Grant>
+                <Grant>
+                    <GrantID>R01 AR060317</GrantID>
+                    <Acronym>AR</Acronym>
+                    <Agency>NIAMS NIH HHS</Agency>
+                    <Country>United States</Country>
+                </Grant>
+                <Grant>
+                    <GrantID>K08 AR059750</GrantID>
+                    <Acronym>AR</Acronym>
+                    <Agency>NIAMS NIH HHS</Agency>
+                    <Country>United States</Country>
+                </Grant>
+            </GrantList>
+            <PublicationTypeList>
+                <PublicationType UI="D016428">Journal Article</PublicationType>
+                <PublicationType UI="D052061">Research Support, N.I.H., Extramural</PublicationType>
+            </PublicationTypeList>
+            <ArticleDate DateType="Electronic">
+                <Year>2013</Year>
+                <Month>10</Month>
+                <Day>08</Day>
+            </ArticleDate>
+        </Article>
+        <MedlineJournalInfo>
+            <Country>England</Country>
+            <MedlineTA>FEBS J</MedlineTA>
+            <NlmUniqueID>101229646</NlmUniqueID>
+            <ISSNLinking>1742-464X</ISSNLinking>
+        </MedlineJournalInfo>
+        <ChemicalList>
+            <Chemical>
+                <RegistryNumber>0</RegistryNumber>
+                <NameOfSubstance UI="C524781">GPR56 protein, mouse</NameOfSubstance>
+            </Chemical>
+            <Chemical>
+                <RegistryNumber>0</RegistryNumber>
+                <NameOfSubstance UI="D017570">MyoD Protein</NameOfSubstance>
+            </Chemical>
+            <Chemical>
+                <RegistryNumber>0</RegistryNumber>
+                <NameOfSubstance UI="C057363">MyoD1 myogenic differentiation protein</NameOfSubstance>
+            </Chemical>
+            <Chemical>
+                <RegistryNumber>0</RegistryNumber>
+                <NameOfSubstance UI="D018008">Myogenin</NameOfSubstance>
+            </Chemical>
+            <Chemical>
+                <RegistryNumber>0</RegistryNumber>
+                <NameOfSubstance UI="D050778">NFATC Transcription Factors</NameOfSubstance>
+            </Chemical>
+            <Chemical>
+                <RegistryNumber>0</RegistryNumber>
+                <NameOfSubstance UI="D012333">RNA, Messenger</NameOfSubstance>
+            </Chemical>
+            <Chemical>
+                <RegistryNumber>0</RegistryNumber>
+                <NameOfSubstance UI="D034741">RNA, Small Interfering</NameOfSubstance>
+            </Chemical>
+            <Chemical>
+                <RegistryNumber>0</RegistryNumber>
+                <NameOfSubstance UI="D043562">Receptors, G-Protein-Coupled</NameOfSubstance>
+            </Chemical>
+            <Chemical>
+                <RegistryNumber>EC 1.13.12.-</RegistryNumber>
+                <NameOfSubstance UI="D008156">Luciferases</NameOfSubstance>
+            </Chemical>
+        </ChemicalList>
+        <SupplMeshList>
+            <SupplMeshName Type="Disease" UI="C564652">Polymicrogyria, Bilateral Frontoparietal</SupplMeshName>
+        </SupplMeshList>
+        <CitationSubset>IM</CitationSubset>
+        <CommentsCorrectionsList>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>J Biol Chem. 2001 Feb 9;276(6):4150-7</RefSource>
+                <PMID Version="1">11050079</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Adv Exp Med Biol. 2010;706:49-58</RefSource>
+                <PMID Version="1">21618825</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Neuropediatrics. 1990 Nov;21(4):218-21</RefSource>
+                <PMID Version="1">2290486</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Brain Pathol. 2009 Oct;19(4):596-611</RefSource>
+                <PMID Version="1">18691338</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>FEBS Lett. 2005 Apr 25;579(11):2359-63</RefSource>
+                <PMID Version="1">15848172</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Clin Chim Acta. 1965 May;11:404-7</RefSource>
+                <PMID Version="1">14347986</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Dev Biol. 2001 Apr 1;232(1):115-26</RefSource>
+                <PMID Version="1">11254352</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Exp Cell Res. 2010 Nov 1;316(18):3042-9</RefSource>
+                <PMID Version="1">20471976</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Mol Biol Cell. 1998 Jul;9(7):1891-902</RefSource>
+                <PMID Version="1">9658178</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Neuropediatrics. 1996 Apr;27(2):70-5</RefSource>
+                <PMID Version="1">8737821</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Am J Pathol. 2012 Sep;181(3):961-8</RefSource>
+                <PMID Version="1">22841819</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Cell. 1992 Oct 30;71(3):383-90</RefSource>
+                <PMID Version="1">1330322</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>J Cell Sci. 2006 Aug 1;119(Pt 15):3117-27</RefSource>
+                <PMID Version="1">16835268</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>J Neurol Neurosurg Psychiatry. 1964 Jun;27:181-5</RefSource>
+                <PMID Version="1">14175282</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>J Appl Physiol (1985). 1994 Aug;77(2):493-501</RefSource>
+                <PMID Version="1">8002492</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Neuron. 1997 Jun;18(6):925-37</RefSource>
+                <PMID Version="1">9208860</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>J Comp Neurol. 1992 Sep 8;323(2):238-51</RefSource>
+                <PMID Version="1">1401258</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Methods. 2001 Dec;25(4):402-8</RefSource>
+                <PMID Version="1">11846609</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>J Biol Chem. 2011 Aug 19;286(33):28914-21</RefSource>
+                <PMID Version="1">21708946</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Mol Cell Biol. 2000 Sep;20(17):6600-11</RefSource>
+                <PMID Version="1">10938134</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Clin Genet. 1997 May;51(5):326-30</RefSource>
+                <PMID Version="1">9212181</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>EMBO J. 2012 Mar 21;31(6):1364-78</RefSource>
+                <PMID Version="1">22333914</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>J Neurosci. 2009 Jun 10;29(23):7439-49</RefSource>
+                <PMID Version="1">19515912</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Nat Protoc. 2006;1(3):1559-82</RefSource>
+                <PMID Version="1">17406449</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Genes Dev. 1996 May 15;10(10):1173-83</RefSource>
+                <PMID Version="1">8675005</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>J Cell Biol. 1982 May;93(2):442-51</RefSource>
+                <PMID Version="1">7047538</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>J Biol Chem. 2003 Apr 11;278(15):12601-4</RefSource>
+                <PMID Version="1">12556454</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Proc Natl Acad Sci U S A. 2006 Mar 21;103(12):4516-21</RefSource>
+                <PMID Version="1">16537394</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Epilepsia. 2009 Jun;50(6):1344-53</RefSource>
+                <PMID Version="1">19016831</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Hum Mol Genet. 2010 Oct 15;19(20):3995-4006</RefSource>
+                <PMID Version="1">20675713</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Gene Regul Syst Bio. 2011;5:41-59</RefSource>
+                <PMID Version="1">21792293</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>J Cell Biol. 1992 Sep;118(6):1489-500</RefSource>
+                <PMID Version="1">1522119</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Development. 2012 Feb;139(4):641-56</RefSource>
+                <PMID Version="1">22274696</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Int J Dev Biol. 1998 Mar;42(2):117-25</RefSource>
+                <PMID Version="1">9551857</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Hum Mol Genet. 2007 Aug 15;16(16):1972-85</RefSource>
+                <PMID Version="1">17576745</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Mol Cancer Ther. 2007 Jun;6(6):1840-50</RefSource>
+                <PMID Version="1">17575113</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Proc Natl Acad Sci U S A. 2011 Aug 2;108(31):12925-30</RefSource>
+                <PMID Version="1">21768377</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Cell. 1993 Dec 31;75(7):1351-9</RefSource>
+                <PMID Version="1">8269513</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Mol Biol Cell. 1996 May;7(5):719-29</RefSource>
+                <PMID Version="1">8744946</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>FASEB J. 2005 Feb;19(2):237-9</RefSource>
+                <PMID Version="1">15545301</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Neurology. 2004 Mar 23;62(6):1009-11</RefSource>
+                <PMID Version="1">15037715</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Science. 2004 Mar 26;303(5666):2033-6</RefSource>
+                <PMID Version="1">15044805</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>J Cell Biol. 2008 Dec 15;183(6):1033-48</RefSource>
+                <PMID Version="1">19075112</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Brain. 2010 Nov;133(11):3194-209</RefSource>
+                <PMID Version="1">20929962</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Muscle Nerve. 2011 Jan;43(1):88-93</RefSource>
+                <PMID Version="1">21171099</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>J Biol Chem. 2008 May 23;283(21):14469-78</RefSource>
+                <PMID Version="1">18378689</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Clin Genet. 1996 Dec;50(6):498-501</RefSource>
+                <PMID Version="1">9147882</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>J Anat. 2003 Jan;202(1):59-68</RefSource>
+                <PMID Version="1">12587921</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Curr Opin Cell Biol. 1994 Dec;6(6):788-94</RefSource>
+                <PMID Version="1">7880524</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>EMBO J. 1999 Feb 15;18(4):863-70</RefSource>
+                <PMID Version="1">10022829</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Proc Natl Acad Sci U S A. 2004 Jul 20;101(29):10590-5</RefSource>
+                <PMID Version="1">15247427</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Am J Physiol Cell Physiol. 2007 Jan;292(1):C70-81</RefSource>
+                <PMID Version="1">16928770</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Oncogene. 2005 Mar 3;24(10):1673-82</RefSource>
+                <PMID Version="1">15674329</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Development. 1991 Apr;111(4):1097-107</RefSource>
+                <PMID Version="1">1652425</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Development. 1997 Dec;124(23):4729-38</RefSource>
+                <PMID Version="1">9428409</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Clin Exp Metastasis. 2010 Apr;27(4):241-9</RefSource>
+                <PMID Version="1">20333450</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Dev Biol. 1981 Apr 15;83(1):79-89</RefSource>
+                <PMID Version="1">7016635</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Nature. 2002 Jul 25;418(6896):417-22</RefSource>
+                <PMID Version="1">12140558</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Mol Biol Cell. 2004 May;15(5):2375-87</RefSource>
+                <PMID Version="1">15004227</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Dev Biol. 1999 Jun 15;210(2):440-55</RefSource>
+                <PMID Version="1">10357902</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Proc Natl Acad Sci U S A. 2009 Aug 11;106(32):13335-40</RefSource>
+                <PMID Version="1">19633193</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>J Biol Chem. 2009 Mar 6;284(10):6495-506</RefSource>
+                <PMID Version="1">19124473</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Ann Neurol. 2005 Nov;58(5):680-7</RefSource>
+                <PMID Version="1">16240336</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>J Cell Biol. 1999 Aug 23;146(4):893-904</RefSource>
+                <PMID Version="1">10459022</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Mol Biol Cell. 2003 May;14(5):2151-62</RefSource>
+                <PMID Version="1">12802082</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Development. 1989 May;106(1):67-78</RefSource>
+                <PMID Version="1">2627887</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Somat Cell Mol Genet. 1997 May;23(3):203-9</RefSource>
+                <PMID Version="1">9330631</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Brain. 2009 Dec;132(Pt 12):3199-230</RefSource>
+                <PMID Version="1">19933510</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Neurogenetics. 2013 Feb;14(1):77-83</RefSource>
+                <PMID Version="1">23274687</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Cell. 1989 Feb 24;56(4):607-17</RefSource>
+                <PMID Version="1">2537150</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Science. 1995 Feb 17;267(5200):1018-21</RefSource>
+                <PMID Version="1">7863327</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>EMBO J. 1996 Jan 15;15(2):310-18</RefSource>
+                <PMID Version="1">8617206</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>J Cancer Res Clin Oncol. 2010 Jan;136(1):47-53</RefSource>
+                <PMID Version="1">19572147</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>J Cell Biol. 2001 Apr 16;153(2):329-38</RefSource>
+                <PMID Version="1">11309414</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>J Neurosci. 2008 May 28;28(22):5817-26</RefSource>
+                <PMID Version="1">18509043</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>EMBO J. 1985 May;4(5):1163-70</RefSource>
+                <PMID Version="1">4006911</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Acta Neuropathol. 2003 Mar;105(3):271-80</RefSource>
+                <PMID Version="1">12557015</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>J Pharmacol Exp Ther. 2012 Aug;342(2):318-26</RefSource>
+                <PMID Version="1">22547573</PMID>
+            </CommentsCorrections>
+        </CommentsCorrectionsList>
+        <MeshHeadingList>
+            <MeshHeading>
+                <DescriptorName UI="D000818" MajorTopicYN="N">Animals</DescriptorName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName UI="D015153" MajorTopicYN="N">Blotting, Western</DescriptorName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName UI="D002450" MajorTopicYN="N">Cell Communication</DescriptorName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName UI="D002454" MajorTopicYN="N">Cell Differentiation</DescriptorName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName UI="D002459" MajorTopicYN="Y">Cell Fusion</DescriptorName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName UI="D049109" MajorTopicYN="N">Cell Proliferation</DescriptorName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName UI="D002478" MajorTopicYN="N">Cells, Cultured</DescriptorName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName UI="D006801" MajorTopicYN="N">Humans</DescriptorName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName UI="D007124" MajorTopicYN="N">Immunoenzyme Techniques</DescriptorName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName UI="D008156" MajorTopicYN="N">Luciferases</DescriptorName>
+                <QualifierName UI="Q000378" MajorTopicYN="N">metabolism</QualifierName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName UI="D008297" MajorTopicYN="N">Male</DescriptorName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName UI="D054220" MajorTopicYN="N">Malformations of Cortical Development</DescriptorName>
+                <QualifierName UI="Q000235" MajorTopicYN="N">genetics</QualifierName>
+                <QualifierName UI="Q000378" MajorTopicYN="N">metabolism</QualifierName>
+                <QualifierName UI="Q000473" MajorTopicYN="Y">pathology</QualifierName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName UI="D051379" MajorTopicYN="N">Mice</DescriptorName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName UI="D018345" MajorTopicYN="N">Mice, Knockout</DescriptorName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName UI="D024510" MajorTopicYN="N">Muscle Development</DescriptorName>
+                <QualifierName UI="Q000502" MajorTopicYN="Y">physiology</QualifierName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName UI="D017570" MajorTopicYN="N">MyoD Protein</DescriptorName>
+                <QualifierName UI="Q000235" MajorTopicYN="N">genetics</QualifierName>
+                <QualifierName UI="Q000378" MajorTopicYN="N">metabolism</QualifierName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName UI="D032446" MajorTopicYN="N">Myoblasts</DescriptorName>
+                <QualifierName UI="Q000166" MajorTopicYN="Y">cytology</QualifierName>
+                <QualifierName UI="Q000378" MajorTopicYN="N">metabolism</QualifierName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName UI="D018008" MajorTopicYN="N">Myogenin</DescriptorName>
+                <QualifierName UI="Q000235" MajorTopicYN="N">genetics</QualifierName>
+                <QualifierName UI="Q000378" MajorTopicYN="N">metabolism</QualifierName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName UI="D050778" MajorTopicYN="N">NFATC Transcription Factors</DescriptorName>
+                <QualifierName UI="Q000037" MajorTopicYN="N">antagonists &amp; inhibitors</QualifierName>
+                <QualifierName UI="Q000235" MajorTopicYN="N">genetics</QualifierName>
+                <QualifierName UI="Q000378" MajorTopicYN="Y">metabolism</QualifierName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName UI="D012333" MajorTopicYN="N">RNA, Messenger</DescriptorName>
+                <QualifierName UI="Q000235" MajorTopicYN="N">genetics</QualifierName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName UI="D034741" MajorTopicYN="N">RNA, Small Interfering</DescriptorName>
+                <QualifierName UI="Q000235" MajorTopicYN="N">genetics</QualifierName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName UI="D060888" MajorTopicYN="N">Real-Time Polymerase Chain Reaction</DescriptorName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName UI="D043562" MajorTopicYN="N">Receptors, G-Protein-Coupled</DescriptorName>
+                <QualifierName UI="Q000502" MajorTopicYN="Y">physiology</QualifierName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName UI="D020133" MajorTopicYN="N">Reverse Transcriptase Polymerase Chain Reaction</DescriptorName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName UI="D027602" MajorTopicYN="N">Serum Response Element</DescriptorName>
+                <QualifierName UI="Q000235" MajorTopicYN="Y">genetics</QualifierName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName UI="D015398" MajorTopicYN="N">Signal Transduction</DescriptorName>
+            </MeshHeading>
+        </MeshHeadingList>
+        <KeywordList Owner="NOTNLM">
+            <Keyword MajorTopicYN="N">GPR56</Keyword>
+            <Keyword MajorTopicYN="N">dystroglycanopathies</Keyword>
+            <Keyword MajorTopicYN="N">myoblast</Keyword>
+            <Keyword MajorTopicYN="N">serum response element</Keyword>
+            <Keyword MajorTopicYN="N">skeletal muscle</Keyword>
+        </KeywordList>
+    </MedlineCitation>
+    <PubmedData>
+        <History>
+            <PubMedPubDate PubStatus="received">
+                <Year>2013</Year>
+                <Month>07</Month>
+                <Day>01</Day>
+            </PubMedPubDate>
+            <PubMedPubDate PubStatus="revised">
+                <Year>2013</Year>
+                <Month>08</Month>
+                <Day>24</Day>
+            </PubMedPubDate>
+            <PubMedPubDate PubStatus="accepted">
+                <Year>2013</Year>
+                <Month>09</Month>
+                <Day>04</Day>
+            </PubMedPubDate>
+            <PubMedPubDate PubStatus="entrez">
+                <Year>2013</Year>
+                <Month>10</Month>
+                <Day>10</Day>
+                <Hour>6</Hour>
+                <Minute>0</Minute>
+            </PubMedPubDate>
+            <PubMedPubDate PubStatus="pubmed">
+                <Year>2013</Year>
+                <Month>10</Month>
+                <Day>10</Day>
+                <Hour>6</Hour>
+                <Minute>0</Minute>
+            </PubMedPubDate>
+            <PubMedPubDate PubStatus="medline">
+                <Year>2014</Year>
+                <Month>1</Month>
+                <Day>23</Day>
+                <Hour>6</Hour>
+                <Minute>0</Minute>
+            </PubMedPubDate>
+        </History>
+        <PublicationStatus>ppublish</PublicationStatus>
+        <ArticleIdList>
+            <ArticleId IdType="pubmed">24102982</ArticleId>
+            <ArticleId IdType="doi">10.1111/febs.12529</ArticleId>
+            <ArticleId IdType="pmc">PMC3877849</ArticleId>
+            <ArticleId IdType="mid">NIHMS529672</ArticleId>
+        </ArticleIdList>
+    </PubmedData>
+</PubmedArticle>
+
+
+<PubmedArticle>
+    <MedlineCitation Status="MEDLINE" Owner="NLM">
+        <PMID Version="1">21171099</PMID>
+        <DateCompleted>
+            <Year>2011</Year>
+            <Month>01</Month>
+            <Day>21</Day>
+        </DateCompleted>
+        <DateRevised>
+            <Year>2016</Year>
+            <Month>11</Month>
+            <Day>22</Day>
+        </DateRevised>
+        <Article PubModel="Print">
+            <Journal>
+                <ISSN IssnType="Electronic">1097-4598</ISSN>
+                <JournalIssue CitedMedium="Internet">
+                    <Volume>43</Volume>
+                    <Issue>1</Issue>
+                    <PubDate>
+                        <Year>2011</Year>
+                        <Month>Jan</Month>
+                    </PubDate>
+                </JournalIssue>
+                <Title>Muscle &amp; nerve</Title>
+                <ISOAbbreviation>Muscle Nerve</ISOAbbreviation>
+            </Journal>
+            <ArticleTitle>Carbamylated erythropoietin does not alleviate signs of dystrophy in mdx mice.</ArticleTitle>
+            <Pagination>
+                <MedlinePgn>88-93</MedlinePgn>
+            </Pagination>
+            <ELocationID EIdType="doi" ValidYN="Y">10.1002/mus.21785</ELocationID>
+            <Abstract>
+                <AbstractText>Erythropoietin promotes myoblast proliferation and inhibits fibrosis and thus it could impede the pathogenesis of muscle degenerative diseases. However, its stimulation of erythropoiesis limits its use as a therapeutic agent. An erythropoietin analog, carbamylated erythropoietin (C-EPO), retains these protective actions, yet it does not interact with the erythropoietin receptor. To determine whether treatment with C-EPO alleviates the signs of muscular dystrophy in an animal model of Duchenne muscular dystrophy, we treated mdx mice with intraperitoneal injections of 50 μg/kg and 100 μg/kg C-EPO for 4 and 12 weeks, and we monitored weight, serum creatine kinase levels, and changes in muscle histology. Moderate histological improvement was observed at 4 weeks, which did not translate into a significantly decreased level of serum creatine kinase. At the doses tested, C-EPO is not an effective therapeutic for the treatment of a mouse model of Duchenne muscular dystrophy.</AbstractText>
+                <CopyrightInformation>Copyright © 2010 Wiley Periodicals, Inc.</CopyrightInformation>
+            </Abstract>
+            <AuthorList CompleteYN="Y">
+                <Author ValidYN="Y">
+                    <LastName>Wu</LastName>
+                    <ForeName>Melissa P</ForeName>
+                    <Initials>MP</Initials>
+                    <AffiliationInfo>
+                        <Affiliation>Biological and Biomedical Sciences, Harvard Medical School, Boston, Massachusetts, USA.</Affiliation>
+                    </AffiliationInfo>
+                </Author>
+                <Author ValidYN="Y">
+                    <LastName>Gussoni</LastName>
+                    <ForeName>Emanuela</ForeName>
+                    <Initials>E</Initials>
+                </Author>
+            </AuthorList>
+            <Language>eng</Language>
+            <GrantList CompleteYN="Y">
+                <Grant>
+                    <GrantID>2R01NS047727</GrantID>
+                    <Acronym>NS</Acronym>
+                    <Agency>NINDS NIH HHS</Agency>
+                    <Country>United States</Country>
+                </Grant>
+                <Grant>
+                    <GrantID>R01 NS047727</GrantID>
+                    <Acronym>NS</Acronym>
+                    <Agency>NINDS NIH HHS</Agency>
+                    <Country>United States</Country>
+                </Grant>
+                <Grant>
+                    <GrantID>T32 GM007226</GrantID>
+                    <Acronym>GM</Acronym>
+                    <Agency>NIGMS NIH HHS</Agency>
+                    <Country>United States</Country>
+                </Grant>
+                <Grant>
+                    <GrantID>P50 NS040828</GrantID>
+                    <Acronym>NS</Acronym>
+                    <Agency>NINDS NIH HHS</Agency>
+                    <Country>United States</Country>
+                </Grant>
+                <Grant>
+                    <GrantID>R01 NS047727-05A2</GrantID>
+                    <Acronym>NS</Acronym>
+                    <Agency>NINDS NIH HHS</Agency>
+                    <Country>United States</Country>
+                </Grant>
+                <Grant>
+                    <GrantID>P50 NS040828-080004</GrantID>
+                    <Acronym>NS</Acronym>
+                    <Agency>NINDS NIH HHS</Agency>
+                    <Country>United States</Country>
+                </Grant>
+                <Grant>
+                    <GrantID>5P50NS040828</GrantID>
+                    <Acronym>NS</Acronym>
+                    <Agency>NINDS NIH HHS</Agency>
+                    <Country>United States</Country>
+                </Grant>
+            </GrantList>
+            <PublicationTypeList>
+                <PublicationType UI="D016428">Journal Article</PublicationType>
+                <PublicationType UI="D052061">Research Support, N.I.H., Extramural</PublicationType>
+                <PublicationType UI="D013485">Research Support, Non-U.S. Gov't</PublicationType>
+            </PublicationTypeList>
+        </Article>
+        <MedlineJournalInfo>
+            <Country>United States</Country>
+            <MedlineTA>Muscle Nerve</MedlineTA>
+            <NlmUniqueID>7803146</NlmUniqueID>
+            <ISSNLinking>0148-639X</ISSNLinking>
+        </MedlineJournalInfo>
+        <ChemicalList>
+            <Chemical>
+                <RegistryNumber>0</RegistryNumber>
+                <NameOfSubstance UI="D018696">Neuroprotective Agents</NameOfSubstance>
+            </Chemical>
+            <Chemical>
+                <RegistryNumber>0</RegistryNumber>
+                <NameOfSubstance UI="C488171">carbamylated erythropoietin</NameOfSubstance>
+            </Chemical>
+            <Chemical>
+                <RegistryNumber>11096-26-7</RegistryNumber>
+                <NameOfSubstance UI="D004921">Erythropoietin</NameOfSubstance>
+            </Chemical>
+            <Chemical>
+                <RegistryNumber>EC 2.7.3.2</RegistryNumber>
+                <NameOfSubstance UI="D003402">Creatine Kinase</NameOfSubstance>
+            </Chemical>
+        </ChemicalList>
+        <CitationSubset>IM</CitationSubset>
+        <CommentsCorrectionsList>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>J Pediatr. 1963 Dec;63:1116-9</RefSource>
+                <PMID Version="1">14089817</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>J Neurol Neurosurg Psychiatry. 1964 Apr;27:96-9</RefSource>
+                <PMID Version="1">14167093</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Clin Chim Acta. 1965 May;11:404-7</RefSource>
+                <PMID Version="1">14347986</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Arch Phys Med Rehabil. 1964 Mar;45:117-24</RefSource>
+                <PMID Version="1">14127953</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Proc Natl Acad Sci U S A. 2005 Feb 8;102(6):2046-51</RefSource>
+                <PMID Version="1">15671158</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Fundam Clin Pharmacol. 2005 Aug;19(4):439-46</RefSource>
+                <PMID Version="1">16011730</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>J Neuroimmunol. 2006 Mar;172(1-2):27-37</RefSource>
+                <PMID Version="1">16337691</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Acta Myol. 2005 Dec;24(3):230-41</RefSource>
+                <PMID Version="1">16629058</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Clin Cancer Res. 2006 Apr 15;12(8):2607-12</RefSource>
+                <PMID Version="1">16638873</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Am J Physiol Regul Integr Comp Physiol. 2006 Oct;291(4):R947-56</RefSource>
+                <PMID Version="1">16690772</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Mol Med. 2006 Jul-Aug;12(7-8):153-60</RefSource>
+                <PMID Version="1">17088947</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>J Cereb Blood Flow Metab. 2007 Mar;27(3):552-63</RefSource>
+                <PMID Version="1">16835629</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Mol Ther. 2007 May;15(5):867-77</RefSource>
+                <PMID Version="1">17387336</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Clin J Am Soc Nephrol. 2007 Nov;2(6):1274-82</RefSource>
+                <PMID Version="1">17942772</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Crit Care. 2007;11(3):R58</RefSource>
+                <PMID Version="1">17509156</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Expert Opin Investig Drugs. 2008 Aug;17(8):1175-86</RefSource>
+                <PMID Version="1">18616414</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Kidney Int. 2008 Sep;74(6):695-7</RefSource>
+                <PMID Version="1">18756292</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Int J Urol. 2008 Oct;15(11):1011-7</RefSource>
+                <PMID Version="1">18759748</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Expert Rev Mol Med. 2009;11:e18</RefSource>
+                <PMID Version="1">19555515</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Surgery. 2009 Sep;146(3):506-14</RefSource>
+                <PMID Version="1">19715808</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Curr Opin Neurol. 2009 Oct;22(5):532-8</RefSource>
+                <PMID Version="1">19745732</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Ann N Y Acad Sci. 2009 Sep;1175:71-9</RefSource>
+                <PMID Version="1">19796079</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Brain. 2010 Apr;133(Pt 4):957-72</RefSource>
+                <PMID Version="1">20150322</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Acta Neuropathol. 1986;69(1-2):91-5</RefSource>
+                <PMID Version="1">3962599</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Cell. 1987 Dec 24;51(6):919-28</RefSource>
+                <PMID Version="1">3319190</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Muscle Nerve. 1988 Aug;11(8):795-803</RefSource>
+                <PMID Version="1">3173406</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>EMBO J. 1988 Oct;7(10):3017-21</RefSource>
+                <PMID Version="1">2903046</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Adv Hum Genet. 1988;17:61-98</RefSource>
+                <PMID Version="1">3055851</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Genomics. 1988 Nov;3(4):337-41</RefSource>
+                <PMID Version="1">3243547</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Science. 1989 Jun 30;244(4912):1578-80</RefSource>
+                <PMID Version="1">2662404</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Nature. 1991 Aug 8;352(6335):536-9</RefSource>
+                <PMID Version="1">1865908</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Nephron. 1993;64(1):89-94</RefSource>
+                <PMID Version="1">8502342</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Biochem Biophys Res Commun. 1995 Mar 28;208(3):1060-6</RefSource>
+                <PMID Version="1">7535525</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Blood. 1997 Sep 1;90(5):1867-73</RefSource>
+                <PMID Version="1">9292519</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>J Biol Chem. 2000 Dec 15;275(50):39754-61</RefSource>
+                <PMID Version="1">10995753</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Clin Immunol. 2001 Feb;98(2):235-43</RefSource>
+                <PMID Version="1">11161980</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Curr Opin Nephrol Hypertens. 2001 Sep;10(5):633-7</RefSource>
+                <PMID Version="1">11496057</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Neuromuscul Disord. 2001 Sep;11(6-7):556-64</RefSource>
+                <PMID Version="1">11525885</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>N Engl J Med. 2002 Feb 14;346(7):469-75</RefSource>
+                <PMID Version="1">11844847</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Nature. 2002 Nov 28;420(6914):418-21</RefSource>
+                <PMID Version="1">12459784</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Nat Rev Drug Discov. 2003 May;2(5):379-90</RefSource>
+                <PMID Version="1">12750741</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Trends Mol Med. 2003 Aug;9(8):344-50</RefSource>
+                <PMID Version="1">12928036</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Med Hypotheses. 2004;63(1):73-5</RefSource>
+                <PMID Version="1">15193351</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Cell Death Differ. 2004 Jul;11 Suppl 1:S37-44</RefSource>
+                <PMID Version="1">15243580</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Science. 2004 Jul 9;305(5681):239-42</RefSource>
+                <PMID Version="1">15247477</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Proc Natl Acad Sci U S A. 2004 Oct 12;101(41):14907-12</RefSource>
+                <PMID Version="1">15456912</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Mol Cell Biol. 2004 Nov;24(21):9295-304</RefSource>
+                <PMID Version="1">15485899</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Proc Natl Acad Sci U S A. 1984 Feb;81(4):1189-92</RefSource>
+                <PMID Version="1">6583703</PMID>
+            </CommentsCorrections>
+        </CommentsCorrectionsList>
+        <MeshHeadingList>
+            <MeshHeading>
+                <DescriptorName UI="D000818" MajorTopicYN="N">Animals</DescriptorName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName UI="D049109" MajorTopicYN="N">Cell Proliferation</DescriptorName>
+                <QualifierName UI="Q000187" MajorTopicYN="N">drug effects</QualifierName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName UI="D003402" MajorTopicYN="N">Creatine Kinase</DescriptorName>
+                <QualifierName UI="Q000037" MajorTopicYN="Y">antagonists &amp; inhibitors</QualifierName>
+                <QualifierName UI="Q000378" MajorTopicYN="N">metabolism</QualifierName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName UI="D004195" MajorTopicYN="N">Disease Models, Animal</DescriptorName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName UI="D004921" MajorTopicYN="N">Erythropoietin</DescriptorName>
+                <QualifierName UI="Q000008" MajorTopicYN="N">administration &amp; dosage</QualifierName>
+                <QualifierName UI="Q000031" MajorTopicYN="Y">analogs &amp; derivatives</QualifierName>
+                <QualifierName UI="Q000627" MajorTopicYN="N">therapeutic use</QualifierName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName UI="D005260" MajorTopicYN="N">Female</DescriptorName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName UI="D007274" MajorTopicYN="N">Injections, Intraperitoneal</DescriptorName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName UI="D051379" MajorTopicYN="N">Mice</DescriptorName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName UI="D008810" MajorTopicYN="N">Mice, Inbred C57BL</DescriptorName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName UI="D018101" MajorTopicYN="N">Mice, Inbred mdx</DescriptorName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName UI="D018482" MajorTopicYN="N">Muscle, Skeletal</DescriptorName>
+                <QualifierName UI="Q000187" MajorTopicYN="Y">drug effects</QualifierName>
+                <QualifierName UI="Q000378" MajorTopicYN="N">metabolism</QualifierName>
+                <QualifierName UI="Q000503" MajorTopicYN="N">physiopathology</QualifierName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName UI="D009137" MajorTopicYN="N">Muscular Dystrophy, Animal</DescriptorName>
+                <QualifierName UI="Q000188" MajorTopicYN="Y">drug therapy</QualifierName>
+                <QualifierName UI="Q000378" MajorTopicYN="N">metabolism</QualifierName>
+                <QualifierName UI="Q000503" MajorTopicYN="N">physiopathology</QualifierName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName UI="D032446" MajorTopicYN="N">Myoblasts</DescriptorName>
+                <QualifierName UI="Q000187" MajorTopicYN="N">drug effects</QualifierName>
+                <QualifierName UI="Q000378" MajorTopicYN="N">metabolism</QualifierName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName UI="D018696" MajorTopicYN="N">Neuroprotective Agents</DescriptorName>
+                <QualifierName UI="Q000008" MajorTopicYN="N">administration &amp; dosage</QualifierName>
+                <QualifierName UI="Q000627" MajorTopicYN="N">therapeutic use</QualifierName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName UI="D017211" MajorTopicYN="N">Treatment Failure</DescriptorName>
+            </MeshHeading>
+        </MeshHeadingList>
+    </MedlineCitation>
+    <PubmedData>
+        <History>
+            <PubMedPubDate PubStatus="entrez">
+                <Year>2010</Year>
+                <Month>12</Month>
+                <Day>21</Day>
+                <Hour>6</Hour>
+                <Minute>0</Minute>
+            </PubMedPubDate>
+            <PubMedPubDate PubStatus="pubmed">
+                <Year>2010</Year>
+                <Month>12</Month>
+                <Day>21</Day>
+                <Hour>6</Hour>
+                <Minute>0</Minute>
+            </PubMedPubDate>
+            <PubMedPubDate PubStatus="medline">
+                <Year>2011</Year>
+                <Month>1</Month>
+                <Day>22</Day>
+                <Hour>6</Hour>
+                <Minute>0</Minute>
+            </PubMedPubDate>
+        </History>
+        <PublicationStatus>ppublish</PublicationStatus>
+        <ArticleIdList>
+            <ArticleId IdType="pubmed">21171099</ArticleId>
+            <ArticleId IdType="doi">10.1002/mus.21785</ArticleId>
+            <ArticleId IdType="pmc">PMC3057654</ArticleId>
+            <ArticleId IdType="mid">NIHMS208026</ArticleId>
+        </ArticleIdList>
+    </PubmedData>
+</PubmedArticle>
+
+
+<PubmedArticle>
+    <MedlineCitation Status="MEDLINE" Owner="NLM">
+        <PMID Version="1">17150207</PMID>
+        <DateCompleted>
+            <Year>2007</Year>
+            <Month>03</Month>
+            <Day>05</Day>
+        </DateCompleted>
+        <DateRevised>
+            <Year>2016</Year>
+            <Month>12</Month>
+            <Day>08</Day>
+        </DateRevised>
+        <Article PubModel="Print-Electronic">
+            <Journal>
+                <ISSN IssnType="Print">0012-1606</ISSN>
+                <JournalIssue CitedMedium="Print">
+                    <Volume>301</Volume>
+                    <Issue>1</Issue>
+                    <PubDate>
+                        <Year>2007</Year>
+                        <Month>Jan</Month>
+                        <Day>01</Day>
+                    </PubDate>
+                </JournalIssue>
+                <Title>Developmental biology</Title>
+                <ISOAbbreviation>Dev. Biol.</ISOAbbreviation>
+            </Journal>
+            <ArticleTitle>C6ORF32 is upregulated during muscle cell differentiation and induces the formation of cellular filopodia.</ArticleTitle>
+            <Pagination>
+                <MedlinePgn>70-81</MedlinePgn>
+            </Pagination>
+            <Abstract>
+                <AbstractText>We have identified a gene by microarray analysis that is located on chromosome 6 (c6orf32), whose expression is increased during human fetal myoblast differentiation. The protein encoded by c6orf32 is expressed both in myogenic and non-myogenic primary cells isolated from 18-week old human fetal skeletal muscle. Immunofluorescent staining indicated that C6ORF32 localizes to the cellular cytoskeleton and filopodia, and often displays polarized expression within the cell. mRNA knockdown experiments in the C2C12 murine myoblast cell line demonstrated that cells lacking c6orf32 exhibit a myogenic differentiation defect, characterized by a decrease in the expression of myogenin and myosin heavy chain (MHC) proteins, whereas MyoD1 was unaltered. In contrast, overexpression of c6orf32 in C2C12 or HEK293 cells (a non-muscle cell line) promoted formation of long membrane protrusions (filopodia). Analysis of serial deletion mutants demonstrated that amino acids 55-113 of C6ORF32 are likely involved in filopodia formation. These results indicate that C6ORF32 is a novel protein likely to play multiple functions, including promoting myogenic cell differentiation, cytoskeletal rearrangement and filopodia formation.</AbstractText>
+            </Abstract>
+            <AuthorList CompleteYN="Y">
+                <Author ValidYN="Y">
+                    <LastName>Yoon</LastName>
+                    <ForeName>Soonsang</ForeName>
+                    <Initials>S</Initials>
+                    <AffiliationInfo>
+                        <Affiliation>Division of Genetics and Program in Genomics, Children's Hospital Boston, Enders 554, Boston, MA 02115, USA.</Affiliation>
+                    </AffiliationInfo>
+                </Author>
+                <Author ValidYN="Y">
+                    <LastName>Molloy</LastName>
+                    <ForeName>Michael J</ForeName>
+                    <Initials>MJ</Initials>
+                </Author>
+                <Author ValidYN="Y">
+                    <LastName>Wu</LastName>
+                    <ForeName>Melissa P</ForeName>
+                    <Initials>MP</Initials>
+                </Author>
+                <Author ValidYN="Y">
+                    <LastName>Cowan</LastName>
+                    <ForeName>Douglas B</ForeName>
+                    <Initials>DB</Initials>
+                </Author>
+                <Author ValidYN="Y">
+                    <LastName>Gussoni</LastName>
+                    <ForeName>Emanuela</ForeName>
+                    <Initials>E</Initials>
+                </Author>
+            </AuthorList>
+            <Language>eng</Language>
+            <GrantList CompleteYN="Y">
+                <Grant>
+                    <GrantID>R01 HL088206</GrantID>
+                    <Acronym>HL</Acronym>
+                    <Agency>NHLBI NIH HHS</Agency>
+                    <Country>United States</Country>
+                </Grant>
+                <Grant>
+                    <GrantID>R01 HL068915</GrantID>
+                    <Acronym>HL</Acronym>
+                    <Agency>NHLBI NIH HHS</Agency>
+                    <Country>United States</Country>
+                </Grant>
+                <Grant>
+                    <GrantID>R01 NS047727</GrantID>
+                    <Acronym>NS</Acronym>
+                    <Agency>NINDS NIH HHS</Agency>
+                    <Country>United States</Country>
+                </Grant>
+                <Grant>
+                    <GrantID>R01 HL088206-02</GrantID>
+                    <Acronym>HL</Acronym>
+                    <Agency>NHLBI NIH HHS</Agency>
+                    <Country>United States</Country>
+                </Grant>
+                <Grant>
+                    <GrantID>P01 NS040828</GrantID>
+                    <Acronym>NS</Acronym>
+                    <Agency>NINDS NIH HHS</Agency>
+                    <Country>United States</Country>
+                </Grant>
+                <Grant>
+                    <GrantID>1 P01 NS40828</GrantID>
+                    <Acronym>NS</Acronym>
+                    <Agency>NINDS NIH HHS</Agency>
+                    <Country>United States</Country>
+                </Grant>
+                <Grant>
+                    <GrantID>R01 HL068915-07</GrantID>
+                    <Acronym>HL</Acronym>
+                    <Agency>NHLBI NIH HHS</Agency>
+                    <Country>United States</Country>
+                </Grant>
+                <Grant>
+                    <GrantID>5 R01 NS047727</GrantID>
+                    <Acronym>NS</Acronym>
+                    <Agency>NINDS NIH HHS</Agency>
+                    <Country>United States</Country>
+                </Grant>
+                <Grant>
+                    <GrantID>R01 HL088206-04</GrantID>
+                    <Acronym>HL</Acronym>
+                    <Agency>NHLBI NIH HHS</Agency>
+                    <Country>United States</Country>
+                </Grant>
+            </GrantList>
+            <PublicationTypeList>
+                <PublicationType UI="D016428">Journal Article</PublicationType>
+                <PublicationType UI="D052061">Research Support, N.I.H., Extramural</PublicationType>
+                <PublicationType UI="D013485">Research Support, Non-U.S. Gov't</PublicationType>
+            </PublicationTypeList>
+            <ArticleDate DateType="Electronic">
+                <Year>2006</Year>
+                <Month>11</Month>
+                <Day>07</Day>
+            </ArticleDate>
+        </Article>
+        <MedlineJournalInfo>
+            <Country>United States</Country>
+            <MedlineTA>Dev Biol</MedlineTA>
+            <NlmUniqueID>0372762</NlmUniqueID>
+            <ISSNLinking>0012-1606</ISSNLinking>
+        </MedlineJournalInfo>
+        <ChemicalList>
+            <Chemical>
+                <RegistryNumber>0</RegistryNumber>
+                <NameOfSubstance UI="D017931">DNA Primers</NameOfSubstance>
+            </Chemical>
+            <Chemical>
+                <RegistryNumber>0</RegistryNumber>
+                <NameOfSubstance UI="C104952">FAM65B protein, human</NameOfSubstance>
+            </Chemical>
+            <Chemical>
+                <RegistryNumber>0</RegistryNumber>
+                <NameOfSubstance UI="D011506">Proteins</NameOfSubstance>
+            </Chemical>
+            <Chemical>
+                <RegistryNumber>0</RegistryNumber>
+                <NameOfSubstance UI="D012333">RNA, Messenger</NameOfSubstance>
+            </Chemical>
+        </ChemicalList>
+        <CitationSubset>IM</CitationSubset>
+        <CommentsCorrectionsList>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>FASEB J. 2000 Mar;14(3):461-75</RefSource>
+                <PMID Version="1">10698961</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Development. 1996 Dec;122(12):3697-705</RefSource>
+                <PMID Version="1">9012491</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Cell. 2000 Jul 21;102(2):189-98</RefSource>
+                <PMID Version="1">10943839</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Curr Biol. 2000 Nov 16;10(22):1420-6</RefSource>
+                <PMID Version="1">11102803</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Development. 2001 Nov;128(21):4229-39</RefSource>
+                <PMID Version="1">11684659</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Development. 2001 Nov;128(21):4265-76</RefSource>
+                <PMID Version="1">11684662</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Dev Cell. 2001 Nov;1(5):705-15</RefSource>
+                <PMID Version="1">11709190</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Development. 2001 Dec;128(24):5061-73</RefSource>
+                <PMID Version="1">11748142</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Nat Cell Biol. 2002 Sep;4(9):715-9</RefSource>
+                <PMID Version="1">12198500</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Gene. 1997 Feb 7;185(2):153-7</RefSource>
+                <PMID Version="1">9055809</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>J Cell Biol. 1997 Aug 11;138(3):589-603</RefSource>
+                <PMID Version="1">9245788</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Nature. 1998 Jan 1;391(6662):93-6</RefSource>
+                <PMID Version="1">9422512</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Science. 1998 Jan 23;279(5350):509-14</RefSource>
+                <PMID Version="1">9438836</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Biochim Biophys Acta. 1998 Mar 12;1402(1):52-60</RefSource>
+                <PMID Version="1">9551085</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Science. 2005 Apr 15;308(5720):369-73</RefSource>
+                <PMID Version="1">15831748</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Cell Mol Life Sci. 2005 Jul;62(14):1547-55</RefSource>
+                <PMID Version="1">15905962</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Mol Cell Biol. 2005 Sep;25(17):7645-56</RefSource>
+                <PMID Version="1">16107711</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Cell. 2005 Sep 9;122(5):659-67</RefSource>
+                <PMID Version="1">16143100</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Semin Cell Dev Biol. 2005 Aug-Oct;16(4-5):585-95</RefSource>
+                <PMID Version="1">16099183</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Mol Cell Biol. 2005 Dec;25(24):11089-101</RefSource>
+                <PMID Version="1">16314529</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Genes Dev. 2006 Jul 1;20(13):1692-708</RefSource>
+                <PMID Version="1">16818602</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>J Cell Sci. 2006 Aug 1;119(Pt 15):3117-27</RefSource>
+                <PMID Version="1">16835268</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>J Cell Biol. 2006 Jul 31;174(3):403-13</RefSource>
+                <PMID Version="1">16864654</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Nat Cell Biol. 2001 Oct;3(10):897-904</RefSource>
+                <PMID Version="1">11584271</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>J Neurobiol. 2003 Apr;55(1):31-40</RefSource>
+                <PMID Version="1">12605457</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>EMBO J. 2003 Mar 3;22(5):1147-57</RefSource>
+                <PMID Version="1">12606579</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Int Rev Cytol. 2003;225:33-89</RefSource>
+                <PMID Version="1">12696590</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Cell. 2003 May 16;113(4):483-94</RefSource>
+                <PMID Version="1">12757709</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Nat Rev Genet. 2003 Jul;4(7):497-507</RefSource>
+                <PMID Version="1">12838342</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Cell. 2003 Sep 19;114(6):751-62</RefSource>
+                <PMID Version="1">14505574</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Curr Biol. 2003 Dec 16;13(24):R964-6</RefSource>
+                <PMID Version="1">14680655</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Dev Biol. 2004 Jan 1;265(1):75-89</RefSource>
+                <PMID Version="1">14697354</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Physiol Rev. 2004 Jan;84(1):209-38</RefSource>
+                <PMID Version="1">14715915</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Trends Cell Biol. 2004 Aug;14(8):452-60</RefSource>
+                <PMID Version="1">15308212</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Biochem J. 2004 Sep 15;382(Pt 3):1015-23</RefSource>
+                <PMID Version="1">15239673</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Methods Mol Med. 2005;107:97-110</RefSource>
+                <PMID Version="1">15492366</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Mech Dev. 2004 Dec;121(12):1455-68</RefSource>
+                <PMID Version="1">15511638</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Cell. 1989 Feb 24;56(4):607-17</RefSource>
+                <PMID Version="1">2537150</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Cell. 1989 Sep 8;58(5):823-31</RefSource>
+                <PMID Version="1">2550138</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Nat Genet. 1993 May;4(1):77-81</RefSource>
+                <PMID Version="1">8513330</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Neuroscience. 1993 May;54(1):167-87</RefSource>
+                <PMID Version="1">8515841</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Genes Dev. 2000 Jun 15;14(12):1498-511</RefSource>
+                <PMID Version="1">10859168</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Annu Rev Cell Dev Biol. 2002;18:747-83</RefSource>
+                <PMID Version="1">12142270</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Nature. 2002 Dec 12;420(6916):629-35</RefSource>
+                <PMID Version="1">12478284</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>J Cell Sci. 1995 May;108 ( Pt 5):2077-82</RefSource>
+                <PMID Version="1">7657725</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>Nature. 1995 Oct 19;377(6550):652-6</RefSource>
+                <PMID Version="1">7566181</PMID>
+            </CommentsCorrections>
+            <CommentsCorrections RefType="Cites">
+                <RefSource>J Biol Chem. 1994 May 20;269(20):14371-4</RefSource>
+                <PMID Version="1">7514168</PMID>
+            </CommentsCorrections>
+        </CommentsCorrectionsList>
+        <MeshHeadingList>
+            <MeshHeading>
+                <DescriptorName UI="D001483" MajorTopicYN="N">Base Sequence</DescriptorName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName UI="D002454" MajorTopicYN="N">Cell Differentiation</DescriptorName>
+                <QualifierName UI="Q000502" MajorTopicYN="Y">physiology</QualifierName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName UI="D002460" MajorTopicYN="N">Cell Line</DescriptorName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName UI="D017931" MajorTopicYN="N">DNA Primers</DescriptorName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName UI="D006801" MajorTopicYN="N">Humans</DescriptorName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName UI="D009132" MajorTopicYN="N">Muscles</DescriptorName>
+                <QualifierName UI="Q000196" MajorTopicYN="N">embryology</QualifierName>
+                <QualifierName UI="Q000378" MajorTopicYN="Y">metabolism</QualifierName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName UI="D011506" MajorTopicYN="N">Proteins</DescriptorName>
+                <QualifierName UI="Q000235" MajorTopicYN="N">genetics</QualifierName>
+                <QualifierName UI="Q000378" MajorTopicYN="Y">metabolism</QualifierName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName UI="D012333" MajorTopicYN="N">RNA, Messenger</DescriptorName>
+                <QualifierName UI="Q000235" MajorTopicYN="N">genetics</QualifierName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName UI="D015854" MajorTopicYN="Y">Up-Regulation</DescriptorName>
+            </MeshHeading>
+        </MeshHeadingList>
+    </MedlineCitation>
+    <PubmedData>
+        <History>
+            <PubMedPubDate PubStatus="received">
+                <Year>2006</Year>
+                <Month>03</Month>
+                <Day>28</Day>
+            </PubMedPubDate>
+            <PubMedPubDate PubStatus="revised">
+                <Year>2006</Year>
+                <Month>10</Month>
+                <Day>12</Day>
+            </PubMedPubDate>
+            <PubMedPubDate PubStatus="accepted">
+                <Year>2006</Year>
+                <Month>11</Month>
+                <Day>01</Day>
+            </PubMedPubDate>
+            <PubMedPubDate PubStatus="pubmed">
+                <Year>2006</Year>
+                <Month>12</Month>
+                <Day>8</Day>
+                <Hour>9</Hour>
+                <Minute>0</Minute>
+            </PubMedPubDate>
+            <PubMedPubDate PubStatus="medline">
+                <Year>2007</Year>
+                <Month>3</Month>
+                <Day>6</Day>
+                <Hour>9</Hour>
+                <Minute>0</Minute>
+            </PubMedPubDate>
+            <PubMedPubDate PubStatus="entrez">
+                <Year>2006</Year>
+                <Month>12</Month>
+                <Day>8</Day>
+                <Hour>9</Hour>
+                <Minute>0</Minute>
+            </PubMedPubDate>
+        </History>
+        <PublicationStatus>ppublish</PublicationStatus>
+        <ArticleIdList>
+            <ArticleId IdType="pubmed">17150207</ArticleId>
+            <ArticleId IdType="pii">S0012-1606(06)01341-8</ArticleId>
+            <ArticleId IdType="doi">10.1016/j.ydbio.2006.11.002</ArticleId>
+            <ArticleId IdType="pmc">PMC1779902</ArticleId>
+            <ArticleId IdType="mid">NIHMS16058</ArticleId>
+        </ArticleIdList>
+    </PubmedData>
+</PubmedArticle>
+
+</PubmedArticleSet>

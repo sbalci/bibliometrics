@@ -1,0 +1,374 @@
+---
+title: "PubMed Packages"
+output: 
+  html_notebook: 
+    highlight: tango
+    number_sections: yes
+    theme: spacelab
+    toc: yes
+---
+
+# easyPubMed
+
+```{r}
+library(easyPubMed)
+library(XML)
+```
+
+
+## easyPubMed: Search and Retrieve Scientific Publication Records from PubMed  
+
+
+https://cran.r-project.org/web/packages/easyPubMed/index.html
+
+https://cran.r-project.org/web/packages/easyPubMed/easyPubMed.pdf
+
+https://cran.r-project.org/web/packages/easyPubMed/vignettes/easyPM_vignette_html.html
+
+https://cran.r-project.org/web/packages/easyPubMed/vignettes/easyPM_vignette_pdf.pdf
+
+```{r}
+my_query <- "Damiano Fantini[AU]"
+my_entrez_id <- get_pubmed_ids(my_query)
+my_abstracts_txt <- fetch_pubmed_data(my_entrez_id, format = "abstract")
+my_abstracts_txt[1:10]
+```
+
+
+
+```{r}
+my_abstracts_xml <- fetch_pubmed_data(my_entrez_id)
+class(my_abstracts_xml) 
+```
+
+
+```{r}
+#
+# apply "saveXML" to each //ArticleTitle tag via XML::xpathApply()
+my_titles <- unlist(xpathApply(my_abstracts_xml, "//ArticleTitle", saveXML))
+#
+# use gsub to remove the tag, also trim long titles
+my_titles <- gsub("(^.{5,10}Title>)|(<\\/.*$)", "", my_titles)
+my_titles[nchar(my_titles)>75] <- paste(substr(my_titles[nchar(my_titles)>75], 1, 70), 
+                                        "...", sep = "")
+print(my_titles)
+```
+
+
+
+
+```{r}
+new_query <- "(APE1[TI] OR OGG1[TI]) AND (2012[PDAT]:2016[PDAT])"
+out.A <- batch_pubmed_download(pubmed_query_string = new_query, 
+                               format = "xml", 
+                               batch_size = 150,
+                               dest_file_prefix = "easyPM_example")
+```
+
+
+
+```{r}
+out.A # this variable stores the name of the output files
+```
+
+```{r}
+my_PM_list <- articles_to_list(my_abstracts_xml)
+class(my_PM_list[[4]])
+```
+
+
+```{r}
+cat(substr(my_PM_list[[4]], 1, 984))
+```
+
+
+```{r}
+curr_PM_record <- my_PM_list[[4]]
+custom_grep(curr_PM_record, tag = "DateCompleted")
+```
+
+
+```{r}
+custom_grep(curr_PM_record, tag = "LastName", format = "char")
+```
+
+
+```{r}
+my.df <- article_to_df(curr_PM_record, max_chars = 18)
+#
+# Fields extracted from the PubMed record
+colnames(my.df)
+```
+
+
+```{r}
+#
+# Trim long strings and then Display some content: each row corresponds to one author
+my.df$title <- substr(my.df$title, 1, 15)
+my.df$address <- substr(my.df$address, 1, 19)
+my.df$jabbrv <- substr(my.df$jabbrv, 1, 10)
+my.df[,c("pmid", "title", "jabbrv", "firstname", "address")]
+```
+
+
+```{r}
+my.df2 <- article_to_df(curr_PM_record, autofill = TRUE)
+my.df2$title <- substr(my.df2$title, 1, 15)
+my.df2$jabbrv <- substr(my.df2$jabbrv, 1, 10)
+my.df2$address <- substr(my.df2$address, 1, 19)
+my.df2[,c("pmid", "title", "jabbrv", "firstname", "address")]
+```
+
+
+```{r}
+new_PM_query <- "(APEX1[TI] OR OGG1[TI]) AND (2010[PDAT]:2013[PDAT])"
+out.B <- batch_pubmed_download(pubmed_query_string = new_PM_query, dest_file_prefix = "apex1_sample")
+```
+
+```{r}
+# Retrieve the full name of the XML file downloaded in the previous step
+new_PM_file <- out.B[1]
+new_PM_df <- table_articles_byAuth(pubmed_data = new_PM_file, included_authors = "first", max_chars = 0)
+# Alternatively, the output of a fetch_pubmed_data() could have been used
+#
+# Printing a sample of the resulting data frame
+new_PM_df$address <- substr(new_PM_df$address, 1, 28)
+new_PM_df$jabbrv <- substr(new_PM_df$jabbrv, 1, 9)
+print(new_PM_df[1:10, c("pmid", "year", "jabbrv", "lastname", "address")])  
+```
+
+
+
+## Querying PubMed via the easyPubMed package in R  
+
+http://www.biotechworld.it/bioinf/2016/01/05/querying-pubmed-via-the-easypubmed-package-in-r/
+
+
+## easyPubMed for business: scraping PubMed data in R for a targeting campaign  
+
+http://www.biotechworld.it/bioinf/2016/01/21/scraping-pubmed-data-via-easypubmed-xml-and-regex-in-r-for-a-targeting-campaign/
+
+
+# europepmc
+
+europepmc: R Interface to the Europe PubMed Central RESTful Web Service
+
+https://cran.r-project.org/web/packages/europepmc/index.html
+
+https://cran.r-project.org/web/packages/europepmc/europepmc.pdf
+
+## Making proper trend graphs
+
+https://cran.r-project.org/web/packages/europepmc/vignettes/evergreenreviewgraphs.html
+
+
+```{r}
+library(europepmc)
+```
+
+
+```{r}
+europepmc::epmc_hits_trend(query = "aspirin", period = 2010:2016)
+```
+
+
+```{r}
+tt_oa <- europepmc::epmc_hits_trend("OPEN_ACCESS:Y", period = 1995:2017, synonym = FALSE)
+tt_oa
+```
+
+
+```{r}
+library(ggplot2)
+ggplot(tt_oa, aes(year, query_hits / all_hits)) +
+  geom_point() + 
+  geom_line() +
+  xlab("Year published") + 
+  ylab("Proportion of OA full-texts in Europe PMC")
+```
+
+
+```{r}
+dvcs <- c("code.google.com", "github.com", 
+          "sourceforge.net", "bitbucket.org", "cran.r-project.org")
+# make queries including reference section
+dvcs_query <- paste0('REF:"', dvcs, '"')
+```
+
+```{r}
+library(dplyr)
+my_df <- purrr::map_df(dvcs_query, function(x) {
+  # get number of publications with indexed reference lists
+  refs_hits <- 
+    europepmc::epmc_hits_trend("has_reflist:y", period = 2009:2016, synonym = FALSE)$query_hits
+  # get hit count querying for code repositories 
+  europepmc::epmc_hits_trend(x, period = 2009:2016, synonym = FALSE) %>% 
+    dplyr::mutate(query_id = x) %>%
+    dplyr::mutate(refs_hits = refs_hits) %>%
+    dplyr::select(year, all_hits, refs_hits, query_hits, query_id)
+}) 
+my_df
+```
+
+
+
+```{r}
+### total
+hits_summary <- my_df %>% 
+  group_by(query_id) %>% 
+  summarise(all = sum(query_hits)) %>% 
+  arrange(desc(all))
+hits_summary
+```
+
+
+```{r}
+library(ggplot2)
+ggplot(my_df, aes(factor(year), query_hits / refs_hits, group = query_id, 
+                  color = query_id)) +
+  geom_line(size = 1, alpha = 0.8) +
+  geom_point(size = 2) +
+  scale_color_brewer(name = "Query", palette = "Set1")+
+  xlab("Year published") +
+  ylab("Proportion of articles in Europe PMC")
+```
+
+
+
+
+
+## Introducing europepmc, an R interface to Europe PMC RESTful API
+
+https://cran.r-project.org/web/packages/europepmc/vignettes/introducing-europepmc.html
+
+
+```{r}
+library(europepmc)
+europepmc::epmc_search('malaria')
+```
+
+
+```{r}
+europepmc::epmc_search('malaria', synonym = FALSE)
+```
+
+
+```{r}
+europepmc::epmc_search('"Human malaria parasites"')
+```
+
+
+```{r}
+europepmc::epmc_search('"Human malaria parasites"', limit = 10)
+```
+
+
+
+```
+sort = 'cited'
+sort = 'date' 
+```
+
+```{r}
+my_dois <- c(
+  "10.1159/000479962",
+  "10.1002/sctm.17-0081",
+  "10.1161/strokeaha.117.018077",
+  "10.1007/s12017-017-8447-9"
+  )
+  plyr::ldply(my_dois, function(x) {
+  europepmc::epmc_search(paste0("DOI:", x))
+  })
+```
+
+```
+output = "id_list" 
+output = "raw"
+```
+
+```{r}
+europepmc::epmc_search('AUTH:"Salmon Maelle"')
+```
+
+
+```{r}
+q <- 'AUTH:"PÜHLER Alfred" OR AUTH:"Pühler Alfred Prof. Dr." OR AUTH:"Puhler A"'
+europepmc::epmc_search(q, limit = 1000)
+```
+
+
+```{r}
+europepmc::epmc_search('AUTHORID:"0000-0002-7635-3473"', limit = 200, sort = "cited")
+```
+
+
+```{r}
+europepmc::epmc_search('disease:meningitis')
+```
+
+
+```{r}
+europepmc::epmc_tm(30242204)
+```
+
+
+
+```{r}
+europepmc::epmc_search('(HAS_PDB:y) AND FIRST_PDATE:2016')
+```
+
+
+
+```{r}
+europepmc::epmc_citations("9338777", limit = 500)
+```
+
+
+
+
+```{r}
+europepmc::epmc_refs("28632490", limit = 200)
+```
+
+
+
+
+```{r}
+europepmc::epmc_ftxt("PMC3257301")
+```
+
+
+
+
+
+
+
+
+
+
+
+# pubmed.mineR
+
+pubmed.mineR: Text Mining of PubMed Abstracts
+
+
+https://cran.r-project.org/web/packages/pubmed.mineR/index.html
+
+https://cran.r-project.org/web/packages/pubmed.mineR/pubmed.mineR.pdf
+
+
+# PubMedWordcloud
+
+PubMedWordcloud: 'Pubmed' Word Clouds
+
+
+https://cran.r-project.org/web/packages/PubMedWordcloud/index.html
+
+https://cran.r-project.org/web/packages/PubMedWordcloud/PubMedWordcloud.pdf
+
+
+
+
+
+
+

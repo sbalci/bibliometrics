@@ -48,9 +48,13 @@ This document will be continiously updated and the last update was on `r Sys.Dat
 
 # Analysis
 
+---
+
 ## Country Based Comparison
 
 To see the analysis comparing number of pathology articles from Turkey, German and Japan see this analysis: [Country Based Comparison](https://sbalci.github.io/pubmed/CountryBasedComparison.html)
+
+---
 
 ## Articles per Journals per Country
 
@@ -60,6 +64,31 @@ In this analysis we aimed to compare number articles per journals per country. W
 
 In this analysis we aimed to identify the common research topics Turkish pathologists are interested. We extracted most common MeSH terms and keywords from PubMed articles using EDirect:
 [MeSH Terms Pathology Articles From Turkey](https://sbalci.github.io/pubmed/MeSH_Terms_Pathology_Articles_From_Turkey.html)
+
+
+---
+
+<!-- ## Journals Published Articles From Turkey   -->
+
+---
+
+<!-- ## SEER Research Per Countries / Who is doing SEER Research? -->
+
+---
+
+<!-- ## Semantic Scholar -->
+
+---
+
+<!-- ## neutrophil lymph ratio -->
+
+---
+
+<!-- ## retracted pathology articles -->
+
+---
+
+<!-- ## correction pathology articles -->
 
 
 ---
