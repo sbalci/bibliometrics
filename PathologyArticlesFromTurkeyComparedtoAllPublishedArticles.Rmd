@@ -1,0 +1,39 @@
+---
+title: "Pathology Articles From Turkey Compared to All Published Articles"
+output: html_notebook
+---
+
+# europepmc
+
+https://cran.r-project.org/web/packages/europepmc/index.html
+
+https://cran.r-project.org/web/packages/europepmc/vignettes/evergreenreviewgraphs.html
+
+
+```{r}
+library(europepmc)
+```
+
+
+```{r}
+articlesPerTotalArticles <- europepmc::epmc_hits_trend(query = "(AFF:'Turkey') AND ((AFF:'pathology') OR (AFF:'Pathology'))", period = 1980:2017)
+
+articlesPerTotalArticles
+```
+
+
+
+A trend graph of articles of #pathologist from #Turkey derived from Europe PMC #RStats #europepmc #evergreenreviewgraph #pathology  #research #bibliography
+
+
+```{r}
+library(ggplot2)
+ggplot(articlesPerTotalArticles, aes(year, query_hits / all_hits)) + 
+  geom_point() + 
+  geom_line() +
+  xlab("Year published") + 
+  ylab("Proportion of Pathology articles \n from Turkey in Europe PMC")
+```
+
+
+

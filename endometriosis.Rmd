@@ -1,0 +1,39 @@
+---
+title: "endometriosis"
+output: html_notebook
+---
+
+```{r}
+library(europepmc)
+```
+
+
+```{r}
+endometriosis_articlesPerTotalArticles <- europepmc::epmc_hits_trend(query = "endometriosis", period = 1980:2017)
+
+endometriosis_articlesPerTotalArticles
+View(endometriosis_articlesPerTotalArticles)
+```
+
+
+```{r}
+library(ggplot2)
+ggplot(endometriosis_articlesPerTotalArticles, aes(year, query_hits / all_hits)) + 
+  geom_point() + 
+  geom_line() +
+  xlab("Year published") + 
+  ylab("Proportion of Endometriois \n articles in Europe PMC")
+```
+
+
+
+
+https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5031306/
+
+
+```{r}
+knitcitations::citep("10.1186/s12905-016-0336-0")
+```
+
+
+
