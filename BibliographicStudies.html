@@ -11,7 +11,7 @@
 
 <meta name="author" content="Serdar Balcı, MD, Pathologist" />
 
-<meta name="date" content="2018-03-28" />
+<meta name="date" content="2019-01-01" />
 
 <title>Bibliographic Studies</title>
 
@@ -1374,8 +1374,14 @@ img {
 .tabbed-pane {
   padding-top: 12px;
 }
+.html-widget {
+  margin-bottom: 20px;
+}
 button.code-folding-btn:focus {
   outline: none;
+}
+summary {
+  display: list-item;
 }
 </style>
 
@@ -1384,9 +1390,70 @@ button.code-folding-btn:focus {
 <div class="container-fluid main-container">
 
 <!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
 <script>
 $(document).ready(function () {
   window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
 });
 </script>
 
@@ -1399,7 +1466,6 @@ $(document).ready(function () {
   window.initializeCodeFolding("hide" === "show");
 });
 </script>
-
 
 
 
@@ -1515,7 +1581,7 @@ div.tocify {
 <h1 class="title toc-ignore">Bibliographic Studies</h1>
 <h3 class="subtitle"><em>Reproducible Bibliometric Analysis of Pathology Articles Using PubMed, E-direct, WoS, Google Scholar</em></h3>
 <h4 class="author"><em>Serdar Balcı, MD, Pathologist</em></h4>
-<h4 class="date"><em>2018-03-28</em></h4>
+<h4 class="date"><em>2019-01-01</em></h4>
 
 </div>
 
@@ -1526,26 +1592,86 @@ div.tocify {
 <p>These studies require too much effort, since the data is generally behind paywalls and restrictions.</p>
 <p>I have previously contributed to a research to identify the Articles from Turkey Published in Pathology Journals Indexed in International Indexes; which is published here: <a href="http://www.turkjpath.org/summary_en.php3?id=1423">Turk Patoloji Derg. 2010, 26(2):107-113 doi: 10.5146/tjpath.2010.01006</a></p>
 <p>This study had required manual investigation of many excel files, which was time consuming; also redoing and updating the data and results require a similar amount of effort.</p>
-<p>In order to automatize these type of analysis in a reproducable fashion, I will be using <!-- list of analysis tools --> <a href="https://rmarkdown.rstudio.com/">R Markdown</a> , <a href="https://rmarkdown.rstudio.com/r_notebooks.html">R Notebook</a> , <a href="https://shiny.rstudio.com/">Shiny</a> and <a href="https://en.0wikipedia.org/wiki/Terminal_(macOS)">Terminal</a> for coding. I also plan to use other bibliographic tools like <a href="http://www.vosviewer.com/">VOSviewer</a>.</p>
-<p>Data will be retrieved from <a href="https://www.ncbi.nlm.nih.gov/pubmed">PubMed</a>, <a href="https://dataguide.nlm.nih.gov/edirect/overview.html">E-direct</a>, <a href="www.webofknowledge.com/">WoS</a> and <a href="https://scholar.google.com">Google Scholar</a>.</p>
 <hr />
 <p>If you want to see the code used in the analysis please click the code button on the right upper corner or throughout the page.</p>
 <p>I would like to hear your feedback: <a href="https://goo.gl/forms/YjGZ5DHgtPlR1RnB3" class="uri">https://goo.gl/forms/YjGZ5DHgtPlR1RnB3</a></p>
-<p>This document will be continiously updated and the last update was on 2018-03-28.</p>
+<p>This document will be continiously updated and the last update was on 2019-01-01.</p>
 <hr />
 </div>
 <div id="analysis" class="section level1">
 <h1><span class="header-section-number">2</span> Analysis</h1>
+<hr />
 <div id="country-based-comparison" class="section level2">
 <h2><span class="header-section-number">2.1</span> Country Based Comparison</h2>
 <p>To see the analysis comparing number of pathology articles from Turkey, German and Japan see this analysis: <a href="https://sbalci.github.io/pubmed/CountryBasedComparison.html">Country Based Comparison</a></p>
 <hr />
 </div>
+<div id="articles-per-journals-per-country" class="section level2">
+<h2><span class="header-section-number">2.2</span> Articles per Journals per Country</h2>
+<p>In this analysis we aimed to compare number articles per journals per country. We tried to identify if articles from a country is published in certain journals: <a href="https://sbalci.github.io/pubmed/ArticlesPerJournalsPerCountry.html">Articles Per Journals Per Country</a></p>
+</div>
+<div id="most-common-mesh-terms-and-keywords-used-in-pathology-articles-from-turkey" class="section level2">
+<h2><span class="header-section-number">2.3</span> Most Common MeSH Terms and Keywords used in Pathology Articles from Turkey</h2>
+<p>In this analysis we aimed to identify the common research topics Turkish pathologists are interested. We extracted most common MeSH terms and keywords from PubMed articles using EDirect: <a href="https://sbalci.github.io/pubmed/MeSH_Terms_Pathology_Articles_From_Turkey.html">MeSH Terms Pathology Articles From Turkey</a></p>
+<hr />
+<!-- ## Journals Published Articles From Turkey   -->
+<hr />
+<!-- ## SEER Research Per Countries / Who is doing SEER Research? -->
+<hr />
+<!-- ## Semantic Scholar -->
+<hr />
+<!-- ## neutrophil lymph ratio -->
+<hr />
+<!-- ## retracted pathology articles -->
+<hr />
+<!-- ## correction pathology articles -->
+<hr />
+<!-- ## p values in pathology articles a text analysis of pubmed articles using regular expression -->
+<hr />
+<!-- ## ulakbim patoloji TR dizin -->
+<hr />
+<!-- ## europepmc paketi ile endometriozis analizi -->
+<hr />
+</div>
+</div>
+<div id="sources-used-for-analysis" class="section level1">
+<h1><span class="header-section-number">3</span> Sources Used For Analysis</h1>
+<p>Here are the sources used in these analysis: <a href="https://sbalci.github.io/pubmed/Sources.html">Sources Used For Analysis</a></p>
+<hr />
 </div>
 <div id="feedback" class="section level1">
-<h1><span class="header-section-number">3</span> Feedback</h1>
+<h1><span class="header-section-number">4</span> Feedback</h1>
 <p><a href="https://github.com/sbalci">Serdar Balcı, MD, Pathologist</a> would like to hear your feedback: <a href="https://goo.gl/forms/YjGZ5DHgtPlR1RnB3" class="uri">https://goo.gl/forms/YjGZ5DHgtPlR1RnB3</a></p>
-<p>This document will be continiously updated and the last update was on 2018-03-28.</p>
+<p>This document will be continiously updated and the last update was on 2019-01-01.</p>
+<hr />
+<script>var DISQUSWIDGETS,disqus_domain,disqus_shortname;
+typeof DISQUSWIDGETS==="undefined"&&(DISQUSWIDGETS=function(){var f=document,a=f.getElementById("dsq-count-scr"),a=a&&a.src.match(/(https?:)?\/\/(?:www\.)?([\w_\-]+)\.((?:dev\.)?disqus\.(?:com|org)(?::\d+)?)/i),e={},s=f.head||f.body,j={},q={identifier:1,url:2};e.domain=a&&a[3]||disqus_domain||"disqus.com";e.forum=a&&a[2]||disqus_shortname;e.proto=a&&a[1]||"";e.getCount=function(b){var c;c=encodeURIComponent;var a=e.proto+"//"+e.forum+"."+e.domain+"/count-data.js?",d=[],k=0,l=10,r="",b=b||{};b.reset&&
+(j={},r="&_="+ +new Date);for(var b=[f.getElementsByTagName("A"),f.getElementsByClassName&&f.getElementsByClassName("disqus-comment-count")||[]],m,i,g,h,n=0;n<b.length;n++){m=b[n];for(var o=0;o<m.length;o++){i=m[o];g=i.getAttribute("data-disqus-identifier");h=i.hash==="#disqus_thread"&&i.href.replace("#disqus_thread","")||i.getAttribute("data-disqus-url");if(g)h=q.identifier;else if(h)g=h,h=q.url;else continue;var p;j.hasOwnProperty(g)?p=j[g]:(p=j[g]={elements:[],type:h},d.push(c(h)+"="+c(g)));p.elements.push(i)}}d.sort();
+for(c=d.slice(k,l);c.length;)b=f.createElement("script"),b.src=a+c.join("&")+r,s.appendChild(b),k+=10,l+=10,c=d.slice(k,l)};e.displayCount=function(b){for(var c,a,d,e=b.counts,b=b.text.comments;c=e.shift();)if(a=j[c.id]){switch(c.comments){case 0:d=b.zero;break;case 1:d=b.one;break;default:d=b.multiple}c=d.replace("{num}",c.comments);a=a.elements;for(d=a.length-1;d>=0;d--)a[d].innerHTML=c}};return e}());DISQUSWIDGETS.getCount();</script>
+<div id="disqus_thread">
+
+</div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://https-sbalci-github-io.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>
+Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+</noscript>
 <hr />
 </div>
 

@@ -4,15 +4,6 @@ subtitle: "Reproducible Bibliometric Analysis of Pathology Articles Using PubMed
 author: "Serdar Balcı, MD, Pathologist"
 date: '`r format(Sys.Date())`'
 output: 
-  html_notebook: 
-    code_folding: hide
-    fig_caption: yes
-    highlight: kate
-    number_sections: yes
-    theme: cerulean
-    toc: yes
-    toc_depth: 5
-    toc_float: yes
   html_document: 
     code_folding: hide
     df_print: kable
@@ -21,6 +12,15 @@ output:
     number_sections: yes
     theme: cerulean
     toc: yes
+    toc_float: yes
+  html_notebook: 
+    code_folding: hide
+    fig_caption: yes
+    highlight: kate
+    number_sections: yes
+    theme: cerulean
+    toc: yes
+    toc_depth: 5
     toc_float: yes
 ---
 
