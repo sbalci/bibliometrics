@@ -4,15 +4,6 @@ subtitle: "Reproducible Bibliometric Analysis of Pathology Articles Using PubMed
 author: "Serdar Balcı, MD, Pathologist"
 date: '`r format(Sys.Date())`'
 output: 
-  html_document: 
-    code_folding: hide
-    df_print: kable
-    highlight: kate
-    keep_md: yes
-    number_sections: yes
-    theme: cerulean
-    toc: yes
-    toc_float: yes
   html_notebook: 
     code_folding: hide
     fig_caption: yes
@@ -21,6 +12,15 @@ output:
     theme: cerulean
     toc: yes
     toc_depth: 5
+    toc_float: yes
+  html_document: 
+    code_folding: hide
+    df_print: kable
+    highlight: kate
+    keep_md: yes
+    number_sections: yes
+    theme: cerulean
+    toc: yes
     toc_float: yes
 ---
 
@@ -105,6 +105,52 @@ In this analysis we aimed to identify the common research topics Turkish patholo
 <!-- ## europepmc paketi ile endometriozis analizi -->
 
 
+
+---
+
+<!-- CiteSpaceV -->
+<!-- CitNetExplorer -->
+<!-- CodeForGitHubGist -->
+<!-- css -->
+<!-- data -->
+<!-- docs -->
+<!-- e-utilities-lecture-notes -->
+<!-- figure -->
+<!-- grid-2018-11-14 -->
+<!-- images -->
+<!-- Neurosurgery-Articles -->
+<!-- pdf -->
+<!-- Pediatric-Surgery -->
+<!-- rsconnect -->
+<!-- Videos -->
+<!-- VOSviewer -->
+
+<!-- ArticlesPerJournalsPerCountry.nb.html -->
+<!-- BibliographicStudies.html -->
+<!-- BibliographicStudies.nb.html -->
+<!-- CountryBasedComparison.nb.html -->
+<!-- endometriosis.nb.html -->
+<!-- JournalsPublishedArticlesFromTurkey.nb.html -->
+<!-- Making proper trend graphs.htm -->
+<!-- MeSH_Terms_Pathology_Articles_From_Turkey.nb.html -->
+<!-- p-values-in-Pathology-Articles.nb.html -->
+<!-- PathologyArticlesFromTurkeyComparedtoAllPublishedArticles.nb.html -->
+<!-- PubMedPackages.nb.html -->
+<!-- README.html -->
+<!-- Retrieving and Processing PubMed Records via easyPubMed (html).htm -->
+<!-- SchedulePubMedAnalysis.nb.html -->
+<!-- SchedulePubMedAnalysis2.nb.html -->
+<!-- SEERResearchPerCountries.nb.html -->
+<!-- SemanticScholar.nb.html -->
+<!-- Sources.html -->
+<!-- Sources.nb.html -->
+<!-- Untitled.nb.html -->
+
+
+
+
+
+
 ---
 
 # Sources Used For Analysis
@@ -145,3 +191,6 @@ s.setAttribute('data-timestamp', +new Date());
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 
 ---
+
+
+
