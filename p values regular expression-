@@ -1,9 +1,0 @@
-p values in pathology articles
-regular expression
-
-
-The Use of “Trend” Statements to Describe Statistically Nonsignificant Results in the Oncology Literature  
-JAMA Oncol. 2018;4(12):1778-1779. doi:10.1001/jamaoncol.2018.4524  
-https://jamanetwork.com/journals/jamaoncology/fullarticle/2705969  
-
-p[<>=]0\.\d{1,7}|p.[<>=].0\.\d{1,7}|significant|nonsignificant|non-significant
