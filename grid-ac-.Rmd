@@ -1,0 +1,59 @@
+---
+title: "grid.ac"
+output: html_notebook
+---
+
+https://grid.ac/
+
+https://grid.ac/downloads
+
+```{r}
+library(tidyverse)
+```
+
+
+```{r}
+library(readr)
+gridcsv <- read_csv("grid-2018-11-14/grid.csv")
+View(gridcsv)
+```
+
+
+```{r}
+my_files <- list.files(path = "grid-2018-11-14/full_tables/", pattern = "*.csv", full.names = TRUE)
+
+data <- my_files %>%
+  map(read_csv)
+
+names(data) <- gsub(".csv",
+                    "",
+                    list.files("grid-2018-11-14/full_tables/",
+                               full.names = FALSE),
+                    fixed = TRUE)
+```
+
+
+```{r}
+for(i in 1:length(data)){
+assign(names(data)[i], data[[i]])
+}
+```
+
+
+```{r}
+# install.packages("rjson")
+library(rjson)
+```
+
+
+```{r}
+gridjson <- fromJSON(file = "grid-2018-11-14/grid.json")
+```
+
+
+```{r}
+# dfgridjson <- as.data.frame(gridjson)
+```
+
+
+
