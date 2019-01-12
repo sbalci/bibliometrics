@@ -23,20 +23,19 @@ output:
     toc_float: yes
 ---
 
+
 # Introduction
 
-It is a very common bibliometric study type to retrospectively analyse the number of peer reviewed articles written from a country to view the amount of contribution made in a specific scientific discipline.
+It is a very common bibliometric study type to retrospectively analyse the number of peer reviewed articles written from a country to view the amount of contribution made in a specific scientific discipline.  
 
-
-These studies require too much effort, since the data is generally behind paywalls and restrictions.
-
+These studies require too much effort, since the data is generally behind paywalls and restrictions.  
 
 I have previously contributed to a research to identify the Articles from Turkey Published in Pathology Journals Indexed in International Indexes; which is published here: [Turk Patoloji Derg. 2010, 26(2):107-113 doi: 10.5146/tjpath.2010.01006](http://www.turkjpath.org/summary_en.php3?id=1423) 
 
-This study had required manual investigation of many excel files, which was time consuming; also redoing and updating the data and results require a similar amount of effort.
+This study had required manual investigation of many `excel` files, which was time consuming; also redoing and updating the data and results require a similar amount of effort.
 
 In order to automatize these type of analysis in a reproducable fashion, 
-I will be using
+I will be using the following;  
 <!-- list of analysis tools -->
 [R Markdown](https://rmarkdown.rstudio.com/)
 ,
@@ -57,203 +56,191 @@ and
 [Google Scholar](https://scholar.google.com).
 
 
-http://opencitations.net/download
+---
 
 
 
-https://www.scopus.com/sources
 
 
-https://www.altmetric.com/top100/2018/
 
 
+
+# Codes for data download
+
+## PubMed
 
 https://dtd.nlm.nih.gov/ncbi/pubmed/out/doc/2018/
 
-
-MEDLINE®PubMed® XML Element Descriptions and their Attributes
+- MEDLINE®PubMed® XML Element Descriptions and their Attributes
 https://www.nlm.nih.gov/bsd/licensee/elements_descriptions.html
 
-Comment Correction Type
+- Comment Correction Type
 https://www.ncbi.nlm.nih.gov/books/NBK3827/#pubmedhelp.Comment_Correction_Type
 
-EDirect Documentation
+- EDirect Documentation
 https://dataguide.nlm.nih.gov/edirect/documentation.html
 
-Entrez Direct: E-utilities on the UNIX Command Line
+- Entrez Direct: E-utilities on the UNIX Command Line
 https://www.ncbi.nlm.nih.gov/books/NBK179288/
 
-The 9 E-utilities and Associated Parameters
+- The 9 E-utilities and Associated Parameters
 https://dataguide.nlm.nih.gov/eutilities/utilities.html
 
-E-utilities and the History server
+- E-utilities and the History server
 https://dataguide.nlm.nih.gov/eutilities/history.html
 
-EDirect Documentation
+- EDirect Documentation
 https://dataguide.nlm.nih.gov/edirect/documentation.html
 
-NCBI NOW, Lecture 3, Introduction to the Linux Shell
+- NCBI NOW, Lecture 3, Introduction to the Linux Shell
 https://www.youtube.com/watch?v=XgaE4VIaJqI
 
-MEDLINE®/PubMed® XML Data Elements
+- MEDLINE®/PubMed® XML Data Elements
 https://www.nlm.nih.gov/bsd/licensee/data_elements_doc.html
 
-pubmed_180101.dtd Documentation
+- pubmed_180101.dtd Documentation
 https://dtd.nlm.nih.gov/ncbi/pubmed/out/doc/2018/
 
-Using EDirect to create a local copy of PubMed
-https://dataguide.nlm.nih.gov/edirect/archive.html
 
-EDirectCookbook
-https://ncbi-hackathons.github.io/EDirectCookbook/
+### Entrez Direct: E-utilities on the UNIX Command Line
 
-Entrez Direct: E-utilities on the UNIX Command Line
+- Entrez Direct: E-utilities on the UNIX Command Line  
 https://www.ncbi.nlm.nih.gov/books/NBK179288/
 
-EDirect Overview
+- EDirectCookbook
+https://ncbi-hackathons.github.io/EDirectCookbook/
+
+- EDirect Overview
 https://dataguide.nlm.nih.gov/edirect/overview.html
 
-Installing EDirect
+- Installing EDirect
 https://dataguide.nlm.nih.gov/edirect/install.html
 
 
----
+### Using EDirect to create a local copy of PubMed
 
-If you want to see the code used in the analysis please click the code button on the right upper corner or throughout the page. 
+- Using EDirect to create a local copy of PubMed  
 
----
-
-# Feedback
-
-[Serdar Balcı, MD, Pathologist](https://github.com/sbalci) would like to hear your feedback: https://goo.gl/forms/YjGZ5DHgtPlR1RnB3
-
-This document will be continiously updated and the last update was on `r Sys.Date()`.
-
----
+https://dataguide.nlm.nih.gov/edirect/archive.html
 
 
 
----
-title: "Bibliographic Studies"
-subtitle: "Sources Used For Analysis"
-author: "Serdar Balcı, MD, Pathologist"
-date: '`r format(Sys.Date())`'
-output: 
-  html_notebook: 
-    code_folding: hide
-    fig_caption: yes
-    highlight: kate
-    number_sections: yes
-    theme: cerulean
-    toc: yes
-    toc_float: yes
-  html_document: 
-    code_folding: hide
-    df_print: kable
-    highlight: kate
-    keep_md: yes
-    number_sections: yes
-    theme: cerulean
-    toc: yes
-    toc_float: yes
----
 
-# Introduction
+```
 
-It is a very common bibliometric study type to retrospectively analyse the number of peer reviewed articles written from a country to view the amount of contribution made in a specific scientific discipline.
+https://dataguide.nlm.nih.gov/edirect/archive.html
+
+archive-pubmed -path /Volumes/Agu2018/PubMed
+
+caffeinate
+
+esearch -db pubmed -query "breast cancer" | \
+efetch -format uid | \
+fetch-pubmed -path /Volumes/Agu2018/PubMed | \
+xtract -pattern PubmedArticle -element MedlineCitation/PMID ISOAbbreviation Volume Issue PubDate/Year > trial.txt
+
+esearch -db pubmed -query "Turkey[Affiliation]" \
+-datetype PDAT -mindate 2018 -maxdate 3000 | \
+efetch -format xml > data/Turkey_all2.xml
+
+```
 
 
-These studies require too much effort, since the data is generally behind paywalls and restrictions.
+
+### Parser for Pubmed Open-Access XML Subset and MEDLINE XML Dataset
+
+- Python XML parser for PubMed Open Access subset and MEDLINE dataset  
+
+http://titipata.github.io/pubmed_parser/  
+http://github.com/titipata/pubmed_parser  
 
 
-I have previously contributed to a research to identify the Articles from Turkey Published in Pathology Journals Indexed in International Indexes; which is published here: [Turk Patoloji Derg. 2010, 26(2):107-113 doi: 10.5146/tjpath.2010.01006](http://www.turkjpath.org/summary_en.php3?id=1423) 
+### MEDLINEXMLToJSON
 
-This study had required manual investigation of many excel files, which was time consuming; also redoing and updating the data and results require a similar amount of effort.
-
-In order to automatize these type of analysis in a reproducable fashion, 
-I will be using
-<!-- list of analysis tools -->
-[R Markdown](https://rmarkdown.rstudio.com/)
-,
-[R Notebook](https://rmarkdown.rstudio.com/r_notebooks.html)
-,
-[Shiny](https://shiny.rstudio.com/)
-and
-[Terminal](https://en.0wikipedia.org/wiki/Terminal_(macOS))
-for coding. 
-I also plan to use other bibliographic tools like
-[VOSviewer](http://www.vosviewer.com/).
-
-Data will be retrieved from 
-[PubMed](https://www.ncbi.nlm.nih.gov/pubmed), 
-[E-direct](https://dataguide.nlm.nih.gov/edirect/overview.html),
-[WoS](www.webofknowledge.com/)
-and
-[Google Scholar](https://scholar.google.com).
+https://github.com/ldbib/MEDLINEXMLToJSON
 
 
+### Workflow of Pubmed Parser with PySpark
+
+https://github.com/titipata/pubmed_parser/wiki
+
+
+
+## ORCID
+
+https://orcid.org/content/orcid-public-data-file
+
+https://orcid.org/blog/2019/01/11/free-everyone-always-orcid-public-api-and-data-file
+
+
+- A compendium of taxonomists on ORCID  
+https://orcid.org/blog/2018/04/06/compendium-taxonomists-orcid
+
+- Vast set of public CVs reveals the world’s most migratory scientists  
+https://www.sciencemag.org/news/2017/05/vast-set-public-cvs-reveals-world-s-most-migratory-scientists
+
+
+## Semantic Scholar
+
+
+```
+Semantic Scholar Open Research Corpus
+
+https://s3-us-west-2.amazonaws.com/ai2-s2-research-public/open-corpus/index.html
+
+aws s3 cp --recursive s3://ai2-s2-research-public/open-corpus/ ~/Volumes/Agu2018/semantic/
+
+wget -P /Volumes/Agu2018/semantic -i https://s3-us-west-2.amazonaws.com/ai2-s2-research-public/open-corpus/manifest.txt
+
+caffeinate
+
+```
+
+
+## Scopus
 
 https://www.scopus.com/sources
 
 
+
+## Altmetrics
+
 https://www.altmetric.com/top100/2018/
 
+
+## Grid
 
 https://grid.ac/
 
 
-https://dtd.nlm.nih.gov/ncbi/pubmed/out/doc/2018/
+
+## Cobalmetrics
+
+https://cobaltmetrics.com/
+
+- Toward privacy-preserving altmetrics exploration with Cobaltmetrics and ORCID
+
+https://medium.com/thunken/toward-privacy-preserving-altmetrics-exploration-with-cobaltmetrics-and-orcid-f5ab6fa7898a
 
 
-MEDLINE®PubMed® XML Element Descriptions and their Attributes
-https://www.nlm.nih.gov/bsd/licensee/elements_descriptions.html
+## OpenCitations
 
-Comment Correction Type
-https://www.ncbi.nlm.nih.gov/books/NBK3827/#pubmedhelp.Comment_Correction_Type
+http://opencitations.net
 
-EDirect Documentation
-https://dataguide.nlm.nih.gov/edirect/documentation.html
+http://opencitations.net/download
 
-Entrez Direct: E-utilities on the UNIX Command Line
-https://www.ncbi.nlm.nih.gov/books/NBK179288/
+http://opencitations.net/corpus
 
-The 9 E-utilities and Associated Parameters
-https://dataguide.nlm.nih.gov/eutilities/utilities.html
+https://github.com/opencitations
 
-E-utilities and the History server
-https://dataguide.nlm.nih.gov/eutilities/history.html
+- The OpenCitations Data Model  
+https://figshare.com/articles/Metadata_for_the_OpenCitations_Corpus/3443876
 
-EDirect Documentation
-https://dataguide.nlm.nih.gov/edirect/documentation.html
+- Creating Open Citation Data with BCite  
+https://semsci.github.io/SemSci2018/papers/1/bcite-semsci2018.html
 
-NCBI NOW, Lecture 3, Introduction to the Linux Shell
-https://www.youtube.com/watch?v=XgaE4VIaJqI
+https://github.com/opencitations/bcite
 
-MEDLINE®/PubMed® XML Data Elements
-https://www.nlm.nih.gov/bsd/licensee/data_elements_doc.html
-
-pubmed_180101.dtd Documentation
-https://dtd.nlm.nih.gov/ncbi/pubmed/out/doc/2018/
-
-Using EDirect to create a local copy of PubMed
-https://dataguide.nlm.nih.gov/edirect/archive.html
-
-EDirectCookbook
-https://ncbi-hackathons.github.io/EDirectCookbook/
-
-Entrez Direct: E-utilities on the UNIX Command Line
-https://www.ncbi.nlm.nih.gov/books/NBK179288/
-
-EDirect Overview
-https://dataguide.nlm.nih.gov/edirect/overview.html
-
-Installing EDirect
-https://dataguide.nlm.nih.gov/edirect/install.html
-
-
----
-
-If you want to see the code used in the analysis please click the code button on the right upper corner or throughout the page. 
 
 ---
 
@@ -262,5 +249,30 @@ If you want to see the code used in the analysis please click the code button on
 [Serdar Balcı, MD, Pathologist](https://github.com/sbalci) would like to hear your feedback: https://goo.gl/forms/YjGZ5DHgtPlR1RnB3
 
 This document will be continiously updated and the last update was on `r Sys.Date()`.
+
+---
+
+<script id="dsq-count-scr" src="//https-sbalci-github-io.disqus.com/count.js" async></script>
+
+<div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://https-sbalci-github-io.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 
 ---

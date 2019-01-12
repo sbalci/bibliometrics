@@ -11,7 +11,7 @@
 
 <meta name="author" content="Serdar Balcı, MD, Pathologist" />
 
-<meta name="date" content="2019-01-11" />
+<meta name="date" content="2019-01-12" />
 
 <title>Bibliographic Studies</title>
 
@@ -2895,7 +2895,7 @@ div.tocify {
 <h1 class="title toc-ignore">Bibliographic Studies</h1>
 <h3 class="subtitle"><em>Sources Used For Analysis</em></h3>
 <h4 class="author"><em>Serdar Balcı, MD, Pathologist</em></h4>
-<h4 class="date"><em>2019-01-11</em></h4>
+<h4 class="date"><em>2019-01-12</em></h4>
 
 </div>
 
@@ -2906,78 +2906,177 @@ div.tocify {
 <p>It is a very common bibliometric study type to retrospectively analyse the number of peer reviewed articles written from a country to view the amount of contribution made in a specific scientific discipline.</p>
 <p>These studies require too much effort, since the data is generally behind paywalls and restrictions.</p>
 <p>I have previously contributed to a research to identify the Articles from Turkey Published in Pathology Journals Indexed in International Indexes; which is published here: <a href="http://www.turkjpath.org/summary_en.php3?id=1423">Turk Patoloji Derg. 2010, 26(2):107-113 doi: 10.5146/tjpath.2010.01006</a></p>
-<p>This study had required manual investigation of many excel files, which was time consuming; also redoing and updating the data and results require a similar amount of effort.</p>
-<p>In order to automatize these type of analysis in a reproducable fashion, I will be using <!-- list of analysis tools --> <a href="https://rmarkdown.rstudio.com/">R Markdown</a> , <a href="https://rmarkdown.rstudio.com/r_notebooks.html">R Notebook</a> , <a href="https://shiny.rstudio.com/">Shiny</a> and <a href="https://en.0wikipedia.org/wiki/Terminal_(macOS)">Terminal</a> for coding. I also plan to use other bibliographic tools like <a href="http://www.vosviewer.com/">VOSviewer</a>.</p>
+<p>This study had required manual investigation of many <code>excel</code> files, which was time consuming; also redoing and updating the data and results require a similar amount of effort.</p>
+<p>In order to automatize these type of analysis in a reproducable fashion, I will be using the following;<br />
+<!-- list of analysis tools --> <a href="https://rmarkdown.rstudio.com/">R Markdown</a> , <a href="https://rmarkdown.rstudio.com/r_notebooks.html">R Notebook</a> , <a href="https://shiny.rstudio.com/">Shiny</a> and <a href="https://en.0wikipedia.org/wiki/Terminal_(macOS)">Terminal</a> for coding. I also plan to use other bibliographic tools like <a href="http://www.vosviewer.com/">VOSviewer</a>.</p>
 <p>Data will be retrieved from <a href="https://www.ncbi.nlm.nih.gov/pubmed">PubMed</a>, <a href="https://dataguide.nlm.nih.gov/edirect/overview.html">E-direct</a>, <a href="www.webofknowledge.com/">WoS</a> and <a href="https://scholar.google.com">Google Scholar</a>.</p>
-<p><a href="http://opencitations.net/download" class="uri">http://opencitations.net/download</a></p>
-<p><a href="https://www.scopus.com/sources" class="uri">https://www.scopus.com/sources</a></p>
-<p><a href="https://www.altmetric.com/top100/2018/" class="uri">https://www.altmetric.com/top100/2018/</a></p>
+<hr />
+</div>
+<div id="codes-for-data-download" class="section level1">
+<h1><span class="header-section-number">2</span> Codes for data download</h1>
+<div id="pubmed" class="section level2">
+<h2><span class="header-section-number">2.1</span> PubMed</h2>
 <p><a href="https://dtd.nlm.nih.gov/ncbi/pubmed/out/doc/2018/" class="uri">https://dtd.nlm.nih.gov/ncbi/pubmed/out/doc/2018/</a></p>
-<p>MEDLINE®PubMed® XML Element Descriptions and their Attributes <a href="https://www.nlm.nih.gov/bsd/licensee/elements_descriptions.html" class="uri">https://www.nlm.nih.gov/bsd/licensee/elements_descriptions.html</a></p>
-<p>Comment Correction Type <a href="https://www.ncbi.nlm.nih.gov/books/NBK3827/#pubmedhelp.Comment_Correction_Type" class="uri">https://www.ncbi.nlm.nih.gov/books/NBK3827/#pubmedhelp.Comment_Correction_Type</a></p>
-<p>EDirect Documentation <a href="https://dataguide.nlm.nih.gov/edirect/documentation.html" class="uri">https://dataguide.nlm.nih.gov/edirect/documentation.html</a></p>
-<p>Entrez Direct: E-utilities on the UNIX Command Line <a href="https://www.ncbi.nlm.nih.gov/books/NBK179288/" class="uri">https://www.ncbi.nlm.nih.gov/books/NBK179288/</a></p>
-<p>The 9 E-utilities and Associated Parameters <a href="https://dataguide.nlm.nih.gov/eutilities/utilities.html" class="uri">https://dataguide.nlm.nih.gov/eutilities/utilities.html</a></p>
-<p>E-utilities and the History server <a href="https://dataguide.nlm.nih.gov/eutilities/history.html" class="uri">https://dataguide.nlm.nih.gov/eutilities/history.html</a></p>
-<p>EDirect Documentation <a href="https://dataguide.nlm.nih.gov/edirect/documentation.html" class="uri">https://dataguide.nlm.nih.gov/edirect/documentation.html</a></p>
-<p>NCBI NOW, Lecture 3, Introduction to the Linux Shell <a href="https://www.youtube.com/watch?v=XgaE4VIaJqI" class="uri">https://www.youtube.com/watch?v=XgaE4VIaJqI</a></p>
-<p>MEDLINE®/PubMed® XML Data Elements <a href="https://www.nlm.nih.gov/bsd/licensee/data_elements_doc.html" class="uri">https://www.nlm.nih.gov/bsd/licensee/data_elements_doc.html</a></p>
-<p>pubmed_180101.dtd Documentation <a href="https://dtd.nlm.nih.gov/ncbi/pubmed/out/doc/2018/" class="uri">https://dtd.nlm.nih.gov/ncbi/pubmed/out/doc/2018/</a></p>
-<p>Using EDirect to create a local copy of PubMed <a href="https://dataguide.nlm.nih.gov/edirect/archive.html" class="uri">https://dataguide.nlm.nih.gov/edirect/archive.html</a></p>
-<p>EDirectCookbook <a href="https://ncbi-hackathons.github.io/EDirectCookbook/" class="uri">https://ncbi-hackathons.github.io/EDirectCookbook/</a></p>
-<p>Entrez Direct: E-utilities on the UNIX Command Line <a href="https://www.ncbi.nlm.nih.gov/books/NBK179288/" class="uri">https://www.ncbi.nlm.nih.gov/books/NBK179288/</a></p>
-<p>EDirect Overview <a href="https://dataguide.nlm.nih.gov/edirect/overview.html" class="uri">https://dataguide.nlm.nih.gov/edirect/overview.html</a></p>
-<p>Installing EDirect <a href="https://dataguide.nlm.nih.gov/edirect/install.html" class="uri">https://dataguide.nlm.nih.gov/edirect/install.html</a></p>
+<ul>
+<li><p>MEDLINE®PubMed® XML Element Descriptions and their Attributes <a href="https://www.nlm.nih.gov/bsd/licensee/elements_descriptions.html" class="uri">https://www.nlm.nih.gov/bsd/licensee/elements_descriptions.html</a></p></li>
+<li><p>Comment Correction Type <a href="https://www.ncbi.nlm.nih.gov/books/NBK3827/#pubmedhelp.Comment_Correction_Type" class="uri">https://www.ncbi.nlm.nih.gov/books/NBK3827/#pubmedhelp.Comment_Correction_Type</a></p></li>
+<li><p>EDirect Documentation <a href="https://dataguide.nlm.nih.gov/edirect/documentation.html" class="uri">https://dataguide.nlm.nih.gov/edirect/documentation.html</a></p></li>
+<li><p>Entrez Direct: E-utilities on the UNIX Command Line <a href="https://www.ncbi.nlm.nih.gov/books/NBK179288/" class="uri">https://www.ncbi.nlm.nih.gov/books/NBK179288/</a></p></li>
+<li><p>The 9 E-utilities and Associated Parameters <a href="https://dataguide.nlm.nih.gov/eutilities/utilities.html" class="uri">https://dataguide.nlm.nih.gov/eutilities/utilities.html</a></p></li>
+<li><p>E-utilities and the History server <a href="https://dataguide.nlm.nih.gov/eutilities/history.html" class="uri">https://dataguide.nlm.nih.gov/eutilities/history.html</a></p></li>
+<li><p>EDirect Documentation <a href="https://dataguide.nlm.nih.gov/edirect/documentation.html" class="uri">https://dataguide.nlm.nih.gov/edirect/documentation.html</a></p></li>
+<li><p>NCBI NOW, Lecture 3, Introduction to the Linux Shell <a href="https://www.youtube.com/watch?v=XgaE4VIaJqI" class="uri">https://www.youtube.com/watch?v=XgaE4VIaJqI</a></p></li>
+<li><p>MEDLINE®/PubMed® XML Data Elements <a href="https://www.nlm.nih.gov/bsd/licensee/data_elements_doc.html" class="uri">https://www.nlm.nih.gov/bsd/licensee/data_elements_doc.html</a></p></li>
+<li><p>pubmed_180101.dtd Documentation <a href="https://dtd.nlm.nih.gov/ncbi/pubmed/out/doc/2018/" class="uri">https://dtd.nlm.nih.gov/ncbi/pubmed/out/doc/2018/</a></p></li>
+</ul>
+<div id="entrez-direct-e-utilities-on-the-unix-command-line" class="section level3">
+<h3><span class="header-section-number">2.1.1</span> Entrez Direct: E-utilities on the UNIX Command Line</h3>
+<ul>
+<li><p>Entrez Direct: E-utilities on the UNIX Command Line<br />
+<a href="https://www.ncbi.nlm.nih.gov/books/NBK179288/" class="uri">https://www.ncbi.nlm.nih.gov/books/NBK179288/</a></p></li>
+<li><p>EDirectCookbook <a href="https://ncbi-hackathons.github.io/EDirectCookbook/" class="uri">https://ncbi-hackathons.github.io/EDirectCookbook/</a></p></li>
+<li><p>EDirect Overview <a href="https://dataguide.nlm.nih.gov/edirect/overview.html" class="uri">https://dataguide.nlm.nih.gov/edirect/overview.html</a></p></li>
+<li><p>Installing EDirect <a href="https://dataguide.nlm.nih.gov/edirect/install.html" class="uri">https://dataguide.nlm.nih.gov/edirect/install.html</a></p></li>
+</ul>
+</div>
+<div id="using-edirect-to-create-a-local-copy-of-pubmed" class="section level3">
+<h3><span class="header-section-number">2.1.2</span> Using EDirect to create a local copy of PubMed</h3>
+<ul>
+<li>Using EDirect to create a local copy of PubMed</li>
+</ul>
+<p><a href="https://dataguide.nlm.nih.gov/edirect/archive.html" class="uri">https://dataguide.nlm.nih.gov/edirect/archive.html</a></p>
+<pre><code>
+https://dataguide.nlm.nih.gov/edirect/archive.html
+
+archive-pubmed -path /Volumes/Agu2018/PubMed
+
+caffeinate
+
+esearch -db pubmed -query &quot;breast cancer&quot; | \
+efetch -format uid | \
+fetch-pubmed -path /Volumes/Agu2018/PubMed | \
+xtract -pattern PubmedArticle -element MedlineCitation/PMID ISOAbbreviation Volume Issue PubDate/Year &gt; trial.txt
+
+esearch -db pubmed -query &quot;Turkey[Affiliation]&quot; \
+-datetype PDAT -mindate 2018 -maxdate 3000 | \
+efetch -format xml &gt; data/Turkey_all2.xml
+</code></pre>
+</div>
+<div id="parser-for-pubmed-open-access-xml-subset-and-medline-xml-dataset" class="section level3">
+<h3><span class="header-section-number">2.1.3</span> Parser for Pubmed Open-Access XML Subset and MEDLINE XML Dataset</h3>
+<ul>
+<li>Python XML parser for PubMed Open Access subset and MEDLINE dataset</li>
+</ul>
+<p><a href="http://titipata.github.io/pubmed_parser/" class="uri">http://titipata.github.io/pubmed_parser/</a><br />
+<a href="http://github.com/titipata/pubmed_parser" class="uri">http://github.com/titipata/pubmed_parser</a></p>
+</div>
+<div id="medlinexmltojson" class="section level3">
+<h3><span class="header-section-number">2.1.4</span> MEDLINEXMLToJSON</h3>
+<p><a href="https://github.com/ldbib/MEDLINEXMLToJSON" class="uri">https://github.com/ldbib/MEDLINEXMLToJSON</a></p>
+</div>
+<div id="workflow-of-pubmed-parser-with-pyspark" class="section level3">
+<h3><span class="header-section-number">2.1.5</span> Workflow of Pubmed Parser with PySpark</h3>
+<p><a href="https://github.com/titipata/pubmed_parser/wiki" class="uri">https://github.com/titipata/pubmed_parser/wiki</a></p>
+</div>
+</div>
+<div id="orcid" class="section level2">
+<h2><span class="header-section-number">2.2</span> ORCID</h2>
+<p><a href="https://orcid.org/content/orcid-public-data-file" class="uri">https://orcid.org/content/orcid-public-data-file</a></p>
+<p><a href="https://orcid.org/blog/2019/01/11/free-everyone-always-orcid-public-api-and-data-file" class="uri">https://orcid.org/blog/2019/01/11/free-everyone-always-orcid-public-api-and-data-file</a></p>
+<ul>
+<li><p>A compendium of taxonomists on ORCID<br />
+<a href="https://orcid.org/blog/2018/04/06/compendium-taxonomists-orcid" class="uri">https://orcid.org/blog/2018/04/06/compendium-taxonomists-orcid</a></p></li>
+<li><p>Vast set of public CVs reveals the world’s most migratory scientists<br />
+<a href="https://www.sciencemag.org/news/2017/05/vast-set-public-cvs-reveals-world-s-most-migratory-scientists" class="uri">https://www.sciencemag.org/news/2017/05/vast-set-public-cvs-reveals-world-s-most-migratory-scientists</a></p></li>
+</ul>
+</div>
+<div id="semantic-scholar" class="section level2">
+<h2><span class="header-section-number">2.3</span> Semantic Scholar</h2>
+<pre><code>Semantic Scholar Open Research Corpus
+
+https://s3-us-west-2.amazonaws.com/ai2-s2-research-public/open-corpus/index.html
+
+aws s3 cp --recursive s3://ai2-s2-research-public/open-corpus/ ~/Volumes/Agu2018/semantic/
+
+wget -P /Volumes/Agu2018/semantic -i https://s3-us-west-2.amazonaws.com/ai2-s2-research-public/open-corpus/manifest.txt
+
+caffeinate
+</code></pre>
+</div>
+<div id="scopus" class="section level2">
+<h2><span class="header-section-number">2.4</span> Scopus</h2>
+<p><a href="https://www.scopus.com/sources" class="uri">https://www.scopus.com/sources</a></p>
+</div>
+<div id="altmetrics" class="section level2">
+<h2><span class="header-section-number">2.5</span> Altmetrics</h2>
+<p><a href="https://www.altmetric.com/top100/2018/" class="uri">https://www.altmetric.com/top100/2018/</a></p>
+</div>
+<div id="grid" class="section level2">
+<h2><span class="header-section-number">2.6</span> Grid</h2>
+<p><a href="https://grid.ac/" class="uri">https://grid.ac/</a></p>
+</div>
+<div id="cobalmetrics" class="section level2">
+<h2><span class="header-section-number">2.7</span> Cobalmetrics</h2>
+<p><a href="https://cobaltmetrics.com/" class="uri">https://cobaltmetrics.com/</a></p>
+<ul>
+<li>Toward privacy-preserving altmetrics exploration with Cobaltmetrics and ORCID</li>
+</ul>
+<p><a href="https://medium.com/thunken/toward-privacy-preserving-altmetrics-exploration-with-cobaltmetrics-and-orcid-f5ab6fa7898a" class="uri">https://medium.com/thunken/toward-privacy-preserving-altmetrics-exploration-with-cobaltmetrics-and-orcid-f5ab6fa7898a</a></p>
+</div>
+<div id="opencitations" class="section level2">
+<h2><span class="header-section-number">2.8</span> OpenCitations</h2>
+<p><a href="http://opencitations.net" class="uri">http://opencitations.net</a></p>
+<p><a href="http://opencitations.net/download" class="uri">http://opencitations.net/download</a></p>
+<p><a href="http://opencitations.net/corpus" class="uri">http://opencitations.net/corpus</a></p>
+<p><a href="https://github.com/opencitations" class="uri">https://github.com/opencitations</a></p>
+<ul>
+<li><p>The OpenCitations Data Model<br />
+<a href="https://figshare.com/articles/Metadata_for_the_OpenCitations_Corpus/3443876" class="uri">https://figshare.com/articles/Metadata_for_the_OpenCitations_Corpus/3443876</a></p></li>
+<li><p>Creating Open Citation Data with BCite<br />
+<a href="https://semsci.github.io/SemSci2018/papers/1/bcite-semsci2018.html" class="uri">https://semsci.github.io/SemSci2018/papers/1/bcite-semsci2018.html</a></p></li>
+</ul>
+<p><a href="https://github.com/opencitations/bcite" class="uri">https://github.com/opencitations/bcite</a></p>
 <hr />
-<p>If you want to see the code used in the analysis please click the code button on the right upper corner or throughout the page.</p>
-<hr />
+</div>
 </div>
 <div id="feedback" class="section level1">
-<h1><span class="header-section-number">2</span> Feedback</h1>
+<h1><span class="header-section-number">3</span> Feedback</h1>
 <p><a href="https://github.com/sbalci">Serdar Balcı, MD, Pathologist</a> would like to hear your feedback: <a href="https://goo.gl/forms/YjGZ5DHgtPlR1RnB3" class="uri">https://goo.gl/forms/YjGZ5DHgtPlR1RnB3</a></p>
-<p>This document will be continiously updated and the last update was on 2019-01-11.</p>
+<p>This document will be continiously updated and the last update was on 2019-01-12.</p>
 <hr />
+<script>var DISQUSWIDGETS,disqus_domain,disqus_shortname;
+typeof DISQUSWIDGETS==="undefined"&&(DISQUSWIDGETS=function(){var f=document,a=f.getElementById("dsq-count-scr"),a=a&&a.src.match(/(https?:)?\/\/(?:www\.)?([\w_\-]+)\.((?:dev\.)?disqus\.(?:com|org)(?::\d+)?)/i),e={},s=f.head||f.body,j={},q={identifier:1,url:2};e.domain=a&&a[3]||disqus_domain||"disqus.com";e.forum=a&&a[2]||disqus_shortname;e.proto=a&&a[1]||"";e.getCount=function(b){var c;c=encodeURIComponent;var a=e.proto+"//"+e.forum+"."+e.domain+"/count-data.js?",d=[],k=0,l=10,r="",b=b||{};b.reset&&
+(j={},r="&_="+ +new Date);for(var b=[f.getElementsByTagName("A"),f.getElementsByClassName&&f.getElementsByClassName("disqus-comment-count")||[]],m,i,g,h,n=0;n<b.length;n++){m=b[n];for(var o=0;o<m.length;o++){i=m[o];g=i.getAttribute("data-disqus-identifier");h=i.hash==="#disqus_thread"&&i.href.replace("#disqus_thread","")||i.getAttribute("data-disqus-url");if(g)h=q.identifier;else if(h)g=h,h=q.url;else continue;var p;j.hasOwnProperty(g)?p=j[g]:(p=j[g]={elements:[],type:h},d.push(c(h)+"="+c(g)));p.elements.push(i)}}d.sort();
+for(c=d.slice(k,l);c.length;)b=f.createElement("script"),b.src=a+c.join("&")+r,s.appendChild(b),k+=10,l+=10,c=d.slice(k,l)};e.displayCount=function(b){for(var c,a,d,e=b.counts,b=b.text.comments;c=e.shift();)if(a=j[c.id]){switch(c.comments){case 0:d=b.zero;break;case 1:d=b.one;break;default:d=b.multiple}c=d.replace("{num}",c.comments);a=a.elements;for(d=a.length-1;d>=0;d--)a[d].innerHTML=c}};return e}());DISQUSWIDGETS.getCount();</script>
+<div id="disqus_thread">
+
 </div>
-<div id="introduction-1" class="section level1">
-<h1><span class="header-section-number">3</span> Introduction</h1>
-<p>It is a very common bibliometric study type to retrospectively analyse the number of peer reviewed articles written from a country to view the amount of contribution made in a specific scientific discipline.</p>
-<p>These studies require too much effort, since the data is generally behind paywalls and restrictions.</p>
-<p>I have previously contributed to a research to identify the Articles from Turkey Published in Pathology Journals Indexed in International Indexes; which is published here: <a href="http://www.turkjpath.org/summary_en.php3?id=1423">Turk Patoloji Derg. 2010, 26(2):107-113 doi: 10.5146/tjpath.2010.01006</a></p>
-<p>This study had required manual investigation of many excel files, which was time consuming; also redoing and updating the data and results require a similar amount of effort.</p>
-<p>In order to automatize these type of analysis in a reproducable fashion, I will be using <!-- list of analysis tools --> <a href="https://rmarkdown.rstudio.com/">R Markdown</a> , <a href="https://rmarkdown.rstudio.com/r_notebooks.html">R Notebook</a> , <a href="https://shiny.rstudio.com/">Shiny</a> and <a href="https://en.0wikipedia.org/wiki/Terminal_(macOS)">Terminal</a> for coding. I also plan to use other bibliographic tools like <a href="http://www.vosviewer.com/">VOSviewer</a>.</p>
-<p>Data will be retrieved from <a href="https://www.ncbi.nlm.nih.gov/pubmed">PubMed</a>, <a href="https://dataguide.nlm.nih.gov/edirect/overview.html">E-direct</a>, <a href="www.webofknowledge.com/">WoS</a> and <a href="https://scholar.google.com">Google Scholar</a>.</p>
-<p><a href="https://www.scopus.com/sources" class="uri">https://www.scopus.com/sources</a></p>
-<p><a href="https://www.altmetric.com/top100/2018/" class="uri">https://www.altmetric.com/top100/2018/</a></p>
-<p><a href="https://grid.ac/" class="uri">https://grid.ac/</a></p>
-<p><a href="https://dtd.nlm.nih.gov/ncbi/pubmed/out/doc/2018/" class="uri">https://dtd.nlm.nih.gov/ncbi/pubmed/out/doc/2018/</a></p>
-<p>MEDLINE®PubMed® XML Element Descriptions and their Attributes <a href="https://www.nlm.nih.gov/bsd/licensee/elements_descriptions.html" class="uri">https://www.nlm.nih.gov/bsd/licensee/elements_descriptions.html</a></p>
-<p>Comment Correction Type <a href="https://www.ncbi.nlm.nih.gov/books/NBK3827/#pubmedhelp.Comment_Correction_Type" class="uri">https://www.ncbi.nlm.nih.gov/books/NBK3827/#pubmedhelp.Comment_Correction_Type</a></p>
-<p>EDirect Documentation <a href="https://dataguide.nlm.nih.gov/edirect/documentation.html" class="uri">https://dataguide.nlm.nih.gov/edirect/documentation.html</a></p>
-<p>Entrez Direct: E-utilities on the UNIX Command Line <a href="https://www.ncbi.nlm.nih.gov/books/NBK179288/" class="uri">https://www.ncbi.nlm.nih.gov/books/NBK179288/</a></p>
-<p>The 9 E-utilities and Associated Parameters <a href="https://dataguide.nlm.nih.gov/eutilities/utilities.html" class="uri">https://dataguide.nlm.nih.gov/eutilities/utilities.html</a></p>
-<p>E-utilities and the History server <a href="https://dataguide.nlm.nih.gov/eutilities/history.html" class="uri">https://dataguide.nlm.nih.gov/eutilities/history.html</a></p>
-<p>EDirect Documentation <a href="https://dataguide.nlm.nih.gov/edirect/documentation.html" class="uri">https://dataguide.nlm.nih.gov/edirect/documentation.html</a></p>
-<p>NCBI NOW, Lecture 3, Introduction to the Linux Shell <a href="https://www.youtube.com/watch?v=XgaE4VIaJqI" class="uri">https://www.youtube.com/watch?v=XgaE4VIaJqI</a></p>
-<p>MEDLINE®/PubMed® XML Data Elements <a href="https://www.nlm.nih.gov/bsd/licensee/data_elements_doc.html" class="uri">https://www.nlm.nih.gov/bsd/licensee/data_elements_doc.html</a></p>
-<p>pubmed_180101.dtd Documentation <a href="https://dtd.nlm.nih.gov/ncbi/pubmed/out/doc/2018/" class="uri">https://dtd.nlm.nih.gov/ncbi/pubmed/out/doc/2018/</a></p>
-<p>Using EDirect to create a local copy of PubMed <a href="https://dataguide.nlm.nih.gov/edirect/archive.html" class="uri">https://dataguide.nlm.nih.gov/edirect/archive.html</a></p>
-<p>EDirectCookbook <a href="https://ncbi-hackathons.github.io/EDirectCookbook/" class="uri">https://ncbi-hackathons.github.io/EDirectCookbook/</a></p>
-<p>Entrez Direct: E-utilities on the UNIX Command Line <a href="https://www.ncbi.nlm.nih.gov/books/NBK179288/" class="uri">https://www.ncbi.nlm.nih.gov/books/NBK179288/</a></p>
-<p>EDirect Overview <a href="https://dataguide.nlm.nih.gov/edirect/overview.html" class="uri">https://dataguide.nlm.nih.gov/edirect/overview.html</a></p>
-<p>Installing EDirect <a href="https://dataguide.nlm.nih.gov/edirect/install.html" class="uri">https://dataguide.nlm.nih.gov/edirect/install.html</a></p>
-<hr />
-<p>If you want to see the code used in the analysis please click the code button on the right upper corner or throughout the page.</p>
-<hr />
-</div>
-<div id="feedback-1" class="section level1">
-<h1><span class="header-section-number">4</span> Feedback</h1>
-<p><a href="https://github.com/sbalci">Serdar Balcı, MD, Pathologist</a> would like to hear your feedback: <a href="https://goo.gl/forms/YjGZ5DHgtPlR1RnB3" class="uri">https://goo.gl/forms/YjGZ5DHgtPlR1RnB3</a></p>
-<p>This document will be continiously updated and the last update was on 2019-01-11.</p>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://https-sbalci-github-io.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>
+Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+</noscript>
 <hr />
 <!-- rnb-text-end -->
 </div>
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiQmlibGlvZ3JhcGhpYyBTdHVkaWVzIgpzdWJ0aXRsZTogIlNvdXJjZXMgVXNlZCBGb3IgQW5hbHlzaXMiCmF1dGhvcjogIlNlcmRhciBCYWxjxLEsIE1ELCBQYXRob2xvZ2lzdCIKZGF0ZTogJ2ByIGZvcm1hdChTeXMuRGF0ZSgpKWAnCm91dHB1dDogCiAgaHRtbF9ub3RlYm9vazogCiAgICBjb2RlX2ZvbGRpbmc6IGhpZGUKICAgIGZpZ19jYXB0aW9uOiB5ZXMKICAgIGhpZ2hsaWdodDoga2F0ZQogICAgbnVtYmVyX3NlY3Rpb25zOiB5ZXMKICAgIHRoZW1lOiBjZXJ1bGVhbgogICAgdG9jOiB5ZXMKICAgIHRvY19mbG9hdDogeWVzCiAgaHRtbF9kb2N1bWVudDogCiAgICBjb2RlX2ZvbGRpbmc6IGhpZGUKICAgIGRmX3ByaW50OiBrYWJsZQogICAgaGlnaGxpZ2h0OiBrYXRlCiAgICBrZWVwX21kOiB5ZXMKICAgIG51bWJlcl9zZWN0aW9uczogeWVzCiAgICB0aGVtZTogY2VydWxlYW4KICAgIHRvYzogeWVzCiAgICB0b2NfZmxvYXQ6IHllcwotLS0KCiMgSW50cm9kdWN0aW9uCgpJdCBpcyBhIHZlcnkgY29tbW9uIGJpYmxpb21ldHJpYyBzdHVkeSB0eXBlIHRvIHJldHJvc3BlY3RpdmVseSBhbmFseXNlIHRoZSBudW1iZXIgb2YgcGVlciByZXZpZXdlZCBhcnRpY2xlcyB3cml0dGVuIGZyb20gYSBjb3VudHJ5IHRvIHZpZXcgdGhlIGFtb3VudCBvZiBjb250cmlidXRpb24gbWFkZSBpbiBhIHNwZWNpZmljIHNjaWVudGlmaWMgZGlzY2lwbGluZS4KCgpUaGVzZSBzdHVkaWVzIHJlcXVpcmUgdG9vIG11Y2ggZWZmb3J0LCBzaW5jZSB0aGUgZGF0YSBpcyBnZW5lcmFsbHkgYmVoaW5kIHBheXdhbGxzIGFuZCByZXN0cmljdGlvbnMuCgoKSSBoYXZlIHByZXZpb3VzbHkgY29udHJpYnV0ZWQgdG8gYSByZXNlYXJjaCB0byBpZGVudGlmeSB0aGUgQXJ0aWNsZXMgZnJvbSBUdXJrZXkgUHVibGlzaGVkIGluIFBhdGhvbG9neSBKb3VybmFscyBJbmRleGVkIGluIEludGVybmF0aW9uYWwgSW5kZXhlczsgd2hpY2ggaXMgcHVibGlzaGVkIGhlcmU6IFtUdXJrIFBhdG9sb2ppIERlcmcuIDIwMTAsIDI2KDIpOjEwNy0xMTMgZG9pOiAxMC41MTQ2L3RqcGF0aC4yMDEwLjAxMDA2XShodHRwOi8vd3d3LnR1cmtqcGF0aC5vcmcvc3VtbWFyeV9lbi5waHAzP2lkPTE0MjMpIAoKVGhpcyBzdHVkeSBoYWQgcmVxdWlyZWQgbWFudWFsIGludmVzdGlnYXRpb24gb2YgbWFueSBleGNlbCBmaWxlcywgd2hpY2ggd2FzIHRpbWUgY29uc3VtaW5nOyBhbHNvIHJlZG9pbmcgYW5kIHVwZGF0aW5nIHRoZSBkYXRhIGFuZCByZXN1bHRzIHJlcXVpcmUgYSBzaW1pbGFyIGFtb3VudCBvZiBlZmZvcnQuCgpJbiBvcmRlciB0byBhdXRvbWF0aXplIHRoZXNlIHR5cGUgb2YgYW5hbHlzaXMgaW4gYSByZXByb2R1Y2FibGUgZmFzaGlvbiwgCkkgd2lsbCBiZSB1c2luZwo8IS0tIGxpc3Qgb2YgYW5hbHlzaXMgdG9vbHMgLS0+CltSIE1hcmtkb3duXShodHRwczovL3JtYXJrZG93bi5yc3R1ZGlvLmNvbS8pCiwKW1IgTm90ZWJvb2tdKGh0dHBzOi8vcm1hcmtkb3duLnJzdHVkaW8uY29tL3Jfbm90ZWJvb2tzLmh0bWwpCiwKW1NoaW55XShodHRwczovL3NoaW55LnJzdHVkaW8uY29tLykKYW5kCltUZXJtaW5hbF0oaHR0cHM6Ly9lbi4wd2lraXBlZGlhLm9yZy93aWtpL1Rlcm1pbmFsXyhtYWNPUykpCmZvciBjb2RpbmcuIApJIGFsc28gcGxhbiB0byB1c2Ugb3RoZXIgYmlibGlvZ3JhcGhpYyB0b29scyBsaWtlCltWT1N2aWV3ZXJdKGh0dHA6Ly93d3cudm9zdmlld2VyLmNvbS8pLgoKRGF0YSB3aWxsIGJlIHJldHJpZXZlZCBmcm9tIApbUHViTWVkXShodHRwczovL3d3dy5uY2JpLm5sbS5uaWguZ292L3B1Ym1lZCksIApbRS1kaXJlY3RdKGh0dHBzOi8vZGF0YWd1aWRlLm5sbS5uaWguZ292L2VkaXJlY3Qvb3ZlcnZpZXcuaHRtbCksCltXb1NdKHd3dy53ZWJvZmtub3dsZWRnZS5jb20vKQphbmQKW0dvb2dsZSBTY2hvbGFyXShodHRwczovL3NjaG9sYXIuZ29vZ2xlLmNvbSkuCgoKaHR0cDovL29wZW5jaXRhdGlvbnMubmV0L2Rvd25sb2FkCgoKCmh0dHBzOi8vd3d3LnNjb3B1cy5jb20vc291cmNlcwoKCmh0dHBzOi8vd3d3LmFsdG1ldHJpYy5jb20vdG9wMTAwLzIwMTgvCgoKCmh0dHBzOi8vZHRkLm5sbS5uaWguZ292L25jYmkvcHVibWVkL291dC9kb2MvMjAxOC8KCgpNRURMSU5Fwq5QdWJNZWTCriBYTUwgRWxlbWVudCBEZXNjcmlwdGlvbnMgYW5kIHRoZWlyIEF0dHJpYnV0ZXMKaHR0cHM6Ly93d3cubmxtLm5paC5nb3YvYnNkL2xpY2Vuc2VlL2VsZW1lbnRzX2Rlc2NyaXB0aW9ucy5odG1sCgpDb21tZW50IENvcnJlY3Rpb24gVHlwZQpodHRwczovL3d3dy5uY2JpLm5sbS5uaWguZ292L2Jvb2tzL05CSzM4MjcvI3B1Ym1lZGhlbHAuQ29tbWVudF9Db3JyZWN0aW9uX1R5cGUKCkVEaXJlY3QgRG9jdW1lbnRhdGlvbgpodHRwczovL2RhdGFndWlkZS5ubG0ubmloLmdvdi9lZGlyZWN0L2RvY3VtZW50YXRpb24uaHRtbAoKRW50cmV6IERpcmVjdDogRS11dGlsaXRpZXMgb24gdGhlIFVOSVggQ29tbWFuZCBMaW5lCmh0dHBzOi8vd3d3Lm5jYmkubmxtLm5paC5nb3YvYm9va3MvTkJLMTc5Mjg4LwoKVGhlIDkgRS11dGlsaXRpZXMgYW5kIEFzc29jaWF0ZWQgUGFyYW1ldGVycwpodHRwczovL2RhdGFndWlkZS5ubG0ubmloLmdvdi9ldXRpbGl0aWVzL3V0aWxpdGllcy5odG1sCgpFLXV0aWxpdGllcyBhbmQgdGhlIEhpc3Rvcnkgc2VydmVyCmh0dHBzOi8vZGF0YWd1aWRlLm5sbS5uaWguZ292L2V1dGlsaXRpZXMvaGlzdG9yeS5odG1sCgpFRGlyZWN0IERvY3VtZW50YXRpb24KaHR0cHM6Ly9kYXRhZ3VpZGUubmxtLm5paC5nb3YvZWRpcmVjdC9kb2N1bWVudGF0aW9uLmh0bWwKCk5DQkkgTk9XLCBMZWN0dXJlIDMsIEludHJvZHVjdGlvbiB0byB0aGUgTGludXggU2hlbGwKaHR0cHM6Ly93d3cueW91dHViZS5jb20vd2F0Y2g/dj1YZ2FFNFZJYUpxSQoKTUVETElORcKuL1B1Yk1lZMKuIFhNTCBEYXRhIEVsZW1lbnRzCmh0dHBzOi8vd3d3Lm5sbS5uaWguZ292L2JzZC9saWNlbnNlZS9kYXRhX2VsZW1lbnRzX2RvYy5odG1sCgpwdWJtZWRfMTgwMTAxLmR0ZCBEb2N1bWVudGF0aW9uCmh0dHBzOi8vZHRkLm5sbS5uaWguZ292L25jYmkvcHVibWVkL291dC9kb2MvMjAxOC8KClVzaW5nIEVEaXJlY3QgdG8gY3JlYXRlIGEgbG9jYWwgY29weSBvZiBQdWJNZWQKaHR0cHM6Ly9kYXRhZ3VpZGUubmxtLm5paC5nb3YvZWRpcmVjdC9hcmNoaXZlLmh0bWwKCkVEaXJlY3RDb29rYm9vawpodHRwczovL25jYmktaGFja2F0aG9ucy5naXRodWIuaW8vRURpcmVjdENvb2tib29rLwoKRW50cmV6IERpcmVjdDogRS11dGlsaXRpZXMgb24gdGhlIFVOSVggQ29tbWFuZCBMaW5lCmh0dHBzOi8vd3d3Lm5jYmkubmxtLm5paC5nb3YvYm9va3MvTkJLMTc5Mjg4LwoKRURpcmVjdCBPdmVydmlldwpodHRwczovL2RhdGFndWlkZS5ubG0ubmloLmdvdi9lZGlyZWN0L292ZXJ2aWV3Lmh0bWwKCkluc3RhbGxpbmcgRURpcmVjdApodHRwczovL2RhdGFndWlkZS5ubG0ubmloLmdvdi9lZGlyZWN0L2luc3RhbGwuaHRtbAoKCi0tLQoKSWYgeW91IHdhbnQgdG8gc2VlIHRoZSBjb2RlIHVzZWQgaW4gdGhlIGFuYWx5c2lzIHBsZWFzZSBjbGljayB0aGUgY29kZSBidXR0b24gb24gdGhlIHJpZ2h0IHVwcGVyIGNvcm5lciBvciB0aHJvdWdob3V0IHRoZSBwYWdlLiAKCi0tLQoKIyBGZWVkYmFjawoKW1NlcmRhciBCYWxjxLEsIE1ELCBQYXRob2xvZ2lzdF0oaHR0cHM6Ly9naXRodWIuY29tL3NiYWxjaSkgd291bGQgbGlrZSB0byBoZWFyIHlvdXIgZmVlZGJhY2s6IGh0dHBzOi8vZ29vLmdsL2Zvcm1zL1lqR1o1REhndFBsUjFSbkIzCgpUaGlzIGRvY3VtZW50IHdpbGwgYmUgY29udGluaW91c2x5IHVwZGF0ZWQgYW5kIHRoZSBsYXN0IHVwZGF0ZSB3YXMgb24gYHIgU3lzLkRhdGUoKWAuCgotLS0KCgoKLS0tCnRpdGxlOiAiQmlibGlvZ3JhcGhpYyBTdHVkaWVzIgpzdWJ0aXRsZTogIlNvdXJjZXMgVXNlZCBGb3IgQW5hbHlzaXMiCmF1dGhvcjogIlNlcmRhciBCYWxjxLEsIE1ELCBQYXRob2xvZ2lzdCIKZGF0ZTogJ2ByIGZvcm1hdChTeXMuRGF0ZSgpKWAnCm91dHB1dDogCiAgaHRtbF9ub3RlYm9vazogCiAgICBjb2RlX2ZvbGRpbmc6IGhpZGUKICAgIGZpZ19jYXB0aW9uOiB5ZXMKICAgIGhpZ2hsaWdodDoga2F0ZQogICAgbnVtYmVyX3NlY3Rpb25zOiB5ZXMKICAgIHRoZW1lOiBjZXJ1bGVhbgogICAgdG9jOiB5ZXMKICAgIHRvY19mbG9hdDogeWVzCiAgaHRtbF9kb2N1bWVudDogCiAgICBjb2RlX2ZvbGRpbmc6IGhpZGUKICAgIGRmX3ByaW50OiBrYWJsZQogICAgaGlnaGxpZ2h0OiBrYXRlCiAgICBrZWVwX21kOiB5ZXMKICAgIG51bWJlcl9zZWN0aW9uczogeWVzCiAgICB0aGVtZTogY2VydWxlYW4KICAgIHRvYzogeWVzCiAgICB0b2NfZmxvYXQ6IHllcwotLS0KCiMgSW50cm9kdWN0aW9uCgpJdCBpcyBhIHZlcnkgY29tbW9uIGJpYmxpb21ldHJpYyBzdHVkeSB0eXBlIHRvIHJldHJvc3BlY3RpdmVseSBhbmFseXNlIHRoZSBudW1iZXIgb2YgcGVlciByZXZpZXdlZCBhcnRpY2xlcyB3cml0dGVuIGZyb20gYSBjb3VudHJ5IHRvIHZpZXcgdGhlIGFtb3VudCBvZiBjb250cmlidXRpb24gbWFkZSBpbiBhIHNwZWNpZmljIHNjaWVudGlmaWMgZGlzY2lwbGluZS4KCgpUaGVzZSBzdHVkaWVzIHJlcXVpcmUgdG9vIG11Y2ggZWZmb3J0LCBzaW5jZSB0aGUgZGF0YSBpcyBnZW5lcmFsbHkgYmVoaW5kIHBheXdhbGxzIGFuZCByZXN0cmljdGlvbnMuCgoKSSBoYXZlIHByZXZpb3VzbHkgY29udHJpYnV0ZWQgdG8gYSByZXNlYXJjaCB0byBpZGVudGlmeSB0aGUgQXJ0aWNsZXMgZnJvbSBUdXJrZXkgUHVibGlzaGVkIGluIFBhdGhvbG9neSBKb3VybmFscyBJbmRleGVkIGluIEludGVybmF0aW9uYWwgSW5kZXhlczsgd2hpY2ggaXMgcHVibGlzaGVkIGhlcmU6IFtUdXJrIFBhdG9sb2ppIERlcmcuIDIwMTAsIDI2KDIpOjEwNy0xMTMgZG9pOiAxMC41MTQ2L3RqcGF0aC4yMDEwLjAxMDA2XShodHRwOi8vd3d3LnR1cmtqcGF0aC5vcmcvc3VtbWFyeV9lbi5waHAzP2lkPTE0MjMpIAoKVGhpcyBzdHVkeSBoYWQgcmVxdWlyZWQgbWFudWFsIGludmVzdGlnYXRpb24gb2YgbWFueSBleGNlbCBmaWxlcywgd2hpY2ggd2FzIHRpbWUgY29uc3VtaW5nOyBhbHNvIHJlZG9pbmcgYW5kIHVwZGF0aW5nIHRoZSBkYXRhIGFuZCByZXN1bHRzIHJlcXVpcmUgYSBzaW1pbGFyIGFtb3VudCBvZiBlZmZvcnQuCgpJbiBvcmRlciB0byBhdXRvbWF0aXplIHRoZXNlIHR5cGUgb2YgYW5hbHlzaXMgaW4gYSByZXByb2R1Y2FibGUgZmFzaGlvbiwgCkkgd2lsbCBiZSB1c2luZwo8IS0tIGxpc3Qgb2YgYW5hbHlzaXMgdG9vbHMgLS0+CltSIE1hcmtkb3duXShodHRwczovL3JtYXJrZG93bi5yc3R1ZGlvLmNvbS8pCiwKW1IgTm90ZWJvb2tdKGh0dHBzOi8vcm1hcmtkb3duLnJzdHVkaW8uY29tL3Jfbm90ZWJvb2tzLmh0bWwpCiwKW1NoaW55XShodHRwczovL3NoaW55LnJzdHVkaW8uY29tLykKYW5kCltUZXJtaW5hbF0oaHR0cHM6Ly9lbi4wd2lraXBlZGlhLm9yZy93aWtpL1Rlcm1pbmFsXyhtYWNPUykpCmZvciBjb2RpbmcuIApJIGFsc28gcGxhbiB0byB1c2Ugb3RoZXIgYmlibGlvZ3JhcGhpYyB0b29scyBsaWtlCltWT1N2aWV3ZXJdKGh0dHA6Ly93d3cudm9zdmlld2VyLmNvbS8pLgoKRGF0YSB3aWxsIGJlIHJldHJpZXZlZCBmcm9tIApbUHViTWVkXShodHRwczovL3d3dy5uY2JpLm5sbS5uaWguZ292L3B1Ym1lZCksIApbRS1kaXJlY3RdKGh0dHBzOi8vZGF0YWd1aWRlLm5sbS5uaWguZ292L2VkaXJlY3Qvb3ZlcnZpZXcuaHRtbCksCltXb1NdKHd3dy53ZWJvZmtub3dsZWRnZS5jb20vKQphbmQKW0dvb2dsZSBTY2hvbGFyXShodHRwczovL3NjaG9sYXIuZ29vZ2xlLmNvbSkuCgoKCmh0dHBzOi8vd3d3LnNjb3B1cy5jb20vc291cmNlcwoKCmh0dHBzOi8vd3d3LmFsdG1ldHJpYy5jb20vdG9wMTAwLzIwMTgvCgoKaHR0cHM6Ly9ncmlkLmFjLwoKCmh0dHBzOi8vZHRkLm5sbS5uaWguZ292L25jYmkvcHVibWVkL291dC9kb2MvMjAxOC8KCgpNRURMSU5Fwq5QdWJNZWTCriBYTUwgRWxlbWVudCBEZXNjcmlwdGlvbnMgYW5kIHRoZWlyIEF0dHJpYnV0ZXMKaHR0cHM6Ly93d3cubmxtLm5paC5nb3YvYnNkL2xpY2Vuc2VlL2VsZW1lbnRzX2Rlc2NyaXB0aW9ucy5odG1sCgpDb21tZW50IENvcnJlY3Rpb24gVHlwZQpodHRwczovL3d3dy5uY2JpLm5sbS5uaWguZ292L2Jvb2tzL05CSzM4MjcvI3B1Ym1lZGhlbHAuQ29tbWVudF9Db3JyZWN0aW9uX1R5cGUKCkVEaXJlY3QgRG9jdW1lbnRhdGlvbgpodHRwczovL2RhdGFndWlkZS5ubG0ubmloLmdvdi9lZGlyZWN0L2RvY3VtZW50YXRpb24uaHRtbAoKRW50cmV6IERpcmVjdDogRS11dGlsaXRpZXMgb24gdGhlIFVOSVggQ29tbWFuZCBMaW5lCmh0dHBzOi8vd3d3Lm5jYmkubmxtLm5paC5nb3YvYm9va3MvTkJLMTc5Mjg4LwoKVGhlIDkgRS11dGlsaXRpZXMgYW5kIEFzc29jaWF0ZWQgUGFyYW1ldGVycwpodHRwczovL2RhdGFndWlkZS5ubG0ubmloLmdvdi9ldXRpbGl0aWVzL3V0aWxpdGllcy5odG1sCgpFLXV0aWxpdGllcyBhbmQgdGhlIEhpc3Rvcnkgc2VydmVyCmh0dHBzOi8vZGF0YWd1aWRlLm5sbS5uaWguZ292L2V1dGlsaXRpZXMvaGlzdG9yeS5odG1sCgpFRGlyZWN0IERvY3VtZW50YXRpb24KaHR0cHM6Ly9kYXRhZ3VpZGUubmxtLm5paC5nb3YvZWRpcmVjdC9kb2N1bWVudGF0aW9uLmh0bWwKCk5DQkkgTk9XLCBMZWN0dXJlIDMsIEludHJvZHVjdGlvbiB0byB0aGUgTGludXggU2hlbGwKaHR0cHM6Ly93d3cueW91dHViZS5jb20vd2F0Y2g/dj1YZ2FFNFZJYUpxSQoKTUVETElORcKuL1B1Yk1lZMKuIFhNTCBEYXRhIEVsZW1lbnRzCmh0dHBzOi8vd3d3Lm5sbS5uaWguZ292L2JzZC9saWNlbnNlZS9kYXRhX2VsZW1lbnRzX2RvYy5odG1sCgpwdWJtZWRfMTgwMTAxLmR0ZCBEb2N1bWVudGF0aW9uCmh0dHBzOi8vZHRkLm5sbS5uaWguZ292L25jYmkvcHVibWVkL291dC9kb2MvMjAxOC8KClVzaW5nIEVEaXJlY3QgdG8gY3JlYXRlIGEgbG9jYWwgY29weSBvZiBQdWJNZWQKaHR0cHM6Ly9kYXRhZ3VpZGUubmxtLm5paC5nb3YvZWRpcmVjdC9hcmNoaXZlLmh0bWwKCkVEaXJlY3RDb29rYm9vawpodHRwczovL25jYmktaGFja2F0aG9ucy5naXRodWIuaW8vRURpcmVjdENvb2tib29rLwoKRW50cmV6IERpcmVjdDogRS11dGlsaXRpZXMgb24gdGhlIFVOSVggQ29tbWFuZCBMaW5lCmh0dHBzOi8vd3d3Lm5jYmkubmxtLm5paC5nb3YvYm9va3MvTkJLMTc5Mjg4LwoKRURpcmVjdCBPdmVydmlldwpodHRwczovL2RhdGFndWlkZS5ubG0ubmloLmdvdi9lZGlyZWN0L292ZXJ2aWV3Lmh0bWwKCkluc3RhbGxpbmcgRURpcmVjdApodHRwczovL2RhdGFndWlkZS5ubG0ubmloLmdvdi9lZGlyZWN0L2luc3RhbGwuaHRtbAoKCi0tLQoKSWYgeW91IHdhbnQgdG8gc2VlIHRoZSBjb2RlIHVzZWQgaW4gdGhlIGFuYWx5c2lzIHBsZWFzZSBjbGljayB0aGUgY29kZSBidXR0b24gb24gdGhlIHJpZ2h0IHVwcGVyIGNvcm5lciBvciB0aHJvdWdob3V0IHRoZSBwYWdlLiAKCi0tLQoKIyBGZWVkYmFjawoKW1NlcmRhciBCYWxjxLEsIE1ELCBQYXRob2xvZ2lzdF0oaHR0cHM6Ly9naXRodWIuY29tL3NiYWxjaSkgd291bGQgbGlrZSB0byBoZWFyIHlvdXIgZmVlZGJhY2s6IGh0dHBzOi8vZ29vLmdsL2Zvcm1zL1lqR1o1REhndFBsUjFSbkIzCgpUaGlzIGRvY3VtZW50IHdpbGwgYmUgY29udGluaW91c2x5IHVwZGF0ZWQgYW5kIHRoZSBsYXN0IHVwZGF0ZSB3YXMgb24gYHIgU3lzLkRhdGUoKWAuCgotLS0=</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiQmlibGlvZ3JhcGhpYyBTdHVkaWVzIgpzdWJ0aXRsZTogIlNvdXJjZXMgVXNlZCBGb3IgQW5hbHlzaXMiCmF1dGhvcjogIlNlcmRhciBCYWxjxLEsIE1ELCBQYXRob2xvZ2lzdCIKZGF0ZTogJ2ByIGZvcm1hdChTeXMuRGF0ZSgpKWAnCm91dHB1dDogCiAgaHRtbF9ub3RlYm9vazogCiAgICBjb2RlX2ZvbGRpbmc6IGhpZGUKICAgIGZpZ19jYXB0aW9uOiB5ZXMKICAgIGhpZ2hsaWdodDoga2F0ZQogICAgbnVtYmVyX3NlY3Rpb25zOiB5ZXMKICAgIHRoZW1lOiBjZXJ1bGVhbgogICAgdG9jOiB5ZXMKICAgIHRvY19mbG9hdDogeWVzCiAgaHRtbF9kb2N1bWVudDogCiAgICBjb2RlX2ZvbGRpbmc6IGhpZGUKICAgIGRmX3ByaW50OiBrYWJsZQogICAgaGlnaGxpZ2h0OiBrYXRlCiAgICBrZWVwX21kOiB5ZXMKICAgIG51bWJlcl9zZWN0aW9uczogeWVzCiAgICB0aGVtZTogY2VydWxlYW4KICAgIHRvYzogeWVzCiAgICB0b2NfZmxvYXQ6IHllcwotLS0KCgojIEludHJvZHVjdGlvbgoKSXQgaXMgYSB2ZXJ5IGNvbW1vbiBiaWJsaW9tZXRyaWMgc3R1ZHkgdHlwZSB0byByZXRyb3NwZWN0aXZlbHkgYW5hbHlzZSB0aGUgbnVtYmVyIG9mIHBlZXIgcmV2aWV3ZWQgYXJ0aWNsZXMgd3JpdHRlbiBmcm9tIGEgY291bnRyeSB0byB2aWV3IHRoZSBhbW91bnQgb2YgY29udHJpYnV0aW9uIG1hZGUgaW4gYSBzcGVjaWZpYyBzY2llbnRpZmljIGRpc2NpcGxpbmUuICAKClRoZXNlIHN0dWRpZXMgcmVxdWlyZSB0b28gbXVjaCBlZmZvcnQsIHNpbmNlIHRoZSBkYXRhIGlzIGdlbmVyYWxseSBiZWhpbmQgcGF5d2FsbHMgYW5kIHJlc3RyaWN0aW9ucy4gIAoKSSBoYXZlIHByZXZpb3VzbHkgY29udHJpYnV0ZWQgdG8gYSByZXNlYXJjaCB0byBpZGVudGlmeSB0aGUgQXJ0aWNsZXMgZnJvbSBUdXJrZXkgUHVibGlzaGVkIGluIFBhdGhvbG9neSBKb3VybmFscyBJbmRleGVkIGluIEludGVybmF0aW9uYWwgSW5kZXhlczsgd2hpY2ggaXMgcHVibGlzaGVkIGhlcmU6IFtUdXJrIFBhdG9sb2ppIERlcmcuIDIwMTAsIDI2KDIpOjEwNy0xMTMgZG9pOiAxMC41MTQ2L3RqcGF0aC4yMDEwLjAxMDA2XShodHRwOi8vd3d3LnR1cmtqcGF0aC5vcmcvc3VtbWFyeV9lbi5waHAzP2lkPTE0MjMpIAoKVGhpcyBzdHVkeSBoYWQgcmVxdWlyZWQgbWFudWFsIGludmVzdGlnYXRpb24gb2YgbWFueSBgZXhjZWxgIGZpbGVzLCB3aGljaCB3YXMgdGltZSBjb25zdW1pbmc7IGFsc28gcmVkb2luZyBhbmQgdXBkYXRpbmcgdGhlIGRhdGEgYW5kIHJlc3VsdHMgcmVxdWlyZSBhIHNpbWlsYXIgYW1vdW50IG9mIGVmZm9ydC4KCkluIG9yZGVyIHRvIGF1dG9tYXRpemUgdGhlc2UgdHlwZSBvZiBhbmFseXNpcyBpbiBhIHJlcHJvZHVjYWJsZSBmYXNoaW9uLCAKSSB3aWxsIGJlIHVzaW5nIHRoZSBmb2xsb3dpbmc7ICAKPCEtLSBsaXN0IG9mIGFuYWx5c2lzIHRvb2xzIC0tPgpbUiBNYXJrZG93bl0oaHR0cHM6Ly9ybWFya2Rvd24ucnN0dWRpby5jb20vKQosCltSIE5vdGVib29rXShodHRwczovL3JtYXJrZG93bi5yc3R1ZGlvLmNvbS9yX25vdGVib29rcy5odG1sKQosCltTaGlueV0oaHR0cHM6Ly9zaGlueS5yc3R1ZGlvLmNvbS8pCmFuZApbVGVybWluYWxdKGh0dHBzOi8vZW4uMHdpa2lwZWRpYS5vcmcvd2lraS9UZXJtaW5hbF8obWFjT1MpKQpmb3IgY29kaW5nLiAKSSBhbHNvIHBsYW4gdG8gdXNlIG90aGVyIGJpYmxpb2dyYXBoaWMgdG9vbHMgbGlrZQpbVk9Tdmlld2VyXShodHRwOi8vd3d3LnZvc3ZpZXdlci5jb20vKS4KCkRhdGEgd2lsbCBiZSByZXRyaWV2ZWQgZnJvbSAKW1B1Yk1lZF0oaHR0cHM6Ly93d3cubmNiaS5ubG0ubmloLmdvdi9wdWJtZWQpLCAKW0UtZGlyZWN0XShodHRwczovL2RhdGFndWlkZS5ubG0ubmloLmdvdi9lZGlyZWN0L292ZXJ2aWV3Lmh0bWwpLApbV29TXSh3d3cud2Vib2Zrbm93bGVkZ2UuY29tLykKYW5kCltHb29nbGUgU2Nob2xhcl0oaHR0cHM6Ly9zY2hvbGFyLmdvb2dsZS5jb20pLgoKCi0tLQoKCgoKCgoKCiMgQ29kZXMgZm9yIGRhdGEgZG93bmxvYWQKCiMjIFB1Yk1lZAoKaHR0cHM6Ly9kdGQubmxtLm5paC5nb3YvbmNiaS9wdWJtZWQvb3V0L2RvYy8yMDE4LwoKLSBNRURMSU5Fwq5QdWJNZWTCriBYTUwgRWxlbWVudCBEZXNjcmlwdGlvbnMgYW5kIHRoZWlyIEF0dHJpYnV0ZXMKaHR0cHM6Ly93d3cubmxtLm5paC5nb3YvYnNkL2xpY2Vuc2VlL2VsZW1lbnRzX2Rlc2NyaXB0aW9ucy5odG1sCgotIENvbW1lbnQgQ29ycmVjdGlvbiBUeXBlCmh0dHBzOi8vd3d3Lm5jYmkubmxtLm5paC5nb3YvYm9va3MvTkJLMzgyNy8jcHVibWVkaGVscC5Db21tZW50X0NvcnJlY3Rpb25fVHlwZQoKLSBFRGlyZWN0IERvY3VtZW50YXRpb24KaHR0cHM6Ly9kYXRhZ3VpZGUubmxtLm5paC5nb3YvZWRpcmVjdC9kb2N1bWVudGF0aW9uLmh0bWwKCi0gRW50cmV6IERpcmVjdDogRS11dGlsaXRpZXMgb24gdGhlIFVOSVggQ29tbWFuZCBMaW5lCmh0dHBzOi8vd3d3Lm5jYmkubmxtLm5paC5nb3YvYm9va3MvTkJLMTc5Mjg4LwoKLSBUaGUgOSBFLXV0aWxpdGllcyBhbmQgQXNzb2NpYXRlZCBQYXJhbWV0ZXJzCmh0dHBzOi8vZGF0YWd1aWRlLm5sbS5uaWguZ292L2V1dGlsaXRpZXMvdXRpbGl0aWVzLmh0bWwKCi0gRS11dGlsaXRpZXMgYW5kIHRoZSBIaXN0b3J5IHNlcnZlcgpodHRwczovL2RhdGFndWlkZS5ubG0ubmloLmdvdi9ldXRpbGl0aWVzL2hpc3RvcnkuaHRtbAoKLSBFRGlyZWN0IERvY3VtZW50YXRpb24KaHR0cHM6Ly9kYXRhZ3VpZGUubmxtLm5paC5nb3YvZWRpcmVjdC9kb2N1bWVudGF0aW9uLmh0bWwKCi0gTkNCSSBOT1csIExlY3R1cmUgMywgSW50cm9kdWN0aW9uIHRvIHRoZSBMaW51eCBTaGVsbApodHRwczovL3d3dy55b3V0dWJlLmNvbS93YXRjaD92PVhnYUU0VklhSnFJCgotIE1FRExJTkXCri9QdWJNZWTCriBYTUwgRGF0YSBFbGVtZW50cwpodHRwczovL3d3dy5ubG0ubmloLmdvdi9ic2QvbGljZW5zZWUvZGF0YV9lbGVtZW50c19kb2MuaHRtbAoKLSBwdWJtZWRfMTgwMTAxLmR0ZCBEb2N1bWVudGF0aW9uCmh0dHBzOi8vZHRkLm5sbS5uaWguZ292L25jYmkvcHVibWVkL291dC9kb2MvMjAxOC8KCgojIyMgRW50cmV6IERpcmVjdDogRS11dGlsaXRpZXMgb24gdGhlIFVOSVggQ29tbWFuZCBMaW5lCgotIEVudHJleiBEaXJlY3Q6IEUtdXRpbGl0aWVzIG9uIHRoZSBVTklYIENvbW1hbmQgTGluZSAgCmh0dHBzOi8vd3d3Lm5jYmkubmxtLm5paC5nb3YvYm9va3MvTkJLMTc5Mjg4LwoKLSBFRGlyZWN0Q29va2Jvb2sKaHR0cHM6Ly9uY2JpLWhhY2thdGhvbnMuZ2l0aHViLmlvL0VEaXJlY3RDb29rYm9vay8KCi0gRURpcmVjdCBPdmVydmlldwpodHRwczovL2RhdGFndWlkZS5ubG0ubmloLmdvdi9lZGlyZWN0L292ZXJ2aWV3Lmh0bWwKCi0gSW5zdGFsbGluZyBFRGlyZWN0Cmh0dHBzOi8vZGF0YWd1aWRlLm5sbS5uaWguZ292L2VkaXJlY3QvaW5zdGFsbC5odG1sCgoKIyMjIFVzaW5nIEVEaXJlY3QgdG8gY3JlYXRlIGEgbG9jYWwgY29weSBvZiBQdWJNZWQKCi0gVXNpbmcgRURpcmVjdCB0byBjcmVhdGUgYSBsb2NhbCBjb3B5IG9mIFB1Yk1lZCAgCgpodHRwczovL2RhdGFndWlkZS5ubG0ubmloLmdvdi9lZGlyZWN0L2FyY2hpdmUuaHRtbAoKCgoKYGBgCgpodHRwczovL2RhdGFndWlkZS5ubG0ubmloLmdvdi9lZGlyZWN0L2FyY2hpdmUuaHRtbAoKYXJjaGl2ZS1wdWJtZWQgLXBhdGggL1ZvbHVtZXMvQWd1MjAxOC9QdWJNZWQKCmNhZmZlaW5hdGUKCmVzZWFyY2ggLWRiIHB1Ym1lZCAtcXVlcnkgImJyZWFzdCBjYW5jZXIiIHwgXAplZmV0Y2ggLWZvcm1hdCB1aWQgfCBcCmZldGNoLXB1Ym1lZCAtcGF0aCAvVm9sdW1lcy9BZ3UyMDE4L1B1Yk1lZCB8IFwKeHRyYWN0IC1wYXR0ZXJuIFB1Ym1lZEFydGljbGUgLWVsZW1lbnQgTWVkbGluZUNpdGF0aW9uL1BNSUQgSVNPQWJicmV2aWF0aW9uIFZvbHVtZSBJc3N1ZSBQdWJEYXRlL1llYXIgPiB0cmlhbC50eHQKCmVzZWFyY2ggLWRiIHB1Ym1lZCAtcXVlcnkgIlR1cmtleVtBZmZpbGlhdGlvbl0iIFwKLWRhdGV0eXBlIFBEQVQgLW1pbmRhdGUgMjAxOCAtbWF4ZGF0ZSAzMDAwIHwgXAplZmV0Y2ggLWZvcm1hdCB4bWwgPiBkYXRhL1R1cmtleV9hbGwyLnhtbAoKYGBgCgoKCiMjIyBQYXJzZXIgZm9yIFB1Ym1lZCBPcGVuLUFjY2VzcyBYTUwgU3Vic2V0IGFuZCBNRURMSU5FIFhNTCBEYXRhc2V0CgotIFB5dGhvbiBYTUwgcGFyc2VyIGZvciBQdWJNZWQgT3BlbiBBY2Nlc3Mgc3Vic2V0IGFuZCBNRURMSU5FIGRhdGFzZXQgIAoKaHR0cDovL3RpdGlwYXRhLmdpdGh1Yi5pby9wdWJtZWRfcGFyc2VyLyAgCmh0dHA6Ly9naXRodWIuY29tL3RpdGlwYXRhL3B1Ym1lZF9wYXJzZXIgIAoKCiMjIyBNRURMSU5FWE1MVG9KU09OCgpodHRwczovL2dpdGh1Yi5jb20vbGRiaWIvTUVETElORVhNTFRvSlNPTgoKCiMjIyBXb3JrZmxvdyBvZiBQdWJtZWQgUGFyc2VyIHdpdGggUHlTcGFyawoKaHR0cHM6Ly9naXRodWIuY29tL3RpdGlwYXRhL3B1Ym1lZF9wYXJzZXIvd2lraQoKCgojIyBPUkNJRAoKaHR0cHM6Ly9vcmNpZC5vcmcvY29udGVudC9vcmNpZC1wdWJsaWMtZGF0YS1maWxlCgpodHRwczovL29yY2lkLm9yZy9ibG9nLzIwMTkvMDEvMTEvZnJlZS1ldmVyeW9uZS1hbHdheXMtb3JjaWQtcHVibGljLWFwaS1hbmQtZGF0YS1maWxlCgoKLSBBIGNvbXBlbmRpdW0gb2YgdGF4b25vbWlzdHMgb24gT1JDSUQgIApodHRwczovL29yY2lkLm9yZy9ibG9nLzIwMTgvMDQvMDYvY29tcGVuZGl1bS10YXhvbm9taXN0cy1vcmNpZAoKLSBWYXN0IHNldCBvZiBwdWJsaWMgQ1ZzIHJldmVhbHMgdGhlIHdvcmxk4oCZcyBtb3N0IG1pZ3JhdG9yeSBzY2llbnRpc3RzICAKaHR0cHM6Ly93d3cuc2NpZW5jZW1hZy5vcmcvbmV3cy8yMDE3LzA1L3Zhc3Qtc2V0LXB1YmxpYy1jdnMtcmV2ZWFscy13b3JsZC1zLW1vc3QtbWlncmF0b3J5LXNjaWVudGlzdHMKCgojIyBTZW1hbnRpYyBTY2hvbGFyCgoKYGBgClNlbWFudGljIFNjaG9sYXIgT3BlbiBSZXNlYXJjaCBDb3JwdXMKCmh0dHBzOi8vczMtdXMtd2VzdC0yLmFtYXpvbmF3cy5jb20vYWkyLXMyLXJlc2VhcmNoLXB1YmxpYy9vcGVuLWNvcnB1cy9pbmRleC5odG1sCgphd3MgczMgY3AgLS1yZWN1cnNpdmUgczM6Ly9haTItczItcmVzZWFyY2gtcHVibGljL29wZW4tY29ycHVzLyB+L1ZvbHVtZXMvQWd1MjAxOC9zZW1hbnRpYy8KCndnZXQgLVAgL1ZvbHVtZXMvQWd1MjAxOC9zZW1hbnRpYyAtaSBodHRwczovL3MzLXVzLXdlc3QtMi5hbWF6b25hd3MuY29tL2FpMi1zMi1yZXNlYXJjaC1wdWJsaWMvb3Blbi1jb3JwdXMvbWFuaWZlc3QudHh0CgpjYWZmZWluYXRlCgpgYGAKCgojIyBTY29wdXMKCmh0dHBzOi8vd3d3LnNjb3B1cy5jb20vc291cmNlcwoKCgojIyBBbHRtZXRyaWNzCgpodHRwczovL3d3dy5hbHRtZXRyaWMuY29tL3RvcDEwMC8yMDE4LwoKCiMjIEdyaWQKCmh0dHBzOi8vZ3JpZC5hYy8KCgoKIyMgQ29iYWxtZXRyaWNzCgpodHRwczovL2NvYmFsdG1ldHJpY3MuY29tLwoKLSBUb3dhcmQgcHJpdmFjeS1wcmVzZXJ2aW5nIGFsdG1ldHJpY3MgZXhwbG9yYXRpb24gd2l0aCBDb2JhbHRtZXRyaWNzIGFuZCBPUkNJRAoKaHR0cHM6Ly9tZWRpdW0uY29tL3RodW5rZW4vdG93YXJkLXByaXZhY3ktcHJlc2VydmluZy1hbHRtZXRyaWNzLWV4cGxvcmF0aW9uLXdpdGgtY29iYWx0bWV0cmljcy1hbmQtb3JjaWQtZjVhYjZmYTc4OThhCgoKIyMgT3BlbkNpdGF0aW9ucwoKaHR0cDovL29wZW5jaXRhdGlvbnMubmV0CgpodHRwOi8vb3BlbmNpdGF0aW9ucy5uZXQvZG93bmxvYWQKCmh0dHA6Ly9vcGVuY2l0YXRpb25zLm5ldC9jb3JwdXMKCmh0dHBzOi8vZ2l0aHViLmNvbS9vcGVuY2l0YXRpb25zCgotIFRoZSBPcGVuQ2l0YXRpb25zIERhdGEgTW9kZWwgIApodHRwczovL2ZpZ3NoYXJlLmNvbS9hcnRpY2xlcy9NZXRhZGF0YV9mb3JfdGhlX09wZW5DaXRhdGlvbnNfQ29ycHVzLzM0NDM4NzYKCi0gQ3JlYXRpbmcgT3BlbiBDaXRhdGlvbiBEYXRhIHdpdGggQkNpdGUgIApodHRwczovL3NlbXNjaS5naXRodWIuaW8vU2VtU2NpMjAxOC9wYXBlcnMvMS9iY2l0ZS1zZW1zY2kyMDE4Lmh0bWwKCmh0dHBzOi8vZ2l0aHViLmNvbS9vcGVuY2l0YXRpb25zL2JjaXRlCgoKLS0tCgojIEZlZWRiYWNrCgpbU2VyZGFyIEJhbGPEsSwgTUQsIFBhdGhvbG9naXN0XShodHRwczovL2dpdGh1Yi5jb20vc2JhbGNpKSB3b3VsZCBsaWtlIHRvIGhlYXIgeW91ciBmZWVkYmFjazogaHR0cHM6Ly9nb28uZ2wvZm9ybXMvWWpHWjVESGd0UGxSMVJuQjMKClRoaXMgZG9jdW1lbnQgd2lsbCBiZSBjb250aW5pb3VzbHkgdXBkYXRlZCBhbmQgdGhlIGxhc3QgdXBkYXRlIHdhcyBvbiBgciBTeXMuRGF0ZSgpYC4KCi0tLQoKPHNjcmlwdCBpZD0iZHNxLWNvdW50LXNjciIgc3JjPSIvL2h0dHBzLXNiYWxjaS1naXRodWItaW8uZGlzcXVzLmNvbS9jb3VudC5qcyIgYXN5bmM+PC9zY3JpcHQ+Cgo8ZGl2IGlkPSJkaXNxdXNfdGhyZWFkIj48L2Rpdj4KPHNjcmlwdD4KCi8qKgoqICBSRUNPTU1FTkRFRCBDT05GSUdVUkFUSU9OIFZBUklBQkxFUzogRURJVCBBTkQgVU5DT01NRU5UIFRIRSBTRUNUSU9OIEJFTE9XIFRPIElOU0VSVCBEWU5BTUlDIFZBTFVFUyBGUk9NIFlPVVIgUExBVEZPUk0gT1IgQ01TLgoqICBMRUFSTiBXSFkgREVGSU5JTkcgVEhFU0UgVkFSSUFCTEVTIElTIElNUE9SVEFOVDogaHR0cHM6Ly9kaXNxdXMuY29tL2FkbWluL3VuaXZlcnNhbGNvZGUvI2NvbmZpZ3VyYXRpb24tdmFyaWFibGVzKi8KLyoKdmFyIGRpc3F1c19jb25maWcgPSBmdW5jdGlvbiAoKSB7CnRoaXMucGFnZS51cmwgPSBQQUdFX1VSTDsgIC8vIFJlcGxhY2UgUEFHRV9VUkwgd2l0aCB5b3VyIHBhZ2UncyBjYW5vbmljYWwgVVJMIHZhcmlhYmxlCnRoaXMucGFnZS5pZGVudGlmaWVyID0gUEFHRV9JREVOVElGSUVSOyAvLyBSZXBsYWNlIFBBR0VfSURFTlRJRklFUiB3aXRoIHlvdXIgcGFnZSdzIHVuaXF1ZSBpZGVudGlmaWVyIHZhcmlhYmxlCn07CiovCihmdW5jdGlvbigpIHsgLy8gRE9OJ1QgRURJVCBCRUxPVyBUSElTIExJTkUKdmFyIGQgPSBkb2N1bWVudCwgcyA9IGQuY3JlYXRlRWxlbWVudCgnc2NyaXB0Jyk7CnMuc3JjID0gJ2h0dHBzOi8vaHR0cHMtc2JhbGNpLWdpdGh1Yi1pby5kaXNxdXMuY29tL2VtYmVkLmpzJzsKcy5zZXRBdHRyaWJ1dGUoJ2RhdGEtdGltZXN0YW1wJywgK25ldyBEYXRlKCkpOwooZC5oZWFkIHx8IGQuYm9keSkuYXBwZW5kQ2hpbGQocyk7Cn0pKCk7Cjwvc2NyaXB0Pgo8bm9zY3JpcHQ+UGxlYXNlIGVuYWJsZSBKYXZhU2NyaXB0IHRvIHZpZXcgdGhlIDxhIGhyZWY9Imh0dHBzOi8vZGlzcXVzLmNvbS8/cmVmX25vc2NyaXB0Ij5jb21tZW50cyBwb3dlcmVkIGJ5IERpc3F1cy48L2E+PC9ub3NjcmlwdD4KCi0tLQo=</div>
 
 
 </div>
