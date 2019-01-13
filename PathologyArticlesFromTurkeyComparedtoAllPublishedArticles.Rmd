@@ -91,7 +91,7 @@ repeat {
 myTerm <- rstudioapi::terminalCreate(show = FALSE)
 rstudioapi::terminalSend(
 myTerm,
-"xtract -input data/pubmed_result_TurkPath.xml -pattern PubmedArticle -element MedlineCitation/PMID -block ArticleId -if ArticleId@IdType -equals doi -element ArticleId > data/pubmed_result_TurkPath.txt \n"
+"xtract -input data/pubmed_result_TurkPath.xml -pattern PubmedArticle -block ArticleId -if ArticleId@IdType -equals doi -element ArticleId > data/pubmed_result_TurkPath_doi.txt \n"
 )
 Sys.sleep(1)
 repeat {
@@ -106,12 +106,24 @@ break
 
 ```{r}
 library(tidyverse)
-pubmed_result_TurkPath <- read_csv(file = "data/pubmed_result_TurkPath.csv")
-pubmed_result_TurkPath_doi <- pubmed_result_TurkPath_doi$V2
+pubmed_result_TurkPath_doi <- read.delim("data/pubmed_result_TurkPath_doi.txt", header = FALSE)
 ```
 
 
 ```{r}
-write(pubmed_result_TurkPath_doi, "data/pubmed_result_TurkPath_doi.txt")
+pubmed_result_TurkPath_doi$V1[grep("^10.", pubmed_result_TurkPath_doi$V1)]
+
+pubmed_result_TurkPath_doi$V2 <- grepl(
+  pattern = "^10.",
+  x = pubmed_result_TurkPath_doi$V1
+)
+
+pubmed_result_TurkPath_doi2 <- pubmed_result_TurkPath_doi %>% 
+  filter(pubmed_result_TurkPath_doi$V2 == TRUE) %>% 
+  select(V1)
+
+write_csv(pubmed_result_TurkPath_doi2, "data/pubmed_result_TurkPath_doi2.txt", col_names = FALSE)
+
+
 ```
 
