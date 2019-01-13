@@ -36,4 +36,82 @@ ggplot(articlesPerTotalArticles, aes(year, query_hits / all_hits)) +
 ```
 
 
+---
+
+# PubMed 
+
+## Data retriveal from PubMed using EDirect 
+
+Article PMID downloaded as `txt`.
+
+```{r Search PubMed download PMID, eval=FALSE, include=FALSE}
+myTerm <- rstudioapi::terminalCreate(show = FALSE)
+rstudioapi::terminalSend(
+    myTerm,
+    "esearch -db pubmed -query \"(pathology[Affiliation] OR patoloji[Affiliation]) AND (Turkey[Affiliation] OR Türkiye[Affiliation])\" -datetype PDAT -mindate 1800 -maxdate 3000 | \ efetch -format uid > data/pubmed_result_TurkPath_uid.txt \n"
+)
+Sys.sleep(1)
+repeat {
+    Sys.sleep(0.1)
+    if (rstudioapi::terminalBusy(myTerm) == FALSE) {
+        print("Code Executed")
+        break
+    }
+}
+```
+
+
+---
+
+
+```{r Search local PubMed with downloaded PMID extract data as xml, eval=FALSE, include=FALSE}
+myTerm <- rstudioapi::terminalCreate(show = FALSE)
+rstudioapi::terminalSend(
+    myTerm,
+    "cat data/pubmed_result_TurkPath_uid.txt | \ fetch-pubmed -path /Volumes/Agu2018/PubMed > data/pubmed_result_TurkPath.xml \n"
+)
+Sys.sleep(1)
+repeat {
+    Sys.sleep(0.1)
+    if (rstudioapi::terminalBusy(myTerm) == FALSE) {
+        print("Code Executed")
+        break
+    }
+}
+```
+
+
+
+
+---
+
+
+
+```{r extract doi from xml, message=FALSE, warning=FALSE}
+myTerm <- rstudioapi::terminalCreate(show = FALSE)
+rstudioapi::terminalSend(
+myTerm,
+"xtract -input data/pubmed_result_TurkPath.xml -pattern PubmedArticle -element MedlineCitation/PMID -block ArticleId -if ArticleId@IdType -equals doi -element ArticleId > data/pubmed_result_TurkPath.txt \n"
+)
+Sys.sleep(1)
+repeat {
+Sys.sleep(0.1)
+if (rstudioapi::terminalBusy(myTerm) == FALSE) {
+print("Code Executed")
+break
+}
+}
+```
+
+
+```{r}
+library(tidyverse)
+pubmed_result_TurkPath <- read_csv(file = "data/pubmed_result_TurkPath.csv")
+pubmed_result_TurkPath_doi <- pubmed_result_TurkPath_doi$V2
+```
+
+
+```{r}
+write(pubmed_result_TurkPath_doi, "data/pubmed_result_TurkPath_doi.txt")
+```
 

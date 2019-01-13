@@ -1,0 +1,32 @@
+---
+title: "Data For Balci Serdar"
+output: html_notebook
+---
+
+
+```{r extract journal names from all data xml, message=FALSE, warning=FALSE}
+myTerm <- rstudioapi::terminalCreate(show = FALSE)
+rstudioapi::terminalSend(
+myTerm,
+"xtract -input data/BalciS.xml -pattern PubmedArticle -sep '\t' -def 'na' -element MedlineCitation/PMID -block ArticleId -if ArticleId@IdType -equals doi -element ArticleId > data/BalciS.csv \n"
+)
+Sys.sleep(1)
+repeat {
+Sys.sleep(0.1)
+if (rstudioapi::terminalBusy(myTerm) == FALSE) {
+print("Code Executed")
+break
+}
+}
+```
+
+
+```{r}
+BalciS <- rio::import("data/BalciS.csv")
+BalciSdoi <- BalciS$V2
+```
+
+```{r}
+write(BalciSdoi, "data/BalciSdoi.txt")
+```
+
