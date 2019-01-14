@@ -127,3 +127,18 @@ write_csv(pubmed_result_TurkPath_doi2, "data/pubmed_result_TurkPath_doi2.txt", c
 
 ```
 
+
+---
+
+# WOS data for VOSviewer
+
+
+```
+(AD=Turkey AND SU=Pathology) OR (CU=Turkey AND SU=Pathology)
+Indexes=SCI-EXPANDED, SSCI, A&HCI, CPCI-S, CPCI-SSH, BKCI-S, BKCI-SSH, ESCI Timespan=All years
+```
+
+
+
+
+

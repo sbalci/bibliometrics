@@ -1,0 +1,2372 @@
+﻿id	organization	documents	citations	total link strength
+1	0st educ & res hosp	1	1	0
+2	100 yil univ	1	3	1
+3	19 mayis univ	4	4	4
+4	1st educ & res hosp	1	0	0
+5	401 gen mil hosp athens	1	0	7
+6	9 eylul univ	1	4	1
+7	aahus univ hosp	1	11	22
+8	aalesund hosp	1	0	25
+9	abant ızzet baysal univ	31	132	73
+10	abdurrahman yurtaslan ankara oncol educ & res hos	2	0	4
+11	abdurrahman yurtaslan oncol educ & res hosp	1	0	1
+12	aberdeen royal ınfirm	2	58	23
+13	abo akad univ	1	2	5
+14	ac camargo canc ctr	15	33	90
+15	acad econ cracow	1	1	1
+16	acbadem hlth grp	1	0	3
+17	acbadem univ	1	0	3
+18	acibadem hlth grp	5	1	23
+19	acibadem hosp	5	30	11
+20	acibadem kadikoy hosp	1	5	3
+21	acibadem lab	1	0	3
+22	acibadem maslak hosp	4	11	7
+23	acibadem med ctr	2	4	5
+24	acibadem mehmet ali aydinlar univ	3	0	10
+25	acibadem taksim hosp	1	0	2
+26	acibadem univ	29	139	92
+27	acibadem univ hosp	1	0	1
+28	acibadem univ sch med	1	3	3
+29	adana baskent univ	2	2	14
+30	adana city res & educ hosp	1	0	2
+31	adana city training & res hosp	1	0	1
+32	adana grp adm	1	1	2
+33	adana mental & nervous dis hosp	1	2	2
+34	adana mil hosp	1	1	2
+35	adana numune educ & res hosp	2	27	4
+36	adana numune res & educ hosp	1	2	4
+37	adana numune res & training hosp	1	21	2
+38	adana teaching & med res ctr	1	15	2
+39	adana univ	6	48	52
+40	adana univ adana turkey	1	48	11
+41	adirondack pathol	1	12	23
+42	adiyaman univ	13	21	23
+43	adiyaman univ training & res hosp	2	3	3
+44	adnan menderes univ	37	298	57
+45	adnan menderes univ med sch	1	15	0
+46	aegean matern & womens hlth hosp	1	4	1
+47	aegean social secur hosp	1	36	3
+48	aegean unıv	2	2	0
+49	afyon kocatepe univ	21	245	53
+50	afyon kocatepe univ sch med	1	4	0
+51	agean univ	1	2	11
+52	agonist hlth care	1	1	3
+53	agri mil hosp	1	2	2
+54	agri state hosp	1	0	2
+55	agri women & childrens hosp	1	0	2
+56	ahi evran univ	1	11	2
+57	ahi evran univ hosp	13	0	0
+58	ahi evran univ res & training hosp	1	1	3
+59	air force hosp	2	5	3
+60	aix marseille univ	3	282	78
+61	akad sjukhuset	1	29	11
+62	akden univ	1	0	1
+63	akdeniz med sch	3	0	0
+64	akdeniz univ	179	690	136
+65	akdeniz univ sch med	1	7	0
+66	akdenziz univ	1	3	0
+67	akdenız unıv	1	54	0
+68	akh	1	12	2
+69	alanya hosp	2	3	2
+70	albany med coll hosp	1	40	19
+71	albany med sch	1	18	5
+72	alexandra hosp	1	36	21
+73	ali osman sonmez oncol hosp	1	4	2
+74	all ındia ınst med sci	4	38	61
+75	alsancak state hosp	2	1	1
+76	altru hosp	2	12	5
+77	altunizade mah atifbey sokak	1	0	0
+78	amer coll surg	1	11	2
+79	amer hosp	1	3	3
+80	anadolou med ctr	1	15	2
+81	anadolu fdn hlth care syst	2	0	7
+82	anadolu hlth care ctr	2	0	0
+83	anadolu med ctr	11	13	29
+84	anadolu univ	27	164	58
+85	anatolian hlth ctr	1	24	1
+86	andeniz univ	1	3	0
+87	angoraevleri	1	2	1
+88	ankara adv specializat hosp	1	0	1
+89	ankara ataturk chest dis & chest surg educ & res	4	35	0
+90	ankara ataturk eah	2	0	0
+91	ankara ataturk educ & res hosp	11	62	19
+92	ankara ataturk res & training hosp	3	7	6
+93	ankara ataturk training & res hosp	4	13	8
+94	ankara baskent univ	2	0	23
+95	ankara child dis hematol & oncol educ & res hosp	1	4	0
+96	ankara child hlth & dis hematol oncol educ & res	1	18	3
+97	ankara childrens hematol & oncol hosp	1	12	2
+98	ankara childrens hematol & oncol res & training h	4	3	5
+99	ankara childrens hematol & oncol training & res h	2	23	3
+100	ankara diskapi teaching & res hosp	4	18	27
+101	ankara diskapi training & res hosp	4	35	46
+102	ankara diskapi yb training & res hosp	1	0	1
+103	ankara diskapi yildirim beyazit educ & res hosp	1	0	13
+104	ankara diskapi yildirim beyazit res & training ho	1	0	0
+105	ankara dr abdurrahman yurtaslan oncol educ & res	1	0	3
+106	ankara educ & res hosp	12	45	64
+107	ankara educ & training ctr	1	0	0
+108	ankara educ hosp	1	0	0
+109	ankara etlik matern & womens hlth teaching hosp	1	8	2
+110	ankara etlik ıhtisas res & training hosp	1	12	2
+111	ankara guven hosp	2	44	22
+112	ankara hosp	3	0	1
+113	ankara kecioren res hosp	3	0	0
+114	ankara kecioren teaching & res hosp	1	1	4
+115	ankara med res & training hosp	1	6	2
+116	ankara mevki mil hosp	2	6	4
+117	ankara numune educ & res hosp	1	3	1
+118	ankara numune educ & res hosp ent clin	1	0	1
+119	ankara numune educ & resarch hosp	1	0	0
+120	ankara numune hosp	3	29	9
+121	ankara numune teaching & res hosp	3	55	1
+122	ankara numune training & res hosp	24	105	53
+123	ankara occupat dis hosp	1	13	2
+124	ankara occupat dis hosp toxicol	1	2	1
+125	ankara occupat dis state hosp	1	33	2
+126	ankara oncol educ & res hosp	1	7	5
+127	ankara oncol hosp	11	87	23
+128	ankara oncol res & training hosp	1	2	3
+129	ankara oncol training & res hosp	2	0	15
+130	ankara onkol hosp	1	0	3
+131	ankara phys med rehbil ctr	1	0	2
+132	ankara phys therapy & rehabil training & res hosp	1	2	1
+133	ankara polatli state hosp	1	0	1
+134	ankara res & training hosp	1	1	3
+135	ankara res hosp	2	0	1
+136	ankara social secur womens hosp	1	5	1
+137	ankara ssk hosp	1	27	2
+138	ankara state hosp	1	33	2
+139	ankara teaching & res hosp	1	8	3
+140	ankara ulus state hosp	1	3	3
+141	ankara univ	235	1860	466
+142	ankara univ hosp	1	4	1
+143	ankara univ med	2	0	0
+144	ankara unıv	6	98	3
+145	ankara yildirim beyazit univ	6	4	8
+146	antakya goct hosp	1	0	1
+147	antalya educ & res hosp	2	25	6
+148	antalya educ & training	4	0	0
+149	antalya educ & training pathol	1	0	0
+150	antalya erh	1	0	35
+151	antalya kepez publ hosp	1	0	0
+152	antalya res hosp	4	0	0
+153	antalya state hosp	1	6	1
+154	antalya training & res hosp	9	14	22
+155	antalya training hosp	6	5	1
+156	antera dent clin	1	0	1
+157	antoni van leeuwenhoek hosp	1	1	37
+158	aou careggi	2	1	51
+159	aralik hosp	1	0	0
+160	aralik state hosp	1	1	3
+161	arcispedale santa maria nuova ırccs	1	7	5
+162	arhus univ hosp	1	29	11
+163	aristotle univ thessaloniki	2	14	30
+164	armed forces ınst pathol	12	249	30
+165	artvin state hosp	1	10	1
+166	arup ınst clin & expt pathol	1	0	2
+167	associacao fundo ıncent pesquisa	1	3	17
+168	associated skin care specialists	1	65	5
+169	atakent hosp	1	0	4
+170	ataturk chest dis & chest surg educ &	1	0	0
+171	ataturk chest dis & chest surg educ & res hosp	5	28	1
+172	ataturk chest dis & chest surg teaching & res hos	1	12	1
+173	ataturk chest dis & chest surg training & res hos	1	0	2
+174	ataturk chest dis & thorac surg educ & res hosp	2	15	2
+175	ataturk chest dis & thorac surg training & res ho	3	15	2
+176	ataturk chest dis hosp	4	48	38
+177	ataturk chest hosp	2	1	4
+178	ataturk educ & res hosp	12	37	24
+179	ataturk egitim & arastirma hastanesi endotem plk	1	28	1
+180	ataturk egitim & arasturna hastanesi	1	8	0
+181	ataturk hosp resp dis & thorac surg	1	13	2
+182	ataturk res & educ hosp	3	4	10
+183	ataturk res & training	1	0	0
+184	ataturk state hosp	2	22	3
+185	ataturk teaching & res hosp	1	1	2
+186	ataturk teaching hosp	1	20	0
+187	ataturk training & res hosp	29	135	37
+188	ataturk training & res hosp ızmir	1	0	0
+189	ataturk training res hosp	1	1	3
+190	ataturk traning res hosp	1	0	0
+191	ataturk univ	61	347	83
+192	ataturk univ med fac	1	33	1
+193	ataturk unıv	1	8	2
+194	atuturk unıv	1	0	1
+195	auckland city hosp	1	0	28
+196	aufm	2	0	12
+197	austin hlth	2	0	2
+198	aventis pharma sa	1	12	1
+199	avrasya hosp	2	0	2
+200	aydin obstet & pediat hosp	1	0	4
+201	aydin publ hosp	1	0	6
+202	aydin state hosp	2	0	4
+203	az osped s giovanni battista torino	1	1	12
+204	azienda usl valle daosta	1	49	15
+205	aııms	2	0	18
+206	bacs kiskun cty teaching hosp	2	1	51
+207	bagcilar educ & teaching hosp	1	0	1
+208	bagcilar erh	1	0	35
+209	bagcilar res & training hosp	1	1	2
+210	bagcilar training & res hosp	2	2	4
+211	bahcelievler govt hosp	2	0	2
+212	bahcesehir univ	6	19	6
+213	bakirkoy dr sadi konuk educ & res hosp	1	4	2
+214	bakirkoy dr sadi konuk hosp	3	5	2
+215	bakirkoy dr sadi konuk res & educ hosp	2	0	0
+216	bakirkoy dr sadi konuk teaching & res hosp	2	4	0
+217	bakirkoy dr sadi konuk training & res hosp	2	4	3
+218	bakirkoy dr sadikonuk training & res hosp	1	2	4
+219	bakirkoy dr sadl konuk educ & res hosp	1	5	6
+220	bakirkoy matern & childrens hosp	1	19	4
+221	bakirkoy sadi konuk res & training hosp	1	6	1
+222	bakirkoy sadi konuk res & treatment hosp	1	2	4
+223	bakirkoy sadi konuk training & res hosp	1	0	2
+224	bakirkoy state hosp	1	7	1
+225	bakirkoy training & res hosp	3	0	0
+226	bakrkoy dr sadi konuk educ & reseach hosp	1	0	0
+227	balikesir univ	5	23	15
+228	balikligol state hosp	1	14	1
+229	baltalimani bone dis hosp	1	3	3
+230	bambino gesu pediat hosp	1	2	1
+231	bandirma state hosp	1	0	3
+232	bar ılan univ	1	5	20
+233	barretos canc hosp	1	3	7
+234	barts & london nhs trust	1	0	1
+235	barts & london queen marys sch med & dent	1	0	8
+236	basaksehir state hosp	1	0	13
+237	baskent univ	191	694	213
+238	baskent univ alanya hastanesi	1	0	0
+239	baskent univ hosp	2	6	3
+240	baskent unıv	1	11	1
+241	batman state hosp	3	7	7
+242	batıgoz hlth grp	1	1	4
+243	bayburt state hosp	1	44	1
+244	bayer schering pharma ag	1	30	6
+245	bayindir hosp	1	9	1
+246	bayindir kavaklidere hosp	1	12	1
+247	bayindir med ctr	1	4	1
+248	baylor coll med	36	562	116
+249	baylor scott & white mem hosp	1	4	11
+250	baylor univ	2	5	9
+251	baystate med ctr	2	0	6
+252	beijing army gen hosp	1	21	4
+253	beijing union med coll hosp	1	2	19
+254	belfast city hosp	3	7	8
+255	besmialem univ	1	0	2
+256	beth ısrael deaconess med ctr	2	0	6
+257	betul ziya eren genome & stem cell res ctr	1	0	3
+258	beyhekim state hosp	1	0	3
+259	beykent univ	1	0	2
+260	beytepe mil hosp	1	10	1
+261	bezmialem fdn univ	4	3	21
+262	bezmialem univ	3	11	5
+263	bezmialem vakif univ	19	50	60
+264	bezmialem vakif univ hosp	1	7	2
+265	bezmialemvakif univ	1	23	1
+266	bilim univ	3	13	41
+267	bilkent univ	10	103	20
+268	bingol branch off	1	1	1
+269	bingol matern & childrens hosp	1	0	0
+270	bingol state hosp	1	0	5
+271	bingol univ	1	10	2
+272	biol res ctr	1	37	4
+273	biopt lab sro	1	0	11
+274	biopt lab svo	1	0	11
+275	birmingham heartlands hosp	1	62	9
+276	biruni univ	1	22	3
+277	bispebjerg hosp	1	29	11
+278	bitlis tatvan publ hosp	1	0	1
+279	black sea tech univ	3	0	0
+280	blood ctr southeastern wisconsin	1	1	31
+281	bogazici univ	12	267	36
+282	bogazıcı unıv	3	10	4
+283	bolge egitim & arastirma hastane	1	0	0
+284	bolge egitim & arastirma hastanesi	3	0	0
+285	bolge egitim & arastirma hastenesi	11	0	0
+286	bolge egitim & arastirma hastesi	6	0	0
+287	bolge egitim arastirma hastane	1	0	0
+288	bolge egitim arastirma hastepek	1	0	0
+289	bone marrow bank	6	19	9
+290	boston univ	2	69	5
+291	bozok univ	19	45	76
+292	bozyaka training & res hosp	4	9	5
+293	bozyaka ızmir training & res hosp	1	1	3
+294	breakthrough breast canc res ctr	1	0	2
+295	breast canc ctr paderborn	1	1	37
+296	brigham & womens hosp	4	181	35
+297	bristol royal ınfirm & gen hosp	1	8	3
+298	british columbia canc agcy	1	3	4
+299	broad ınst mıt & harvard	1	18	3
+300	broadgreen univ hosp	1	4	5
+301	brown univ	4	25	10
+302	bruel & kjaer sound & vibrat measurement as	1	0	4
+303	buca gynaecol obstet & pediat hosp	1	2	1
+304	bucak state hosp	2	0	12
+305	bulent ecevit univ	10	38	57
+306	bulent ecevit univ hosp	1	3	1
+307	bulgarian acad sci	1	75	5
+308	bundeswehr ınst microbiol	1	55	3
+309	burc genet diagnost ctr	1	2	2
+310	burc mol diagnosis & res lab	1	0	2
+311	burc mol diagnost lab	2	16	3
+312	burhan nalbantoglu hosp	1	1	3
+313	bursa morgue dept	1	0	2
+314	bursa sevket yilmaz training & res hosp	2	14	5
+315	bursa yukseklhtisas educ & res hosp	1	0	1
+316	bılkent unıv	2	23	2
+317	calgary lab serv	1	0	18
+318	canakkale 18 mart univ	1	6	1
+319	canakkale sekiz mart univ	1	5	6
+320	cankiri state hosp	3	0	35
+321	cannakale onsekiz mart univ	2	0	2
+322	capa	1	22	2
+323	capa hosp	1	14	1
+324	cardiff & vale nhs trust llandough hosp	1	48	11
+325	cardiff & vale nhs trust llandough hosp cardiff u	1	48	11
+326	cardiff univ	3	32	21
+327	cardinal glennon childrens hosp	1	45	8
+328	carl von ossietzky univ oldenburg	1	5	5
+329	carnegie mellon univ	3	58	6
+330	carol davila univ med & pharm	2	61	27
+331	case western reserve univ	7	55	67
+332	case western sch med	1	31	6
+333	catholic univ	2	52	40
+334	catholic univ louvain	3	4	73
+335	cea grenoble	1	18	3
+336	cedars sinai med ctr	7	255	71
+337	cedars sınaı med ctr	1	8	2
+338	celal bayar univ	45	380	125
+339	celal bayer univ	2	4	1
+340	celera	1	1	22
+341	cemıc ctr educ med & ınvest clin norberto quirno	1	3	17
+342	cerrahpasa coll med	1	0	0
+343	cerrahpasa fac med	4	5	4
+344	cerrahpasa forens med ınst	1	8	3
+345	cerrahpasa med coll	15	0	3
+346	cerrahpasa med fac	12	59	24
+347	cerrahpasa med sch	5	112	3
+348	cerrahpasa med1ial fac	1	0	0
+349	cerrahpasa univ	3	0	0
+350	cerv screening wales	1	16	26
+351	chaim sheba med ctr	5	47	60
+352	chang gung univ	2	106	7
+353	charahpasa med sch	1	0	3
+354	charite	1	0	2
+355	charite campus mitte	1	49	15
+356	charles univ hosp plzen	2	0	24
+357	charles univ prague	13	207	177
+358	cheltenham gen hosp	1	28	20
+359	childrens canc hosp	1	43	5
+360	childrens hosp	3	138	40
+361	childrens mem hosp	1	43	5
+362	china japan friendship hosp	1	0	3
+363	chinese acad med sci	1	2	19
+364	chinese univ hong kong	1	264	28
+365	christian albrechts univ kiel klinikum	1	50	22
+366	chu cote nacre	6	48	52
+367	chu dijon	1	29	11
+368	chu dupuytren	1	1	22
+369	chu farhat hached	1	3	3
+370	chu hautepierre	1	64	12
+371	chu montpellier	1	50	22
+372	chu nantes	1	32	18
+373	chu rangueil	1	40	19
+374	chu reims	1	0	4
+375	chu sart tilman	1	0	25
+376	chu toulouse	2	2	8
+377	chu univ hosp	1	19	10
+378	chu vaudois	1	0	28
+379	chum	1	0	28
+380	citog cytopathol diagnost lab	1	11	1
+381	city hope med ctr	1	5	3
+382	city hope natl med ctr	1	10	2
+383	city hosp	2	56	8
+384	city univ london	1	5	20
+385	cleveland clin	12	144	92
+386	cleveland clin fdn	5	87	20
+387	clin ctr nis	1	1	4
+388	clin hosp	1	1	31
+389	clin hosp ctr	1	0	7
+390	clin hosp ctr zvezdara	1	1	4
+391	clin hosp merkur	1	10	10
+392	clin res ınst huch	1	25	9
+393	clin univ st luc	2	78	42
+394	cmp cerba european labs	1	1	37
+395	cmu	1	0	28
+396	cnrs	4	133	54
+397	cnrs umr 7275	1	9	18
+398	cochin hosp	1	11	22
+399	cochlear ag	1	50	22
+400	cochlear europe ltd	1	50	22
+401	cochlear gmbh	1	50	22
+402	cochlear technol ctr	1	50	22
+403	cog stat off	1	94	4
+404	coll france	1	64	12
+405	columbia trident med ctr	1	3	2
+406	columbia univ	1	0	2
+407	combimatrix diagnost	1	0	28
+408	comenius univ	1	5	20
+409	comm missing persons cyprus turkish cypriot membe	1	0	1
+410	complejo hosp navarra	2	1	51
+411	cordoba univ med sch	1	0	4
+412	corlu mil hosp	2	9	7
+413	corlu state hosp	7	84	21
+414	cornell univ	21	354	79
+415	council forens med	17	78	34
+416	council forens med turkey bursa morgue	1	10	2
+417	council forsne med	1	6	1
+418	coxa hosp joint replacement	1	2	4
+419	cro ıst nazl tumori	1	4	3
+420	crımınal polıce labs	1	6	0
+421	ctf	1	0	0
+422	ctr biol	1	3	3
+423	ctr biomed res rare dis cıberer	1	9	18
+424	ctr hosp	1	0	25
+425	ctr hosp lisboa norte	1	2	19
+426	ctr hosp porto	1	32	18
+427	ctr hosp s joao	1	32	18
+428	ctr hosp sao joao	3	37	72
+429	ctr hosp ıntercommunal	1	66	3
+430	ctr jean perrin	1	49	15
+431	ctr labs	2	39	2
+432	ctr leon berard	1	14	1
+433	ctr natl rech sci	1	1	37
+434	ctr odontoıatrıa & stomatol	1	34	2
+435	ctr transfus madrid	1	1	22
+436	ctr transfus sanguine	1	1	12
+437	ctr ımmunogenet & virol	2	0	8
+438	ctr ınmunol genet & mol	1	3	17
+439	ctr ınt blood & marrow transplant res	1	0	2
+440	cts	1	1	22
+441	cukurova univ	136	546	341
+442	cukurova unıv	8	145	4
+443	cumhoriyet univ	1	0	35
+444	cumhuriyet univ	18	88	44
+445	cumhuriyet univ fac med	1	5	0
+446	cunningham pathol	1	12	23
+447	cuny	2	15	2
+448	cvpath ınst ınc	1	0	2
+449	cyprus ınst	1	1	6
+450	cyprus ınt univ	1	1	6
+451	cytopathol lab	2	7	0
+452	cıberer	1	5	6
+453	dalhousie univ	1	9	18
+454	dana farber canc ınst	2	43	6
+455	dana farber harvard med sch	1	0	9
+456	danish metrol ınst	1	0	4
+457	ddl diagnost lab	1	19	2
+458	delnor community hosp	1	11	2
+459	denizli state hosp	4	2	5
+460	dept clin lab diagnost	2	2	34
+461	dept clin microbiol	1	3	2
+462	dept clin pathophysiol	1	0	3
+463	dept diagnost med sci & special therapies	1	31	27
+464	dept med biol	2	0	4
+465	dept nephrol	1	4	1
+466	dept neurosurg	1	0	0
+467	dept nucl biol & chem warfare	1	0	2
+468	dept pathol	6	47	5
+469	dept pharmaceut toxicol	1	0	2
+470	dept publ hlth & acad comp	1	7	1
+471	dept thorac surg	1	0	2
+472	dept ınternal med	1	4	1
+473	derik state hosp	1	45	1
+474	dermatopathol friedrichshafen	1	0	11
+475	dermatopathol ınst	1	0	11
+476	detroit med ctr	7	9	16
+477	deutf	1	3	0
+478	deutsch krankenhaus	1	4	1
+479	deutsch krankenhaus univ hosp grp taksim	1	8	3
+480	dhahran hlth ctr	1	28	3
+481	diagnost & treatment ctr equine dis	1	0	2
+482	dicle univ	26	188	61
+483	dietrich bonhoeffer med ctr	1	1	37
+484	diskapi childrens hlth & dis hematol oncol traini	1	36	3
+485	diskapi egitim aras hastanesi	1	0	0
+486	diskapi erh	1	0	35
+487	diskapi res & training hosp	1	1	3
+488	diskapi teaching & res hosp	1	1	3
+489	diskapi yb res & training hosp	1	0	10
+490	diskapi yb training & res hosp	2	0	2
+491	diskapi yildirim beyazit educ & res hosp	5	23	6
+492	diskapi yildirim beyazit res & educ hosp	1	3	0
+493	diskapi yildirim beyazit res & training hosp	4	16	9
+494	diskapi yildirim beyazit training & res hosp	7	50	9
+495	diskapi yildirim beyazit training hosp	1	4	1
+496	diskapi ylidirim beyazit educ & res hosp	1	0	2
+497	diyarbakir childrens hosp	1	0	1
+498	diyarbakir matern & childrens hosp	1	5	6
+499	diyarbakir mil hosp	1	9	1
+500	diyarbakir pediat & obstet gynecol hosp	1	1	2
+501	dokuz eylul univ	185	1197	327
+502	dokuz eylul univ hosp	3	52	0
+503	dokuz eylul unıv	2	7	0
+504	donauspital smzo	2	1	51
+505	douglass hanly moir pathol cytol	1	16	26
+506	dr abdurrahman yurtarslan ankara oncol educ & res	1	2	3
+507	dr abdurrahman yurtaslan ankara oncol educ & res	3	12	5
+508	dr abdurrahman yurtaslan ankara oncol training &	1	3	2
+509	dr abdurrahman yurtaslan ankara onkol training &	1	1	19
+510	dr abdurrahman yurtaslan oncol educ & res hosp	2	0	4
+511	dr abdurrahman yurtaslan training & res hosp	1	4	10
+512	dr ay ankara oncol training & res hosp	1	0	4
+513	dr behcet uz child dis & pediat surg training & r	1	5	4
+514	dr behcet uz children res hosp ızmir	1	0	1
+515	dr behcet uz children training & res hosp	1	0	1
+516	dr behcet uz childrens hosp	5	8	5
+517	dr behcet uz childrens res hosp	2	6	1
+518	dr behcet uz chioldren res hosp	1	0	0
+519	dr burhan nalbantoglu state hosp	1	0	2
+520	dr lutfi kartal educ & res hosp	1	0	2
+521	dr lutfi kartal res & training hosp	1	0	2
+522	dr lutfi kirdar educ & res hosp	1	0	1
+523	dr lutfi kirdar kartal educ & res hosp	22	14	8
+524	dr lutfi kirdar kartal educat & res hosp	2	0	0
+525	dr lutfi kirdar kartal egitim & arastirma hastane	1	1	0
+526	dr lutfi kirdar kartal res & training hosp	6	0	7
+527	dr lutfi kirdar kartal res &n training hosp	1	0	1
+528	dr lutfi kirdar kartal training & res hosp	4	13	28
+529	dr lutfi kirdar res & educ hosp	2	25	5
+530	dr lutfi kirdar training & res hosp	1	1	19
+531	dr lutfu kirdar kartal training & res hosp	1	0	1
+532	dr margarete fischer bosch ınst clin pharmacol	2	31	23
+533	dr nafiz korez publ hosp	1	3	2
+534	dr nafiz korez sincan govt hosp	1	0	1
+535	dr ridvan ege hosp	2	5	4
+536	dr sadi konuk training & res hosp	2	0	0
+537	dr sami ulus matern & children res & training hos	1	5	0
+538	dr sami ulus matern & children training & res hos	1	1	0
+539	dr sami ulus res & training hosp womens & childre	1	0	5
+540	dr suat seren chest dis & thorac surg training &	1	3	1
+541	dublin city univ	1	30	6
+542	dubrava univ hosp	1	10	10
+543	duke univ	7	64	65
+544	duluth clin	1	0	28
+545	dumlupinar univ	4	32	6
+546	dumlupinor univ evliya celebi erh	1	0	35
+547	duysel audiol ctr	1	50	22
+548	duzce univ	22	57	13
+549	duzce univ med fac	1	33	1
+550	dyyarbakyr hosp	1	0	0
+551	dıcle unıv	1	0	0
+552	dırect affaıres sanıt & socıales parıs	1	66	3
+553	e cytopathol	1	4	2
+554	earth & marine sci res ınst	2	43	4
+555	eastern mediterranean univ	2	36	3
+556	eastern medıterranean unıv	1	0	0
+557	ecole natl super mines	1	19	10
+558	edirne state hosp	1	0	1
+559	educ & res hosp	2	4	2
+560	efs	2	2	34
+561	efs auvergne loire	1	1	31
+562	efs rhone alpes	1	1	31
+563	ege dogumevi kadin hastaliklari egitim hastanesi	1	0	0
+564	ege hosp	1	11	1
+565	ege uni	1	0	11
+566	ege univ	211	1096	225
+567	ege univ bornova	1	9	3
+568	ege univ sch med	1	15	1
+569	ege unıv	5	36	1
+570	egirdir bone joint dis treatment & rehabil hosp	1	0	3
+571	egirdir bone joint dis treatnient & rehabil hosp	1	9	1
+572	elazig educ & res hosp	2	7	9
+573	elazig egitim & arastirma hastanesi	1	0	4
+574	elazig training & res hosp	1	1	0
+575	em consulting	1	0	2
+576	emory u	2	2	11
+577	emory univ	24	569	142
+578	emory univ hosp	3	67	15
+579	emsey hosp	1	7	5
+580	eprom elect project & microwave ınd ltd co	1	0	4
+581	erasmus mc	4	316	64
+582	ercis state hosp	1	0	2
+583	erciyes edu tr	1	0	1
+584	erciyes med sch	1	52	2
+585	erciyes univ	100	454	123
+586	ercıyes unıv	2	24	1
+587	ergani state hosp	1	12	1
+588	ericiyes univ	1	78	3
+589	erzincan oral & dent ctr	1	1	2
+590	erzincan univ	11	14	17
+591	erzurum bolge egitim hastanesi	3	0	0
+592	erzurum educ & res hosp	1	2	2
+593	erzurum mil hosp	4	14	11
+594	erzurum nenehatun obstet & gynecol hosp	1	3	1
+595	erzurum numune hastanesi	1	25	2
+596	erzurum numune hosp	1	3	1
+597	erzurum reg educ & res hosp	1	5	1
+598	erzurum reg training & res hosp	2	2	4
+599	erzurum region res & educ hosp	2	0	2
+600	erzurum res & training hosp	1	0	2
+601	erzurum tech univ	1	22	3
+602	erzurum training & res hosp	2	28	3
+603	esbjerg cent hosp	1	8	2
+604	escola super tecnol saude lisboa	1	28	20
+605	eskisehir mil hosp	4	10	11
+606	eskisehir osmangazi univ	27	81	27
+607	eskisehir tech univ	1	0	2
+608	eskisehir yunus emre gen hosp	1	2	1
+609	eskisehirr osmangazi univ	1	2	1
+610	esogu fac med	1	0	0
+611	eta pathol & cytol ctr	1	0	1
+612	etimesgut af hosp	2	2	2
+613	etimesgut air force hosp	4	52	4
+614	etimesgut mil hosp	5	8	7
+615	etlik vet control & res ınst	1	3	4
+616	etlik zubeyde hanim res & teaching hosp	1	1	3
+617	etlik zubeyde hanim woman hlth educ & res hosp	1	1	1
+618	etlik zubeyde hanim womens hlth educ & res hosp	2	0	4
+619	etlik zubeyde hanim womens hlth teaching & res ho	3	11	24
+620	etlik zubeyde hanim womens hlth training & res ho	1	0	0
+621	eufm	2	0	12
+622	european univ lefke	1	5	2
+623	evangelismos med ctr	2	47	30
+624	expt med res ınst	1	0	1
+625	eylul univ	1	5	4
+626	fac agr	1	0	1
+627	fac dent ıstanbul	1	10	1
+628	fac hosp hradec kralove	1	49	15
+629	fac kirikkale	1	0	3
+630	fac med	5	60	37
+631	fac med creteıl	1	66	3
+632	fac med porto	2	219	23
+633	fac med sci	1	2	1
+634	fac sci	1	4	4
+635	facharztzentrum collinistr	1	19	10
+636	fairview univ	2	0	17
+637	family hlth ctr	1	7	3
+638	fatih sultan mehmet res & training hosp	1	0	1
+639	fatih univ	15	113	19
+640	fatih univ hosp	2	59	0
+641	fdn belgian canc registry	1	29	11
+642	fdn macchi	1	50	22
+643	fdn med ınc	1	18	5
+644	fdn ıme	1	1	12
+645	fdn ınclınıca	3	10	9
+646	fed univ hosp rio de janeiro	1	40	19
+647	finnish red cross & blood transfus serv	1	1	31
+648	firat univ	22	411	24
+649	first bilim univ	4	0	0
+650	flor f univ hosp pest cty	1	16	26
+651	florance nıghtıngale	1	0	0
+652	florence nightingale hosp	4	57	10
+653	florence nigthingale hosp	1	0	1
+654	florida ınt univ	2	0	4
+655	fmh gynecol obstet	1	0	28
+656	fna practice	1	0	2
+657	folkhalsan res ctr	1	25	9
+658	folkhalsan ınst genet	1	64	12
+659	foot & mouth dis ınst	1	24	2
+660	foothills med ctr	1	45	8
+661	forbes norris mda als	1	7	12
+662	forens council turkey	1	0	3
+663	fourth mil med univ	1	21	4
+664	fox chase canc ctr	1	11	22
+665	fpo	1	0	14
+666	franciscan hosp children	1	60	4
+667	fraunhofer ınst cell therapy & ımmunol	1	19	10
+668	fred hutchinson canc res ctr	2	1	33
+669	free univ berlin	1	35	2
+670	fundeni clin ınst	2	8	9
+671	fundeni clin ınst ctr ımmunogenet & virol	1	6	7
+672	fırat unıv	3	16	2
+673	g francastoro city hosp	1	4	3
+674	g gennimatas hosp	1	14	5
+675	gata	13	4	30
+676	gata haydarpasa educ & res hosp	2	0	6
+677	gata haydarpasa educ hosp	1	1	1
+678	gata haydarpasa egitim hastanesi	1	2	0
+679	gata haydarpasa teaching hosp	3	7	5
+680	gata haydarpasa training & res hosp	1	0	13
+681	gata haydarpasa training hosp	11	4	5
+682	gata haydarpasha training hosp	1	0	0
+683	gata heh	14	1	2
+684	gata heh traning hosp	2	0	0
+685	gata med fac	1	1	3
+686	gata med sch	1	0	0
+687	gata mil hosp	3	1	3
+688	gata patol ad	1	0	7
+689	gata sch med	1	0	0
+690	gata training hosp	1	0	0
+691	gayrettepe florence nightingale	1	0	0
+692	gayrettepe florence nightingale hosp	3	6	9
+693	gayrettepe florence nigthingale hosp	1	0	2
+694	gazi med fac	1	36	21
+695	gazi univ	187	1088	252
+696	gazi univ hosp	9	17	4
+697	gaziantep 25th aralik state hosp	1	1	3
+698	gaziantep children hosp	1	9	3
+699	gaziantep childrens hosp	1	64	12
+700	gaziantep ersin arslan state hosp	1	0	5
+701	gaziantep gynecol & obstet hosp	2	0	4
+702	gaziantep hosp	1	0	0
+703	gaziantep pediat hosp	2	0	4
+704	gaziantep state hosp	3	1	3
+705	gaziantep uni	1	0	11
+706	gaziantep univ	37	257	43
+707	gaziantep univ sahinbey	2	0	0
+708	gaziantep univ sch med	1	5	2
+709	gaziomanpasa univ	3	20	6
+710	gaziosmanpasa taksim educ & res hosp	1	1	2
+711	gaziosmanpasa univ	20	101	66
+712	gazı unıv	1	2	1
+713	gebze tech univ	2	7	4
+714	gebze ınst technol	1	10	3
+715	geisinger hlth syst	1	0	2
+716	gelibolu mil hosp	1	0	1
+717	gen hosp athens laiko	1	19	10
+718	gen hosp dresden friedrichstadt	1	36	3
+719	gen ınfirm	2	60	20
+720	gen ınst adv med studies	1	16	26
+721	genart woman hlth & reprod biotechnol ctr	1	0	3
+722	gendx	1	0	1
+723	genedata	1	30	6
+724	genel pathol ctr	1	12	1
+725	genel patol merkezi	1	3	1
+726	genentech ınc	1	20	1
+727	geneva univ hosp	2	13	8
+728	gentan genet diag ctr	1	2	1
+729	georg august univ	1	0	25
+730	georgetown univ hosp	1	0	1
+731	german canc res ctr	1	264	28
+732	giresun univ	3	16	7
+733	giresun univ hosp	1	0	1
+734	gmıma	1	0	0
+735	goethe univ	1	4	9
+736	goethe univ frankfurt	1	14	2
+737	golcuk mil hosp	1	6	1
+738	golcuk state univ	1	11	1
+739	golden horn univ	1	0	1
+740	gop taksim hosp	1	0	0
+741	gop taksim res & educ ctr	3	0	0
+742	gop taksim res & educ hosp	1	0	0
+743	gop taksim training & res hosp	1	1	1
+744	goren pathol lab	2	8	7
+745	gothenburg unıv	1	0	2
+746	goztepe e&a hastanesi	4	0	0
+747	goztepe educ & res	4	0	0
+748	goztepe educ & res hosp	5	47	6
+749	goztepe egitim arastirma hast	3	0	0
+750	goztepe med pk hosp	1	0	5
+751	goztepe res & educ hosp	1	0	2
+752	goztepe res & training hosp	2	10	1
+753	grad sch med	1	0	2
+754	grad sch nat & appl sci	1	4	4
+755	graz univ	3	50	21
+756	great ormond st hosp sick children	1	0	25
+757	grp florence nightingale hosp	1	36	21
+758	grp hosp est	1	0	8
+759	grp hosp pitie salpetriere	1	64	12
+760	gulhane askeri tip akad	6	26	2
+761	gulhane askeri tip akademisi	1	14	0
+762	gulhane askerı tıp akad	1	9	0
+763	gulhane med acad haydarpasa teaching hosp	1	0	1
+764	gulhane mil	1	2	2
+765	gulhane mil hosp	2	14	2
+766	gulhane mil med acad	107	867	170
+767	gulhane mil med acad & med fac	1	0	7
+768	gulhane mil med acad & med sch	1	1	3
+769	gulhane mil med acad & sch med	7	48	8
+770	gulhane mil med acad gata	1	0	0
+771	gulhane mil med fac	2	5	1
+772	gulhane mıl med acad	6	96	3
+773	gulhane mıl med acad & med sch	1	6	0
+774	gulhane mıl med acad & sch med	1	4	0
+775	gulhane training & res hosp	2	1	20
+776	gumushane univ	2	14	2
+777	gunes pathol lab	1	0	2
+778	gustave roussy	1	11	22
+779	gustave roussy comprehens canc ctr	4	53	60
+780	gustavus adolphus coll	1	42	2
+781	guven hosp	1	0	1
+782	guys & st thomas nhs fdn trust	2	42	49
+783	guys hosp	2	62	16
+784	gı lugansk state med univ	1	0	6
+785	h lee moffitt canc ctr & res ınst	1	2	19
+786	hacettepe	1	0	0
+787	hacettepe childrens hosp med ctr	2	74	9
+788	hacettepe med fac	1	3	0
+789	hacettepe u	2	2	11
+790	hacettepe un sch med	1	0	0
+791	hacettepe univ	348	2664	724
+792	hacettepe univ fac med	2	4	1
+793	hacettepe univ hosp	25	47	17
+794	hacettepe univ sihhiye	1	0	0
+795	hacettepe unıv	26	292	14
+796	hadassah hebrew univ hosp	1	8	7
+797	hadassah hebrew univ med ctr	1	8	7
+798	hadassah med org	1	94	35
+799	hakkari devlet hastanesi	1	0	0
+800	hakkari state hosp	3	0	4
+801	hal univ	1	0	1
+802	hal univ ınst hlth sci	1	0	1
+803	halic univ	5	4	6
+804	halitorium halitosis res grp	1	1	4
+805	hamidiye sisli etfal educ & res hosp	1	1	2
+806	hammersmith hosp	4	28	86
+807	hannover med sch	3	51	49
+808	hanyang univ hosp	1	37	4
+809	harborview med ctr	1	0	18
+810	harper univ hosp	3	0	6
+811	harran univ	9	49	28
+812	harran unıv	1	12	2
+813	harvard med sch	7	46	35
+814	harvard mıt	1	3	4
+815	harvard univ	11	474	113
+816	haseki educ & res hosp	2	19	4
+817	haseki educ res hosp	1	2	2
+818	haseki training & res hosp	10	40	11
+819	hasekı hosp	1	8	2
+820	hatay antakya publ hosp	1	20	1
+821	hatay mustafa kemal univ	1	0	2
+822	hatay mustafa kemal univ med	1	0	2
+823	hatay state hosp	1	2	2
+824	haukeland hosp	2	45	4
+825	hava hastanesi patoloji lab	1	89	2
+826	haydarpaa numune res & training hosp	1	0	1
+827	haydarpaa numune training & res hosp	1	1	1
+828	haydarpada numune educ & res hosp	1	2	0
+829	haydarpasa educ & res hosp	1	2	0
+830	haydarpasa numune edcu & res hosp	1	0	0
+831	haydarpasa numune educ & res hosp	14	84	17
+832	haydarpasa numune egitim & arastirma hastanesi	2	24	2
+833	haydarpasa numune hosp	7	64	10
+834	haydarpasa numune teaching & res hosp	1	1	1
+835	haydarpasa numune training & res hosp	11	48	39
+836	haydarpasa teaching hosp	3	39	3
+837	haydarpasa training hosp	5	33	7
+838	haydarpasa traınıng hosp	1	9	1
+839	hca ınt	1	1	6
+840	heart england nhs fdn trust	1	2	19
+841	heidelberg univ	4	277	52
+842	heinrich heine univ	1	4	9
+843	helena venizelou matern hosp	1	14	5
+844	hellenic pasteur ınst	2	4	5
+845	henry ford hlth syst	1	12	23
+846	henry ford hosp	2	5	21
+847	heybeliada chest hosp	1	0	1
+848	heybelıada chest dıs & chest surg ctr	1	9	1
+849	hippokrateion hosp	2	25	27
+850	hitech diagnost ctr	1	5	3
+851	hitit univ	3	0	36
+852	hitit univ corum res & educ hosp	1	2	2
+853	hizmet hastanesi	1	0	4
+854	hlth sci univ	5	0	3
+855	hlth sci univ umraniye	2	0	0
+856	hlth ıstanbul training & res hosp	1	0	0
+857	hntrh	2	0	0
+858	hokkaido univ	1	15	8
+859	hong kong polytech univ	1	5	2
+860	hop arnaud de villeneuve	1	0	28
+861	hop civil	1	64	12
+862	hop edouard herriot	2	82	40
+863	hop fernand wıdal	1	19	0
+864	hop foch	1	0	4
+865	hop henri mondor	2	21	23
+866	hop lariboisiere	1	16	26
+867	hop st antoine	2	36	34
+868	hop st eloi	1	1	31
+869	hop st louis	1	1	31
+870	hop st vincent de paul	1	94	35
+871	hop univ marmara	1	0	4
+872	hop ınstruct taksim	1	0	0
+873	hortech ggmbh	1	5	5
+874	horzentrum oldenburg gmbh	1	5	5
+875	hosp alexandrovska	1	1	22
+876	hosp beatriz angelo	1	11	22
+877	hosp clin barcelona	2	225	34
+878	hosp clin univ	1	45	8
+879	hosp cuf descobertas	1	0	6
+880	hosp edouard herriot	1	0	25
+881	hosp espirito santo epe	1	9	9
+882	hosp gen ciudad real	1	25	9
+883	hosp navarra	1	9	9
+884	hosp pathol associates	1	12	23
+885	hosp pediat dis	1	4	3
+886	hosp sao joao	2	244	36
+887	hosp sick children	1	9	18
+888	hosp socıal ınsurance ınst	1	16	0
+889	hosp univ cent asturias	3	10	9
+890	hosp univ donostia	1	27	10
+891	hosp univ gen catalunya	1	0	11
+892	hosp univ germans trias & pujol	1	25	9
+893	hosp univ hm sanchinarro	1	49	15
+894	hosp univ marques valdecilla	1	94	35
+895	hosp univ ramon & cajal	1	5	6
+896	hosp univ salamanca	1	1	12
+897	hosp valle de hebron	1	5	6
+898	hosp ıtaliano buenos aires	1	3	17
+899	hospitalium hosp	1	17	1
+900	house ear res ınst	1	50	22
+901	houston methodist hosp	2	12	28
+902	howard hughes med ınst	1	18	3
+903	hug hop cantonal	1	32	18
+904	human rights fdn turkey	1	2	2
+905	humboldt univ	1	60	4
+906	hunter genet	1	0	28
+907	james canc hosp	3	25	9
+908	james madison univ	1	8	5
+909	jinemed med ctr	1	3	3
+910	jockey club turkey	1	0	1
+911	johann wolfgang goethe univ	1	0	2
+912	johannes gutenberg univ mainz	1	46	3
+913	john d dingell va med ctr	1	0	1
+914	john radcliffe hosp	2	17	30
+915	johns hopkins med ınst	10	126	39
+916	johns hopkins pathol	2	0	6
+917	johns hopkins sch med	3	0	24
+918	johns hopkins univ	29	656	170
+919	johns hopkins univ hosp	22	72	99
+920	johns hopkıns unıv	1	0	2
+921	johnson & johnson kk	1	6	5
+922	jordan hosp	1	15	8
+923	jrf pdt gc	1	32	18
+924	junon clin	1	15	8
+925	kadir has univ	3	49	22
+926	kafkas univ	11	107	10
+927	kahramanmaras off	1	0	1
+928	kahramanmaras state hosp	2	2	4
+929	kahramanmaras sutcu ımam univ	13	47	26
+930	kahramanmaras sutcuimam univ	1	24	0
+931	kahramanmaras sutcuimam univ med sch	1	2	1
+932	kahramanmaras yenisehir govt hosp	1	0	2
+933	kanazawa univ	3	106	31
+934	kantonsspital baselland	1	28	20
+935	kanuni sultan suleyman educ & res hosp	1	0	1
+936	kanuni sultan suleyman res & teaching hosp	1	1	1
+937	kanuni sultan suleyman training & res hosp	3	7	2
+938	kanuni training hosp	5	0	0
+939	karabuk univ	1	3	3
+940	karadeniz black sea tech univ	1	3	3
+941	karadeniz tech univ	49	240	59
+942	karadeniz univ	1	0	18
+943	karadenız tech unıv	1	8	2
+944	karadenız tekn unıv tıp fak	1	25	3
+945	karaelmas univ	7	21	44
+946	karmanos canc ınst	3	112	22
+947	karolinska univ	2	31	23
+948	karolinska univ hosp	4	76	73
+949	karolinska univ hosp huddinge	3	34	52
+950	karolinska univ hosp solna	1	31	27
+951	karolinska ınst	7	198	117
+952	karolınska hosp	1	5	1
+953	karsiyaka govt hosp	1	2	2
+954	karsiyaka state hosp	1	2	2
+955	kartal dr lutfi kirdar eah	1	0	0
+956	kartal dr lutfi kirdar educ & res hosp	1	6	4
+957	kartal dr lutfukirdar training & res hosp	1	4	5
+958	kartal educ & res hosp	3	8	17
+959	kartal res & educ hosp	1	4	1
+960	kasimpasa mil hosp	2	18	5
+961	kastamonu univ	2	23	4
+962	katholieke univ leuven	1	36	21
+963	katip celebi univ	12	3	22
+964	kawasaki med univ	1	6	5
+965	kayseri educ & res hosp	5	26	8
+966	kayseri res & training hosp	2	1	2
+967	kayseri training & res hosp	2	10	6
+968	kazan fed univ	1	0	1
+969	kbb major	1	20	1
+970	kbo kinderzentrum munchen	1	0	25
+971	kecioren egitim arastirma hosp	2	0	0
+972	kecioren res & training hosp	2	5	5
+973	kecioren training & res hosp	2	8	1
+974	kem hosp	1	14	5
+975	kemerburgaz univ	1	0	2
+976	kent hastanesi	1	7	3
+977	kent hosp	1	1	3
+978	kibbutzim coll educ technol & arts	1	5	20
+979	kimberly jewett consulting ınc	1	12	23
+980	king faisal specialist hosp & res ctr	1	49	15
+981	king hussein canc ctr	4	46	13
+982	king saud bin abdulaziz univ hlth sci	1	12	2
+983	king saud univ	1	0	2
+984	king saud univ med city	1	0	2
+985	kings coll london	3	55	4
+986	kingston univ london	1	0	4
+987	kinki univ	1	94	35
+988	kirikkale state hosp	1	32	2
+989	kirikkale univ	17	162	27
+990	kirikkale univ med	1	0	3
+991	kitasato univ	1	2	1
+992	klinikum bayreuth	1	28	20
+993	klınıkum nordstadt	1	25	2
+994	koc sch med	1	4	5
+995	koc univ	11	35	21
+996	kocaeli social secur hosp	1	8	1
+997	kocaeli u med sch	1	0	0
+998	kocaeli uni	1	0	11
+999	kocaeli univ	79	336	121
+1000	kocaeli univ hosp	2	17	3
+1001	kocaeli univ med sch	3	0	5
+1002	kocatepe univ	3	15	0
+1003	kochi univ	2	15	0
+1004	konak state hosp obstet & gynecol	1	2	1
+1005	konrad private radiol ctr	3	12	2
+1006	konrad radiol ctr	1	17	1
+1007	konya air force hosp	1	1	2
+1008	konya numune hosp	1	0	1
+1009	konya training & res hosp	1	13	2
+1010	kosuyolu state hosp kartal	1	6	3
+1011	kosuyolu training & res hosp	1	2	1
+1012	kozyatagi hosp	1	0	2
+1013	krankenhaus barmherzigen bruder	1	12	2
+1014	krikkale univ	1	5	0
+1015	ksu med fac	1	0	1
+1016	ksu med sch	1	18	0
+1017	ksu sch med	1	5	0
+1018	kutahya evliya celebi training & res hosp	1	3	2
+1019	kuwait univ	3	33	50
+1020	kyoto univ	1	3	2
+1021	kyoto univ hosp	4	0	24
+1022	kyushu univ	1	12	3
+1023	l hirszfeld ınst ımmunol & expt therapy	1	1	12
+1024	la laguna univ	1	0	25
+1025	lab biochimistry & mol biol	1	3	3
+1026	lab dermatohistol & oralpathol	1	0	11
+1027	lab dr fenner & ko	1	19	10
+1028	lab natl metrol & essais	1	0	4
+1029	lab natl sante	2	3	8
+1030	lady cilento childrens hosp	1	0	28
+1031	lariboisiere hosp	1	31	27
+1032	latvia children hearing ctr	1	0	25
+1033	lausanne univ hosp	1	7	5
+1034	leeds gen ınfirm	1	62	9
+1035	leibniz zas berlin	1	5	20
+1036	leibniz ınst neurobiol	1	0	25
+1037	leiden cytol & pathol lab	4	53	60
+1038	leiden univ	5	114	89
+1039	linkopings univ	1	33	7
+1040	lions gate hosp	1	3	4
+1041	lisbon & tagus valley hlth reg adm	1	9	9
+1042	liv hosp	5	2	14
+1043	liverpool hope univ	8	0	10
+1044	liverpool univ hosp	1	34	5
+1045	llandough hosp	5	0	41
+1046	lokman hekim tip merkezi	1	24	3
+1047	loma linda univ	1	8	2
+1048	loyola univ	6	5	10
+1049	ludwig ctr canc genet	1	7	5
+1050	ludwig ctr canc genet & therapeut	3	13	29
+1051	ludwik hirszfeld ınst ımmunol & expt therapy	1	8	4
+1052	ludwik hirzfeld ınst ımmunol & exp therapy	1	0	4
+1053	ludwik hirzfeld ınst ımmunol & expt therapy	1	6	7
+1054	lund univ	8	61	143
+1055	lutfi kirdar edu & res hosp	1	0	1
+1056	lutfi kirdar kartal educ & res hosp	7	0	19
+1057	lutfi kirdar kartal training & res hosp	8	46	9
+1058	lutfiye nuri burat state hosp	1	6	2
+1059	maastricht univ	4	77	45
+1060	maastricht ınst neuromodulat dev mınd	1	20	2
+1061	mackay med coll	1	11	8
+1062	mackay med nursing & management coll	1	11	8
+1063	mackay mem hosp	2	36	14
+1064	mahatma gandhi ınst med sci	1	16	26
+1065	majmaah univ	1	5	3
+1066	malatya hosp	1	0	4
+1067	malatya state hosp	2	4	3
+1068	maltepe univ	7	28	5
+1069	maltepe univ hosp	2	4	1
+1070	manavgat state hosp	1	1	1
+1071	manchester royal ınfirm	3	35	50
+1072	manchester transplantat lab	1	1	12
+1073	manisa celal bayar univ	6	0	3
+1074	manisa state hosp	5	9	11
+1075	mansoura univ	1	0	28
+1076	mardin govt hosp	1	1	1
+1077	mardin state hosp	3	0	7
+1078	maresal cakmak hosp	1	0	3
+1079	maresal fevzi cakmak mil hosp	1	2	1
+1080	maresal fevzı cakmak mıl hosp	1	8	2
+1081	maria sklodowska curie mem canc ctr	2	37	58
+1082	marie curie sklodowska univ	1	5	6
+1083	marmara med fac	1	0	1
+1084	marmara pathol lab	1	3	3
+1085	marmara sch med	2	0	0
+1086	marmara scı & ınd res ınst	1	0	0
+1087	marmara uni	1	0	11
+1088	marmara univ	159	944	345
+1089	marmara univ eah	1	0	0
+1090	marmara univ hosp	12	6	3
+1091	marmara univ med	1	4	0
+1092	marmara univ pend eah	1	0	0
+1093	marmara univ sch med	1	0	1
+1094	marmara unıv	2	36	2
+1095	marmara unıv hosp	1	0	0
+1096	marmora univ	1	0	1
+1097	marshall univ	1	4	2
+1098	masaryk univ	1	0	2
+1099	massachusetts eye & ear ınfirm	1	3	4
+1100	massachusetts gen hosp	11	42	44
+1101	mater dei hosp	1	1	37
+1102	max planck ınst expt med	1	4	9
+1103	max planck ınst psycholinguist	1	7	3
+1104	mayo clin	54	828	229
+1105	mayo clin & mayo fdn	3	31	8
+1106	mayo clin arizona	1	28	20
+1107	mayo clin hlth syst	1	9	3
+1108	mayo clin rochester	1	0	3
+1109	mayo clın	1	93	3
+1110	mayo clın & mayo fdn	1	25	2
+1111	mcgill univ	3	7	58
+1112	mcmaster univ	1	0	18
+1113	md ıstanbul univ	1	0	0
+1114	med biol	1	0	0
+1115	med coll georgia	1	94	35
+1116	med coll wisconsin	3	0	16
+1117	med fac	1	0	18
+1118	med fac marmara	2	0	0
+1119	med fac zagreb	1	0	6
+1120	med fac ıstanbul	1	0	0
+1121	med genet unit	1	1	12
+1122	med pk hosp	2	16	18
+1123	med santa casa sao paulo	1	0	3
+1124	med sch ankara	3	27	5
+1125	med univ	2	0	9
+1126	med univ graz	13	362	192
+1127	med univ lodz	2	110	40
+1128	med univ silesia	1	1	31
+1129	med univ vienna	4	49	78
+1130	med ınt ankara hosp	1	1	1
+1131	medeniyet univ	10	6	51
+1132	meders	1	0	2
+1133	medient hlth ctr	1	0	3
+1134	medigen mol diagnost	1	1	22
+1135	medipol univ	14	83	25
+1136	medipol univ sch med	1	3	3
+1137	mediscan syst	1	0	28
+1138	mediterranean blood dis fdn	1	0	2
+1139	mediterranean univ	1	7	2
+1140	medı hosp	1	7	5
+1141	mef univ	2	1	3
+1142	mehmet akif ersoy heart hosp	1	3	2
+1143	mehmet akif ersoy univ	3	12	6
+1144	mehmet aydin educ & res hosp	1	16	1
+1145	mem antalya hosp	1	23	1
+1146	mem atasehir hosp	1	1	1
+1147	mem hosp	7	4	14
+1148	mem sloan kettering canc ctr	42	849	219
+1149	mengucek gazi training & res hosp	2	14	7
+1150	meram univ	1	5	4
+1151	merin univ	1	1	0
+1152	merkezefendi state hosp	1	3	3
+1153	merkur univ hosp	1	11	22
+1154	mersin state hosp	3	4	40
+1155	mersin univ	43	215	94
+1156	mesa hosp	2	6	3
+1157	methodist childrens hosp south texas	1	2	3
+1158	methodist hosp	37	454	158
+1159	methodist hosp res ınst	1	0	5
+1160	methodist res ınst	5	177	21
+1161	metin sabanci baltalimani bone dis training & res	1	1	1
+1162	metropolitan florence nightingale hosp	1	2	2
+1163	metu	1	2	1
+1164	mevlana univ	1	0	3
+1165	mexican oncol hosp	1	2	19
+1166	mgh	1	0	2
+1167	michael e debakey vamc	1	0	5
+1168	middle e tech univ	8	80	8
+1169	middle east tech univ	4	8	3
+1170	mikro pat	1	8	2
+1171	mikro pathol lab	1	0	2
+1172	mikrogen genet diagnost lab	1	0	3
+1173	mil hosp	3	0	13
+1174	mil hosp tunis	1	3	3
+1175	mil med acad	2	15	1
+1176	minist agr	1	6	2
+1177	minist hlth	6	14	3
+1178	minist hlth dept mother & child	1	11	1
+1179	minist hlth goztepe teaching hosp	1	19	4
+1180	minist hlth ıstanbul training & res hosp	1	0	0
+1181	minist hlth ızmir tepecik teaching hosp	1	0	0
+1182	minist justice	12	30	17
+1183	minist justice council forens med	2	2	5
+1184	minist justice forens council turkey	1	0	2
+1185	minist justice turkey	1	0	0
+1186	mka breast canc clin	3	1	0
+1187	mongi slim hosp	1	0	0
+1188	monklands hosp	1	11	22
+1189	montefiore med ctr	1	12	23
+1190	moscow state pedag univ	1	8	5
+1191	moti lal nehru med coll	1	7	3
+1192	mskcc	5	0	10
+1193	mt sinai hlth syst	1	12	23
+1194	mt sinai hosp	4	39	35
+1195	mt sinai sch med	1	5	2
+1196	mugla sitki kocman univ	25	8	30
+1197	mugla sitki kocman univ educ & res hosp	1	4	2
+1198	mugla univ	1	3	2
+1199	munich ludwig maximilians univ	1	0	1
+1200	mus state hosp	1	1	2
+1201	mustafa kadri altundag breast canc clin	1	0	0
+1202	mustafa kemal univ	35	53	15
+1203	mutual pharmaceut co ınc	1	8	7
+1204	myeloproliferat disorder res consortium	1	5	2
+1205	mıddle e tech unıv	3	9	2
+1206	mınıst hlth	1	7	1
+1207	mıt	2	74	3
+1208	nagasaki univ hosp	1	5	3
+1209	nagoya univ	2	15	2
+1210	namik kemal univ	15	59	36
+1211	nara med univ	2	5	8
+1212	natl blood ctr	1	1	31
+1213	natl ctr neurol & psychiat	1	64	12
+1214	natl guard hlth affairs	1	12	2
+1215	natl hosp neurol & neurosurg	1	0	25
+1216	natl leprosy serv	1	34	3
+1217	natl marrow donor program	1	0	2
+1218	natl microbiol reference labs	1	1	3
+1219	natl phys lab	1	0	4
+1220	natl publ hlth ınst ktl	1	21	2
+1221	natl reference ctr mycobacteria	1	9	1
+1222	natl res ınst fisheries engn	1	3	2
+1223	natl ribat univ	1	0	3
+1224	natl taiwan univ hosp	1	77	3
+1225	natl univ athens	1	5	3
+1226	natl univ hlth syst	2	0	14
+1227	natl univ singapore	1	94	35
+1228	natl univ singapore hosp	2	2	30
+1229	natl ınst environm hlth sci	1	1	1
+1230	natl ınst legal med	1	1	12
+1231	natl ınst ımmunol	1	1	31
+1232	nato undersea res ctr	1	33	2
+1233	nbs colindale	1	1	22
+1234	ncı	3	22	38
+1235	near east univ	7	59	13
+1236	nebraska med ctr	1	5	2
+1237	necip fazil city hosp	1	3	3
+1238	necmettin erbakan univ	10	20	32
+1239	nephrol associates chattanooga	2	0	4
+1240	nephrol sect	1	0	1
+1241	netherlands canc ınst	1	3	4
+1242	netherlands org appl sci res tno	1	6	3
+1243	network genom med	1	49	15
+1244	neuroacad grp	2	0	6
+1245	nevehir devlet hastanesi	1	0	0
+1246	new orleans vet adm hosp	1	3	2
+1247	new york hosp queens	1	5	3
+1248	new york med coll	1	45	1
+1249	new york presbyterian hosp	1	5	2
+1250	newcastle gen hosp	1	12	3
+1251	newmed sa	1	50	22
+1252	nicosia diagnost ctr	1	0	2
+1253	nicosia gen hosp	1	0	25
+1254	nigde state hosp	1	4	3
+1255	nisa private hosp	1	0	13
+1256	nisantasi pathol grp	2	0	6
+1257	no ıllinois univ	1	0	2
+1258	nofer ınst occupat med	1	0	25
+1259	norwegian univ sci & technol	3	0	27
+1260	npo	1	1	31
+1261	numune educ & res hosp	1	0	1
+1262	numune hastanesi	1	2	0
+1263	numune hosp	1	0	2
+1264	numune hosp erzurum	1	0	1
+1265	numune state hosp	2	49	2
+1266	nuovo s giovanni di dio hosp	1	0	3
+1267	nuı galway	1	1	37
+1268	nw mem hosp	1	11	22
+1269	nycomed	1	30	6
+1270	nyu	7	5	28
+1271	nyu lagone med ctr	1	65	5
+1272	oakbend med ctr	1	12	23
+1273	odense univ hosp	1	216	16
+1274	ohio no univ	1	57	6
+1275	ohio state univ	19	120	61
+1276	okan univ	2	3	4
+1277	okayama univ	1	6	5
+1278	okmeydam training & res hosp	1	0	3
+1279	okmeydani educ & res hosp	5	1	9
+1280	okmeydani egitim & arastirma has	1	0	0
+1281	okmeydani egitim arastirma hastanesi	1	21	1
+1282	okmeydani erh	1	0	35
+1283	okmeydani oral & dent hlth ctr	1	0	1
+1284	okmeydani res hosp	2	0	0
+1285	okmeydani training & res hosp	14	38	31
+1286	okmeydani training hosp	2	0	0
+1287	okmeydani traning hosp	1	0	0
+1288	omu	1	5	1
+1289	oncol ınst southern switzerland	1	7	5
+1290	ondokuz mayis	2	0	2
+1291	ondokuz mayis univ	108	770	135
+1292	ondokuz mayis univ hosp	2	5	3
+1293	ondokuz mayıs unıv	1	3	0
+1294	onikisubat community hlth ctr	1	3	3
+1295	onze lieve vrouw hosp	1	31	27
+1296	ordu training & res hosp	2	0	0
+1297	ordu univ	1	1	3
+1298	oregon hlth & sci univ	2	7	18
+1299	oregon hlth sci univ	1	0	6
+1300	orta dogu tekn univ odtu metu	1	0	2
+1301	orton orthopaed hosp ınvalid fdn	1	2	4
+1302	osaka univ	12	84	110
+1303	oslo univ hosp	4	53	60
+1304	osmangazi univ	12	86	12
+1305	osmangazi univ hosp	1	8	1
+1306	osmangazi univ sch med	1	3	0
+1307	osped circolo varese	1	50	22
+1308	osped civile spirito santo	1	5	2
+1309	osped maggiore trieste	1	9	9
+1310	osped riuniti bergamo	1	21	13
+1311	osped umberto	2	48	20
+1312	osped umberto 1	3	0	25
+1313	osped umberto 1o asl 12 veneziana	1	0	7
+1314	ottawa hosp	4	0	4
+1315	otto vonguericke univ magdegurg	1	25	6
+1316	our children leukemia fdn med ctr	1	29	1
+1317	our leukemia children fdn	2	0	3
+1318	ozel mardin pk hastanesi	1	2	2
+1319	ozel tinaztepe hastanesi	1	7	3
+1320	paksoys cytopathol lab	1	17	1
+1321	palacky univ	1	5	6
+1322	palandoken state hosp	1	2	2
+1323	palmerston north hosp	1	0	7
+1324	pamukkale	1	0	0
+1325	pamukkale uni	1	0	11
+1326	pamukkale univ	61	272	106
+1327	pamukkale univ sch med	2	15	1
+1328	parma hosp	1	10	10
+1329	pasabahce hosp	1	0	18
+1330	pasabahce state hosp	1	2	11
+1331	path west lab med	1	0	11
+1332	pathforcedx llc	2	0	4
+1333	patho l	1	12	23
+1334	pathol orebro univ hosp	1	2	19
+1335	pathology	1	0	0
+1336	pathwest lab med western australia	1	2	19
+1337	patnos state hosp	1	1	2
+1338	patomed pathol lab	1	0	0
+1339	peking univ	4	0	38
+1340	pend vet control & res ınst	1	4	3
+1341	pendik govt hosp	1	7	5
+1342	penn state hershey med ctr	2	0	18
+1343	penn state milton s hershey med ctr	3	37	30
+1344	penn state univ	1	15	1
+1345	pgımer	2	0	36
+1346	pheno path labs	1	105	13
+1347	philipps univ	1	4	9
+1348	piedmont hosp	3	31	20
+1349	pisa univ hosp	1	216	16
+1350	pittsburgh univ	1	0	1
+1351	policlin san matteo	2	0	14
+1352	polish acad sci	1	0	2
+1353	polymerase chain react unit	1	4	1
+1354	polytech univ marche reg	3	13	12
+1355	pontificia univ catolica chile	2	59	11
+1356	pontificia univ catolica puerto rico	1	94	35
+1357	populat council	1	5	1
+1358	portland state univ	1	8	5
+1359	porto univ ıpatımup	1	10	10
+1360	portuguese oncol ınst coimbra	1	32	18
+1361	portuguese oncol ınst porto	2	32	21
+1362	portuguese oncol ınst porto ıpo porto	1	0	3
+1363	presov univ	1	5	20
+1364	princess margaret canc ctr	5	23	18
+1365	princess margaret hosp	1	264	28
+1366	private buca med ctr	1	0	1
+1367	private clin	1	7	5
+1368	private ege pathol lab	1	1	3
+1369	private gunes pathol lab	1	2	3
+1370	private mem ankara hosp	1	1	3
+1371	private mikro pathol lab	1	1	3
+1372	private practice	1	4	3
+1373	private prov adm ıstanbul	1	9	2
+1374	private tinaztepe hosp	1	0	1
+1375	private yenisehir hosp	1	2	2
+1376	prof dr ılhan ozdemir state hosp	1	10	3
+1377	prof paksoys private cytopathol lab	1	2	0
+1378	prov hlth directorate	1	30	2
+1379	pshp lab ctr	1	31	27
+1380	pt govt associate lab	1	3	7
+1381	publ hlth ınst turkey	1	1	4
+1382	purdue univ	2	5	9
+1383	purpan hosp	1	50	22
+1384	qe2 med ctr	4	53	60
+1385	qua ıboe church leprosy hosp	1	34	3
+1386	queen alexandra hosp	2	31	30
+1387	queen elizabeth hosp	3	47	49
+1388	queen mary hosp	1	94	35
+1389	queen mary univ london	2	25	4
+1390	queens med ctr	2	0	17
+1391	radboud univ nijmegen	11	630	132
+1392	rambam med ctr	1	8	7
+1393	recep tayyip erdogan univ	11	19	22
+1394	refgen biotechnol	1	10	2
+1395	refik saydam natl hyg ctr	2	21	3
+1396	reg educ & res hosp	3	3	1
+1397	reg hosp	1	0	11
+1398	reg tb lab	1	5	2
+1399	reg transfus ctr madrid	1	1	22
+1400	regeneron pharmaceut	1	0	2
+1401	regensburg univ hosp	1	15	4
+1402	region educ & res hosp	1	1	0
+1403	reina sofia univ hosp	1	8	5
+1404	rensselaer polytech ınst	1	2	1
+1405	res & training dist hosp	1	3	3
+1406	res & training hosp	1	0	1
+1407	res ınst brain & blood vessels	1	79	2
+1408	riga east clin univ hosp	2	1	51
+1409	riga stradins univ	1	0	18
+1410	rize res & training hosp	3	0	0
+1411	rize state hosp	1	0	0
+1412	rize training & res hosp	1	0	0
+1413	rize univ	4	134	27
+1414	rizzoli ınst	1	15	2
+1415	rjm grp llc	1	21	13
+1416	robert bosch krankenhaus	2	31	23
+1417	robert jones & agnes hunt orthopaed hosp	1	62	9
+1418	roche diagnost turkey as	1	0	1
+1419	roche mol syst	1	94	35
+1420	rochester ınst technol	1	75	5
+1421	roswell pk canc ınst	3	106	31
+1422	royal brisbane & womens hosp	1	0	28
+1423	royal grp hosp trust	1	8	3
+1424	royal hallamshire hosp	1	16	26
+1425	royal hampshire cty hosp	1	21	13
+1426	royal hampshıre cty hosp	1	25	3
+1427	royal liverpool hosp	2	5	27
+1428	royal liverpool univ hosp	2	6	12
+1429	royal north shore hosp	1	0	18
+1430	royal surrey cty hosp	1	2	4
+1431	rte rize univ	1	58	5
+1432	rte univ	1	61	9
+1433	rteu rize educ & res hosp	1	1	3
+1434	ruhr univ bochum	2	5	8
+1435	ruhrlandklin	1	1	4
+1436	ruhrlandklinik	1	4	4
+1437	rush med coll	1	21	13
+1438	rush univ	5	56	63
+1439	russian med acad postgrad educ	1	11	22
+1440	rwth aachen univ hosp	1	4	9
+1441	s bortolo gen hosp	1	1	2
+1442	s de bellis res hosp	1	1	1
+1443	s demirel univ	1	1	3
+1444	s urfa egit & ar hastanesi	1	0	0
+1445	sabanci univ	5	40	2
+1446	sahlgrens univ hosp	1	0	14
+1447	saiseikai shiga hosp	1	16	26
+1448	sakarya training & res hosp	4	12	3
+1449	sakarya univ	9	34	22
+1450	salah azeiz oncol ınst	1	3	3
+1451	salihli state hosp	1	0	2
+1452	salk ınst biol studies	1	15	4
+1453	salzburg univ	1	46	3
+1454	samatya training & res hosp	1	0	2
+1455	samsun ondokuz mayis univ	2	0	4
+1456	samsun training & res hosp	2	4	2
+1457	samsung med ctr	2	61	13
+1458	san andrea hosp	1	21	13
+1459	sanko univ	3	7	4
+1460	sanliurfa balikligol hosp	1	0	1
+1461	sanliurfa educ & res hosp	1	8	2
+1462	sanquin diagnost serv	1	3	17
+1463	santa casa med sch	1	0	3
+1464	sapienza univ	1	24	15
+1465	sarikamis mil hosp	1	2	2
+1466	sb ankara	1	6	1
+1467	sb ankara child dis hematol oncol res & training	1	2	1
+1468	sb ankara diskapi res & training hosp	1	2	1
+1469	sb ankara diskapi yildirim beyazit res & training	1	11	1
+1470	sb ankara eah	3	0	0
+1471	sb ankara numune hastanesi	1	5	0
+1472	sb ankara training & res hosp	1	26	1
+1473	sb dpu kec ea hastanesi	2	0	0
+1474	sb onkol hastanesı	1	34	1
+1475	sb tepecik educ hosp	3	0	0
+1476	sb ıstanbul res & training hosp	1	0	2
+1477	sb ıstanbul res & training hosp 1	1	0	2
+1478	sb ızmir teaching & training hosp	1	3	0
+1479	sb ızmir tepecik res & training hosp	1	0	0
+1480	sb ızmir tepecik teaching hosp	1	0	0
+1481	sb ızmir training teaching hosp	1	1	0
+1482	sbu bakirkoy dr sadi konuk erh	1	0	0
+1483	sbu bakirkoy dr sadi konuk trh	1	0	0
+1484	sbu ıea hastanesi	1	0	0
+1485	sch comp & math	1	0	2
+1486	sch med	8	138	48
+1487	sch med ankara	1	3	1
+1488	scherıng plough corp	1	8	2
+1489	scripps ınst oceanog	1	33	2
+1490	scı & tech res councıl turkey	1	1	1
+1491	seattle childrens res ınst	1	0	3
+1492	secur hosp	1	0	1
+1493	sehitkamil hosp	1	9	3
+1494	seirei mikatahara gen hosp	1	77	3
+1495	seirei mikatahara hosp	1	73	2
+1496	selcuk state hosp	1	4	0
+1497	selcuk univ	37	166	48
+1498	selcuk univ fac med	1	0	1
+1499	selcuklu med fac	1	0	0
+1500	sema res & training hosp private	1	4	1
+1501	semmelweis univ	2	95	72
+1502	semmelweis univ budapest	1	0	14
+1503	seoul natl univ	4	0	24
+1504	serefli kochisar state hosp	1	0	4
+1505	sestek ınc	1	0	1
+1506	shaare zedek med ctr	1	8	7
+1507	shanghai jiao tong univ	1	25	6
+1508	sheffield childrens nhs fdn trust	1	1	4
+1509	sheffield teaching hosp fdn trust	1	1	4
+1510	shinshu univ	2	17	12
+1511	shiraz sch med	1	31	27
+1512	shiraz univ	1	0	2
+1513	shiraz univ med sci	1	0	28
+1514	showa u	2	2	11
+1515	showa univ	6	233	48
+1516	sichuan univ	2	10	3
+1517	sidney kimmel comprehens canc ctr	9	31	56
+1518	sifa univ	13	27	14
+1519	sifa univ hastanesi	1	7	3
+1520	siirt state hosp	1	0	0
+1521	sirnak mil hosp	1	2	2
+1522	sirnak state hosp	2	0	4
+1523	sisli childrens hosp	1	5	2
+1524	sisli etfal educ & res hosp	11	37	27
+1525	sisli etfal educ hosp	1	0	0
+1526	sisli etfal hosp	3	2	29
+1527	sisli etfal res & training hosp	1	0	7
+1528	sisli etfal teaching hosp	1	0	0
+1529	sisli etfal training & res hosp	11	81	13
+1530	sisli etfal training hosp	1	24	0
+1531	sisli florence nightingale hosp	1	5	3
+1532	sisli hamidiye etfal erh	1	0	35
+1533	sisli hamidiye etfal hosp	3	0	0
+1534	sisli hamidiye etfal training & res hosp	4	1	23
+1535	sisli hamidiye etfal trh	1	0	0
+1536	sister mercy hosp	1	31	27
+1537	sitopatol lab	1	0	1
+1538	skk training hosp	1	7	2
+1539	slovak acad sci	1	0	2
+1540	slovenian assoc logoped	1	5	6
+1541	so gen hosp	1	2	2
+1542	social secur fdn training hosp	1	5	0
+1543	somali mogadishu turkey educ & res hosp	1	0	1
+1544	sorbonne univ	1	0	18
+1545	sorgun state hosp	1	4	3
+1546	south west univ neofit rilski	1	5	6
+1547	southwest univ	1	8	5
+1548	soyak gokyuzu konutlari	2	0	17
+1549	spawar syst ctr	2	32	4
+1550	spedali civil brescia	3	97	48
+1551	sree chitra tirunal ınst med sci & technol	1	40	19
+1552	ssa	1	94	35
+1553	ssk diskapi hosp	1	4	1
+1554	ssk educ hosp	1	6	3
+1555	ssk educ hosp clin microbiol	1	9	1
+1556	ssk etlik	1	20	2
+1557	ssk hosp	1	18	1
+1558	ssk matern & womens hlth teaching hosp	1	3	2
+1559	ssk training hosp	1	10	1
+1560	ssk ulus hosp	1	3	2
+1561	ssk ızmir teaching hosp	1	6	0
+1562	st bartholomews & royal london sch med & dent	1	0	2
+1563	st georges hosp nhs trust	1	31	27
+1564	st georges med sch	1	31	27
+1565	st john hosp & med ctr	1	0	1
+1566	st johns hosp	2	0	6
+1567	st joseph mercy hosp	1	12	23
+1568	st jude childrens hosp	5	14	17
+1569	st jude childrens res hosp	1	264	28
+1570	st louis univ	2	0	17
+1571	st michaels hosp	3	6	9
+1572	st thomas hosp	4	44	38
+1573	st vincents hosp	5	64	82
+1574	st vincents univ hosp	1	1	37
+1575	staedt klinikum	1	0	7
+1576	stanford univ	12	236	27
+1577	state hosp	4	22	7
+1578	state hosp balikesir	1	16	5
+1579	state hosp malatya	1	14	1
+1580	state hosp sincan	1	6	2
+1581	state univ rio de janeiro	1	40	19
+1582	state unıv utrecht	1	8	1
+1583	stellenbosch univ	1	5	20
+1584	stem cell coordinat ctr turkey	1	0	2
+1585	steno diabet ctr	1	94	35
+1586	stichting epilepsie ınstelligen nederland	1	23	3
+1587	stichting epilepsie ınstellingen nederland	1	20	3
+1588	stichting europdonor	1	1	31
+1589	stockholm univ	1	5	20
+1590	strasbourg univ hosp	1	1	37
+1591	suat seren hosp chest dis & surg	1	15	1
+1592	suldeyman demirel univ	1	13	0
+1593	suleyman demiral univ	1	0	3
+1594	suleyman demirel univ	53	356	46
+1595	suleyman demirel univ sch med	1	7	0
+1596	suleymaniye matern training & res hosp	1	0	1
+1597	suleymaniye womens dis & matern hosp	2	0	2
+1598	sultan abdulhamid han tarh	1	0	0
+1599	sultan med ctr	1	35	1
+1600	sumer mah turan gunes cad	1	0	0
+1601	sungkyunkwan univ	8	196	48
+1602	suny	1	0	1
+1603	suny stony brook	2	0	22
+1604	suny upstate med univ	5	37	48
+1605	sureyya pasa chest dis educ & training hosp	1	0	1
+1606	sureyyapasa chest dis & thorac surg teaching hosp	1	25	3
+1607	sureyyapasa chest dis & thorac surg training & ın	2	0	0
+1608	sureyyapasa thorac & cardiovasc dis hosp	1	2	0
+1609	susehri govt hosp	1	5	1
+1610	sutcu ımam univ	6	51	9
+1611	swedish ınst ınfect dis control smı	1	25	9
+1612	synevo med lab	1	4	1
+1613	sıslı etfal hosp	1	0	0
+1614	tahir burak hosp	1	0	3
+1615	taipei med univ	2	37	13
+1616	taipei vet gen hosp	2	106	22
+1617	taksim educ & res hosp	6	25	8
+1618	taksim educ & training hosp	1	0	1
+1619	taksim educ & ınvest hosp	1	3	3
+1620	taksim erh	1	0	35
+1621	taksim hosp	1	0	0
+1622	taksim res hosp	5	0	0
+1623	taksim training & res hosp	4	11	5
+1624	taksim training hosp	4	0	0
+1625	taksims educ & training hosp	2	0	0
+1626	taksims hosp	4	0	0
+1627	taksims res & educ	3	0	0
+1628	talas yolu erciyes univ	1	24	3
+1629	talas yolu erciyes univ kulak burun bogaz	1	24	3
+1630	tampere univ hosp	1	2	5
+1631	tarbiat modares univ	1	0	28
+1632	tarsus state hosp	2	0	3
+1633	tartu univ hosp	1	0	28
+1634	taskopru govt hosp	1	0	1
+1635	tata mem hosp	3	5	34
+1636	tatvan govt hosp	1	0	0
+1637	tatvan mil hosp	1	5	2
+1638	tc ınonu unıv	1	5	0
+1639	tcsb ızmir tepec teaching hosp	1	0	0
+1640	tcsb ızmir tepecik teaching hosp	3	0	0
+1641	teaching hosp	4	0	0
+1642	tech univ dresden	3	37	29
+1643	tech univ munich	5	53	60
+1644	tekirdag state hosp	3	4	7
+1645	tel aviv univ	1	2	2
+1646	temple univ	6	5	45
+1647	tennessee maternal fetal med plc	1	0	28
+1648	tennessee reprod med	1	0	28
+1649	tepec erh	1	0	35
+1650	tepec training & res ctr	1	0	0
+1651	tepec training & res hosp	2	0	0
+1652	tepecik educ & res ctr	3	0	0
+1653	tepecik educ & res hosp	16	11	9
+1654	tepecik educ hosp	2	0	0
+1655	tepecik hosp	2	0	0
+1656	tepecik res & educ	4	0	0
+1657	tepecik res & educ hosp	1	0	0
+1658	tepecik res & training ctr	10	0	0
+1659	tepecik res & training hosp	13	7	4
+1660	tepecik res & training hosppital	1	0	0
+1661	tepecik res hosp	13	1	2
+1662	tepecik res training hosp	4	0	0
+1663	tepecik teaching & res ctr	2	0	0
+1664	tepecik training & res	3	0	0
+1665	tepecik training & res ctr	8	0	0
+1666	tepecik training & res hosp	30	8	15
+1667	tepecik training & res ınst	1	0	0
+1668	tepecik training hosp	6	4	2
+1669	tepecik training res ctr	1	0	0
+1670	tetik res & educ	1	0	0
+1671	texas a&m univ	3	7	10
+1672	texas childrens hosp	2	0	8
+1673	texas so univ	1	0	2
+1674	thomas jefferson univ	5	79	11
+1675	tianjin med univ	1	12	5
+1676	tinaztepe private hosp	1	2	1
+1677	tip fak patoloji anabilim dali capa	1	20	1
+1678	tissuepathology com	1	12	23
+1679	tno	1	10	3
+1680	tobb etu	1	0	1
+1681	tobb univ	2	0	4
+1682	toho univ	1	0	4
+1683	tokai univ	4	88	34
+1684	tokat & dumlupinar univ	1	9	2
+1685	tokyo med & dent univ	1	15	8
+1686	tokyo med univ	1	0	3
+1687	tor vergata univ	1	0	13
+1688	toranomon gen hosp	2	0	4
+1689	toulouse hosp	1	22	3
+1690	toyama med & pharmaceut univ	1	0	2
+1691	toyama univ hosp	6	58	52
+1692	training & res hosp	1	0	1
+1693	training hosp	2	8	2
+1694	trakya univ	42	177	57
+1695	tran	1	0	0
+1696	treasure coast pathol	1	12	23
+1697	trinity coll dublin	1	32	18
+1698	tubıtak	11	172	24
+1699	tubıtak man	1	22	2
+1700	tulane univ	2	3	30
+1701	tuncer pathol lab	1	0	0
+1702	turgut ozal univ	4	12	9
+1703	turkey yuksek ıhtisas educ & res hosp	1	0	4
+1704	turkish bfm study grp	1	19	4
+1705	turkish canc ınst	1	8	3
+1706	turkish diabet consortium	1	44	3
+1707	turkish sci & tech res council	1	75	5
+1708	turkiye gazetesi hosp	1	7	5
+1709	turkiye yuksek ıhtisas educ & res hosp	2	22	3
+1710	turkiye yuksek ıhtisas hosp	3	6	14
+1711	turkiye yuksek ıhtisas teaching & res hosp	4	32	1
+1712	turkiye yuksek ıhtisas training & res hosp	1	1	19
+1713	turku univ	1	94	35
+1714	turku univ hosp	3	13	15
+1715	turkısh naval acad	2	2	0
+1716	tyıh	1	15	2
+1717	tzu chi stem cells ctr	1	1	31
+1718	u pittsburgh	2	2	11
+1719	ucl	10	290	136
+1720	ucl eastman dent ınst oral & dent hlthcare scı	1	16	1
+1721	ucsf	10	29	35
+1722	ucsf med ctr	1	94	4
+1723	ufuk univ	3	5	6
+1724	ufuk univ hosp	2	7	2
+1725	ufuk univ med fac	1	8	2
+1726	uk neqas leucocyte ımmunophenotyping	1	19	10
+1727	ukrainian acad sci	1	2	2
+1728	ullevaal univ hosp	1	16	26
+1729	uluda univ	1	0	2
+1730	uludag univ	53	510	96
+1731	uludag univ med fac	1	10	2
+1732	uludag univ sch med	1	10	0
+1733	uludag unıv	1	3	0
+1734	ulusal metrol enstitusu	1	0	4
+1735	umc utrecht	1	0	6
+1736	umm al qura univ	1	0	2
+1737	umranite res hosp	1	0	0
+1738	umraniye e&r hosp	1	0	0
+1739	umraniye ea hosp	1	0	0
+1740	umraniye educ & res hosp	9	63	9
+1741	umraniye educ hosp	1	0	0
+1742	umraniye educ res hosp	1	0	0
+1743	umraniye educuat hosp	1	0	0
+1744	umraniye egit arat hastanesi	2	0	0
+1745	umraniye egt aras hastanesi	6	0	0
+1746	umraniye egt ars hastanesi	1	0	0
+1747	umraniye hosp	5	0	2
+1748	umraniye res hosp	2	0	0
+1749	umraniye resarch & educ ctr	1	0	0
+1750	umraniye training & res ctr	4	0	0
+1751	umraniye training & res hosp	6	14	25
+1752	umraniye training hosp	2	0	0
+1753	univ 19 mayis	1	5	2
+1754	univ aberdeen	6	86	63
+1755	univ acibadem	1	19	3
+1756	univ adelaide	1	1	2
+1757	univ adnan menderes	4	70	5
+1758	univ akdeniz	6	7	10
+1759	univ akdenniz	1	9	2
+1760	univ aksaray	1	2	1
+1761	univ alabama	3	66	7
+1762	univ alabama birmingham	6	2	33
+1763	univ alberta	1	17	1
+1764	univ amsterdam	4	46	9
+1765	univ ancona	2	2	8
+1766	univ ankara	1	0	3
+1767	univ ankara yildirim beyazit	1	0	3
+1768	univ antwerp	2	12	4
+1769	univ antwerp hosp	2	77	35
+1770	univ aquila	1	12	5
+1771	univ arkansas med sci	3	32	26
+1772	univ athens	7	328	86
+1773	univ autonoma barcelona	3	6	71
+1774	univ balikesir	3	10	4
+1775	univ barcelona	2	31	23
+1776	univ basel hosp	2	66	28
+1777	univ basque country	1	94	35
+1778	univ basque country upv ehu	1	0	18
+1779	univ belgrade	2	10	26
+1780	univ bergen	2	45	4
+1781	univ bezmi alem	1	12	1
+1782	univ bilim	1	7	3
+1783	univ bologna	9	49	61
+1784	univ bonn	1	264	28
+1785	univ bordeaux	1	32	18
+1786	univ bremen	2	170	8
+1787	univ bristol	4	98	40
+1788	univ british columbia	5	7	39
+1789	univ calgary	1	0	18
+1790	univ calif berkeley	1	94	35
+1791	univ calif davis	1	94	35
+1792	univ calif los angeles	3	27	14
+1793	univ calif san diego	4	52	10
+1794	univ calif san francisco	32	409	120
+1795	univ calif ırvine	5	53	19
+1796	univ cambridge	1	264	28
+1797	univ cantabria	1	27	10
+1798	univ cape town	1	1	31
+1799	univ cattolica sacro cuore	2	29	24
+1800	univ chicago	3	1	7
+1801	univ claude bernard lyon 1	1	0	25
+1802	univ clin erlangen	1	1	2
+1803	univ clin frankfurt	1	0	3
+1804	univ coimbra	1	0	25
+1805	univ coll dublin	2	30	20
+1806	univ cologne	2	276	2
+1807	univ colorado	2	31	10
+1808	univ colorado hosp	1	0	28
+1809	univ complutense	1	21	13
+1810	univ complutense madrid	2	105	23
+1811	univ cordoba	2	2	8
+1812	univ cote azur	1	9	18
+1813	univ cumhuriyet	1	0	1
+1814	univ dicle	1	9	0
+1815	univ dumlupinar	2	3	2
+1816	univ dundee	2	23	15
+1817	univ dusseldorf	3	308	52
+1818	univ duzce	1	0	0
+1819	univ ege	10	12	3
+1820	univ erlangen nurnberg	7	81	37
+1821	univ exeter	1	0	8
+1822	univ extremadura	1	5	2
+1823	univ fatih	1	5	0
+1824	univ fdn	1	49	15
+1825	univ fed parana	1	1	31
+1826	univ fed sao paulo	1	3	17
+1827	univ firat	2	38	0
+1828	univ florence	12	114	119
+1829	univ florida	2	29	3
+1830	univ freiburg	2	5	8
+1831	univ garyounis	1	2	4
+1832	univ gaziantep	5	53	0
+1833	univ gen hosp athens attikon	1	0	7
+1834	univ genoa	1	21	13
+1835	univ ghent	2	65	32
+1836	univ gothenburg	1	64	12
+1837	univ gottingen	1	19	2
+1838	univ grenoble 1	1	18	3
+1839	univ groningen	3	4	13
+1840	univ gumushane	1	8	1
+1841	univ hacettepe	26	114	31
+1842	univ hail	1	1	1
+1843	univ halic	1	0	2
+1844	univ halle wittenberg	1	21	2
+1845	univ harran	1	28	0
+1846	univ heidelberg	2	1	33
+1847	univ heidelberg hosp	1	264	28
+1848	univ helsinki	6	180	66
+1849	univ hlth network	16	134	56
+1850	univ hlth sci	22	5	29
+1851	univ hlth sci ankara	1	0	2
+1852	univ hlth sci training & res hosp	1	0	2
+1853	univ hosp	11	135	155
+1854	univ hosp 12 octubre	1	31	27
+1855	univ hosp alexandrovska	6	6	25
+1856	univ hosp basel	1	4	11
+1857	univ hosp bern	1	3	1
+1858	univ hosp birmingham	1	50	22
+1859	univ hosp cologne	2	51	16
+1860	univ hosp erlangen	1	79	2
+1861	univ hosp essen	2	35	4
+1862	univ hosp gasthuisberg	1	216	16
+1863	univ hosp geneva	1	21	1
+1864	univ hosp graz	1	31	27
+1865	univ hosp ku leuven	1	216	16
+1866	univ hosp leuven	1	1	37
+1867	univ hosp lyon	1	0	28
+1868	univ hosp maastricht	1	18	5
+1869	univ hosp munich klinikum grosshadern lmu	1	0	13
+1870	univ hosp munster	2	268	37
+1871	univ hosp pest cty	2	42	49
+1872	univ hosp plzen	3	106	31
+1873	univ hosp rwth	1	4	11
+1874	univ hosp salamanca	1	1	22
+1875	univ hosp timone	1	19	10
+1876	univ hosp v macarena	1	40	19
+1877	univ hosp zurich	1	0	11
+1878	univ hospitals case med ctr	1	0	3
+1879	univ jena	1	0	1
+1880	univ kadir has	1	5	2
+1881	univ kafkas	5	98	1
+1882	univ kahramanmaras	1	2	1
+1883	univ kansas	1	7	12
+1884	univ karachi	1	22	1
+1885	univ kentucky	2	49	20
+1886	univ kiel	4	74	7
+1887	univ kirikkale	1	7	0
+1888	univ klinikum essen	1	0	13
+1889	univ kocaeli	4	34	1
+1890	univ kocaeli ızmit	1	1	0
+1891	univ konstanz	1	5	20
+1892	univ kragujevac	1	1	4
+1893	univ kuopio	1	94	35
+1894	univ la frontera	5	131	32
+1895	univ lausanne	2	52	24
+1896	univ leeds	3	273	29
+1897	univ leicester	1	28	3
+1898	univ leipzig	4	26	19
+1899	univ leuven	1	1	37
+1900	univ lisbon	1	28	20
+1901	univ liverpool	2	74	24
+1902	univ ljubljana	1	4	2
+1903	univ london kings coll	1	36	3
+1904	univ london queen mary coll	1	36	3
+1905	univ london ımperial coll sci technol & med	2	68	10
+1906	univ louisiana lafayette	1	0	1
+1907	univ louisville	2	197	2
+1908	univ lubeck	2	170	8
+1909	univ luxembourg	1	5	20
+1910	univ lyon 1	1	0	2
+1911	univ magdeburg	1	32	18
+1912	univ mahallesi bilkent caddesi 1	1	1	2
+1913	univ malaya	2	6	7
+1914	univ malta	1	0	25
+1915	univ manchester	3	18	12
+1916	univ manitoba	2	40	27
+1917	univ marburg	1	46	3
+1918	univ marmara	4	22	5
+1919	univ maryland	5	50	11
+1920	univ massachusetts	3	8	6
+1921	univ med ctr	1	94	35
+1922	univ med ctr maastricht	1	16	3
+1923	univ med ctr utrecht	5	79	81
+1924	univ med fac	1	0	3
+1925	univ med fac samsun	1	0	3
+1926	univ med sch	1	50	22
+1927	univ med sci	1	25	9
+1928	univ mehmet akif ersoy	1	12	0
+1929	univ mersin	3	27	3
+1930	univ messina azienda policlin univ	1	28	20
+1931	univ miami	4	107	57
+1932	univ michigan	4	68	15
+1933	univ minho	1	3	7
+1934	univ modena & reggio emilia	2	1	3
+1935	univ montreal	1	0	28
+1936	univ munich	4	313	27
+1937	univ munster	4	47	27
+1938	univ n carolina	2	5	9
+1939	univ namik kemal	2	3	2
+1940	univ naples federico 2	1	31	27
+1941	univ naples federico ıı	2	28	15
+1942	univ nebraska med ctr	2	12	4
+1943	univ newcastle	1	0	28
+1944	univ newcastle upon tyne	2	40	21
+1945	univ nijmegen	1	0	1
+1946	univ nis	1	1	4
+1947	univ notre dame	1	2	19
+1948	univ nottingham	2	17	7
+1949	univ nottingham hosp	1	14	1
+1950	univ ondokuzmayis	1	0	0
+1951	univ ordu	11	0	0
+1952	univ oslo	4	157	83
+1953	univ oulu	1	5	20
+1954	univ oxford	3	14	7
+1955	univ padua	7	86	125
+1956	univ palermo	2	6	12
+1957	univ pamukkale	5	28	7
+1958	univ paris 06	2	225	34
+1959	univ paris 07	1	7	1
+1960	univ paris 11	1	0	7
+1961	univ paris diderot paris	1	9	18
+1962	univ paris est	1	5	3
+1963	univ patras	2	4	39
+1964	univ pediat hematol	1	0	0
+1965	univ penn	9	12	15
+1966	univ penn hlth syst	1	12	23
+1967	univ pisa	1	216	16
+1968	univ pittsburgh	9	234	100
+1969	univ pompeu fabra	1	5	6
+1970	univ porto	10	325	137
+1971	univ porto ıcbas up	1	32	18
+1972	univ porto ıpatımup	4	80	55
+1973	univ publ navarra	1	29	11
+1974	univ queensland	1	0	2
+1975	univ reading	1	2	1
+1976	univ regensburg	1	1	6
+1977	univ reims	1	0	4
+1978	univ rochester	2	80	14
+1979	univ roma la sapienza	9	497	144
+1980	univ roma tor vergata	1	1	22
+1981	univ rostock	1	16	5
+1982	univ s florida	1	0	2
+1983	univ saarland	1	0	7
+1984	univ salamanca	1	0	3
+1985	univ salerno	1	11	22
+1986	univ santiago	1	0	8
+1987	univ santiago de compostela	1	0	9
+1988	univ sao paulo	7	44	66
+1989	univ sassari	1	94	35
+1990	univ selcuk	2	7	1
+1991	univ sheffield	1	1	4
+1992	univ sherbrooke	1	6	0
+1993	univ siena	2	43	8
+1994	univ so calif	2	100	40
+1995	univ sofia	1	8	4
+1996	univ southampton	6	135	51
+1997	univ southern denmark	1	0	25
+1998	univ strasbourg	2	73	30
+1999	univ surrey	1	2	4
+2000	univ sydney	2	0	25
+2001	univ szeged	4	88	77
+2002	univ tampere	1	2	5
+2003	univ tehran med sci	3	15	30
+2004	univ tennessee	1	49	9
+2005	univ texas	4	0	4
+2006	univ texas hlth ctr tyler	1	0	9
+2007	univ texas hlth sci ctr san antonio	1	7	12
+2008	univ texas houston	1	2	4
+2009	univ texas md anderson canc ctr	8	268	56
+2010	univ texas med branch	1	12	23
+2011	univ texas southwestern med ctr dallas	1	0	2
+2012	univ texas sw med ctr dallas	1	4	1
+2013	univ tokyo	1	0	3
+2014	univ torino	1	0	13
+2015	univ toronto	19	424	119
+2016	univ toulouse	1	34	5
+2017	univ toulouse 3	1	22	3
+2018	univ trondheim hosp	1	11	22
+2019	univ tsukuba	1	1	5
+2020	univ tubingen	8	45	50
+2021	univ tubingen hosp	3	31	30
+2022	univ tunis el manar	1	3	3
+2023	univ turin	2	6	38
+2024	univ turku	1	2	5
+2025	univ tuzla	1	5	6
+2026	univ ulm	2	94	37
+2027	univ ulsan	4	124	40
+2028	univ uludag	2	23	7
+2029	univ usak	1	12	1
+2030	univ utah	2	0	4
+2031	univ utrecht	2	10	5
+2032	univ utrecht hosp	1	50	22
+2033	univ valencia	2	2	5
+2034	univ van	1	10	1
+2035	univ van yuzuncu yil	1	0	1
+2036	univ vermont	2	113	16
+2037	univ verona	5	123	34
+2038	univ virginia	5	298	42
+2039	univ vita salute	1	0	4
+2040	univ wales coll med	1	1	2
+2041	univ wales ınst	1	16	26
+2042	univ warsaw	1	5	20
+2043	univ washington	10	118	77
+2044	univ western australia	5	55	79
+2045	univ wisconsin	3	51	20
+2046	univ wisconsin hosp & clin	1	12	23
+2047	univ wurzburg	4	75	31
+2048	univ york	1	21	1
+2049	univ yuzuncu yil	4	17	1
+2050	univ zagreb	4	36	82
+2051	univ ziekenhuis	1	31	27
+2052	univ zurich	4	272	58
+2053	univ zurich hosp	5	342	87
+2054	univ ıllinois	2	69	2
+2055	univ ınst pathol	1	216	16
+2056	univ ıoannina	1	2	4
+2057	univ ıowa	1	62	9
+2058	univ ıstanbul	60	702	78
+2059	unıv akdenız	1	3	0
+2060	unıv ankara	7	229	3
+2061	unıv bologna	1	34	1
+2062	unıv calıf berkeley	3	12	2
+2063	unıv calıf los angeles	1	8	2
+2064	unıv coll & mıddlesex sch med	1	0	1
+2065	unıv florıda	1	0	1
+2066	unıv glasgow	1	25	3
+2067	unıv hacettepe	7	40	1
+2068	unıv hosp	1	65	2
+2069	unıv london	1	21	1
+2070	unıv lund hosp	1	77	1
+2071	unıv maınz	1	84	2
+2072	unıv penn	1	25	3
+2073	unıv september 9	1	5	0
+2074	unıv southampton	1	0	1
+2075	unıv texas	1	35	1
+2076	unıv wısconsın	1	81	1
+2077	unıv ıstanbul	13	225	8
+2078	uoadu	2	95	66
+2079	upmc	1	11	8
+2080	uppsala univ	1	5	20
+2081	urfa viransehir state hosp	1	0	0
+2082	usak univ	1	1	2
+2083	uskudar univ	3	5	6
+2084	uz gent	1	28	20
+2085	uz ghent	1	33	7
+2086	uz leuven	1	28	20
+2087	uzunkopru state hosp	1	4	3
+2088	uzunmehmet chest & occupat dis hosp	1	11	2
+2089	va loma linda healthcare syst	1	8	2
+2090	va med ctr	1	0	1
+2091	va med ctr baltimore	2	0	8
+2092	vakif gureba hosp	1	0	1
+2093	vakif gureba teaching hosp	3	0	3
+2094	vakif univ ıstanbul	2	35	4
+2095	valentia biopharma	1	2	4
+2096	van bolge hastanesi	1	0	0
+2097	van bolge res & training hosp	1	5	2
+2098	van educ & res hosp	2	5	6
+2099	van educ res hosp	1	0	0
+2100	van mil hosp	1	1	3
+2101	van reg training & res hosp	1	5	2
+2102	van res & training hosp	1	0	0
+2103	van res educ hosp	1	0	0
+2104	van terr training & res hosp	1	0	1
+2105	van yuzuncu yil univ	1	1	0
+2106	vancouver gen hosp	2	0	12
+2107	vanderbilt univ	8	47	39
+2108	vet affairs palo alto hlth care syst	1	22	2
+2109	vet control & res ınst	4	6	3
+2110	vet control ınst	1	3	4
+2111	vet gen hosp	1	0	9
+2112	viransehir state hosp	1	0	5
+2113	vkv amer hosp	5	5	9
+2114	vocat sch hlth related profess	1	0	1
+2115	vrije univ amsterdam	2	313	43
+2116	vrije univ amsterdam med ctr	1	20	3
+2117	vytautas magnus univ	1	5	20
+2118	vıt univ	1	5	3
+2119	w virginia univ	4	63	8
+2120	walter reed army med ctr	2	101	6
+2121	washington state univ	1	24	2
+2122	washington univ	5	128	33
+2123	wayne state univ	17	160	68
+2124	wayne state univ hosp	3	0	6
+2125	weill cornell med coll	4	2	13
+2126	wellington hosp	1	0	28
+2127	west virginia univ	1	4	2
+2128	william beaumont hosp	3	106	31
+2129	winship canc ınst	1	8	5
+2130	wroclaw univ environm & life sci	2	0	4
+2131	wsu	1	2	6
+2132	wsu dmc	1	0	4
+2133	wsu dmc kcı	2	0	7
+2134	wythenshawe hosp	1	33	1
+2135	xijing hosp	1	21	4
+2136	yale	1	4	11
+2137	yale sch med	2	0	2
+2138	yale univ	9	128	31
+2139	yamaguchi grand med ctr	4	53	60
+2140	yb res & training hosp	2	0	0
+2141	yedikule chest hosp	1	0	0
+2142	yeditepe uni	1	0	11
+2143	yeditepe univ	20	96	47
+2144	yeditepe univ hosp	1	2	4
+2145	yeditepe univ sch med	1	10	2
+2146	yeditepe univ ıstanbul	2	35	4
+2147	yeni yuzyil univ	1	1	2
+2148	yeni yuzyl univ	1	1	2
+2149	yenikent govt hosp	1	2	1
+2150	yerevan state med univ	1	16	5
+2151	yildirim beyazit hosp	1	0	0
+2152	yildirim beyazit training hosp	1	2	1
+2153	yildirim beyazit univ	53	221	156
+2154	yildirim beyazit univ ankara	2	2	3
+2155	yildirim beyazit univ ankara ataturk res & educ h	1	0	1
+2156	yokohama city univ	1	15	8
+2157	yozgat city hosp	1	0	1
+2158	yozgat devlet hastanesi	1	24	3
+2159	yozgat state hosp	2	0	1
+2160	yozgat state hosp pathol lab	1	0	1
+2161	yuksek ıhtisas hosp	1	0	2
+2162	yuksek ıhtisas univ	1	0	5
+2163	yuksekova publ hosp	2	0	0
+2164	yuzuncu yil univ	20	138	45
+2165	yuzuncu yil univ sch med	1	1	0
+2166	yuzuncıı yıl unıv	1	18	1
+2167	zekai tahir burak hosp	2	84	4
+2168	zekai tahir burak matern hosp	1	0	0
+2169	zekai tahir burak matern teaching hosp	1	11	3
+2170	zekai tahir burak res & training hosp	1	0	2
+2171	zekai tahir burak woman hlth care teaching & res	1	8	3
+2172	zekai tahir burak women hlth care educ & res hosp	1	0	1
+2173	zekai tahir burak women hlth res & educ hosp	1	5	0
+2174	zekai tahir burak womens hlth & res hosp	1	11	3
+2175	zekai tahir burak womens hlth educ & res hosp	4	16	11
+2176	zekai tahir burak womens hlth res & educ hosp	1	3	2
+2177	zekai tahir burak womens hlth training & res hosp	1	0	2
+2178	zekai tahir burakwomens hlth educ & res hosp	1	1	3
+2179	zekai tahir womens hlth teaching & res hosp	1	0	12
+2180	zentralkrankenhaus bremen ost	1	40	19
+2181	zeynep kamil erh	1	0	35
+2182	zeynep kamil gynaecol & pediat training & res hos	1	5	6
+2183	zeynep kamil hosp	3	0	6
+2184	zeynep kamil matern & childrens hlth training & r	1	0	0
+2185	zeynep kamil matern & childrens training & hosp	1	0	1
+2186	zeynep kamil matern & childrens training & res ho	1	0	1
+2187	zeynep kamil matern & pediat res & training hosp	2	2	1
+2188	zeynep kamil matern hosp	2	6	2
+2189	zeynep kamil maternal & child dis educ & res hosp	1	2	1
+2190	zeynep kamil training & res hosp	1	0	2
+2191	zeynep kamil women & children dis educ & res hosp	2	13	2
+2192	zkrd german natl bone marrow donor registry	1	0	13
+2193	zonguldak ataturk state hosp	3	13	6
+2194	zonguldak bulent ecevit univ	1	0	5
+2195	zonguldak childrens & matern hosp	1	1	1
+2196	zonguldak gynecol & obstetr & pediatr hosp	1	0	1
+2197	zonguldak karaelmas univ	46	297	27
+2198	zonguldak karaelmas univ hosp	1	1	2
+2199	ıarc	1	264	28
+2200	ıaufm	2	0	12
+2201	ıbarakihigashi natl hosp	4	0	24
+2202	ıco	1	19	2
+2203	ıdıbaps	1	9	18
+2204	ıeah	1	0	4
+2205	ıgbmc	1	64	12
+2206	ıha pathol & lab med	1	12	23
+2207	ıhsan dogramaci children hosp	1	18	2
+2208	ılkses rehabil ctr	1	0	2
+2209	ımmunol trapianti genet	1	3	17
+2210	ımperial coll healthcare nhs trust	1	3	17
+2211	ımperial coll london	3	2	9
+2212	ınclınıca fdn	1	12	1
+2213	ındiana univ	1	8	5
+2214	ındiana univ sch med	2	12	27
+2215	ındre ssa	1	1	31
+2216	ınnsbruck med univ	1	1	31
+2217	ınonu univ	64	460	128
+2218	ınonu univ hosp	1	2	4
+2219	ınonu unıv	1	15	1
+2220	ınserm	3	74	67
+2221	ınst anat pathol	1	0	9
+2222	ınst biodonostia	1	27	10
+2223	ınst bldg sıtes & steel stress bldg	1	13	1
+2224	ınst canc res	1	13	2
+2225	ınst cancerol gustave roussy	1	10	10
+2226	ınst carlos ııı	1	27	10
+2227	ınst cell mol sci	1	395	1
+2228	ınst child hlth	1	0	25
+2229	ınst clin & expt med	1	69	2
+2230	ınst cnr trapianti organo ımmunocitol	1	1	31
+2231	ınst curie	1	10	2
+2232	ınst diagnost & referencia epidemiol	1	3	17
+2233	ınst genet & biol mol & cellulaire	1	9	18
+2234	ınst gustave roussy	2	47	53
+2235	ınst haematol & transfus med	1	1	12
+2236	ınst hlth sci	2	0	0
+2237	ınst j paoli ı calmettes	2	31	23
+2238	ınst jean godinot	1	0	4
+2239	ınst jimenez ayala	1	31	27
+2240	ınst legal med	1	1	22
+2241	ınst marchoux	1	34	3
+2242	ınst nacl cancerol	4	0	38
+2243	ınst nacl ciencias med & nutr salvador zubiran	1	3	17
+2244	ınst nacl perinatol	1	0	28
+2245	ınst neurol	1	40	19
+2246	ınst oncol	6	78	120
+2247	ınst paoli calmettes	2	1	50
+2248	ınst pathol	4	91	25
+2249	ınst pathol anat	3	48	29
+2250	ınst pesquisa pele pequeno principe	1	9	18
+2251	ınst piedras blancas	1	1	4
+2252	ınst piedras blancas asturias	1	0	3
+2253	ınst portugues oncol coimbra fg	1	1	37
+2254	ınst publ hlth	1	94	35
+2255	ınst trop med	1	5	2
+2256	ınstanbul univ	2	0	4
+2257	ınt agcy res canc	3	113	26
+2258	ınt rehabil council torture victims	1	2	2
+2259	ınternal med eppendorf	1	33	7
+2260	ıontek biotechnol as	1	4	3
+2261	ıowa state unıv	1	1	1
+2262	ıp oncol	2	2	8
+2263	ıpatımup	2	1	51
+2264	ıq pathol	1	0	2
+2265	ırccs azienda osped univ san martino	1	0	2
+2266	ırccs neuromed	1	264	28
+2267	ırccs polyclin s matteo	1	1	31
+2268	ısfahan univ med sci	8	31	33
+2269	ıskenderun state hosp	4	13	15
+2270	ıslahiye state hosp	1	1	1
+2271	ısparta matern hosp	1	3	2
+2272	ısparta obstet & pediat hosp	1	0	4
+2273	ıst clin citta brescia	1	4	3
+2274	ıst ortoped rizzoli	1	0	1
+2275	ıst sci hs raffaele	1	1	22
+2276	ıst sci san raffaele	2	1	25
+2277	ıstanbul aydn univ	1	0	25
+2278	ıstanbul bakirkoy matern & children dis hosp	1	3	1
+2279	ıstanbul bilim univ	17	26	34
+2280	ıstanbul bilim univ medi	1	0	0
+2281	ıstanbul educ & res ctr	2	0	0
+2282	ıstanbul educ & res hosp	26	219	60
+2283	ıstanbul educ & training hosp	1	61	9
+2284	ıstanbul educ hosp	5	29	3
+2285	ıstanbul fac med	51	99	49
+2286	ıstanbul florence nightingale hosp	1	1	4
+2287	ıstanbul gastroenterol ctr	1	5	3
+2288	ıstanbul goztepe training & res hosp	1	0	0
+2289	ıstanbul gulhane mil med fac	1	3	1
+2290	ıstanbul haseki egit arastirma hosp	1	0	5
+2291	ıstanbul kanuni sultan suleyman educ & res hosp	1	0	2
+2292	ıstanbul kss training hosp	1	0	1
+2293	ıstanbul kultur univ	2	27	10
+2294	ıstanbul leprosy hosp	2	5	3
+2295	ıstanbul leprosy hosp & res ctr	1	3	1
+2296	ıstanbul leprosy res ctr	1	1	1
+2297	ıstanbul med fac	6	25	2
+2298	ıstanbul med fac topkapı	1	0	0
+2299	ıstanbul med sch	1	4	0
+2300	ıstanbul medeniyet hastanesi	2	0	0
+2301	ıstanbul medeniyet univ	29	48	21
+2302	ıstanbul medeniyet univ goztepe res & training ho	1	2	1
+2303	ıstanbul medeniyet univ goztepe training & res ho	1	3	3
+2304	ıstanbul medipol univ	18	47	82
+2305	ıstanbul mem hizmet hosp	1	0	1
+2306	ıstanbul mem sisli hosp	1	0	1
+2307	ıstanbul mil hosp	2	0	0
+2308	ıstanbul navy hosp	2	0	2
+2309	ıstanbul pathol grp	1	0	2
+2310	ıstanbul patol grubu	1	0	0
+2311	ıstanbul res & training hosp	4	1	2
+2312	ıstanbul sci univ	3	50	6
+2313	ıstanbul surg hosp	2	17	5
+2314	ıstanbul tech univ	4	14	10
+2315	ıstanbul tech unıv	2	1	0
+2316	ıstanbul tra & res hosp	1	0	0
+2317	ıstanbul tra res hosp	1	0	0
+2318	ıstanbul training & res ctr	1	0	0
+2319	ıstanbul training & res hosp	27	27	14
+2320	ıstanbul training & res ınst	8	0	0
+2321	ıstanbul traininig & res hosp	1	11	2
+2322	ıstanbul univ	341	2271	659
+2323	ıstanbul univ cerrahpasa	11	8	25
+2324	ıstanbul unıv	22	194	7
+2325	ıstanbul yeni yuzyil univ	1	0	1
+2326	ıstinye univ	1	0	5
+2327	ıu cerrahpasa	1	0	0
+2328	ıu cerrahpasa med fac	1	0	0
+2329	ıu ıstanbul fac med	2	0	2
+2330	ıu ıstanbul med fac	3	0	1
+2331	ıucfm	2	0	12
+2332	ıuıfm	2	0	12
+2333	ıvf & women hlth ctr	1	0	2
+2334	ıwk hlth ctr	1	9	18
+2335	ızmir atakurk training hosp	1	8	1
+2336	ızmir ataturk educ & res hosp	1	10	4
+2337	ızmir ataturk res & training hosp	2	8	0
+2338	ızmir ataturk res hosp	2	6	1
+2339	ızmir ataturk researh & training hosp	1	4	0
+2340	ızmir ataturk training & educ hosp	1	9	1
+2341	ızmir ataturk training & res hosp	5	11	2
+2342	ızmir bozyaka educ & res hosp	2	5	3
+2343	ızmir bozyaka training & res hosp	7	30	25
+2344	ızmir chest dis & surg res hosp	1	13	0
+2345	ızmir dokuz eylul univ	1	2	3
+2346	ızmir dr behcet uz childrens hosp	3	13	6
+2347	ızmir educ & res hosp	1	0	2
+2348	ızmir katip celebi univ	42	26	36
+2349	ızmir katip celebi univ ataturk training & res ho	1	4	0
+2350	ızmir mil hosp	2	0	3
+2351	ızmir ss chest dis & surg hosp	2	0	0
+2352	ızmir tepec training & res hosp	3	2	2
+2353	ızmir tepecik	1	0	0
+2354	ızmir tepecik educ & res hosp	2	0	2
+2355	ızmir tepecik hosp	1	2	3
+2356	ızmir tepecik res & teaching hosp	1	2	0
+2357	ızmir tepecik teaching hosp	3	0	1
+2358	ızmir tepecik training & res ctr	2	0	0
+2359	ızmir tepecik training & res hosp	12	37	23
+2360	ızmir tepecik training & res hosp pathol dept	1	2	1
+2361	ızmir tepecik training hosp	3	0	0
+2362	ızmir training & res hosp	2	4	0
+2363	ızmir training & searching hosp	2	0	0
+2364	ızmir training hosp	1	9	1
+2365	ızmir training res hosp	1	0	2
+2366	ızmir univ	1	2	3
+2367	ızmir ınst technol	3	41	5
+2368	ızmit seka state hosp	2	10	6
+2369	ızmır state hosp	1	1	1
+2370	ızzet baysal obstet & children hosp	2	3	4
+2371	ızzetbaysal univ	1	4	2
