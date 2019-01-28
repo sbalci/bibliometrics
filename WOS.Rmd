@@ -1,0 +1,87 @@
+---
+title: "WOS"
+output: html_notebook
+---
+
+# bibliometrix
+
+---
+
+https://cran.r-project.org/web/packages/bibliometrix/vignettes/bibliometrix-vignette.html
+
+
+---
+
+
+http://www.bibliometrix.org/
+
+
+---
+
+
+
+---
+
+
+https://cran.r-project.org/web/packages/bibliometrix/bibliometrix.pdf
+
+https://www.rdocumentation.org/packages/bibliometrix/versions/1.8/topics/convert2df
+
+
+```{r}
+# NOT RUN {
+# An ISI or SCOPUS Export file can be read using \code{\link{readLines}} function:
+
+# largechar <- readLines('filename.txt')
+
+# filename.txt is an ISI or SCOPUS Export file in plain text or bibtex format.
+# The file have to be saved without Byte order mark (U+FEFF) at the beginning
+# and EoF code at the end of file.
+# The original file (exported by ISI or SCOPUS search web site) can be modified
+# using an advanced text editor like Notepad++ or Emacs.
+
+# install.packages("bibliometrix", dependencies = TRUE)
+
+library(bibliometrix)
+
+biblio <- readLines('http://www.bibliometrix.org/datasets/bibliometrics_articles.txt')
+
+biblio_df_df <- convert2df(file = biblio, dbsource = "isi", format = "bibtex")
+
+# }
+```
+
+
+```{r}
+biblio1 <- readLines("data/WOS-Turkey-PathologyField/savedrecs-1-500.txt")
+
+# biblio_df1 <- convert2df(file = biblio1, dbsource = "isi", format = "plaintext")
+
+biblio_df1 <- isi2df(D = biblio1)
+
+```
+
+
+- readFiles: Load a sequence of ISI or SCOPUS Export files into a large... 
+
+https://rdrr.io/cran/bibliometrix/man/readFiles.html
+
+-  convert2df: Convert a Clarivate Analytics WoS, SCOPUS and COCHRANE... 
+
+https://rdrr.io/cran/bibliometrix/man/isibib2df.html
+ 
+
+
+
+# hindexcalculator
+
+https://cran.rstudio.com/web/packages/hindexcalculator/hindexcalculator.pdf
+
+
+# read.wos.R
+
+https://github.com/alberto-martin/read.wos.R
+
+https://github.com/alberto-martin/read.wos.R/blob/master/report.Rmd
+
+https://zenodo.org/record/1479822#.XEL7QvxS81J

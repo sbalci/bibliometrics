@@ -196,6 +196,9 @@ caffeinate
 
 ```
 
+## Microsoft Academic
+
+https://labs.cognitive.microsoft.com/en-us/project-academic-knowledge
 
 ## Scopus
 
@@ -212,6 +215,10 @@ https://www.altmetric.com/top100/2018/
 
 https://grid.ac/
 
+
+## ROR
+
+https://ror.org/search?page=1&query=turkey
 
 
 ## Cobalmetrics
