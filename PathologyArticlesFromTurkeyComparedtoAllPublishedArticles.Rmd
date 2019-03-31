@@ -139,6 +139,221 @@ Indexes=SCI-EXPANDED, SSCI, A&HCI, CPCI-S, CPCI-SSH, BKCI-S, BKCI-SSH, ESCI Time
 ```
 
 
+# Hacettepe[Affiliation] AND Pathology[Affiliation] 
 
+
+```{r Search PubMed download all articles uid, eval=FALSE, include=FALSE}
+myTerm <- rstudioapi::terminalCreate(show = FALSE)
+rstudioapi::terminalSend(
+    myTerm,
+    "esearch -db pubmed -query \"hacettepe[Affiliation] AND (pathology[Affiliation] OR patoloji[Affiliation])\" -datetype PDAT -mindate 1800 -maxdate 3000 | \ efetch -format uid > data/pubmed_result_hacettepe_pathology_uid.txt \n"
+)
+Sys.sleep(1)
+repeat {
+    Sys.sleep(0.1)
+    if (rstudioapi::terminalBusy(myTerm) == FALSE) {
+        print("Code Executed")
+        break
+    }
+}
+
+file.info(here::here("data/pubmed_result_hacettepe_pathology_uid.txt"))$ctime
+```
+
+
+```{r Search PubMed download all articles xml, eval=FALSE, include=FALSE}
+myTerm <- rstudioapi::terminalCreate(show = FALSE)
+rstudioapi::terminalSend(
+    myTerm,
+    "esearch -db pubmed -query \"hacettepe[Affiliation] AND (pathology[Affiliation] OR patoloji[Affiliation])\" -datetype PDAT -mindate 1800 -maxdate 3000 | \ efetch -format xml > data/pubmed_result_hacettepe_pathology_uid.xml \n"
+)
+Sys.sleep(1)
+repeat {
+    Sys.sleep(0.1)
+    if (rstudioapi::terminalBusy(myTerm) == FALSE) {
+        print("Code Executed")
+        break
+    }
+}
+
+file.info(here::here("data/pubmed_result_hacettepe_pathology_uid.xml"))$ctime
+```
+
+
+
+
+```{r extract if pathology and hacettepe in same affiliation, eval=FALSE, include=FALSE}
+
+myTerm <- rstudioapi::terminalCreate(show = FALSE)
+rstudioapi::terminalSend(
+myTerm,
+"xtract -input data/pubmed_result_hacettepe_pathology_uid.xml -pattern PubmedArticle -tab \"|\" -sep \";\" -def \"NA\" -element MedlineCitation/PMID ArticleTitle Journal/ISSN ISOAbbreviation PubDate/Year Affiliation> data/data_hacettepepathology.csv \n"
+)
+Sys.sleep(1)
+repeat {
+Sys.sleep(0.1)
+if (rstudioapi::terminalBusy(myTerm) == FALSE) {
+print("Code Executed")
+break
+}
+}
+
+```
+
+
+## read extracted data
+
+
+```{r read data}
+library(readr)
+data_hacettepePathology <- read_delim(here::here("data/data_hacettepepathology.csv"), 
+    "|",
+    escape_double = FALSE,
+    col_names = FALSE, 
+    trim_ws = TRUE)
+# View(data_hacettepePathology)
+
+names(data_hacettepePathology) <- c("PMID", "ArticleTitle", "ISSN", "ISOAbbreviation", "PubDate", "Affiliation")
+
+```
+
+
+```{r separate affiliations}
+library(tidyverse)
+library(stringr)
+str_count(string = data_hacettepePathology$Affiliation, pattern = ";") %>% 
+  max()
+
+```
+
+
+```{r plain affiliation characters, include=FALSE}
+
+# to.plain <- function(s) {
+#         # 1 character substitutions
+#     old1 <- "çğşıüöÇĞŞİÖÜ"
+#     new1 <- "cgsiuocgsiou"
+#     s1 <- chartr(old1, new1, s)
+#     # 2 character substitutions
+#     old2 <- c("œ", "ß", "æ", "ø")
+#     new2 <- c("oe", "ss", "ae", "oe")
+#     s2 <- s1
+#     for(i in seq_along(old2)) s2 <- gsub(old2[i], new2[i], s2, fixed = TRUE)
+#     s2
+# }
+
+data_hacettepePathology2 <- data_hacettepePathology %>% 
+  select(PMID, Affiliation)
+
+
+# [[:alpha:]]
+
+
+
+# data_hacettepePathology2$Affiliation <- data_hacettepePathology2$Affiliation %>%
+#     tolower() %>%
+#     to.plain()
+
+
+data_hacettepePathology2 <-  data_hacettepePathology2 %>% 
+  separate(col = "Affiliation", sep = ";", into = paste0("Affiliation", 1:6925))
+
+
+```
+
+
+
+
+```{r}
+library(tidyverse)
+library(reshape2)
+
+DT.m1 <- melt(data_hacettepePathology2,
+              id.vars = c("PMID"),
+              measure.vars = paste0("Affiliation", 1:6925))
+
+DT.m2 <- DT.m1 %>%
+  filter(!is.na(value))
+
+DT.m2$count <- 1
+
+```
+
+
+```{r}
+DT.m2$hacettepe <-
+    grepl(
+        pattern = ("[Hh]acettepe"),
+        x =
+            DT.m2$value
+    )
+
+DT.m2$pathology <-
+    grepl(
+        pattern = ("[Pp]athology|[Pp]atoloji"),
+        x =
+            DT.m2$value
+    )
+
+DT.m2$speach <-
+    grepl(
+        pattern = ("[Ss]peach|[Ss]peech"),
+        x =
+            DT.m2$value
+    )
+
+
+```
+
+```{r}
+DT.m3 <- DT.m2 %>% 
+  filter(hacettepe == TRUE & pathology == TRUE) %>% 
+  filter(speach==FALSE)
+
+```
+
+```{r}
+final_hacettepePathology <- data_hacettepePathology %>% 
+  filter(PMID %in% DT.m3$PMID) %>% 
+  select(-c("Affiliation")) %>% 
+  left_join(DT.m3, by="PMID") %>% 
+  select(c("PMID", "ArticleTitle", "ISSN", "ISOAbbreviation", "PubDate"), Affiliation = value) %>% 
+  unique() %>% 
+  mutate(PMIDLink = paste0("https://www.ncbi.nlm.nih.gov/pubmed/", PMID, ""))
+
+writexl::write_xlsx(final_hacettepePathology, here::here("data/final_hacettepePathology.xlsx"))
+
+```
+
+
+```{r}
+cat(paste0(final_hacettepePathology$PMID, " OR ")
+)
+```
+
+
+```
+(hacettepe[Affiliation] AND (pathology[Affiliation] OR patoloji[Affiliation])) NOT (speach[Affiliation] OR speech[Affiliation]) 
+```
+
+```
+(Turkey[Affiliation] OR Turkiye[Affiliation]) AND ((pathology[Affiliation] OR patoloji[Affiliation]) NOT (speach[Affiliation] OR speech[Affiliation]))
+```
+
+
+```{r}
+library(tidyverse)
+library(tidylog)
+library(mmpipe)
+final_hacettepePathology <- data_hacettepePathology %V>% 
+  filter(PMID %in% DT.m3$PMID) %V>% 
+  select(-c("Affiliation")) %V>%
+  left_join(DT.m3, by="PMID") %V>% 
+  select(c("PMID", "ArticleTitle", "ISSN", "ISOAbbreviation", "PubDate"), Affiliation = value) %V>%
+  unique() %V>% 
+  mutate(PMIDLink = paste0("https://www.ncbi.nlm.nih.gov/pubmed/", PMID, ""))
+
+
+```
 
 

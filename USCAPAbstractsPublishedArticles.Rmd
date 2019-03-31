@@ -1,0 +1,103 @@
+---
+title: "USCAP Abstracts vs Published Articles"
+output: html_notebook
+---
+
+
+**Search methods:**  
+
+**Journal:**  
+Modern Pathology  
+Laboratory Investigation  
+
+
+**Conference:**  
+USCAP  
+Annual Meeting of the United-States-and-Canadian-Academy-of-Pathology  
+
+**From pdf ??**
+
+
+
+
+
+![](figure/USCAP Abstracts vs Published Articles 1.png)  
+
+
+
+
+
+![](figure/USCAP Abstracts vs Published Articles 2.png)  
+
+
+---
+
+
+```{r}
+install.packages("pdftools")
+```
+
+```{r}
+library(pdftools)
+# download.file("https://github.com/Huitziii/crispy-pdf/raw/master/71_PV.62.pdf",
+              # "./71_PV.62.pdf")
+text <- pdf_text("data/eurospine/2014/eurospine-2014-2014qf.pdf")
+```
+
+
+```{r}
+text2 <- strsplit(text, "\n")
+```
+
+
+
+---
+
+```{r}
+library(tidyverse)
+library(officer)
+```
+
+
+```{r}
+lyon2014 <- officer::read_docx("data/eurospine/2014/eurospine-2014-lyon-france-october-13-2014.docx")
+```
+
+
+
+```{r}
+styles_info(lyon2014)
+```
+
+```{r}
+lyon2014$styles
+```
+
+
+```{r}
+lyon2014$content_type
+```
+
+
+```{r}
+officer::doc_properties(lyon2014)
+```
+
+
+
+
+
+
+```{r}
+glimpse(lyon2014)
+```
+
+
+
+
+
+
+
+
+
+

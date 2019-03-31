@@ -200,6 +200,8 @@ caffeinate
 
 https://labs.cognitive.microsoft.com/en-us/project-academic-knowledge
 
+https://academic.microsoft.com/author/2608586067/publication/search?q=Serdar%20Balci
+
 ## Scopus
 
 https://www.scopus.com/sources
@@ -247,6 +249,28 @@ https://figshare.com/articles/Metadata_for_the_OpenCitations_Corpus/3443876
 https://semsci.github.io/SemSci2018/papers/1/bcite-semsci2018.html
 
 https://github.com/opencitations/bcite
+
+
+## Open Knowledge Maps
+
+Open Knowledge Maps (2019). Overview of research on (pathology[affiliation] or patoloji[affiliation]) and (turkey[affiliation] or türkiye[affiliation]). Retrieved from https://openknowledgemaps.org/map/e4dbf6c89015e402d6d7d560ab79e17a/ [30 Mar 2019]. 
+
+
+https://openknowledgemaps.org/index
+
+
+
+## iris.ai
+
+https://the.iris.ai/map/02f89d24-0415-43ab-878a-853ec17c5a59
+
+## lens.org
+
+https://www.lens.org/lens/scholar/search/results?dateFilterField=year_published&filterMap=%7B%7D&orcids=0000-0002-7852-3851&orderBy=%2Bpublished&preview=true&previewType=SCHOLAR_ANALYSIS&regexEnabled=false
+
+https://www.lens.org/lens/scholar/search/results?q=(author.affiliation.name:%20%22pathology%22%20%20OR%20author.affiliation.name:%20%22patoloji%22)%20%20AND%20(author.affiliation.name:%20%22Turkey%22%20%20OR%20author.affiliation.name:%20%22T%C3%BCrkiye%22)
+
+https://www.lens.org/lens/scholar/search/analysis?q=(author.affiliation.name:%20%22neurosurgery%22%20%20OR%20author.affiliation.name:%20%22sport%22%20)%20AND%20(abstract:%20%22sport%22%20%20OR%20title:%20%22sport%22)&page=0&limit=10&orderBy=%2Bscore&dateFilterField=year_published&preview=false&regexEnabled=false
 
 
 ---

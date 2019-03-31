@@ -1,0 +1,14 @@
+---
+title: "Scopus"
+output: html_notebook
+---
+
+
+# rscopus
+
+https://cran.r-project.org/web/packages/rscopus/rscopus.pdf
+
+
+
+
+

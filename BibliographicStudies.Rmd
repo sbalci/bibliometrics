@@ -68,6 +68,11 @@ In this analysis we aimed to identify the common research topics Turkish patholo
 
 ---
 
+<!-- Pancreas Studies -->
+
+
+---
+
 <!-- BalciS -->
 
 
@@ -114,6 +119,11 @@ In this analysis we aimed to identify the common research topics Turkish patholo
 
 <!-- VOSviewer için -->
 <!-- pubmedden doi'leri al, doi listesi ile crossref tarat -->
+
+
+---
+
+<!-- USCAP Abstracts vs Published Articles -->
 
 
 ---

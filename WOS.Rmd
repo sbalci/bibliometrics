@@ -20,12 +20,32 @@ http://www.bibliometrix.org/
 
 
 
----
-
-
 https://cran.r-project.org/web/packages/bibliometrix/bibliometrix.pdf
 
 https://www.rdocumentation.org/packages/bibliometrix/versions/1.8/topics/convert2df
+
+
+---
+
+```
+install.packages(“bibliometrix”, dependencies=TRUE) ### installs bibliometrix package and dependencies
+
+library(bibliometrix)   ### load bibliometrix package
+## To cite bibliometrix in publications, please use:
+## 
+## Aria, M. & Cuccurullo, C. (2017) bibliometrix: An R-tool for comprehensive science mapping analysis, Journal of Informetrics, 11(4), pp 959-975, Elsevier.
+##                         
+## 
+## http:\\www.bibliometrix.org
+## 
+##                         
+## To start with the shiny web-interface, please digit:
+## biblioshiny()
+```
+
+---
+
+
 
 
 ```{r}
@@ -53,13 +73,42 @@ biblio_df_df <- convert2df(file = biblio, dbsource = "isi", format = "bibtex")
 
 
 ```{r}
-biblio1 <- readLines("data/WOS-Turkey-PathologyField/savedrecs-1-500.txt")
+# biblio1 <- readLines("data/WOS-Turkey-PathologyField/savedrecs-1-500.txt")
 
 # biblio_df1 <- convert2df(file = biblio1, dbsource = "isi", format = "plaintext")
 
-biblio_df1 <- isi2df(D = biblio1)
+# biblio_df1 <- isi2df(D = biblio1)
 
 ```
+
+```
+Error in seq.default(iStart, iStop) : 'from' must be a finite number
+This error is due to importing tab seperated or bibtex data instead of plaintext data.
+For future download bibtex, plaintext and tab seperated file
+```
+
+```{r}
+saveRDS(biblio_df_df, "data/WOS-Turkey-PathologyField/savedrecs-1-500.rds")
+```
+
+
+```{r}
+results <- biblioAnalysis(biblio_df_df, sep = ";")
+results
+```
+
+
+```{r eval=FALSE, include=FALSE}
+S <- summary(object = results, k = 10, pause = FALSE)
+```
+
+
+
+
+```{r}
+plot(x = results, k = 10, pause = FALSE)
+```
+
 
 
 - readFiles: Load a sequence of ISI or SCOPUS Export files into a large... 
