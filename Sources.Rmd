@@ -3,6 +3,7 @@ title: "Bibliographic Studies"
 subtitle: "Sources Used For Analysis"
 author: "Serdar Balcı, MD, Pathologist"
 date: '`r format(Sys.Date())`'
+bibliography: bib/sources.bib
 output: 
   html_notebook: 
     code_folding: hide
@@ -264,13 +265,163 @@ https://openknowledgemaps.org/index
 
 https://the.iris.ai/map/02f89d24-0415-43ab-878a-853ec17c5a59
 
+
+## contentmine
+
+http://contentmine.org/
+
+https://github.com/ContentMine
+
+
+
 ## lens.org
+
+
+<iframe src="https://player.vimeo.com/video/295099740" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+<p><a href="https://vimeo.com/295099740">The Lens</a> from <a href="https://vimeo.com/user10734565">Cambia</a> on <a href="https://vimeo.com">Vimeo</a>.</p>
+
+
+<iframe src="https://player.vimeo.com/video/245867897" width="640" height="360" frameborder="0" allowfullscreen></iframe>
+
+<iframe src="https://player.vimeo.com/video/246041050" width="640" height="360" frameborder="0" allowfullscreen></iframe>
 
 https://www.lens.org/lens/scholar/search/results?dateFilterField=year_published&filterMap=%7B%7D&orcids=0000-0002-7852-3851&orderBy=%2Bpublished&preview=true&previewType=SCHOLAR_ANALYSIS&regexEnabled=false
 
 https://www.lens.org/lens/scholar/search/results?q=(author.affiliation.name:%20%22pathology%22%20%20OR%20author.affiliation.name:%20%22patoloji%22)%20%20AND%20(author.affiliation.name:%20%22Turkey%22%20%20OR%20author.affiliation.name:%20%22T%C3%BCrkiye%22)
 
 https://www.lens.org/lens/scholar/search/analysis?q=(author.affiliation.name:%20%22neurosurgery%22%20%20OR%20author.affiliation.name:%20%22sport%22%20)%20AND%20(abstract:%20%22sport%22%20%20OR%20title:%20%22sport%22)&page=0&limit=10&orderBy=%2Bscore&dateFilterField=year_published&preview=false&regexEnabled=false
+
+
+#### PatCite
+
+
+## Apache UIMA
+
+Unstructured Information Management applications
+
+https://uima.apache.org/index.html
+
+---
+
+## EuropePMC
+
+- Tools overview
+
+https://europepmc.org/tools
+
+- Developer resources
+
+https://europepmc.org/developers
+
+- Articles RESTful API
+
+https://europepmc.org/RestfulWebService
+
+- Grants RESTful (Grist) API
+
+https://europepmc.org/GristAPI
+
+- SOAP web service
+
+https://europepmc.org/SoapWebServices
+
+- Europe PMC Annotations API
+
+https://europepmc.org/AnnotationsApi
+
+- OAI service
+
+https://europepmc.org/OaiService
+
+- Bulk downloads
+
+https://europepmc.org/downloads
+
+
+
+---
+
+## ELIXIR Core Data Resources
+
+https://elixir-europe.org/platforms/data/core-data-resources
+
+
+---
+
+# Software
+
+## CiteSpace
+
+- CiteSpace Tutorial
+
+http://cluster.ischool.drexel.edu/~cchen/citespace/tutorial/
+
+
+
+---
+
+# Bibliometric Study Examples
+
+- Origins of Life Research: a Bibliometric Approach [@Aydinoglu2018] 
+
+Aydinoglu, A.U. & Taşkın, Z. Orig Life Evol Biosph (2018) 48: 55. https://doi.org/10.1007/s11084-017-9543-4  
+https://link.springer.com/article/10.1007/s11084-017-9543-4  
+
+- Yükseköğretim ve Bilim Dergisi
+
+http://higheredu-sci.beun.edu.tr/
+
+- CWTS Blog
+
+https://www.cwts.nl/blog
+
+- Bilgi Dünyası
+
+http://bd.org.tr/index.php/bd
+
+---
+
+# Websites
+
+- Half Life: The Decay of Knowledge and What to Do About It
+
+https://fs.blog/2018/03/half-life/
+
+-  Has the tide turned towards responsible metrics in research? 
+
+https://www.theguardian.com/science/political-science/2018/jul/10/has-the-tide-turned-towards-responsible-metrics-in-research
+
+- Ahlaksız büyüme 
+
+https://blog.metu.edu.tr/akcomak/2013/06/13/ahlaksiz-buyume-2/
+
+
+
+---
+
+# Organisations of Bibliometrics  
+
+- University Ranking by Academic Performance  
+
+URAP  
+http://www.urapcenter.org/2018/index.php  
+
+URAP Turkey  
+http://tr.urapcenter.org/2018/  
+
+- https://gate.ac.uk/
+
+-  Responsible Metrics
+
+https://www.cwts.nl/research/research-themes/responsible-metrics
+
+-  Leiden Manifesto for Research Metrics
+
+http://www.leidenmanifesto.org/
+
+- CWTS Leiden Ranking
+
+http://www.leidenranking.com/
 
 
 ---
@@ -307,3 +458,7 @@ s.setAttribute('data-timestamp', +new Date());
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 
 ---
+
+# References
+
+
