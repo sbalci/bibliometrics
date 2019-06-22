@@ -183,6 +183,10 @@ https://www.sciencemag.org/news/2017/05/vast-set-public-cvs-reveals-world-s-most
 
 ## Semantic Scholar
 
+https://www.semanticscholar.org/
+
+
+### Semantic Scholar Open Research Corpus
 
 ```
 Semantic Scholar Open Research Corpus
@@ -196,6 +200,26 @@ wget -P /Volumes/Agu2018/semantic -i https://s3-us-west-2.amazonaws.com/ai2-s2-r
 caffeinate
 
 ```
+
+### AllenNLP
+
+https://allennlp.org/
+
+
+### An open-source NLP research library, built on PyTorch.
+
+http://www.allennlp.org/
+
+https://github.com/allenai/allennlp
+
+
+### citeomatic
+
+https://allenai.org/semantic-scholar/citeomatic/
+
+
+
+
 
 ## Microsoft Academic
 
@@ -292,6 +316,27 @@ https://www.lens.org/lens/scholar/search/results?q=(author.affiliation.name:%20%
 https://www.lens.org/lens/scholar/search/analysis?q=(author.affiliation.name:%20%22neurosurgery%22%20%20OR%20author.affiliation.name:%20%22sport%22%20)%20AND%20(abstract:%20%22sport%22%20%20OR%20title:%20%22sport%22)&page=0&limit=10&orderBy=%2Bscore&dateFilterField=year_published&preview=false&regexEnabled=false
 
 
+```
+my_data_frame <- readr::read_delim("~/downloads/pubmed_result.txt", delim = "\t", col_names = FALSE)
+
+chunk <- 5000
+mylist <-  split(my_data_frame, rep(1:ceiling(nrow(my_data_frame)/chunk), each=chunk, length.out=nrow(my_data_frame)))
+
+X1 <- mylist$`1`
+X2 <- mylist$`2`
+X3 <- mylist$`3`
+X4 <- mylist$`4`
+
+readr::write_csv(X1, "~/downloads/1.txt")
+readr::write_csv(X2, "~/downloads/2.txt")
+readr::write_csv(X3, "~/downloads/3.txt")
+readr::write_csv(X4, "~/downloads/4.txt")
+
+```
+
+
+
+
 #### PatCite
 
 
@@ -348,7 +393,59 @@ https://elixir-europe.org/platforms/data/core-data-resources
 
 ---
 
+## scite
+
+
+https://scite.ai/
+
+
+---
+
+## TÜBİTAK Destekli Projeler Veri Tabanı
+
+Ülkemizdeki araştırma altyapısına katkı sağlamak amacıyla, Araştırma Destek Programları Başkanlığı (ARDEB) bünyesinde, 1965 yılından günümüze kadar sonuçlanmış olan 17.808 adet projenin sonuç raporunun tam metinleri, TÜBİTAK Ulusal Akademik Ağ ve Bilgi Merkezi (ULAKBİM) “TÜBİTAK Destekli Projeler Veri Tabanı”nda yayımlanmaktadır.
+
+
+Söz konusu veri tabanına https://trdizin.gov.tr/search/projectSearch.xhtml linkinden erişim sağlanabilmekte ve sonuç raporlarına ilişkin proje no, başlık, yürütücü/araştırmacı/danışman adı, yıl ve anahtar kelime bazında tarama yapılabilmektedir.
+
+
+## TRDizin
+
+https://trdizin.gov.tr/
+
+
+---
+
 # Software
+
+
+## R-project
+
+https://github.com/schochastics/graphlayouts
+
+
+### rentrez
+
+```
+https://github.com/ropensci/rentrez/issues/134#event-2313355730
+
+library(rentrez)
+library(XML)
+
+MeSH_from_pmid <- function(pmid){
+   rec <- entrez_fetch(db="pubmed", id=pmid, rettype = "xml", parsed=TRUE)
+   m_names <- xpathSApply(rec, "//MeshHeadingList/MeshHeading/DescriptorName", xmlValue)
+   m_ui <- xpathSApply(eg_rec, "//MeshHeadingList/MeshHeading/DescriptorName", xmlAttrs)[1,]
+   data.frame(mesh_ui = m_ui, descriptor = m_names)
+}
+
+MeSH_from_pmid(27591765)
+
+
+
+```
+
+
 
 ## CiteSpace
 

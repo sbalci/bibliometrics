@@ -9,11 +9,185 @@ library(europepmc)
 
 
 ```{r}
-endometriosis_articlesPerTotalArticles <- europepmc::epmc_hits_trend(query = "endometriosis", period = 1980:2017)
+endometriosis_articlesPerTotalArticles <- europepmc::epmc_hits_trend(query = "endometriosis", period = 1980:2018)
 
 endometriosis_articlesPerTotalArticles
-View(endometriosis_articlesPerTotalArticles)
+
+# View(endometriosis_articlesPerTotalArticles)
+
+xlsx::write.xlsx(endometriosis_articlesPerTotalArticles, here::here("data/endometriosis_articlesPerTotalArticles.xlsx")
+)
+
 ```
+
+
+```{r}
+library(ggplot2)
+ggplot(endometriosis_articlesPerTotalArticles, aes(year, query_hits / all_hits)) + 
+  geom_point() + 
+  geom_line() +
+  xlab("Year published") + 
+  ylab("Proportion of Endometriois \n articles in Europe PMC")
+```
+
+---
+
+
+```
+("endometriosis" AND "inflammation") AND (SRC:"MED")
+```
+
+
+```{r}
+dvcs <- c('("endometriosis" AND "inflammation") AND (SRC:"MED")', '("endometriosis" AND "infertility") AND (SRC:"MED")', '("endometriosis" AND "fertility") AND (SRC:"MED")' , '("endometriosis") AND (SRC:"MED")'
+          )
+```
+
+
+```{r}
+my_df <- purrr::map_df(dvcs, function(x) {
+  # get number of publications with indexed reference lists
+  refs_hits <- 
+    europepmc::epmc_hits_trend(x, period = 1980:2018, synonym = FALSE)$query_hits
+  # get hit count querying for code repositories 
+  europepmc::epmc_hits_trend(x, period = 1980:2018, synonym = FALSE) %>% 
+    dplyr::mutate(query_id = x) %>%
+    dplyr::mutate(refs_hits = refs_hits) %>%
+    dplyr::select(year, all_hits, refs_hits, query_hits, query_id)
+}) 
+my_df
+```
+
+
+```{r}
+## Recoding my_df$query_id into my_df$Query
+my_df$Query <- recode(my_df$query_id,
+               "(\"endometriosis\" AND \"inflammation\") AND (SRC:\"MED\")" = "endometriosis AND inflammation",
+               "(\"endometriosis\" AND \"infertility\") AND (SRC:\"MED\")" = "endometriosis AND infertility",
+               "(\"endometriosis\" AND \"fertility\") AND (SRC:\"MED\")" = "endometriosis AND fertility",
+               "(\"endometriosis\") AND (SRC:\"MED\")" = "endometriosis")
+my_df$Query <- factor(my_df$Query)
+
+```
+
+```{r}
+library(ggplot2)
+ggplot(my_df, aes(x = year, 
+                  y = query_hits / all_hits,
+                  group = Query, 
+                  color = Query)) + 
+  geom_point() + 
+  geom_line() +
+  xlab("Year published") + 
+  ylab("Proportion of articles in PubMed \n Data from: Europe PMC") +
+  theme(legend.position = "bottom",
+        legend.direction = "vertical")
+```
+
+```{r}
+library(ggplot2)
+ggplot(my_df, aes(x = year, 
+                  y = scales::percent(query_hits / all_hits, accuracy = 0.02),
+                  group = Query, 
+                  color = Query)) + 
+  geom_point() + 
+  geom_line() +
+  xlab("Year published") + 
+  ylab("Proportion of articles in PubMed \n Data from: Europe PMC") +
+  theme(legend.position = "bottom",
+        legend.direction = "vertical")
+```
+
+
+
+```{r}
+library(ggplot2)
+ggplot(my_df, aes(factor(year), query_hits / refs_hits, group = query_id, 
+                  color = query_id)) +
+  geom_line(size = 1, alpha = 0.8) +
+  geom_point(size = 2) +
+  scale_color_brewer(name = "Query", palette = "Set1")+
+  xlab("Year published") +
+  ylab("Proportion of articles in PubMed \n Data from: Europe PMC")
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---
+
+
+
+```{r}
+library("handlr")
+deneme <- handlr::bibtex_reader("data/europepmc_endometriosisinflammation.bib")
+
+# handlr::citeproc_writer(deneme)
+
+# handlr::codemeta_writer(deneme)
+
+
+jsonlite::write_json(handlr::codemeta_writer(deneme, pretty = FALSE), path = "data/europepmc_endometriosisinflammation.json")
+
+```
+
+
+```{r}
+z <- system.file("data/europepmc_endometriosisinflammation.bib", package = "handlr")
+x <- HandlrClient$new(x = z)
+x$read("bibtex")
+x$write("citeproc")
+```
+
+
+
+
+
+
+
+
+
+
+
+---
+
+```{r}
+endometriosis_articles1 <- europepmc::epmc_hits_trend(query = "endometriosis AND fertility", period = 1980:2018)
+
+endometriosis_articles1
+
+# View(endometriosis_articlesPerTotalArticles)
+
+xlsx::write.xlsx(endometriosis_articlesPerTotalArticles, here::here("data/endometriosis_articlesPerTotalArticles.xlsx")
+)
+
+```
+
+
+
+
+
 
 
 ```{r}
@@ -28,6 +202,9 @@ ggplot(endometriosis_articlesPerTotalArticles, aes(year, query_hits / all_hits))
 
 
 
+
+---
+
 https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5031306/
 
 
@@ -38,5 +215,98 @@ knitcitations::citep("10.1186/s12905-016-0336-0")
 
 
 vosviewer
+
+---
+
+# Bibliometrix Package Analysis Last 10 year Endometriosis
+
+## Search PubMed
+
+```
+"endometriosis"[MeSH Major Topic] AND "english and humans"[Filter] AND ("2009/03/10"[PDat] : "2019/03/07"[PDat])
+```
+
+
+```{r Search PubMed download xml Last 10 year Endometriosis, eval=FALSE, include=FALSE}
+myTerm <- rstudioapi::terminalCreate(show = FALSE)
+rstudioapi::terminalSend(
+    myTerm,
+    "esearch -db pubmed -query \"endometriosis[MeSH Major Topic] AND english and humans[Filter] AND (2009/03/10[PDat] : 2019/03/07[PDat]) \" -datetype PDAT -mindate 1800 -maxdate 3000 | \ efetch -format xml > data/endometriosis/Last10YearEndometriosis.xml \n"
+)
+Sys.sleep(1)
+repeat {
+    Sys.sleep(0.1)
+    if (rstudioapi::terminalBusy(myTerm) == FALSE) {
+        print("Code Executed")
+        break
+    }
+}
+
+file.info(here::here("data/endometriosis/Last10YearEndometriosis.xml"))$ctime
+```
+
+
+
+```{r extract pmid doi from xml Last 10 year Endometriosis, message=FALSE, warning=FALSE}
+myTerm <- rstudioapi::terminalCreate(show = FALSE)
+rstudioapi::terminalSend(
+myTerm,
+"xtract -input data/endometriosis/Last10YearEndometriosis.xml -pattern PubmedArticle -tab \"|\" -sep \";\" -def \"NA\" -element MedlineCitation/PMID -block ArticleId -if ArticleId@IdType -equals doi -element ArticleId > data/endometriosis/Last10YearEndometriosis.csv \n"
+)
+Sys.sleep(1)
+repeat {
+Sys.sleep(0.1)
+if (rstudioapi::terminalBusy(myTerm) == FALSE) {
+print("Code Executed")
+break
+}
+}
+```
+
+
+```{r read extracted data Last 10 year Endometriosis}
+library(readr)
+Last10YearEndometriosis <- read_delim(here::here("data/endometriosis/Last10YearEndometriosis.csv"), 
+    "|",
+    escape_double = FALSE,
+    col_names = FALSE, 
+    trim_ws = TRUE)
+# View(Last10YearEndometriosis)
+
+names(Last10YearEndometriosis) <- c("PMID", "DOI")
+
+```
+
+
+```{r WOS search file write PMID DOI with OR Last 10 year Endometriosis}
+
+PMID_List <- paste0("PMID=(", Last10YearEndometriosis$PMID[!is.na(Last10YearEndometriosis$PMID)], ") OR")
+# DOI_List <- paste0("DO=(", Last10YearEndometriosis$DOI[!is.na(Last10YearEndometriosis$DOI)], ") OR")
+
+
+write(PMID_List,
+      here::here("data/endometriosis/Last10YearEndometriosis_pmid_ListforWOS.txt")
+)
+
+# write(DOI_List,
+#       here::here("data/NeurosurgeryFromTurkey_doi_ListforWOS.txt")
+# )
+
+```
+
+
+
+
+```{r}
+library(tidyverse)
+library(bibliometrix)
+bibliometrix::biblioshiny()
+```
+
+
+
+
+
+
 
 
