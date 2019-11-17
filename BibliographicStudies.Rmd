@@ -313,11 +313,13 @@ In this analysis we aimed to identify the common research topics Turkish patholo
 
 ---
 
-<!-- ## retracted pathology articles -->
+## retracted pathology articles
 
----
+retraction, correction and republication in pathology journals
 
-<!-- ## correction pathology articles -->
+
+RetractedPathologyArticles.nb.html
+
 
 
 ---
@@ -331,8 +333,9 @@ In this analysis we aimed to identify the common research topics Turkish patholo
 
 ---
 
-<!-- ## europepmc paketi ile endometriozis analizi -->
+## europepmc paketi ile endometriozis analizi
 
+endometriosis.nb.html
 
 
 ---
