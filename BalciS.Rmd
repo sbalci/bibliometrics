@@ -29,4 +29,3 @@ BalciSdoi <- BalciS$V2
 ```{r}
 write(BalciSdoi, "data/BalciSdoi.txt")
 ```
-

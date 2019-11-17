@@ -60,12 +60,6 @@ and
 ---
 
 
-
-
-
-
-
-
 # Codes for data download
 
 ## PubMed
@@ -101,6 +95,40 @@ https://www.nlm.nih.gov/bsd/licensee/data_elements_doc.html
 
 - pubmed_180101.dtd Documentation
 https://dtd.nlm.nih.gov/ncbi/pubmed/out/doc/2018/
+
+
+### Edirect docker
+
+- Official NCBI EDirect docker image
+
+https://github.com/ncbi/docker/tree/master/edirect
+
+- ncbi-docker
+
+https://github.com/ncbi/docker
+
+- NCBI EDirect Docker image
+
+https://hub.docker.com/r/ncbi/edirect
+
+`docker pull ncbi/edirect`
+
+
+
+
+### edirect anaconda
+
+https://anaconda.org/bioconda/repo
+
+https://anaconda.org/bioconda/entrez-direct
+
+`conda install -c bioconda entrez-direct`
+
+
+
+
+
+
 
 
 ### Entrez Direct: E-utilities on the UNIX Command Line
@@ -165,6 +193,21 @@ https://github.com/ldbib/MEDLINEXMLToJSON
 
 https://github.com/titipata/pubmed_parser/wiki
 
+## WOS
+
+## EigenFactor
+
+- EigenFactor Search
+
+http://www.eigenfactor.org/projects/journalRank/journalsearch.php
+
+- Scholarly publications 
+
+http://www.eigenfactor.org/papers.php
+
+- Projects
+
+http://www.eigenfactor.org/projects.php
 
 
 ## ORCID
@@ -201,6 +244,8 @@ caffeinate
 
 ```
 
+
+
 ### AllenNLP
 
 https://allennlp.org/
@@ -217,6 +262,12 @@ https://github.com/allenai/allennlp
 
 https://allenai.org/semantic-scholar/citeomatic/
 
+
+### an error
+
+https://www.semanticscholar.org/paper/PBPath-Journal-Watch/46b65ddf9128eed990f938d1db7a1f1473b4c7c9
+
+https://pdfs.semanticscholar.org/46b6/5ddf9128eed990f938d1db7a1f1473b4c7c9.pdf?_ga=2.114635586.411458507.1562087790-426299917.1562087790
 
 
 
@@ -412,6 +463,16 @@ Söz konusu veri tabanına https://trdizin.gov.tr/search/projectSearch.xhtml lin
 ## TRDizin
 
 https://trdizin.gov.tr/
+
+
+## bioRxiv API 
+
+
+http://api.biorxiv.org/
+
+
+http://api.biorxiv.org/reports/
+
 
 
 ---
