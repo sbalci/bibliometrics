@@ -1,0 +1,29 @@
+---
+title: "Where Do The Turkish Researchers Publish?"
+output: html_notebook
+---
+
+
+
+[Turkey_affiliation_timeline.csv](https://www.ncbi.nlm.nih.gov/pubmed?p$l=Email&Mode=download&term=Turkey[Affiliation]&dlid=timeline&filename=timeline.csv&bbid=NCID_1_26113046_130.14.18.48_9001_1571598674_1873383514_0MetA0_S_MegaStore_F_1&p$debugoutput=off)
+
+
+[Turkey_affiliation_pubmed_result.xml](https://www.ncbi.nlm.nih.gov/portal/utils/file_backend.cgi?Db=pubmed&HistoryId=NCID_1_12059143_130.14.18.48_5555_1571596396_818866540_0MetA0_S_HStore&QueryKey=5&Sort=&Filter=all&CompleteResultCount=220294&Mode=file&View=xml&p$l=Email&portalSnapshot=%2Fprojects%2Fentrez%2Fpubmed%2FPubMedGroup@1.146&BaseUrl=&PortName=live&RootTag=PubmedArticleSet&DocType=PubmedArticleSet%20PUBLIC%20%22-%2F%2FNLM%2F%2FDTD%20PubMedArticle,%201st%20January%202019%2F%2FEN%22%20%22https://dtd.nlm.nih.gov/ncbi/pubmed/out/pubmed_190101.dtd%22&FileName=&ContentType=xml)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

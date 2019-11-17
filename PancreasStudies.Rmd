@@ -1,5 +1,5 @@
 ---
-title: "Pancreas Studies in Various Bibliometric Tools"
+title: "Pancreas Studies with Various Bibliometric Tools"
 subtitle: "Pancreas Studies in Pathology Journals"
 author: "Serdar Balcı, MD, Pathologist"
 date: '`r format(Sys.Date())`'
@@ -7,12 +7,13 @@ output:
   html_notebook: 
     code_folding: hide
     fig_caption: yes
-    highlight: monochrome
+    highlight: kate
     number_sections: yes
-    theme: paper
+    theme: sandstone
     toc: yes
     toc_depth: 5
     toc_float: yes
+bibliography: bib/PancreasStudies.bib
 ---
 
 <!-- Open all links in new tab-->  
@@ -23,16 +24,30 @@ output:
 </script> 
 
 
-```{r global_options, include=FALSE}
-knitr::opts_chunk$set(fig.width = 12, fig.height = 8, 
-                      # fig.path = 'figures/',
-                      echo = FALSE, warning = FALSE, message = FALSE, error = FALSE, eval = TRUE, tidy = TRUE, comment = NA)
+```{r setup global_options chunk settings, include=FALSE}
+knitr::opts_chunk$set(
+	echo = FALSE,
+	error = FALSE,
+	fig.height = 8,
+	fig.width = 12,
+	message = FALSE,
+	warning = FALSE,
+	cache = TRUE,
+	comment = NA,
+	tidy = TRUE, 
+	eval = TRUE
+# fig.path = 'figures/',
+
+)
 ```
 
-```{r library, include=FALSE}
-library(tidyverse)
+```{r load library, include=FALSE}
+suppressMessages(library(tidyverse))
+suppressMessages(library(foreign))
+suppressMessages(library(tidylog))
+suppressMessages(library(janitor))
+suppressMessages(library(googledrive))
 ```
-
 
 
 
@@ -45,18 +60,78 @@ library(tidyverse)
 
 # PubMed
 
+---
+
+## Collection with Article Features
+
+
+```{r}
+PBPathJWArticleFeatures <- xlsx::read.xlsx("/Users/serdarbalciold/JournalWatchPBPath/DataForCloud/PBPathArticles.xlsx", sheetIndex = 1)
+```
+
+
+
+
+
+```{r eval=FALSE, include=FALSE}
+# library(googledrive)
+# googledrive::drive_auth()
+# gdrive_folder <-  "https://drive.google.com/drive/folders/1QIzvkJOK6STkfAyb8rI36J34J7kGQpwT"
+# 
+# https://drive.google.com/drive/folders/1QIzvkJOK6STkfAyb8rI36J34J7kGQpwT
+# 
+# drive_find(pattern="PBPathJWArticles/PBPathArticles.xlsx")
+
+# gdrls <- googledrive::drive_ls(gdrive_folder)
+
+# dplyr::pull(gdrls, id) %>% 
+    # purrr::walk(~googledrive::drive_download(googledrive::as_id(.x), path = "/data")
+
+
+# googledrive::drive_download(file = "~/PBPathJWArticles/PBPathArticles.xlsx",
+#                                 # path = "data",
+#                                 overwrite = TRUE)
+```
+
+
+
+## My NCBI » Collections > PBPathJournalWatch  
+
+https://www.ncbi.nlm.nih.gov/sites/myncbi/collections/58240634
+
+
+```{r}
+myNCBICollectionsPBPathJournalWatch <- read.csv(file = "https://www.ncbi.nlm.nih.gov/portal/utils/streamer.cgi?request=%3CRequest%20version%3D%271%27%3E%3CCommand%20name%3D%27collection-save%27%3E%09%3CParam%20name%3D%27id%27%3E58240634%3C%2FParam%3E%09%3CParam%20name%3D%27format%27%3Ecsv%3C%2FParam%3E%09%3CParam%20name%3D%27sortKey%27%3Edate%3C%2FParam%3E%09%3CParam%20name%3D%27sortOrder%27%3Edescending%3C%2FParam%3E%20%20%3C%2FCommand%3E%3C%2FRequest%3E")
+```
+
+
+```{r}
+# text_myNCBICollectionsPBPathJournalWatch <- readr::read_lines_raw( "https://www.ncbi.nlm.nih.gov/portal/utils/streamer.cgi?request=%3CRequest%20version%3D%271%27%3E%3CCommand%20name%3D%27collection-save%27%3E%09%3CParam%20name%3D%27id%27%3E58240634%3C%2FParam%3E%09%3CParam%20name%3D%27format%27%3Etxt%3C%2FParam%3E%09%3CParam%20name%3D%27sortKey%27%3Edate%3C%2FParam%3E%09%3CParam%20name%3D%27sortOrder%27%3Edescending%3C%2FParam%3E%20%20%3C%2FCommand%3E%3C%2FRequest%3E")
+```
+
+
+---
+
+## peeriodicals
+
+https://peeriodicals.com/peeriodicals/pancreatobiliary-pathology-society
+
+---
+
 ## Data Download from PubMed via EDirect
 
 - Data is downloaded from PubMed via Edirect^[https://dataguide.nlm.nih.gov/edirect/overview.html]
 
-- 
+--- 
 
 
 ## rentrez
 
+---
+
 # europepmc
 
-
+---
 
 # WOS
 
@@ -84,7 +159,9 @@ write(PMID_List_for_WOS_pancreas,
 
 # Vosviewer
 
-Author Thesaurus is used.^[[Author Thesaurus](data/thesaurus_authors.txt)]
+Author Thesaurus is used.^[[Author Thesaurus](data/thesaurus_authors_myupdates.txt)]
+
+
 
 Code for interactive graph.^[[Interactive Graph Code](data/VOSviewer_interactive_graphcode.txt)]
 
@@ -103,11 +180,13 @@ Code for interactive graph.^[[Interactive Graph Code](data/VOSviewer_interactive
 (citation_id_type: "pmid"  AND citation_id: 28984336)  OR (citation_id_type: "pmid"  AND citation_id: 21682559)
 ```
 
+
 ```{r}
 pmid_only_path_journals <- 
-read_delim("PancreasStudies/data/pmid_only_path_journals.txt", "\n", col_names = "PMID", col_types = "c")
+readr::read_delim("PancreasStudies/data/pmid_only_path_journals.txt", "\n", col_names = "PMID", col_types = "c")
 
-pmid_only_path_journals2 <- paste0("(citation_id_type: 'pmid'  AND citation_id:",pmid_only_path_journals$PMID, ") OR ", collapse = "")
+
+pmid_only_path_journals2 <- paste0("citation_id:(",pmid_only_path_journals$PMID, ") OR ", collapse = "")
 
 write(pmid_only_path_journals2,
 "PancreasStudies/data/lensSearch.txt"
@@ -192,11 +271,32 @@ https://the.iris.ai/map/02f89d24-0415-43ab-878a-853ec17c5a59
 
 # lens.org
 
+
+<iframe src="https://player.vimeo.com/video/295099740" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+<p><a href="https://vimeo.com/295099740">The Lens</a> from <a href="https://vimeo.com/user10734565">Cambia</a> on <a href="https://vimeo.com">Vimeo</a>.</p>
+
+<iframe src="https://player.vimeo.com/video/245867897" width="640" height="360" frameborder="0" allowfullscreen></iframe>
+
+<iframe src="https://player.vimeo.com/video/246041050" width="640" height="360" frameborder="0" allowfullscreen></iframe>
+
 https://www.lens.org/lens/scholar/search/results?dateFilterField=year_published&filterMap=%7B%7D&orcids=0000-0002-7852-3851&orderBy=%2Bpublished&preview=true&previewType=SCHOLAR_ANALYSIS&regexEnabled=false
 
 https://www.lens.org/lens/scholar/search/results?q=(author.affiliation.name:%20%22pathology%22%20%20OR%20author.affiliation.name:%20%22patoloji%22)%20%20AND%20(author.affiliation.name:%20%22Turkey%22%20%20OR%20author.affiliation.name:%20%22T%C3%BCrkiye%22)
 
 https://www.lens.org/lens/scholar/search/analysis?q=(author.affiliation.name:%20%22neurosurgery%22%20%20OR%20author.affiliation.name:%20%22sport%22%20)%20AND%20(abstract:%20%22sport%22%20%20OR%20title:%20%22sport%22)&page=0&limit=10&orderBy=%2Bscore&dateFilterField=year_published&preview=false&regexEnabled=false
+
+
+
+# contentmine
+
+http://contentmine.org/
+
+https://github.com/ContentMine
+
+
+
+
+
 
 
 # To Do
@@ -218,7 +318,11 @@ https://www.lens.org/lens/scholar/search/analysis?q=(author.affiliation.name:%20
 
 [Serdar Balcı, MD, Pathologist](https://github.com/sbalci) would like to hear your feedback: https://goo.gl/forms/YjGZ5DHgtPlR1RnB3
 
-This document will be continiously updated and the last update was on `r Sys.Date()`.
+This document will be continiously updated and the last update was on `r Sys.time()`.
+
+Serdar Balci, MD, Pathologist  
+drserdarbalci@gmail.com  
+https://rpubs.com/sbalci/CV   
 
 ---
 
@@ -244,6 +348,46 @@ s.setAttribute('data-timestamp', +new Date());
 })();
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+---
+
+# Libraries Used
+
+```{r}
+citation()
+```
+
+```
+citation("tidyverse")
+citation("foreign")
+citation("tidylog")
+citation("janitor")
+citation("jmv")
+citation("tangram")
+citation("finalfit")
+citation("summarytools")
+citation("ggstatplot")
+citation("readxl")
+```
+
+
+```{r eval=FALSE, include=FALSE}
+citation("tidyverse")
+citation("foreign")
+citation("tidylog")
+citation("janitor")
+citation("jmv")
+citation("tangram")
+citation("finalfit")
+citation("summarytools")
+citation("ggstatplot")
+citation("readxl")
+```
+
+```{r}
+sessionInfo()
+```
+
 
 ---
 
