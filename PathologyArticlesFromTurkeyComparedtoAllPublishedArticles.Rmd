@@ -258,7 +258,6 @@ data_hacettepePathology2 <- data_hacettepePathology %>%
 data_hacettepePathology2 <-  data_hacettepePathology2 %>% 
   separate(col = "Affiliation", sep = ";", into = paste0("Affiliation", 1:6925))
 
-
 ```
 
 

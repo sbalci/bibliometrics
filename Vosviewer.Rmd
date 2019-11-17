@@ -1,9 +1,7 @@
 ---
-title: "Vosviewer"
+title: "VOSviewer"
 output: html_notebook
 ---
-
-
 
 ---
 
@@ -17,4 +15,176 @@ https://seinecle.github.io/vosviewer-tutorials/
 
 
 ---
+
+
+```{bash}
+cd ~/PubMed/PedCer3JournalWOS/WOS_rawdata/ 
+cat *.txt > ~/PubMed/PedCer3JournalWOS/WOS_combined/combinedWOS.txt
+
+```
+
+```
+1. VosViewer haritalarını etkileşimli hale getirmek için aşağıdaki linkte sarı ile işaretli yerlere sunucuya attığınız map ve network dosyalarının adresini yazmanız gerekiyor.
+http://www.vosviewer.com/vosviewer.php?map=http://yunus.hacettepe.edu.tr/~ztaskin/Hacettepe_MedLife/map_coauthor.txt&network=http://yunus.hacettepe.edu.tr/~ztaskin/Hacettepe_MedLife/network_coauthor.txt
+2. VosViewer’ı buradan: http://www.vosviewer.com/ / CiteSpace’i de şuradan http://cluster.ischool.drexel.edu/~cchen/citespace/download/ indirebilirsiniz.
+3. Bir klasöreki çok sayıda txt dosyasını tek seferde birleştirmek için:
+                - Terminal ekranını açın (Başlat > Çalıştır > cmd)
+                - cd koduyla txt dosyalarının yer aldığı klasöre gidin. (cd .. bir üst klasöre gider / cd (dosya adı) yazdığınız dosya adına)
+                - Ardından şu kodu çalıştırın > for %f in (*.txt) do type "%f" >> output.txt
+                - Veriyi excel’de açın. Fazla etiketleri silin. Her dosyanın ilk satırı fazla olacak çünkü. Bazen dönüştürmede duplike de yapabiliyor. Duplikeleri bul ve sil yapabilirsiniz emin olmak için.
+4. CiteSpace’i çalıştıramazsanız aşağıdaki iki kodu terminal ekranından çalıştırmayı deneyebilirsiniz.
+- java -Dfile.encoding=UTF-8 -Duser.country=US -Duser.language=en -Xss5m -jar CiteSpaceV.jar
+- java -Dfile.encoding=UTF-8 -Duser.country=US -Duser.language=en -Xms1g -Xmx12g -Xss5m -jar CiteSpaceV.jar
+5. DORA deklarasyonunu buradan https://sfdora.org/read/tr/ Leiden Manifesto’yu buradan http://www.leidenmanifesto.org/ okuyabilirsiniz.
+6. PubMed sorgularını VosViewer’da çalıştırmak için send to > file > Medline > Create file patikasını kullanarak veriyi indirebilirsiniz. Sorunsuz çalışıyor.
+```
+
+
+
+```
+/Users/serdarbalciold/PubMed/PedCer3JournalWOS/WOS_combined/combinedWOS2.txt 
+VOSviewer'da çalıştırıldı.
+co-occurance, author keywords, full counting, thesaurus
+/Users/serdarbalciold/PubMed/PedCer3JournalWOS/thesaurus_PedCer.txt
+min number of occurenece keyword: 5
+569/12377 keywords meet >5 treshold
+all keywords included in the map
+/Users/serdarbalciold/PubMed/PedCer3JournalWOS/export_selected_keywords.txt
+```
+
+
+
+
+
+
+```{r}
+library(data.table)
+# library(bibliometrix)
+```
+
+
+```{r}
+keywords_PedCer3JournalVOSviewer <- fread(
+    here::here("PedCer3JournalWOS/export_selected_keywords.txt"), sep = "\t")
+View(keywords_PedCer3JournalVOSviewer)
+
+map_PedCer3JournalVOSviewer <- fread(
+    here::here("PedCer3JournalWOS/map_keywords.txt"), sep = "\t")
+View(map_PedCer3JournalVOSviewer)
+
+network_PedCer3JournalVOSviewer <- fread(
+    here::here("PedCer3JournalWOS/network_keywords.txt"), sep = "\t")
+View(network_PedCer3JournalVOSviewer)
+
+# /Users/serdarbalciold/PubMed/PedCer3JournalWOS/keyword.gml
+# /Users/serdarbalciold/PubMed/PedCer3JournalWOS/keyword_pajek_network.net
+# /Users/serdarbalciold/PubMed/PedCer3JournalWOS/network_pajek_partition.clu
+# /Users/serdarbalciold/PubMed/PedCer3JournalWOS/keyword_pajek_vector.vec
+
+
+
+```
+
+
+
+
+
+```{r}
+# biblio <- readLines("~/PubMed/PedCer3JournalWOS/WOS_rawdata/Kitap1.txt")
+# biblio_df_df <- bibliometrix::convert2df(file = biblio, dbsource = "isi", format = "bibtex")
+
+PedCer3Journal <- readr::read_delim(file = "~/PubMed/PedCer3JournalWOS/WOS_combined/combinedWOS2.txt",
+                          delim = "\t")
+
+library(tidyverse)
+
+PedCer3JournalID <- PedCer3Journal %>% 
+    rowid_to_column() %>% 
+    select(documentID = rowid,
+           DOI = DI,
+           WOS = UT,
+           PMID = PM)
+
+```
+
+
+```{r}
+# keywordID
+# keywords_PedCer3JournalVOSviewer$id
+
+# keywordNAME
+# keywords_PedCer3JournalVOSviewer$keyword
+
+keywordsPedCer3Journal <- 
+    keywords_PedCer3JournalVOSviewer %>% 
+    select(keywordID = id,
+           keywordNAME = keyword)
+
+
+# keywordID
+# map_PedCer3JournalVOSviewer$id
+
+# keywordNAME
+# map_PedCer3JournalVOSviewer$label
+
+mapPedCer3Journal <- map_PedCer3JournalVOSviewer %>% 
+    select(keywordID = id,
+           keywordNAME = label,
+           cluster = cluster)
+
+# documentID
+# network_PedCer3JournalVOSviewer$V1
+
+# documentID
+# network_PedCer3JournalVOSviewer$V2
+
+```
+
+
+```{r}
+combined_PedCer3Journal <- PedCer3JournalID %>% 
+    full_join(occurancePedCer3Journal, by = "documentID") %>% 
+    full_join(mapPedCer3Journal, by = "keywordID")
+```
+
+
+
+```
+I am afraid there is no easy solution for this. In the final step in the ‘Create Map’ wizard, a list of keywords is presented. By right-clicking on this list, it is possible to export the document-keyword relations to a text file. In addition, by saving your keyword map in a VOSviewer map file (using the ‘Save’ button on the ’File’ tab), the relations between keywords and clusters can be obtained. By combining the information from the two files, it is possible to find out which documents belong to which clusters. However, this requires some data analysis to be performed outside VOSviewer. Unfortunately, no easier solution is available at the moment.
+```
+
+```
+If you have multiple Web of Science files (in tab-delimited format), it may be best to merge the files into a single file. The first line in this file will be a header line. The second line will be document 1, the third line will be document 2, and so on.
+```
+
+
+```{r}
+combined_PedCer3Journal %>% 
+    filter(cluster == 1) %>% 
+    janitor::tabyl(keywordNAME, cluster) %>%
+  janitor::adorn_pct_formatting(rounding = 'half up', digits = 1) %>%
+  knitr::kable()
+    
+```
+
+
+
+- import WOS data into R
+
+https://github.com/jessicabeyer/wosr
+
+https://cran.r-project.org/web/packages/wosr/wosr.pdf
+
+https://github.com/alberto-martin/read.wos.R
+
+https://cran.rstudio.com/web/packages/bibliometrix/vignettes/bibliometrix-vignette.html
+
+convert2df(file, dbsource = "isi", format = "plaintext")
+
+
+
+
+
+
+
 

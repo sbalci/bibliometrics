@@ -1,0 +1,168 @@
+---
+title: "Pathology Articles From Turkey"
+description: |
+  Collections and Peeriodicals of selected Pathology Articles From Turkey
+author:
+  - name: Serdar Balcı 
+    url: https://www.serdarbalci.com/
+    affiliation: MD Pathologist
+    affiliation_url: https://sbalci.github.io/
+date: "`r Sys.Date()`"
+output: distill::distill_article
+---
+
+```{r library, include=FALSE}
+suppressPackageStartupMessages(library(tidyverse))
+suppressPackageStartupMessages(library(readxl))
+suppressPackageStartupMessages(library(markdown))
+suppressPackageStartupMessages(library(kableExtra))
+suppressPackageStartupMessages(library(tidyRSS))
+```
+
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+
+
+<!-- Open all links in new tab-->  
+<!-- <base target="_blank"/>   -->
+
+---
+
+# Pathology Articles From Turkey Peeriodical
+
+https://peeriodicals.com/peeriodicals/pathology-articles-from-turkey
+
+
+---
+
+# RSS Feed From PubMed
+
+```
+(pathology[Affiliation] OR patoloji[Affiliation]) AND (Turk*[Affiliation] OR Türk*[Affiliation]) 
+```
+
+`r icon::fa("rss")`
+[Click Here for the RSS Link](https://eutils.ncbi.nlm.nih.gov/entrez/eutils/erss.cgi?rss_guid=10UQVR81oEgBsJdu9HkJM34nE3gKkc0-VJoAwxWLhi1d2qRs7u)
+
+
+
+```{r}
+# https://cran.r-project.org/web/packages/tidyRSS/vignettes/tidyrss.html
+PAFT_rss1 <- tidyRSS::tidyfeed("https://eutils.ncbi.nlm.nih.gov/entrez/eutils/erss.cgi?rss_guid=10UQVR81oEgBsJdu9HkJM34nE3gKkc0-VJoAwxWLhi1d2qRs7u") 
+```
+
+
+
+```{r}
+PAFT_rss2 <- feedeR::feed.extract("https://eutils.ncbi.nlm.nih.gov/entrez/eutils/erss.cgi?rss_guid=10UQVR81oEgBsJdu9HkJM34nE3gKkc0-VJoAwxWLhi1d2qRs7u")
+```
+
+
+
+
+
+
+---
+
+# PubMed Collection
+
+
+My NCBI » Collections > Pathology Articles From Turkey
+
+`(pathology[Affiliation] OR patoloji[Affiliation]) AND (Turk*[Affiliation] OR Türk*[Affiliation])` AND `WOS Journals with Pathology Topic`
+
+https://www.ncbi.nlm.nih.gov/sites/myncbi/collections/58299810/
+
+<a href="https://www.ncbi.nlm.nih.gov/sites/myncbi/serdar.balci.1/collections/58299810/public/">View my collection, "Pathology Articles From Turkey" from NCBI</a>
+
+
+
+
+```{r download PAFT data, include=FALSE}
+PAFT <- readr::read_csv("https://www.ncbi.nlm.nih.gov/sites/myncbi/collections/58299810/?title=Open%20as%20spreadsheet&")
+
+```
+
+
+```{r Prepare Table, eval=FALSE, include=FALSE}
+PAFT2 <- PAFT %>% 
+  mutate(Link = paste0("https://www.ncbi.nlm.nih.gov", URL)) %>% 
+  select(Title, Link) %>% 
+  head(n=25)
+```
+
+
+**Style1**
+
+```{r Print Table, eval=FALSE, include=FALSE, layout="l-body-outset"}
+rmarkdown::paged_table(PAFT2)
+```
+
+**Style2**
+
+```{r Print Table 2, eval=FALSE, include=FALSE, layout="l-body-outset"}
+PAFT2 %>% 
+  gt::gt()
+```
+
+**Style3**
+
+```{r Print Table 3, eval=FALSE, include=FALSE, layout="l-body-outset"}
+PAFT2 %>% 
+  print.data.frame()
+```
+
+**Style4**
+
+```{r Print Table 4, eval=FALSE, include=FALSE, layout="l-screen-inset"}
+PAFT2 %>% 
+  knitr::kable()
+```
+
+
+
+```{r Print Table Molecular, eval=FALSE, include=FALSE, layout="l-screen-inset"}
+
+# PancreasPBPathArticles$Title <- kableExtra::cell_spec(
+#   PancreasPBPathArticles$Title,
+#   popover = kableExtra::spec_popover(
+#     content = PancreasPBPathArticles$Journal
+#   )
+# )
+
+
+PAFT %>% 
+  filter(Molecular == TRUE) %>%
+  select(Title, PubMedLink) %>% 
+  kableExtra::kable(escape = FALSE) %>%
+  kableExtra::kable_styling(
+    bootstrap_options = c("striped",
+                          "hover",
+                          "condensed",
+                          "responsive"),
+    fixed_thead = TRUE,
+    full_width = TRUE
+  ) %>%
+  kableExtra::scroll_box(height = "300px")
+```
+
+
+
+
+## Acknowledgments {.appendix}
+
+## Footnotes {.appendix}
+
+## References {.appendix}
+
+## Document Information {.appendix}
+
+Last updated on `r Sys.Date()`.
+
+
+
+

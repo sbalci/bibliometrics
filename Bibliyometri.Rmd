@@ -1,0 +1,89 @@
+---
+title: "Bibliyometri"
+output: html_notebook
+---
+
+
+- Web Of Science'dan her zaman tab delimited olarak indir.
+
+
+- Tab delimited dosyaları birleştir.
+cat
+
+https://unix.stackexchange.com/questions/3770/how-to-merge-all-text-files-in-a-directory-into-one
+https://apple.stackexchange.com/questions/80611/merging-multiple-csv-files-without-merging-the-header
+
+
+
+AU: yazar
+AF: yazar açık adları
+TI: title, çalışma başlığı
+SO: source, dergi ismi
+DT: döküman tipleri
+DE: yazarın verdiği anahtar sözcük
+ID: WOS anahtar sözcükler
+AB: abstract varsa
+C1: adresler
+RP: yazışma adresi
+CR: makalenin verdiği referanslar. kayabiliyor. 
+
+NF: bu yayın kaç atıf yapmış
+TC: bu yayın kaç atıf almış
+
+PY: yıl
+
+WC: web of science categories (daha geniş kapsamlı)
+SC: subject categories (dergi kategorisi)
+
+kategorilerle analiz için citespace kullan
+
+
+UT: alanı boş olmamalı
+
+UT alanı yoksa, kendin veri oluşturuyorsan tekil WOS: numarası verebilirsin
+
+
+alanlardaki unsurlar WOS'da `;` ile ayrılır. Scopus'da `,` ile ayrılıyor.
+
+
+
+```
+ WC="Information Science & Library Science" AND AD="Turkey" 
+```
+
+Vosviewer için tab-delimited text olarak kaydetmek lazım.
+excel tab-limited olarak kaydedince `"` ekliyor. Bunları silmek lazım.
+
+metin içinde Türkçe karakterleri değiştirmek lazım.
+theseraus ya da regex kullanmak lazım
+stop word çıkartmak lazım
+
+
+
+Vosviewer yüklemeyi drive ile dene
+
+
+
+```
+SO="pathology" AND AD="Turkey"
+```
+
+
+citespace
+
+data import export
+wos tab to wos
+
+
+java -Dfile.encoding=UTF-8 -Duser.country=US -Duser.language=en -Xss5m -jar CiteSpaceV.jar 
+
+java -Dfile.encoding=UTF-8 -Duser.country=US -Duser.language=en -Xms1g -Xmx12g -Xss5m -jar CiteSpaceV.jar 
+
+
+
+
+
+
+
+
+

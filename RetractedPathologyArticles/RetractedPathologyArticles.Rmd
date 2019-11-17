@@ -1,0 +1,312 @@
+---
+title: "Retracted Pathology Articles in PubMed"
+output: html_notebook
+---
+
+# Aim
+
+To evaluate the retracted articles in PubMed.
+
+
+
+# Materials and Methods
+
+Data downloaded on 20.10.2019.
+
+[currentlyindexed_nlmcatalog_result.xml](https://www.ncbi.nlm.nih.gov/portal/utils/file_backend.cgi?Db=nlmcatalog&HistoryId=NCID_1_12059143_130.14.18.48_5555_1571596396_818866540_0MetA0_S_HStore&QueryKey=1&Sort=PubDate&Filter=all&CompleteResultCount=5244&Mode=file&View=xml&p$l=Email&portalSnapshot=%2Fprojects%2Fentrez%2Fpubmed%2FPubMedGroup@1.146&BaseUrl=&PortName=live&RootTag=NLMCatalogRecordSet&DocType=NLMCatalogRecordSet%20PUBLIC%20%22-%2F%2FNLM%2F%2FDTD%20NLMCatalogRecordSet,%201st%20June%202017%2F%2FEN%22%20%22https://www.nlm.nih.gov/databases/dtd/nlmcatalogrecordset_170601.dtd%22&FileName=&ContentType=xml)
+
+
+[Retracted_Publication_sb_OR_Retraction_of_Publication_sb_pubmed_result.xml](https://www.ncbi.nlm.nih.gov/portal/utils/file_backend.cgi?Db=pubmed&HistoryId=NCID_1_12059143_130.14.18.48_5555_1571596396_818866540_0MetA0_S_HStore&QueryKey=18&Sort=&Filter=all&CompleteResultCount=14043&Mode=file&View=xml&p$l=Email&portalSnapshot=%2Fprojects%2Fentrez%2Fpubmed%2FPubMedGroup@1.146&BaseUrl=&PortName=live&RootTag=PubmedArticleSet&DocType=PubmedArticleSet%20PUBLIC%20%22-%2F%2FNLM%2F%2FDTD%20PubMedArticle,%201st%20January%202019%2F%2FEN%22%20%22https://dtd.nlm.nih.gov/ncbi/pubmed/out/pubmed_190101.dtd%22&FileName=&ContentType=xml)
+
+
+[Retracted_Publication_sb_OR_Retraction_of_Publication_sb_timeline.csv](https://www.ncbi.nlm.nih.gov/pubmed?p$l=Email&Mode=download&term=Retracted%20Publication[sb]%20OR%20Retraction%20of%20Publication[sb]&dlid=timeline&filename=timeline.csv&bbid=&p$debugoutput=off)
+
+
+
+- Find Retractions Using PubMed and My NCBI!
+
+https://hslnews.wordpress.com/2013/05/14/retractions/
+
+- Comment Correction Type
+
+https://www.ncbi.nlm.nih.gov/books/NBK3827/#pubmedhelp.Comment_Correction_Type
+
+
+
+> Comment Correction Type
+> 
+> The data in these fields are citations to other associated journal publications, e.g., comments or errata. Often these link to the respective citation. Comments/Corrections data can be retrieved by the search term that follows each type:
+> 
+>     Comment in: hascommentin
+>     Comment on: hascommenton
+>     Corrected and republished in: hascorrectedrepublishedin
+>     Corrected and republished from: hascorrectedrepublishedfrom
+>     Dataset use reported in: hasassociatedpublication
+>     Dataset described in: hasassociateddataset
+>     Erratum in: haserratumin
+>     Erratum for: haserratumfor
+>     Expression of concern in: hasexpressionofconcernin
+>     Expression of concern for: hasexpressionofconcernfor
+>     Original Report in: hasoriginalreportin
+>     Republished in: hasrepublishedin
+>     Republished from: hasrepublishedfrom
+>     Retracted and republished in: hasretractedandrepublishedin
+>     Retracted and republished from: hasretractedandrepublishedfrom
+>     Retraction in: hasretractionin
+>     Retraction of: hasretractionof
+>     Summary for patients in: hassummaryforpatientsin
+>     Update in: hasupdatein
+>     Update of: hasupdateof
+> 
+
+- Errata, Retractions, and Other Linked Citations in PubMed
+
+https://www.nlm.nih.gov/bsd/policy/errata.html
+
+
+<!-- Not used -->
+<!-- ## Data retriveal from PubMed using EDirect  -->
+
+<!-- Article PMID downloaded as `txt`. -->
+
+```{r Search PubMed download PMID, eval=FALSE, include=FALSE}
+myTerm <- rstudioapi::terminalCreate(show = FALSE)
+rstudioapi::terminalSend(
+    myTerm,
+    "esearch -db pubmed -query \"(pathology[Affiliation] OR patoloji[Affiliation]) AND (Turkey[Affiliation] OR Türkiye[Affiliation])\" -datetype PDAT -mindate 1800 -maxdate 3000 | \ efetch -format uid > data/pubmed_result_TurkPath_uid.txt \n"
+)
+Sys.sleep(1)
+repeat {
+    Sys.sleep(0.1)
+    if (rstudioapi::terminalBusy(myTerm) == FALSE) {
+        print("Code Executed")
+        break
+    }
+}
+```
+
+
+
+```{r Search local PubMed with downloaded PMID extract data as xml, eval=FALSE, include=FALSE}
+myTerm <- rstudioapi::terminalCreate(show = FALSE)
+rstudioapi::terminalSend(
+    myTerm,
+    "cat data/pubmed_result_TurkPath_uid.txt | \ fetch-pubmed -path /Volumes/Agu2018/PubMed > data/pubmed_result_TurkPath.xml \n"
+)
+Sys.sleep(1)
+repeat {
+    Sys.sleep(0.1)
+    if (rstudioapi::terminalBusy(myTerm) == FALSE) {
+        print("Code Executed")
+        break
+    }
+}
+```
+
+
+
+# Analysis
+
+
+A trend graph of retracted articles derived from Europe PMC #RStats #europepmc {europepmc} 📦 #evergreenreviewgraph #research #bibliography #bibliometrics
+
+
+
+```{r europepmc}
+library(europepmc)
+```
+
+
+```{r europepmc search}
+retractedArticlesPerTotalArticles <- 
+    europepmc::epmc_hits_trend(
+    query = "(PUB_TYPE:'Retracted Publication' OR PUB_TYPE:'Retraction of Publication')",
+    period = 1980:2017
+    )
+
+retractedArticlesPerTotalArticles$Affiliation <- "All"
+
+retractedArticlesPerTotalArticles_Turkey <- 
+    europepmc::epmc_hits_trend(
+    query = "(AFF:'Turkey') AND (PUB_TYPE:'Retracted Publication' OR PUB_TYPE:'Retraction of Publication')",
+    period = 1980:2017
+    )
+
+retractedArticlesPerTotalArticles_Turkey$Affiliation <- "Turkey"
+
+retractedArticles <- dplyr::bind_rows(
+retractedArticlesPerTotalArticles,
+retractedArticlesPerTotalArticles_Turkey)
+
+```
+
+
+
+```{r graph europepmc search}
+library(ggplot2)
+ggplot(retractedArticles, 
+       aes(year, 
+           1000*(query_hits / all_hits),
+           color = Affiliation)
+       ) + 
+  geom_point() + 
+  geom_line() +
+  xlab("Year published") + 
+  ylab("Proportion of Retracted Articles \n data: Europe PMC, 20.10.2019 \n 1000x")
+```
+
+
+
+
+
+
+
+
+
+
+
+
+```{r extract year journal name from xml, message=FALSE, warning=FALSE}
+myTerm <- rstudioapi::terminalCreate(show = FALSE)
+rstudioapi::terminalSend(
+myTerm,
+"xtract -input data/RetractedPubMed/Retracted_Publication_sb_OR_Retraction_of_Publication_sb_pubmed_result.xml -pattern PubmedArticle -tab \"|\" -sep \";\" -def \"NA\" -element MedlineCitation/PMID ArticleTitle Journal/ISSN ISOAbbreviation PubDate/Year > data/RetractedPubMed/pubmed_result_retracted.csv \n"
+)
+Sys.sleep(1)
+repeat {
+Sys.sleep(0.1)
+if (rstudioapi::terminalBusy(myTerm) == FALSE) {
+print("Code Executed")
+break
+}
+}
+```
+
+
+
+```{r read extracted data}
+pubmed_result_retracted <-
+    readr::read_delim(
+        file = here::here("data",
+                          "RetractedPubMed",
+                          "pubmed_result_retracted.csv"),
+        delim = "|",
+        escape_double = FALSE,
+        col_names = FALSE,
+        trim_ws = TRUE
+    )
+
+pubmed_result_retracted <- 
+pubmed_result_retracted %>%
+    select(
+        PMID = X1,
+        title = X2,
+        journalISSN = X3, 
+        journalName = X4,
+        year = X5
+    )
+```
+
+
+
+
+
+
+```{r extract journal name and topics from xml, message=FALSE, warning=FALSE}
+myTerm <- rstudioapi::terminalCreate(show = FALSE)
+rstudioapi::terminalSend(
+myTerm,
+"xtract -input data/currentlyindexed_nlmcatalog_result.xml -pattern NCBICatalogRecord -tab \"|\" -sep \";\" -def \"NA\" -element MedlineTA TitleAlternate BroadJournalHeadingList MeshHeading/DescriptorName ISSN > data/RetractedPubMed/journal_properties.csv \n"
+)
+Sys.sleep(1)
+repeat {
+Sys.sleep(0.1)
+if (rstudioapi::terminalBusy(myTerm) == FALSE) {
+print("Code Executed")
+break
+}
+}
+```
+
+
+```{r read clean journal properties}
+journal_properties <- readr::read_delim(here::here("data", "RetractedPubMed" , "journal_properties.csv"), 
+    "|", escape_double = FALSE, col_names = FALSE, 
+    trim_ws = TRUE)
+
+journal_properties <- journal_properties %>% 
+    select(journal = X1,
+           topic = X4,
+           ISSN = X5)
+
+
+
+journal_properties <- journal_properties %>% 
+    mutate(journalName = str_split(journal, ";")) %>%
+  unnest(cols = c(journalName)) %>% 
+    mutate(journalTopic = str_split(topic, ";")) %>%
+  unnest(cols = c(journalTopic)) %>% 
+    mutate(journalISSN = str_split(ISSN, ";")) %>%
+  unnest(cols = c(journalISSN)) %>% 
+    select(journalName,
+           journalTopic,
+           journalISSN) %>% 
+    unique()
+
+```
+
+
+
+```{r combine retracted articles with their journal info}
+pubmed_result_retracted <- pubmed_result_retracted %>% 
+    left_join(journal_properties, by = c("journalISSN"))
+```
+
+
+```{r find the journal topics in which most retracted articles were}
+commonTerms <- c("Medicine", "Science", "Research")
+
+(pubmed_result_retracted %>% 
+    select(journalTopic, year) %>% 
+    filter(!journalTopic %in% commonTerms) %>% 
+            filter(!is.na(journalTopic)) %>% 
+    group_by(journalTopic) %>% 
+    tally() %>% 
+    arrange(desc(n)) %>% 
+    head(10) %>% 
+    pull(journalTopic) -> mostRetractedTopicsOfJournal)
+```
+
+
+
+
+This trend graph shows the major topics of the journals that have the most retractions. Data derived from PubMed #RStats  #research #bibliography #bibliometrics
+
+
+```{r major topics of the journals that have the most retractions}
+pubmed_result_retracted %>% 
+    filter(journalTopic %in% mostRetractedTopicsOfJournal) %>% 
+    filter(year <= 2018 & year >= 1990) %>% 
+    select(journalTopic, year) %>% 
+    group_by(journalTopic, year) %>% 
+    tally() %>% 
+    ggplot( 
+       aes(year, 
+           n,
+           color = journalTopic
+           )
+       ) + 
+  geom_point() + 
+  geom_line() +
+  xlab("Year published") + 
+  ylab("Proportion of Retracted Articles \n data: Europe PMC, 20.10.2019")
+```
+
+
+
+
+
+
+
+
+
