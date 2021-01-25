@@ -54,7 +54,7 @@ Data will be retrieved from
 and
 [Google Scholar](https://scholar.google.com).
 
-
+[Using the Healthcare Natural Language API](https://cloud.google.com/healthcare/docs/how-tos/nlp?hl=en_US#healthcare-nl-api-analyze-entities-cli-curl)
 
 ---
 
